@@ -1,10 +1,10 @@
-This is pdfeTeX, Version 3.141592-1.30.6-2.2 (MiKTeX 2.5) (preloaded format=pdflatex 2007.4.27)  16 OCT 2007 18:04
+This is pdfeTeX, Version 3.141592-1.30.6-2.2 (MiKTeX 2.5) (preloaded format=pdflatex 2007.4.27)  16 OCT 2007 22:22
 entering extended mode
-**C:/DTU*Studies/3rd*SEM/02207*Advanced*Digital*Design*Techniques/Lab*Work/Exer
-cise*1/Report/02207_lab1_dt07.tex
+**C:/DTU*Studies/3rd*SEM/02207*Advanced*Digital*Design*Techniques/SVN/Lab*Work/
+Exercise*1/Report/02207_lab1_dt07.tex
 
-("C:\DTU Studies\3rd SEM\02207 Advanced Digital Design Techniques\Lab Work\Exer
-cise 1\Report\02207_lab1_dt07.tex"
+("C:\DTU Studies\3rd SEM\02207 Advanced Digital Design Techniques\SVN\Lab Work\
+Exercise 1\Report\02207_lab1_dt07.tex"
 LaTeX2e <2005/12/01>
 Babel <v3.8g> and hyphenation patterns for english, dumylang, nohyphenation, ge
 rman, ngerman, french, loaded.
@@ -238,22 +238,35 @@ Package Fancyhdr Warning: \headheight is too small (0.0pt):
 
 ] (02207_lab1_dt07.toc)
 \tf@toc=\write3
- [1] [2] (02207_lab1_dt07.aux) ) 
+ [1]
+Underfull \hbox (badness 10000) in paragraph at lines 71--72
+
+ []
+
+LaTeX Font Info:    Try loading font information for OML+cmr on input line 87.
+("C:\Program Files\MiKTeX 2.5\tex\latex\base\omlcmr.fd"
+File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <10.95> not available
+(Font)              Font shape `OML/cmm/m/it' tried instead on input line 87.
+ [2]
+(02207_lab1_dt07.aux) ) 
 Here is how much of TeX's memory you used:
- 3371 strings out of 95419
- 41387 string characters out of 1187294
- 93854 words of memory out of 1097042
- 6416 multiletter control sequences out of 60000
- 6750 words of font info for 24 fonts, out of 1000000 for 2000
+ 3395 strings out of 95419
+ 41705 string characters out of 1187294
+ 102558 words of memory out of 1097042
+ 6434 multiletter control sequences out of 60000
+ 7109 words of font info for 25 fonts, out of 1000000 for 2000
  14 hyphenation exceptions out of 8191
- 27i,10n,43p,502b,301s stack positions out of 5000i,500n,10000p,200000b,32768s
+ 27i,10n,43p,506b,1084s stack positions out of 5000i,500n,10000p,200000b,32768s
 PDF statistics:
- 25 PDF objects out of 300000
+ 28 PDF objects out of 300000
  0 named destinations out of 300000
  1 words of extra memory for PDF output out of 10000
-<C:/Program Files/MiKTeX 2.5/fonts/type1/bluesk
-y/cm/cmbx10.pfb><C:/Program Files/MiKTeX 2.5/fonts/type1/bluesky/cm/cmr10.pfb><
-C:/Program Files/MiKTeX 2.5/fonts/type1/bluesky/cm/cmr17.pfb><C:/Program Files/
-MiKTeX 2.5/fonts/type1/bluesky/cm/cmbx12.pfb><C:/Program Files/MiKTeX 2.5/fonts
-/type1/bluesky/cm/cmti12.pfb>
-Output written on 02207_lab1_dt07.pdf (3 pages, 49890 bytes).
+<C:/Program Files/MiKTeX 2.5/fonts/type1/bluesky/cm/cmmi
+10.pfb><C:/Program Files/MiKTeX 2.5/fonts/type1/bluesky/cm/cmbx10.pfb><C:/Progr
+am Files/MiKTeX 2.5/fonts/type1/bluesky/cm/cmr10.pfb><C:/Program Files/MiKTeX 2
+.5/fonts/type1/bluesky/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.5/fonts/type1/bl
+uesky/cm/cmbx12.pfb><C:/Program Files/MiKTeX 2.5/fonts/type1/bluesky/cm/cmti12.
+pfb>
+Output written on 02207_lab1_dt07.pdf (3 pages, 56447 bytes).
