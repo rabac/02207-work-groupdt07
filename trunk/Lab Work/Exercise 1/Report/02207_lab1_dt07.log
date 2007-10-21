@@ -1,4 +1,4 @@
-This is pdfeTeX, Version 3.141592-1.30.6-2.2 (MiKTeX 2.5) (preloaded format=pdflatex 2007.4.27)  16 OCT 2007 23:20
+This is pdfeTeX, Version 3.141592-1.30.6-2.2 (MiKTeX 2.5) (preloaded format=pdflatex 2007.4.27)  22 OCT 2007 00:28
 entering extended mode
 **C:/DTU*Studies/3rd*SEM/02207*Advanced*Digital*Design*Techniques/SVN/Lab*Work/
 Exercise*1/Report/02207_lab1_dt07.tex
@@ -239,10 +239,20 @@ Package Fancyhdr Warning: \headheight is too small (0.0pt):
 
 [1{psfonts.map}
 
-] (02207_lab1_dt07.toc)
+] (02207_lab1_dt07.toc
+LaTeX Font Info:    Try loading font information for U+msa on input line 3.
+
+("C:\Program Files\MiKTeX 2.5\tex\latex\amsfonts\umsa.fd"
+File: umsa.fd 2002/01/19 v2.2g AMS font definitions
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 3.
+
+("C:\Program Files\MiKTeX 2.5\tex\latex\amsfonts\umsb.fd"
+File: umsb.fd 2002/01/19 v2.2g AMS font definitions
+))
 \tf@toc=\write3
  [1]
-Underfull \hbox (badness 10000) in paragraph at lines 84--85
+Underfull \hbox (badness 10000) in paragraph at lines 86--87
 
  []
 
@@ -256,25 +266,519 @@ File: omlcmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <9> not available
 (Font)              Font shape `OML/cmm/m/it' tried instead on input line 14.
-) [2]
-(02207_lab1_dt07.aux) ) 
+)
+("C:\DTU Studies\3rd SEM\02207 Advanced Digital Design Techniques\SVN\Lab Work\
+Exercise 1\source\tbnadder.vhdl" [2])
+<../source/wave.jpg, id=35, 992.70876pt x 549.05125pt>
+File: ../source/wave.jpg Graphic file (type jpg)
+
+<use ../source/wave.jpg>
+Underfull \hbox (badness 10000) in paragraph at lines 104--105
+
+ []
+
+[3 <C:/DTU Studies/3rd SEM/02207 Advanced Digital Design Techniques/SVN/Lab Wor
+k/Exercise 1/source/wave.jpg>]
+("C:\DTU Studies\3rd SEM\02207 Advanced Digital Design Techniques\SVN\Lab Work\
+Exercise 1\source\reg.vhdl")
+Underfull \hbox (badness 10000) in paragraph at lines 111--112
+
+ []
+
+
+("C:\DTU Studies\3rd SEM\02207 Advanced Digital Design Techniques\SVN\Lab Work\
+Exercise 1\source\addernetlist.vhdl" [4])
+Underfull \hbox (badness 10000) in paragraph at lines 118--119
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 125--126
+
+ []
+
+[5]
+! Missing $ inserted.
+<inserted text> 
+                $
+l.147 Combinational Area	& 2700 um^
+                                   2			& - \\ \hline
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Extra }, or forgotten $.
+<template> \unskip \hfil }
+                          \hskip \tabcolsep \hskip -.5\arrayrulewidth \vrule...
+l.147 Combinational Area	& 2700 um^2			&
+                                         - \\ \hline
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.147 Combinational Area	& 2700 um^2			&
+                                         - \\ \hline
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.147 Combinational Area	& 2700 um^2			&
+                                         - \\ \hline
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.148 Non-Combinational Area	& 1343 um^
+                                       2	& - \\ \hline
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Extra }, or forgotten $.
+<template> \unskip \hfil }
+                          \hskip \tabcolsep \hskip -.5\arrayrulewidth \vrule...
+l.148 Non-Combinational Area	& 1343 um^2	&
+                                           - \\ \hline
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.148 Non-Combinational Area	& 1343 um^2	&
+                                           - \\ \hline
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.148 Non-Combinational Area	& 1343 um^2	&
+                                           - \\ \hline
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.169 Combinational Area	& 2345 um^
+                                   2			& - \\ \hline
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Extra }, or forgotten $.
+<template> \unskip \hfil }
+                          \hskip \tabcolsep \hskip -.5\arrayrulewidth \vrule...
+l.169 Combinational Area	& 2345 um^2			&
+                                         - \\ \hline
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.169 Combinational Area	& 2345 um^2			&
+                                         - \\ \hline
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.169 Combinational Area	& 2345 um^2			&
+                                         - \\ \hline
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.170 Non-Combinational Area	& 1343 um^
+                                       2	& - \\ \hline
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Extra }, or forgotten $.
+<template> \unskip \hfil }
+                          \hskip \tabcolsep \hskip -.5\arrayrulewidth \vrule...
+l.170 Non-Combinational Area	& 1343 um^2	&
+                                           - \\ \hline
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.170 Non-Combinational Area	& 1343 um^2	&
+                                           - \\ \hline
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.170 Non-Combinational Area	& 1343 um^2	&
+                                           - \\ \hline
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+[6]
+! Missing $ inserted.
+<inserted text> 
+                $
+l.191 Combinational Area	& 2335 um^
+                                   2			& - \\ \hline
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Extra }, or forgotten $.
+<template> \unskip \hfil }
+                          \hskip \tabcolsep \hskip -.5\arrayrulewidth \vrule...
+l.191 Combinational Area	& 2335 um^2			&
+                                         - \\ \hline
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.191 Combinational Area	& 2335 um^2			&
+                                         - \\ \hline
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.191 Combinational Area	& 2335 um^2			&
+                                         - \\ \hline
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.192 Non-Combinational Area	& 1343 um^
+                                       2	& - \\ \hline
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Extra }, or forgotten $.
+<template> \unskip \hfil }
+                          \hskip \tabcolsep \hskip -.5\arrayrulewidth \vrule...
+l.192 Non-Combinational Area	& 1343 um^2	&
+                                           - \\ \hline
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.192 Non-Combinational Area	& 1343 um^2	&
+                                           - \\ \hline
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.192 Non-Combinational Area	& 1343 um^2	&
+                                           - \\ \hline
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.213 Combinational Area	& 1089 um^
+                                   2			& - \\ \hline
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Extra }, or forgotten $.
+<template> \unskip \hfil }
+                          \hskip \tabcolsep \hskip -.5\arrayrulewidth \vrule...
+l.213 Combinational Area	& 1089 um^2			&
+                                         - \\ \hline
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.213 Combinational Area	& 1089 um^2			&
+                                         - \\ \hline
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.213 Combinational Area	& 1089 um^2			&
+                                         - \\ \hline
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.214 Non-Combinational Area	& 1343 um^
+                                       2	& - \\ \hline
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Extra }, or forgotten $.
+<template> \unskip \hfil }
+                          \hskip \tabcolsep \hskip -.5\arrayrulewidth \vrule...
+l.214 Non-Combinational Area	& 1343 um^2	&
+                                           - \\ \hline
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.214 Non-Combinational Area	& 1343 um^2	&
+                                           - \\ \hline
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.214 Non-Combinational Area	& 1343 um^2	&
+                                           - \\ \hline
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+[7]
+! Missing $ inserted.
+<inserted text> 
+                $
+l.235 Combinational Area	& 631 um^
+                                  2			& - \\ \hline
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Extra }, or forgotten $.
+<template> \unskip \hfil }
+                          \hskip \tabcolsep \hskip -.5\arrayrulewidth \vrule...
+l.235 Combinational Area	& 631 um^2			&
+                                        - \\ \hline
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.235 Combinational Area	& 631 um^2			&
+                                        - \\ \hline
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.235 Combinational Area	& 631 um^2			&
+                                        - \\ \hline
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.236 Non-Combinational Area	& 1343 um^
+                                       2	& - \\ \hline
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Extra }, or forgotten $.
+<template> \unskip \hfil }
+                          \hskip \tabcolsep \hskip -.5\arrayrulewidth \vrule...
+l.236 Non-Combinational Area	& 1343 um^2	&
+                                           - \\ \hline
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.236 Non-Combinational Area	& 1343 um^2	&
+                                           - \\ \hline
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.236 Non-Combinational Area	& 1343 um^2	&
+                                           - \\ \hline
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.257 Combinational Area	& 614 um^
+                                  2			& - \\ \hline
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Extra }, or forgotten $.
+<template> \unskip \hfil }
+                          \hskip \tabcolsep \hskip -.5\arrayrulewidth \vrule...
+l.257 Combinational Area	& 614 um^2			&
+                                        - \\ \hline
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.257 Combinational Area	& 614 um^2			&
+                                        - \\ \hline
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.257 Combinational Area	& 614 um^2			&
+                                        - \\ \hline
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.258 Non-Combinational Area	& 1343 um^
+                                       2	& - \\ \hline
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Extra }, or forgotten $.
+<template> \unskip \hfil }
+                          \hskip \tabcolsep \hskip -.5\arrayrulewidth \vrule...
+l.258 Non-Combinational Area	& 1343 um^2	&
+                                           - \\ \hline
+I've deleted a group-closing symbol because it seems to be
+spurious, as in `$x}$'. But perhaps the } is legitimate and
+you forgot something else, as in `\hbox{$x}'. In such cases
+the way to recover is to insert both the forgotten and the
+deleted material, e.g., by typing `I$}'.
+
+! Missing $ inserted.
+<inserted text> 
+                $
+l.258 Non-Combinational Area	& 1343 um^2	&
+                                           - \\ \hline
+I've inserted a begin-math/end-math symbol since I think
+you left one out. Proceed, with fingers crossed.
+
+! Missing } inserted.
+<inserted text> 
+                }
+l.258 Non-Combinational Area	& 1343 um^2	&
+                                           - \\ \hline
+I've inserted something that you may have forgotten.
+(See the <inserted text> above.)
+With luck, this will get me unwedged. But if you
+really didn't forget anything, try typing `2' now; then
+my insertion and my current dilemma will both disappear.
+
+[8] (02207_lab1_dt07.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
- 3571 strings out of 95419
- 43755 string characters out of 1187294
- 131263 words of memory out of 1124211
- 6588 multiletter control sequences out of 60000
- 7715 words of font info for 27 fonts, out of 1000000 for 2000
+ 3715 strings out of 95419
+ 45696 string characters out of 1187294
+ 140991 words of memory out of 1124211
+ 6670 multiletter control sequences out of 60000
+ 12379 words of font info for 45 fonts, out of 1000000 for 2000
  14 hyphenation exceptions out of 8191
- 28i,10n,43p,506b,1264s stack positions out of 5000i,500n,10000p,200000b,32768s
+ 28i,10n,43p,546b,1481s stack positions out of 5000i,500n,10000p,200000b,32768s
 PDF statistics:
- 34 PDF objects out of 300000
+ 57 PDF objects out of 300000
  0 named destinations out of 300000
- 1 words of extra memory for PDF output out of 10000
-<C:/Program Files/MiKTeX 2.5/fonts/type1/bluesky/cm/cmmi
-9.pfb><C:/Program Files/MiKTeX 2.5/fonts/type1/bluesky/cm/cmr9.pfb><C:/Program 
-Files/MiKTeX 2.5/fonts/type1/bluesky/cm/cmbx9.pfb><C:/Program Files/MiKTeX 2.5/
-fonts/type1/bluesky/cm/cmbx10.pfb><C:/Program Files/MiKTeX 2.5/fonts/type1/blue
-sky/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.5/fonts/type1/bluesky/cm/cmr17.pfb>
-<C:/Program Files/MiKTeX 2.5/fonts/type1/bluesky/cm/cmbx12.pfb><C:/Program File
-s/MiKTeX 2.5/fonts/type1/bluesky/cm/cmti12.pfb>
-Output written on 02207_lab1_dt07.pdf (3 pages, 68957 bytes).
+ 6 words of extra memory for PDF output out of 10000
+<C:/Program Files/MiKTeX 2.5/fonts/type1/bluesky/cm/cmr8.pfb><C:/Program File
+s/MiKTeX 2.5/fonts/type1/bluesky/cm/cmmi9.pfb><C:/Program Files/MiKTeX 2.5/font
+s/type1/bluesky/cm/cmr9.pfb><C:/Program Files/MiKTeX 2.5/fonts/type1/bluesky/cm
+/cmbx9.pfb><C:/Program Files/MiKTeX 2.5/fonts/type1/bluesky/cm/cmbx10.pfb><C:/P
+rogram Files/MiKTeX 2.5/fonts/type1/bluesky/cm/cmr10.pfb><C:/Program Files/MiKT
+eX 2.5/fonts/type1/bluesky/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.5/fonts/type
+1/bluesky/cm/cmbx12.pfb><C:/Program Files/MiKTeX 2.5/fonts/type1/bluesky/cm/cmt
+i12.pfb>
+Output written on 02207_lab1_dt07.pdf (9 pages, 174092 bytes).

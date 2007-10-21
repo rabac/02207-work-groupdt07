@@ -1,5 +1,11 @@
 \contentsline {section}{\numberline {1}Purpose of the Exercise}{2}
 \contentsline {section}{\numberline {2}Behavioral Description for 24-bit Adder}{2}
-\contentsline {section}{\numberline {3}Behavioral Description for 24-bit Register}{2}
-\contentsline {section}{\numberline {4}Top-Level Netlist from 24-bit Adder and 24-bit Register}{2}
-\contentsline {section}{\numberline {5}Synthesis Results}{2}
+\contentsline {subsection}{\numberline {2.1}VHDL code for the 24-bit Adder}{2}
+\contentsline {subsection}{\numberline {2.2}Simulation with Modelsim}{2}
+\contentsline {section}{\numberline {3}Behavioral Description for 24-bit Register}{4}
+\contentsline {section}{\numberline {4}Top-Level Netlist from 24-bit Adder and 24-bit Register}{4}
+\contentsline {section}{\numberline {5}Synthesis Results}{5}
+\contentsline {subsection}{\numberline {5.1}Clock Time Period = 0.5 ns}{6}
+\contentsline {subsection}{\numberline {5.2}Clock Time Period = 1.0 ns}{7}
+\contentsline {subsection}{\numberline {5.3}Clock Time Period = 2.0 ns}{8}
+\contentsline {section}{\numberline {6}Discussion}{8}
