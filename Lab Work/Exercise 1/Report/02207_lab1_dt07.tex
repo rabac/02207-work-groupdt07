@@ -130,7 +130,7 @@ set_max_leakage_power 30 uW
 \end{lstlisting}
 \vspace{0.5cm}
 
-In the following subsections, we give the results and comments of the synthesis for both the above mentioned power constraints. In the end of the section, we give comments and justification for the change in area and power with respect to the clock period of synthesis.
+In the following subsections, we give the results and comments of the synthesis for both the above mentioned power constraints. In the next section, we give comments for the change in area and power with respect to the different clock periods.
 
 \newpage
 \subsection{Clock Time Period = 0.5 ns}
@@ -176,6 +176,15 @@ HVT cells						& 0							& - \\ \hline
 \label{tab:syn0.5.2}
 \end{table}
 
+Comments:
+\begin{itemize}
+\item For low power, the tool has tried to reduce the power to some extent. But still the constraints are not met.
+\item The little reduction in the power with the low power constraints, is achieved by reducing the number of SVT cells in the design, which take more power. But since these cells are faster, reducing them increases the delay in the circuit, as can be seen by an increase in the degree of violation of the time-period constraint. 
+\item A time period of 0.5 ns is too less for the tool to synthesize any design.
+\end{itemize}
+
+
+
 \newpage
 \subsection{Clock Time Period = 1.0 ns}
 \begin{table}[htbp]
@@ -219,6 +228,12 @@ HVT cells						& 0							& - \\ \hline
 \caption{}
 \label{tab:syn1.0.2}
 \end{table}
+
+Comments:
+\begin{itemize}
+\item 
+\item 
+\end{itemize}
 
 \newpage
 \subsection{Clock Time Period = 2.0 ns}
@@ -264,8 +279,18 @@ HVT cells						& 0							& - \\ \hline
 \label{tab:syn2.0.2}
 \end{table}
 
-\FloatBarrier
-\section{Discussion}
+Comments:
+\begin{itemize}
+\item 
+\item 
+\end{itemize}
 
+
+\section{Discussion}
+\begin{itemize}
+\item The area for the combinational circuit remains the same in all the cases. 
+\item 
+\item 
+\end{itemize}
 
 \end{document}
