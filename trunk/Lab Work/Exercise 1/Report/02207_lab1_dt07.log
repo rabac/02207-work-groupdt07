@@ -1,4 +1,4 @@
-This is pdfeTeX, Version 3.141592-1.30.6-2.2 (MiKTeX 2.5) (preloaded format=pdflatex 2007.4.27)  22 OCT 2007 12:56
+This is pdfeTeX, Version 3.141592-1.30.6-2.2 (MiKTeX 2.5) (preloaded format=pdflatex 2007.4.27)  23 OCT 2007 00:22
 entering extended mode
 **C:/DTU*Studies/3rd*SEM/02207*Advanced*Digital*Design*Techniques/SVN/Lab*Work/
 Exercise*1/Report/02207_lab1_dt07.tex
@@ -450,18 +450,11 @@ With luck, this will get me unwedged. But if you
 really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 181.
-
-("C:\Program Files\MiKTeX 2.5\tex\latex\base\omscmr.fd"
-File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 181.
- [6]
+[6]
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.200 Combinational Area	& 2335 um^
+l.191 Combinational Area	& 2335 um^
                                    2			& - \\ \hline
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -469,7 +462,7 @@ you left one out. Proceed, with fingers crossed.
 ! Extra }, or forgotten $.
 <template> \unskip \hfil }
                           \hskip \tabcolsep \hskip -.5\arrayrulewidth \vrule...
-l.200 Combinational Area	& 2335 um^2			&
+l.191 Combinational Area	& 2335 um^2			&
                                          - \\ \hline
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -480,7 +473,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.200 Combinational Area	& 2335 um^2			&
+l.191 Combinational Area	& 2335 um^2			&
                                          - \\ \hline
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -488,7 +481,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.200 Combinational Area	& 2335 um^2			&
+l.191 Combinational Area	& 2335 um^2			&
                                          - \\ \hline
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -499,7 +492,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.201 Non-Combinational Area	& 1343 um^
+l.192 Non-Combinational Area	& 1343 um^
                                        2	& - \\ \hline
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -507,7 +500,7 @@ you left one out. Proceed, with fingers crossed.
 ! Extra }, or forgotten $.
 <template> \unskip \hfil }
                           \hskip \tabcolsep \hskip -.5\arrayrulewidth \vrule...
-l.201 Non-Combinational Area	& 1343 um^2	&
+l.192 Non-Combinational Area	& 1343 um^2	&
                                            - \\ \hline
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -518,7 +511,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.201 Non-Combinational Area	& 1343 um^2	&
+l.192 Non-Combinational Area	& 1343 um^2	&
                                            - \\ \hline
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -526,7 +519,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.201 Non-Combinational Area	& 1343 um^2	&
+l.192 Non-Combinational Area	& 1343 um^2	&
                                            - \\ \hline
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -537,7 +530,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.222 Combinational Area	& 1089 um^
+l.213 Combinational Area	& 1089 um^
                                    2			& - \\ \hline
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -545,7 +538,7 @@ you left one out. Proceed, with fingers crossed.
 ! Extra }, or forgotten $.
 <template> \unskip \hfil }
                           \hskip \tabcolsep \hskip -.5\arrayrulewidth \vrule...
-l.222 Combinational Area	& 1089 um^2			&
+l.213 Combinational Area	& 1089 um^2			&
                                          - \\ \hline
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -556,7 +549,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.222 Combinational Area	& 1089 um^2			&
+l.213 Combinational Area	& 1089 um^2			&
                                          - \\ \hline
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -564,7 +557,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.222 Combinational Area	& 1089 um^2			&
+l.213 Combinational Area	& 1089 um^2			&
                                          - \\ \hline
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -575,7 +568,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.223 Non-Combinational Area	& 1343 um^
+l.214 Non-Combinational Area	& 1343 um^
                                        2	& - \\ \hline
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -583,7 +576,7 @@ you left one out. Proceed, with fingers crossed.
 ! Extra }, or forgotten $.
 <template> \unskip \hfil }
                           \hskip \tabcolsep \hskip -.5\arrayrulewidth \vrule...
-l.223 Non-Combinational Area	& 1343 um^2	&
+l.214 Non-Combinational Area	& 1343 um^2	&
                                            - \\ \hline
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -594,7 +587,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.223 Non-Combinational Area	& 1343 um^2	&
+l.214 Non-Combinational Area	& 1343 um^2	&
                                            - \\ \hline
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -602,7 +595,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.223 Non-Combinational Area	& 1343 um^2	&
+l.214 Non-Combinational Area	& 1343 um^2	&
                                            - \\ \hline
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -614,7 +607,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.250 Combinational Area	& 631 um^
+l.235 Combinational Area	& 631 um^
                                   2			& - \\ \hline
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -622,7 +615,7 @@ you left one out. Proceed, with fingers crossed.
 ! Extra }, or forgotten $.
 <template> \unskip \hfil }
                           \hskip \tabcolsep \hskip -.5\arrayrulewidth \vrule...
-l.250 Combinational Area	& 631 um^2			&
+l.235 Combinational Area	& 631 um^2			&
                                         - \\ \hline
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -633,7 +626,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.250 Combinational Area	& 631 um^2			&
+l.235 Combinational Area	& 631 um^2			&
                                         - \\ \hline
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -641,7 +634,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.250 Combinational Area	& 631 um^2			&
+l.235 Combinational Area	& 631 um^2			&
                                         - \\ \hline
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -652,7 +645,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.251 Non-Combinational Area	& 1343 um^
+l.236 Non-Combinational Area	& 1343 um^
                                        2	& - \\ \hline
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -660,7 +653,7 @@ you left one out. Proceed, with fingers crossed.
 ! Extra }, or forgotten $.
 <template> \unskip \hfil }
                           \hskip \tabcolsep \hskip -.5\arrayrulewidth \vrule...
-l.251 Non-Combinational Area	& 1343 um^2	&
+l.236 Non-Combinational Area	& 1343 um^2	&
                                            - \\ \hline
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -671,7 +664,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.251 Non-Combinational Area	& 1343 um^2	&
+l.236 Non-Combinational Area	& 1343 um^2	&
                                            - \\ \hline
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -679,7 +672,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.251 Non-Combinational Area	& 1343 um^2	&
+l.236 Non-Combinational Area	& 1343 um^2	&
                                            - \\ \hline
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -690,7 +683,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.272 Combinational Area	& 614 um^
+l.257 Combinational Area	& 614 um^
                                   2			& - \\ \hline
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -698,7 +691,7 @@ you left one out. Proceed, with fingers crossed.
 ! Extra }, or forgotten $.
 <template> \unskip \hfil }
                           \hskip \tabcolsep \hskip -.5\arrayrulewidth \vrule...
-l.272 Combinational Area	& 614 um^2			&
+l.257 Combinational Area	& 614 um^2			&
                                         - \\ \hline
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -709,7 +702,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.272 Combinational Area	& 614 um^2			&
+l.257 Combinational Area	& 614 um^2			&
                                         - \\ \hline
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -717,7 +710,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.272 Combinational Area	& 614 um^2			&
+l.257 Combinational Area	& 614 um^2			&
                                         - \\ \hline
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -728,7 +721,7 @@ my insertion and my current dilemma will both disappear.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.273 Non-Combinational Area	& 1343 um^
+l.258 Non-Combinational Area	& 1343 um^
                                        2	& - \\ \hline
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -736,7 +729,7 @@ you left one out. Proceed, with fingers crossed.
 ! Extra }, or forgotten $.
 <template> \unskip \hfil }
                           \hskip \tabcolsep \hskip -.5\arrayrulewidth \vrule...
-l.273 Non-Combinational Area	& 1343 um^2	&
+l.258 Non-Combinational Area	& 1343 um^2	&
                                            - \\ \hline
 I've deleted a group-closing symbol because it seems to be
 spurious, as in `$x}$'. But perhaps the } is legitimate and
@@ -747,7 +740,7 @@ deleted material, e.g., by typing `I$}'.
 ! Missing $ inserted.
 <inserted text> 
                 $
-l.273 Non-Combinational Area	& 1343 um^2	&
+l.258 Non-Combinational Area	& 1343 um^2	&
                                            - \\ \hline
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
@@ -755,7 +748,7 @@ you left one out. Proceed, with fingers crossed.
 ! Missing } inserted.
 <inserted text> 
                 }
-l.273 Non-Combinational Area	& 1343 um^2	&
+l.258 Non-Combinational Area	& 1343 um^2	&
                                            - \\ \hline
 I've inserted something that you may have forgotten.
 (See the <inserted text> above.)
@@ -763,7 +756,16 @@ With luck, this will get me unwedged. But if you
 really didn't forget anything, try typing `2' now; then
 my insertion and my current dilemma will both disappear.
 
-[8] (02207_lab1_dt07.aux) ) 
+[8]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 271.
+
+ ("C:\Program Files\MiKTeX 2.5\tex\latex\base\omscmr.fd"
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 271.
+ [9]
+(02207_lab1_dt07.aux) ) 
 Here is how much of TeX's memory you used:
  3735 strings out of 95419
  45956 string characters out of 1187294
@@ -773,16 +775,16 @@ Here is how much of TeX's memory you used:
  14 hyphenation exceptions out of 8191
  28i,10n,43p,546b,1481s stack positions out of 5000i,500n,10000p,200000b,32768s
 PDF statistics:
- 60 PDF objects out of 300000
+ 63 PDF objects out of 300000
  0 named destinations out of 300000
  6 words of extra memory for PDF output out of 10000
-<C:/Program Files/MiKTeX 2.5/fonts/type1/bluesky/cm/
-cmsy10.pfb><C:/Program Files/MiKTeX 2.5/fonts/type1/bluesky/cm/cmr8.pfb><C:/Pro
-gram Files/MiKTeX 2.5/fonts/type1/bluesky/cm/cmmi9.pfb><C:/Program Files/MiKTeX
- 2.5/fonts/type1/bluesky/cm/cmr9.pfb><C:/Program Files/MiKTeX 2.5/fonts/type1/b
-luesky/cm/cmbx9.pfb><C:/Program Files/MiKTeX 2.5/fonts/type1/bluesky/cm/cmbx10.
-pfb><C:/Program Files/MiKTeX 2.5/fonts/type1/bluesky/cm/cmr10.pfb><C:/Program F
-iles/MiKTeX 2.5/fonts/type1/bluesky/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.5/f
-onts/type1/bluesky/cm/cmbx12.pfb><C:/Program Files/MiKTeX 2.5/fonts/type1/blues
-ky/cm/cmti12.pfb>
-Output written on 02207_lab1_dt07.pdf (9 pages, 176745 bytes).
+<C:/Program Files/MiKTeX 2.5/fonts/type1/bluesky/cm/cmsy
+10.pfb><C:/Program Files/MiKTeX 2.5/fonts/type1/bluesky/cm/cmr8.pfb><C:/Program
+ Files/MiKTeX 2.5/fonts/type1/bluesky/cm/cmmi9.pfb><C:/Program Files/MiKTeX 2.5
+/fonts/type1/bluesky/cm/cmr9.pfb><C:/Program Files/MiKTeX 2.5/fonts/type1/blues
+ky/cm/cmbx9.pfb><C:/Program Files/MiKTeX 2.5/fonts/type1/bluesky/cm/cmbx10.pfb>
+<C:/Program Files/MiKTeX 2.5/fonts/type1/bluesky/cm/cmr10.pfb><C:/Program Files
+/MiKTeX 2.5/fonts/type1/bluesky/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.5/fonts
+/type1/bluesky/cm/cmbx12.pfb><C:/Program Files/MiKTeX 2.5/fonts/type1/bluesky/c
+m/cmti12.pfb>
+Output written on 02207_lab1_dt07.pdf (10 pages, 178241 bytes).
