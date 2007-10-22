@@ -176,15 +176,6 @@ HVT cells						& 0							& - \\ \hline
 \label{tab:syn0.5.2}
 \end{table}
 
-Comments:
-\begin{itemize}
-\item For low power, the tool has tried to reduce the power to some extent. But still the constraints are not met.
-\item The little reduction in the power with the low power constraints, is achieved by reducing the number of SVT cells in the design, which take more power. But since these cells are faster, reducing them increases the delay in the circuit, as can be seen by an increase in the degree of violation of the time-period constraint. 
-\item A time period of 0.5 ns is too less for the tool to synthesize any design.
-\end{itemize}
-
-
-
 \newpage
 \subsection{Clock Time Period = 1.0 ns}
 \begin{table}[htbp]
@@ -228,12 +219,6 @@ HVT cells						& 0							& - \\ \hline
 \caption{}
 \label{tab:syn1.0.2}
 \end{table}
-
-Comments:
-\begin{itemize}
-\item 
-\item 
-\end{itemize}
 
 \newpage
 \subsection{Clock Time Period = 2.0 ns}
@@ -279,18 +264,28 @@ HVT cells						& 0							& - \\ \hline
 \label{tab:syn2.0.2}
 \end{table}
 
-Comments:
+\newpage
+\subsection{Comments}
+Comments for synthesis results for low-power:
 \begin{itemize}
-\item 
-\item 
+\item For low power, the tool has tried to reduce the power to some extent. In some cases the constraint for the maximum dynamic power is met, while the constraint for maximum leakage power is never met.
+\item The little reduction in the power with the low power constraints, is achieved by reducing the number of SVT cells in the design. This is because the SVT cells take more power as compared to the HVT cells. But since these cells are faster, reducing their number increases the delay in the circuit, as can be seen by an increase in the time of data arrival for all the three cases.
+\item The combinational area reduces when synthesizing for low power. (Why?)
+\item We would have expected to see an increase in the number of HVT cells when synthesis is performed for low power, but it has not been the case. This is expected since the HVT cells take less power and also the number of SVT cells has descreased for low power.
 \end{itemize}
 
-
-\section{Discussion}
+\noindent Comments on variations observed by changing the clock time-period:
 \begin{itemize}
-\item The area for the combinational circuit remains the same in all the cases. 
-\item 
-\item 
+\item The design is not synthesized successfully for the clock time period of 0.5 ns. The critical path in this case for the adder is 0.43 ns and adding the register setup and propagation delay time, the total time delay becomes greater than 0.5 ns. However, we see that the circuit is successfully synthesized for timing constraints of 1.0 ns and 2.0 ns.
+
+\item The number of cells decreases with the increasing clock time period. So, as the constraint on the time period is reduced, the circuit is synthesized with lower number of cells. This is because the design is moving from parallel to sequential with an increase in clock time period constraint.
+
+\item The area for the non-combinational circuit remains the same in all the cases. This is expected since the non-combinational circuit consists of three registers, which would have the same internal design on synthesis. The synthesis is mainly done for the internal design of the 24-bit adder, depending on the constraints of clock time period.
+
+\item The area for the combinational circuit decreases with the increasing clock time period. This is because the number of cells decreases in the synthesized circuit.
+
+\item The total power, including the dynamic power and the leakage power, decreases as the clocl time period is increased. Again, the reason for this is the decrease in the number of cells. 
 \end{itemize}
+
 
 \end{document}
