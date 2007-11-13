@@ -18,7 +18,7 @@ architecture A of E is
    signal       QK : std_logic_vector (7 downto 0);
    signal        Q : std_logic_vector (31 downto 0);
 
-   component SHIFTREG
+   component SHIFTREG_ENABLE
       Port (   CLOCK : In    std_logic;
                RESET : In    std_logic;
                  en0 : In    std_logic;
@@ -30,7 +30,7 @@ architecture A of E is
    end component;
 
 begin
-   UUT : SHIFTREG
+   UUT : SHIFTREG_ENABLE
       Port Map ( CLOCK, RESET, en0, en1, en2, en3, QK, Q );
 
    TB : block
@@ -152,7 +152,7 @@ end A;
 
 configuration CFG_tb_shiftreg_enable_BEHAVIORAL of E is
    for A
-      for UUT : SHIFTREG
+      for UUT : SHIFTREG_ENABLE
          -- use configuration WORK.CFG_q_regs_enable_SCHEMATIC;
          use configuration WORK.CFG_SHIFTREG_enable_SCHEMATIC;
       end for;
