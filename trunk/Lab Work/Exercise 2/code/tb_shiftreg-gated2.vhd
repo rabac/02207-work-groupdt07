@@ -15,10 +15,10 @@ architecture A of E is
    signal        Q : std_logic_vector (31 downto 0);
 
    component SHIFTREG_GATED
-      Port (   CLOCK : In    std_logic;
+      Port (   CLK : In    std_logic;
                RESET : In    std_logic;
                   QK : In    std_logic_vector (7 downto 0);
-                   Q : InOut   std_logic_vector (31 downto 0) );
+                   Q : Out   std_logic_vector (31 downto 0) );
    end component;
 
 begin
