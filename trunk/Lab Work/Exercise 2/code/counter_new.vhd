@@ -6,7 +6,7 @@ entity counter is
 port(	
       clock:	in std_logic;
       clear: in std_logic;
-	   Q:	out std_logic_vector(1 downto 0)
+	   Qc:	out std_logic_vector(1 downto 0)
    );
 end counter;
 
@@ -24,5 +24,5 @@ begin
 	       Pre_Q <= Pre_Q + "01";
 	    end if;
     end process;	
-    Q <= Pre_Q;
+    Qc <= Pre_Q;
 end beh_counter;

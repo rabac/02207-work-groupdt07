@@ -17,7 +17,7 @@ architecture BEH_SHIFTREG_GATED of SHIFTREG_GATED is
    port(	
       clock:	in std_logic;
       clear: in std_logic;
-	   Q:	out std_logic_vector(1 downto 0)
+	   Qc:	out std_logic_vector(1 downto 0)
    );   
    end component Counter;
 

@@ -22,7 +22,7 @@ architecture BEH_REG of REG is
       begin
       if (Reset = '0') then
          Q <= (others => '0');
-      elsif (clock='1' and clock'event) then
+      elsif rising_edge(clock) then
          Q <= D;
       end if;
    end process p0;
