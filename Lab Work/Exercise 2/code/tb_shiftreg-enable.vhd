@@ -1,3 +1,7 @@
+-- some modifications made to the original version, which was provided by Alberto.
+-- configuration at the bottom changed.
+-- Rajesh
+
 library IEEE;
 	use IEEE.std_logic_1164.all;
 	use STD.textio.all;
