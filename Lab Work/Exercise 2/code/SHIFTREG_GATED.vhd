@@ -5,10 +5,10 @@ library IEEE;
    use IEEE.std_logic_arith.all;
 
 entity SHIFTREG_GATED is
-      Port (   CLOCK : In    std_logic;
+      Port (   CLK : In    std_logic;
                RESET : In    std_logic;
                   QK : In    std_logic_vector (7 downto 0);
-                   Q : InOut   std_logic_vector (31 downto 0) );
+                   Q : Out   std_logic_vector (31 downto 0) );
 end SHIFTREG_GATED;
 
 architecture BEH_SHIFTREG_GATED of SHIFTREG_GATED is
@@ -16,7 +16,7 @@ architecture BEH_SHIFTREG_GATED of SHIFTREG_GATED is
    component Counter	is
    port(	
       clock:	in std_logic;
-	   --clear:	in std_logic;
+      clear: in std_logic;
 	   Q:	out std_logic_vector(1 downto 0)
    );   
    end component Counter;
@@ -39,7 +39,7 @@ architecture BEH_SHIFTREG_GATED of SHIFTREG_GATED is
 	signal out_decoder : std_logic_vector(3 downto 0);
 	begin
 
-	c1: Counter port map (Clock, out_counter);
+	c1: Counter port map (CLK, Reset, out_counter);
    
    d1: DECODER port map (out_counter, out_decoder);
    
@@ -48,11 +48,7 @@ architecture BEH_SHIFTREG_GATED of SHIFTREG_GATED is
 	r3: REG port map (QK, out_decoder(1), Reset, Q(15 downto 8));
 	r4: REG port map (QK, out_decoder(0), Reset, Q(7 downto 0));
 	
-	
 end BEH_SHIFTREG_GATED;
-
-
-
 
 configuration CFG_SHIFTREG_GATED_SCHEMATIC of SHIFTREG_GATED is
    for BEH_SHIFTREG_GATED

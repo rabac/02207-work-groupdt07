@@ -12,11 +12,11 @@ begin
     process (I)
     begin
     case I is
-	    when "00" => O <= "0001";
-	    when "01" => O <= "0010";
-	    when "10" => O <= "0100";
-	    when "11" => O <= "1000";
-	    when others => O <= "XXXX";
+	    when "00" => O <= "1000";
+	    when "01" => O <= "0100";
+	    when "10" => O <= "0010";
+	    when "11" => O <= "0001";
+	    when others => O <= "1000";
 	end case;
 
    end process;
