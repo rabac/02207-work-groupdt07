@@ -104,7 +104,7 @@ begin
  end block;
 end A;
 
-configuration CFG_tb_shiftreg_BEHAVIORAL of E is
+configuration CFG_tb_shiftreg_gated_BEHAVIORAL of E is
    for A
       for UUT : SHIFTREG
          -- use configuration WORK.CFG_q_regs_enable_SCHEMATIC;
@@ -115,5 +115,5 @@ configuration CFG_tb_shiftreg_BEHAVIORAL of E is
       end for;
 
    end for;
-end CFG_tb_shiftreg_BEHAVIORAL;
+end CFG_tb_shiftreg_gated_BEHAVIORAL;
 
