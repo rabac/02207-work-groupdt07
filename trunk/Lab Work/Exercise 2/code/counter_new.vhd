@@ -18,9 +18,9 @@ begin
 
     process(clock, clear)
     begin
-       if (clear = '1') then
-           Pre_Q <= "00";
-       elsif (clock='0' and clock'event) then
+       if (clear = '0') then
+           Pre_Q <= "11";
+       elsif (clock='1' and clock'event) then
 	       Pre_Q <= Pre_Q + "01";
 	    end if;
     end process;	
