@@ -1,0 +1,90 @@
+m255
+13
+cModel Technology
+dC:\Documents and Settings\Markku\My Documents\DTU Advanced Digital Design\Lab Work\Exercise 2\code
+Ccfg_shiftreg_gated_schematic
+DA work shiftreg_gated beh_shiftreg_gated eBn9LRc;df6KaMW2IaiPB3
+DP ieee std_logic_arith GJbAT?7@hRQU9IQ702DT]2
+DP ieee std_logic_signed <9<Kcl:S52:oW`F]FQhb20
+DP synopsys attributes 2Q8I4L@H0S1aHEXkjUYDC1
+DP ieee std_logic_misc D2f;@P3IKJA9T^H8HI[9K0
+DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
+DE work shiftreg_gated BlLDz0D]^o_52izUSoYmj1
+w1194983622
+FC:/Documents and Settings/Markku/My Documents/DTU Advanced Digital Design/Lab Work/Exercise 2/code/SHIFTREG_GATED.vhd
+l0
+L0
+V9?WQEG2?cz<QGlGnKoSof2
+OE;C;6.0;29
+32
+M5 ieee std_logic_1164
+M4 ieee std_logic_misc
+M3 synopsys attributes
+M2 ieee std_logic_signed
+M1 ieee std_logic_arith
+abeh_shiftreg_gated
+eshiftreg_gated
+o-work workspace -2002 -explicit
+tExplicit 1GenerateLoopIterationMax 100000
+Eshiftreg_gated
+w1194983622
+DP ieee std_logic_arith GJbAT?7@hRQU9IQ702DT]2
+DP ieee std_logic_signed <9<Kcl:S52:oW`F]FQhb20
+DP synopsys attributes 2Q8I4L@H0S1aHEXkjUYDC1
+DP ieee std_logic_misc D2f;@P3IKJA9T^H8HI[9K0
+DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
+FC:/Documents and Settings/Markku/My Documents/DTU Advanced Digital Design/Lab Work/Exercise 2/code/SHIFTREG_GATED.vhd
+l0
+L7
+VBlLDz0D]^o_52izUSoYmj1
+OE;C;6.0;29
+32
+o-work workspace -2002 -explicit
+tExplicit 1GenerateLoopIterationMax 100000
+Abeh_shiftreg_gated
+DP ieee std_logic_arith GJbAT?7@hRQU9IQ702DT]2
+DP ieee std_logic_signed <9<Kcl:S52:oW`F]FQhb20
+DP synopsys attributes 2Q8I4L@H0S1aHEXkjUYDC1
+DP ieee std_logic_misc D2f;@P3IKJA9T^H8HI[9K0
+DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
+DE work shiftreg_gated BlLDz0D]^o_52izUSoYmj1
+l40
+L14
+VeBn9LRc;df6KaMW2IaiPB3
+OE;C;6.0;29
+32
+M5 ieee std_logic_1164
+M4 ieee std_logic_misc
+M3 synopsys attributes
+M2 ieee std_logic_signed
+M1 ieee std_logic_arith
+o-work workspace -2002 -explicit
+tExplicit 1GenerateLoopIterationMax 100000
+Etoplevel
+w1112642498
+DP ieee std_logic_unsigned hEMVMlaNCR^<OOoVNV;m90
+DP ieee std_logic_arith GJbAT?7@hRQU9IQ702DT]2
+DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
+FC:/Documents and Settings/Markku/asic_vhdl/toplevel.vhd
+l0
+L6
+VSfA5kk]R=PgV92mY0b9ae0
+OE;C;6.0;29
+32
+o-work workspace -2002 -explicit
+tExplicit 1GenerateLoopIterationMax 100000
+Astruct
+DP ieee std_logic_unsigned hEMVMlaNCR^<OOoVNV;m90
+DP ieee std_logic_arith GJbAT?7@hRQU9IQ702DT]2
+DP ieee std_logic_1164 GH1=`jDDBJ=`LM;:Ak`kf2
+DE work toplevel SfA5kk]R=PgV92mY0b9ae0
+l125
+L27
+V8cZk1bdBg8gYNRi;TI4ci0
+OE;C;6.0;29
+32
+M3 ieee std_logic_1164
+M2 ieee std_logic_arith
+M1 ieee std_logic_unsigned
+o-work workspace -2002 -explicit
+tExplicit 1GenerateLoopIterationMax 100000
