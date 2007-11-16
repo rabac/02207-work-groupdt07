@@ -8,11 +8,8 @@ library IEEE;
 	port(
 		D : in std_logic_vector(7 downto 0);
 		Clock, Reset : in std_logic;
-		Q : out std_logic_vector(7 downto 0)
-		);
+		Q : out std_logic_vector(7 downto 0));
 end entity REG;
-
-
 
 architecture BEH_REG of REG is
    begin

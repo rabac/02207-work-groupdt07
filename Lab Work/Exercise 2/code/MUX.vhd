@@ -16,18 +16,12 @@ end entity MUX;
 architecture BEH_MUX of MUX is
    begin
        
-   -- which signals govern the process block?
-   -- think!
-   
    process (Q0,Q1,enable) is
       begin
       if (enable = '0') then
 	Qmux <= Q0;
       elsif (enable = '1') then
 	Qmux <= Q1;
-
-      -- what if we remove the else case? there would be unknown states
-      -- in the first four clock cycles
 	   else 
 	Qmux <= (others => '0');
       end if;

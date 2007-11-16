@@ -17,9 +17,7 @@ entity SHIFTREG_ENABLE is
 	);
 end SHIFTREG_ENABLE;
 
-
 architecture BEH_SHIFTREG_ENABLE of SHIFTREG_ENABLE is
-
 	component REG is
 	port(
 		D : in std_logic_vector(7 downto 0);
@@ -37,10 +35,8 @@ architecture BEH_SHIFTREG_ENABLE of SHIFTREG_ENABLE is
 		);
 	end component MUX;
 
-
 	signal Qout0, Qout1, Qout2, Qout3 : std_logic_vector(7 downto 0);
 	begin
-
 	m1: MUX port map (Q(31 downto 24), QK, en0, Qout0);
 	m2: MUX port map (Q(23 downto 16), QK, en1, Qout1);
 	m3: MUX port map (Q(15 downto 8), QK, en2, Qout2);
@@ -50,11 +46,9 @@ architecture BEH_SHIFTREG_ENABLE of SHIFTREG_ENABLE is
 	r2: REG port map (Qout1, Clock, Reset, Q(23 downto 16));
 	r3: REG port map (Qout2, Clock, Reset, Q(15 downto 8));
 	r4: REG port map (Qout3, Clock, Reset, Q(7 downto 0));
-
 end BEH_SHIFTREG_ENABLE;
 
 configuration CFG_SHIFTREG_enable_SCHEMATIC of SHIFTREG_ENABLE is
    for BEH_SHIFTREG_ENABLE
    end for;
-
 end CFG_SHIFTREG_enable_SCHEMATIC;
