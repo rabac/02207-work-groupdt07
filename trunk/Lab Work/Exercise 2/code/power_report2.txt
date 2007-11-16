@@ -1,0 +1,55 @@
+****************************************
+Report : power
+	-analysis_effort low
+Design : SHIFTREG_ENABLE
+Version: X-2005.09-SP1
+Date   : Fri Nov 16 21:26:47 2007
+****************************************
+
+
+
+
+Library(s) Used:
+
+    CORE90GPHVT (File: /cell_libs/cmos090_50a/CORE90GPHVT_SNPS-AVT_2.1.a/SIGNOFF/bc_1.10V_m40C_wc_0.90V_105C/PT_LIB/CORE90GPHVT_NomLeak.db)
+    CORE90GPSVT (File: /cell_libs/cmos090_50a/CORE90GPSVT_SNPS-AVT_2.1/SIGNOFF/bc_1.10V_m40C_wc_0.90V_105C/PT_LIB/CORE90GPSVT_NomLeak.db)
+
+
+
+
+Operating Conditions: NomLeak   Library: CORE90GPSVT
+Wire Load Model Mode: enclosed
+
+Design        Wire Load Model            Library
+------------------------------------------------
+SHIFTREG_ENABLE        area_0to1K        CORE90GPSVT
+MUX_3                  area_0to1K        CORE90GPSVT
+MUX_2                  area_0to1K        CORE90GPSVT
+MUX_1                  area_0to1K        CORE90GPSVT
+MUX_0                  area_0to1K        CORE90GPSVT
+REG_3                  area_0to1K        CORE90GPSVT
+REG_2                  area_0to1K        CORE90GPSVT
+REG_1                  area_0to1K        CORE90GPSVT
+REG_0                  area_0to1K        CORE90GPSVT
+
+
+
+
+Global Operating Voltage = 1    
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000pf
+    Time Units = 1ns
+    Dynamic Power Units = 1mW    (derived from V,C,T units)
+    Leakage Power Units = 1pW
+
+
+
+
+  Cell Internal Power  =  42.5321 uW   (91%)
+  Net Switching Power  =   4.4528 uW    (9%)
+                         ---------
+Total Dynamic Power    =  46.9849 uW  (100%)
+
+
+Cell Leakage Power     = 800.4604 nW
