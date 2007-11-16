@@ -12,8 +12,7 @@ entity SHIFTREG_GATED is
 end SHIFTREG_GATED;
 
 architecture BEH_SHIFTREG_GATED of SHIFTREG_GATED is
-
-   component Counter	is
+   component Counter is
    port(	
       clock:	in std_logic;
       clear: in std_logic;
