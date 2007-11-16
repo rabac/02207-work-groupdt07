@@ -2,6 +2,7 @@
 
 \usepackage{url,,}
 \usepackage{graphicx}
+\usepackage{hyperref}
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{amsmath}
@@ -79,7 +80,13 @@ Technical University of Denmark}}}
 \newpage 
 \section{Introduction}
 
-The purpose of this exercise was to estimate the power dissipation in a digital circuit due to the switching activity in the cells. Dynamic power dissipated in a digital circuit is the sum of two termsthe power spent in 
+The purpose of this exercise was to estimate the power dissipation in a digital circuit due to the switching activity in the cells. Power is dissipated in a digital circuit, dynamically, in two ways; one, the power that is spent in charging or discharging the capacitance load connected to the output of the cell, and two, the power dissipated inside the cell due to short circuit currents and the internal capacitance charging or discharging. This holds for combinational cells. For sequential cells, there is extra power spent at every clock cycle, even if the output of the cell does not change. This is because there is some reaction to every clock cycle in sequential cells, which would take some power. 
+
+Static power in digital circuits is due to the internal leakage currents in CMOS. Though, in this exercise, we are particularly interested in analyzing the dynamic power dissipation.
+
+We estimate the dynamic power in a serial to parallel converter. The converter takes in 8 bits (one byte) in every clock cycle, and gives out 32 bits (4 bytes) after every 4 clock cycles. The input byte at the first clock cycle is the most significant byte in the output, whereas the input byte in the fourth clock cycle is the lowest significant byte. The converter, thus, waits for four clock cycles to produce an output.
+
+In the next section \ref{section:designs}, we discuss three designs for such a converter. In section \ref{section:simulation}, we simulate the VHDL code for the designs using Modelsim, and verify that all the designs are working correctly. The VHDL code is then synthesized using Design Vision, and a switching activity is produced using VSS simulator. Based on this switching activity, a power report is presented for the synthesized design. These reports are presented in section \ref{section:power}. In section \ref{section:discussion}, we discuss the results obtained. The last section \ref{section:impl} contains the VHDL code for the designs.
 
 \subsection{Authors by Section}
 \begin{itemize}
@@ -88,7 +95,9 @@ The purpose of this exercise was to estimate the power dissipation in a digital 
 \item \textit{Rajesh Bachani} 
 \end{itemize}
 
+
 \section{Designs for Serial to Parallel Conversion}
+\label{section:designs}
 In this section, we give an overview of the three designs for serial to parallel conversion, which are evaluated for their power consumption in this exercise.
 
 \subsection{Design A: Shift Register}
@@ -98,19 +107,21 @@ In this section, we give an overview of the three designs for serial to parallel
 \subsection{Design C: Register with Clock-Gating}
 
 
+
 \section{Simulation of the designs with Modelsim}
+\label{section:simulation}
 All the three designs are simulated with Modelsim, to verify the functionality. 
 
 
 
 
-\section{Power Reports from Design Vision}
-
+\section{Power Reports from Design Vision and VSS}
+\label{section:power}
 
 \section{Discussion on the Reports}
-
+\label{section:discussion}
 
 \section{Implementation}
-
+\label{section:impl}
 
 \end{document}
