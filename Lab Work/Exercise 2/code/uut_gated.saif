@@ -1,0 +1,336 @@
+(SAIFILE
+(SAIFVERSION "2.0")
+(DIRECTION "backward")
+(DESIGN )
+(DATE "Fri Nov 16 23:42:45 2007")
+(VENDOR "Synopsys, Inc")
+(PROGRAM_NAME "VSS-SAIFAPI")
+(VERSION "1.0")
+(DIVIDER / )
+(TIMESCALE 1 ns)
+(DURATION 41000.00)
+(INSTANCE E
+   (INSTANCE UUT
+      (PORT
+         (CLK (T1 20515)(T0 20485)(TX 0)(TC 8194))
+         (RESET (T1 40995)(T0 5)(TX 0)(TC 1))
+         (QK\[7\] (T1 14430)(T0 26560)(TX 10)(TC 298))
+         (QK\[6\] (T1 17250)(T0 23740)(TX 10)(TC 581))
+         (QK\[5\] (T1 23470)(T0 17520)(TX 10)(TC 1046))
+         (QK\[4\] (T1 21710)(T0 19280)(TX 10)(TC 1474))
+         (QK\[3\] (T1 21770)(T0 19220)(TX 10)(TC 1829))
+         (QK\[2\] (T1 21040)(T0 19950)(TX 10)(TC 2091))
+         (QK\[1\] (T1 20170)(T0 20820)(TX 10)(TC 2070))
+         (QK\[0\] (T1 20460)(T0 20530)(TX 10)(TC 2051))
+         (Q\[31\] (T1 14480)(T0 26520)(TX 0)(TC 226))
+         (Q\[30\] (T1 18040)(T0 22960)(TX 0)(TC 344))
+         (Q\[29\] (T1 24670)(T0 16330)(TX 0)(TC 401))
+         (Q\[28\] (T1 20800)(T0 20200)(TX 0)(TC 508))
+         (Q\[27\] (T1 21110)(T0 19890)(TX 0)(TC 539))
+         (Q\[26\] (T1 21030)(T0 19970)(TX 0)(TC 503))
+         (Q\[25\] (T1 19400)(T0 21600)(TX 0)(TC 512))
+         (Q\[24\] (T1 20670)(T0 20330)(TX 0)(TC 521))
+         (Q\[23\] (T1 14920)(T0 26080)(TX 0)(TC 242))
+         (Q\[22\] (T1 17440)(T0 23560)(TX 0)(TC 350))
+         (Q\[21\] (T1 22540)(T0 18460)(TX 0)(TC 415))
+         (Q\[20\] (T1 21860)(T0 19140)(TX 0)(TC 495))
+         (Q\[19\] (T1 21560)(T0 19440)(TX 0)(TC 512))
+         (Q\[18\] (T1 21840)(T0 19160)(TX 0)(TC 544))
+         (Q\[17\] (T1 20120)(T0 20880)(TX 0)(TC 498))
+         (Q\[16\] (T1 20440)(T0 20560)(TX 0)(TC 546))
+         (Q\[15\] (T1 14280)(T0 26720)(TX 0)(TC 234))
+         (Q\[14\] (T1 17040)(T0 23960)(TX 0)(TC 344))
+         (Q\[13\] (T1 23410)(T0 17590)(TX 0)(TC 445))
+         (Q\[12\] (T1 22000)(T0 19000)(TX 0)(TC 492))
+         (Q\[11\] (T1 22370)(T0 18630)(TX 0)(TC 517))
+         (Q\[10\] (T1 21240)(T0 19760)(TX 0)(TC 504))
+         (Q\[9\] (T1 20210)(T0 20790)(TX 0)(TC 477))
+         (Q\[8\] (T1 20360)(T0 20640)(TX 0)(TC 494))
+         (Q\[7\] (T1 14040)(T0 26960)(TX 0)(TC 226))
+         (Q\[6\] (T1 16480)(T0 24520)(TX 0)(TC 348))
+         (Q\[5\] (T1 23200)(T0 17800)(TX 0)(TC 433))
+         (Q\[4\] (T1 22200)(T0 18800)(TX 0)(TC 506))
+         (Q\[3\] (T1 21960)(T0 19040)(TX 0)(TC 503))
+         (Q\[2\] (T1 19960)(T0 21040)(TX 0)(TC 483))
+         (Q\[1\] (T1 20960)(T0 20040)(TX 0)(TC 508))
+         (Q\[0\] (T1 20280)(T0 20720)(TX 0)(TC 515))
+      )
+      (INSTANCE c1
+         (PORT
+            (clock (T1 20515)(T0 20485)(TX 0)(TC 8194))
+            (clear (T1 40995)(T0 5)(TX 0)(TC 1))
+            (Qc\[1\] (T1 20490)(T0 20510)(TX 0)(TC 2049))
+            (Qc\[0\] (T1 20490)(T0 20510)(TX 0)(TC 4097))
+         )
+         (VIRTUAL_INSTANCE "sequential" Pre_Q_reg\[0\]
+            (PORT
+               (Q (T1 20490)(T0 20510)(TX 0)(TC 4097))
+            )
+         )
+         (VIRTUAL_INSTANCE "sequential" Pre_Q_reg\[1\]
+            (PORT
+               (Q (T1 20490)(T0 20510)(TX 0)(TC 2049))
+            )
+         )
+      )
+      (INSTANCE d1
+         (PORT
+            (I\[1\] (T1 20490)(T0 20510)(TX 0)(TC 2049))
+            (I\[0\] (T1 20490)(T0 20510)(TX 0)(TC 4097))
+            (O\[3\] (T1 10270)(T0 30730)(TX 0)(TC 2049))
+            (O\[2\] (T1 10240)(T0 30760)(TX 0)(TC 2048))
+            (O\[1\] (T1 10240)(T0 30760)(TX 0)(TC 2048))
+            (O\[0\] (T1 10250)(T0 30750)(TX 0)(TC 2049))
+         )
+      )
+      (INSTANCE r1
+         (PORT
+            (D\[7\] (T1 14430)(T0 26560)(TX 10)(TC 298))
+            (D\[6\] (T1 17250)(T0 23740)(TX 10)(TC 581))
+            (D\[5\] (T1 23470)(T0 17520)(TX 10)(TC 1046))
+            (D\[4\] (T1 21710)(T0 19280)(TX 10)(TC 1474))
+            (D\[3\] (T1 21770)(T0 19220)(TX 10)(TC 1829))
+            (D\[2\] (T1 21040)(T0 19950)(TX 10)(TC 2091))
+            (D\[1\] (T1 20170)(T0 20820)(TX 10)(TC 2070))
+            (D\[0\] (T1 20460)(T0 20530)(TX 10)(TC 2051))
+            (Clock (T1 10270)(T0 30730)(TX 0)(TC 2049))
+            (Reset (T1 40995)(T0 5)(TX 0)(TC 1))
+            (Q\[7\] (T1 14480)(T0 26520)(TX 0)(TC 226))
+            (Q\[6\] (T1 18040)(T0 22960)(TX 0)(TC 344))
+            (Q\[5\] (T1 24670)(T0 16330)(TX 0)(TC 401))
+            (Q\[4\] (T1 20800)(T0 20200)(TX 0)(TC 508))
+            (Q\[3\] (T1 21110)(T0 19890)(TX 0)(TC 539))
+            (Q\[2\] (T1 21030)(T0 19970)(TX 0)(TC 503))
+            (Q\[1\] (T1 19400)(T0 21600)(TX 0)(TC 512))
+            (Q\[0\] (T1 20670)(T0 20330)(TX 0)(TC 521))
+         )
+         (VIRTUAL_INSTANCE "sequential" Q_reg\[0\]
+            (PORT
+               (Q (T1 20670)(T0 20330)(TX 0)(TC 521))
+            )
+         )
+         (VIRTUAL_INSTANCE "sequential" Q_reg\[1\]
+            (PORT
+               (Q (T1 19400)(T0 21600)(TX 0)(TC 512))
+            )
+         )
+         (VIRTUAL_INSTANCE "sequential" Q_reg\[2\]
+            (PORT
+               (Q (T1 21030)(T0 19970)(TX 0)(TC 503))
+            )
+         )
+         (VIRTUAL_INSTANCE "sequential" Q_reg\[3\]
+            (PORT
+               (Q (T1 21110)(T0 19890)(TX 0)(TC 539))
+            )
+         )
+         (VIRTUAL_INSTANCE "sequential" Q_reg\[4\]
+            (PORT
+               (Q (T1 20800)(T0 20200)(TX 0)(TC 508))
+            )
+         )
+         (VIRTUAL_INSTANCE "sequential" Q_reg\[5\]
+            (PORT
+               (Q (T1 24670)(T0 16330)(TX 0)(TC 401))
+            )
+         )
+         (VIRTUAL_INSTANCE "sequential" Q_reg\[6\]
+            (PORT
+               (Q (T1 18040)(T0 22960)(TX 0)(TC 344))
+            )
+         )
+         (VIRTUAL_INSTANCE "sequential" Q_reg\[7\]
+            (PORT
+               (Q (T1 14480)(T0 26520)(TX 0)(TC 226))
+            )
+         )
+      )
+      (INSTANCE r2
+         (PORT
+            (D\[7\] (T1 14430)(T0 26560)(TX 10)(TC 298))
+            (D\[6\] (T1 17250)(T0 23740)(TX 10)(TC 581))
+            (D\[5\] (T1 23470)(T0 17520)(TX 10)(TC 1046))
+            (D\[4\] (T1 21710)(T0 19280)(TX 10)(TC 1474))
+            (D\[3\] (T1 21770)(T0 19220)(TX 10)(TC 1829))
+            (D\[2\] (T1 21040)(T0 19950)(TX 10)(TC 2091))
+            (D\[1\] (T1 20170)(T0 20820)(TX 10)(TC 2070))
+            (D\[0\] (T1 20460)(T0 20530)(TX 10)(TC 2051))
+            (Clock (T1 10240)(T0 30760)(TX 0)(TC 2048))
+            (Reset (T1 40995)(T0 5)(TX 0)(TC 1))
+            (Q\[7\] (T1 14920)(T0 26080)(TX 0)(TC 242))
+            (Q\[6\] (T1 17440)(T0 23560)(TX 0)(TC 350))
+            (Q\[5\] (T1 22540)(T0 18460)(TX 0)(TC 415))
+            (Q\[4\] (T1 21860)(T0 19140)(TX 0)(TC 495))
+            (Q\[3\] (T1 21560)(T0 19440)(TX 0)(TC 512))
+            (Q\[2\] (T1 21840)(T0 19160)(TX 0)(TC 544))
+            (Q\[1\] (T1 20120)(T0 20880)(TX 0)(TC 498))
+            (Q\[0\] (T1 20440)(T0 20560)(TX 0)(TC 546))
+         )
+         (VIRTUAL_INSTANCE "sequential" Q_reg\[0\]
+            (PORT
+               (Q (T1 20440)(T0 20560)(TX 0)(TC 546))
+            )
+         )
+         (VIRTUAL_INSTANCE "sequential" Q_reg\[1\]
+            (PORT
+               (Q (T1 20120)(T0 20880)(TX 0)(TC 498))
+            )
+         )
+         (VIRTUAL_INSTANCE "sequential" Q_reg\[2\]
+            (PORT
+               (Q (T1 21840)(T0 19160)(TX 0)(TC 544))
+            )
+         )
+         (VIRTUAL_INSTANCE "sequential" Q_reg\[3\]
+            (PORT
+               (Q (T1 21560)(T0 19440)(TX 0)(TC 512))
+            )
+         )
+         (VIRTUAL_INSTANCE "sequential" Q_reg\[4\]
+            (PORT
+               (Q (T1 21860)(T0 19140)(TX 0)(TC 495))
+            )
+         )
+         (VIRTUAL_INSTANCE "sequential" Q_reg\[5\]
+            (PORT
+               (Q (T1 22540)(T0 18460)(TX 0)(TC 415))
+            )
+         )
+         (VIRTUAL_INSTANCE "sequential" Q_reg\[6\]
+            (PORT
+               (Q (T1 17440)(T0 23560)(TX 0)(TC 350))
+            )
+         )
+         (VIRTUAL_INSTANCE "sequential" Q_reg\[7\]
+            (PORT
+               (Q (T1 14920)(T0 26080)(TX 0)(TC 242))
+            )
+         )
+      )
+      (INSTANCE r3
+         (PORT
+            (D\[7\] (T1 14430)(T0 26560)(TX 10)(TC 298))
+            (D\[6\] (T1 17250)(T0 23740)(TX 10)(TC 581))
+            (D\[5\] (T1 23470)(T0 17520)(TX 10)(TC 1046))
+            (D\[4\] (T1 21710)(T0 19280)(TX 10)(TC 1474))
+            (D\[3\] (T1 21770)(T0 19220)(TX 10)(TC 1829))
+            (D\[2\] (T1 21040)(T0 19950)(TX 10)(TC 2091))
+            (D\[1\] (T1 20170)(T0 20820)(TX 10)(TC 2070))
+            (D\[0\] (T1 20460)(T0 20530)(TX 10)(TC 2051))
+            (Clock (T1 10240)(T0 30760)(TX 0)(TC 2048))
+            (Reset (T1 40995)(T0 5)(TX 0)(TC 1))
+            (Q\[7\] (T1 14280)(T0 26720)(TX 0)(TC 234))
+            (Q\[6\] (T1 17040)(T0 23960)(TX 0)(TC 344))
+            (Q\[5\] (T1 23410)(T0 17590)(TX 0)(TC 445))
+            (Q\[4\] (T1 22000)(T0 19000)(TX 0)(TC 492))
+            (Q\[3\] (T1 22370)(T0 18630)(TX 0)(TC 517))
+            (Q\[2\] (T1 21240)(T0 19760)(TX 0)(TC 504))
+            (Q\[1\] (T1 20210)(T0 20790)(TX 0)(TC 477))
+            (Q\[0\] (T1 20360)(T0 20640)(TX 0)(TC 494))
+         )
+         (VIRTUAL_INSTANCE "sequential" Q_reg\[0\]
+            (PORT
+               (Q (T1 20360)(T0 20640)(TX 0)(TC 494))
+            )
+         )
+         (VIRTUAL_INSTANCE "sequential" Q_reg\[1\]
+            (PORT
+               (Q (T1 20210)(T0 20790)(TX 0)(TC 477))
+            )
+         )
+         (VIRTUAL_INSTANCE "sequential" Q_reg\[2\]
+            (PORT
+               (Q (T1 21240)(T0 19760)(TX 0)(TC 504))
+            )
+         )
+         (VIRTUAL_INSTANCE "sequential" Q_reg\[3\]
+            (PORT
+               (Q (T1 22370)(T0 18630)(TX 0)(TC 517))
+            )
+         )
+         (VIRTUAL_INSTANCE "sequential" Q_reg\[4\]
+            (PORT
+               (Q (T1 22000)(T0 19000)(TX 0)(TC 492))
+            )
+         )
+         (VIRTUAL_INSTANCE "sequential" Q_reg\[5\]
+            (PORT
+               (Q (T1 23410)(T0 17590)(TX 0)(TC 445))
+            )
+         )
+         (VIRTUAL_INSTANCE "sequential" Q_reg\[6\]
+            (PORT
+               (Q (T1 17040)(T0 23960)(TX 0)(TC 344))
+            )
+         )
+         (VIRTUAL_INSTANCE "sequential" Q_reg\[7\]
+            (PORT
+               (Q (T1 14280)(T0 26720)(TX 0)(TC 234))
+            )
+         )
+      )
+      (INSTANCE r4
+         (PORT
+            (D\[7\] (T1 14430)(T0 26560)(TX 10)(TC 298))
+            (D\[6\] (T1 17250)(T0 23740)(TX 10)(TC 581))
+            (D\[5\] (T1 23470)(T0 17520)(TX 10)(TC 1046))
+            (D\[4\] (T1 21710)(T0 19280)(TX 10)(TC 1474))
+            (D\[3\] (T1 21770)(T0 19220)(TX 10)(TC 1829))
+            (D\[2\] (T1 21040)(T0 19950)(TX 10)(TC 2091))
+            (D\[1\] (T1 20170)(T0 20820)(TX 10)(TC 2070))
+            (D\[0\] (T1 20460)(T0 20530)(TX 10)(TC 2051))
+            (Clock (T1 10250)(T0 30750)(TX 0)(TC 2049))
+            (Reset (T1 40995)(T0 5)(TX 0)(TC 1))
+            (Q\[7\] (T1 14040)(T0 26960)(TX 0)(TC 226))
+            (Q\[6\] (T1 16480)(T0 24520)(TX 0)(TC 348))
+            (Q\[5\] (T1 23200)(T0 17800)(TX 0)(TC 433))
+            (Q\[4\] (T1 22200)(T0 18800)(TX 0)(TC 506))
+            (Q\[3\] (T1 21960)(T0 19040)(TX 0)(TC 503))
+            (Q\[2\] (T1 19960)(T0 21040)(TX 0)(TC 483))
+            (Q\[1\] (T1 20960)(T0 20040)(TX 0)(TC 508))
+            (Q\[0\] (T1 20280)(T0 20720)(TX 0)(TC 515))
+         )
+         (VIRTUAL_INSTANCE "sequential" Q_reg\[0\]
+            (PORT
+               (Q (T1 20280)(T0 20720)(TX 0)(TC 515))
+            )
+         )
+         (VIRTUAL_INSTANCE "sequential" Q_reg\[1\]
+            (PORT
+               (Q (T1 20960)(T0 20040)(TX 0)(TC 508))
+            )
+         )
+         (VIRTUAL_INSTANCE "sequential" Q_reg\[2\]
+            (PORT
+               (Q (T1 19960)(T0 21040)(TX 0)(TC 483))
+            )
+         )
+         (VIRTUAL_INSTANCE "sequential" Q_reg\[3\]
+            (PORT
+               (Q (T1 21960)(T0 19040)(TX 0)(TC 503))
+            )
+         )
+         (VIRTUAL_INSTANCE "sequential" Q_reg\[4\]
+            (PORT
+               (Q (T1 22200)(T0 18800)(TX 0)(TC 506))
+            )
+         )
+         (VIRTUAL_INSTANCE "sequential" Q_reg\[5\]
+            (PORT
+               (Q (T1 23200)(T0 17800)(TX 0)(TC 433))
+            )
+         )
+         (VIRTUAL_INSTANCE "sequential" Q_reg\[6\]
+            (PORT
+               (Q (T1 16480)(T0 24520)(TX 0)(TC 348))
+            )
+         )
+         (VIRTUAL_INSTANCE "sequential" Q_reg\[7\]
+            (PORT
+               (Q (T1 14040)(T0 26960)(TX 0)(TC 226))
+            )
+         )
+      )
+   )
+)
+)
