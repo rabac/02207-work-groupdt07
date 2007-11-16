@@ -24,14 +24,10 @@ architecture BEHAVIORAL of SHIFTREG is
               q(i) <= '0';
           end loop;
        elsif ((CLOCK = '1') AND (CLOCK'EVENT)) then
-          -- if ( enable = '1' ) then
--- --------------------------------------------------------------------
 		for i in 31 downto 8 loop
 		    q(i) <= q(i-8);
 		end loop;
 	        q(7 downto 0) <= qk;
--- --------------------------------------------------------------------
-          --  end if;  -- ends enable = '1'
        end if;
 
     end process;
