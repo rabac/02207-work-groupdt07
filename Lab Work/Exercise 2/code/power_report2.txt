@@ -34,7 +34,6 @@ REG_0                  area_0to1K        CORE90GPSVT
 
 
 
-
 Global Operating Voltage = 1    
 Power-specific unit information :
     Voltage Units = 1V
