@@ -108,8 +108,7 @@ In this section, we give an overview of the three designs for serial to parallel
 \caption{Converter using a 8-bit Shift Register}
 \end{figure}
 
-
-% Josep, write in here. 
+The shift register is implemented with a simple way, first he makes a movements of 8 bits to the next significant 8 bits and finally he stores on the eight first the input data, the shift register works until the clock stops. Here the input is only connected with the register of less important bits.
 
 \newpage
 \subsection{Design B: Register with Enable}
@@ -120,10 +119,12 @@ In this section, we give an overview of the three designs for serial to parallel
 \caption{Converter using 8-bit Registers with Enable}
 \end{figure}
 
-% Josep, write in here. 
+For implement the shift register with an enable signal we use a multiplexor that open the door for store in a register, I mean the multiplexor is a filter that manage which register is going to store the input data, so the shift functionality is secure, the multiplexor make possible to store the first input on the most significant bits without through for the previous registers like the default shift register. In that version the input data is connected at the multiplexor and he give to the register the previous value of the register or the new input depending the value of the enable.
 
 \newpage
+
 \subsection{Design C: Register with Clock-Gating}
+
 
 \begin{figure}[htp]
 \centering
@@ -131,7 +132,8 @@ In this section, we give an overview of the three designs for serial to parallel
 \caption{Converter using 8-bit Registers with Clock Gating}
 \end{figure}
 
-% Josep, write in here. 
+The shift register gated is developed using the same idea that the enable of doesn't across for all the registers to store the most significant 8 bits, but now we manage the clocks of the registers, how? very easy. We use a counter that is continuously counting 0 to 3 and depending the number of the counter the next entity, the decoder, enables a register for store the data with his clock, so the decoder open the register to store with the clock. The registers receive the input data all the time but only which is with the clock period open can store the data.
+
 
 \newpage
 \section{Simulation of the designs with Modelsim}
@@ -192,34 +194,47 @@ Then, for Design C, we have the following screenshots. As we can see, the values
 \section{Power Reports and Discussion}
 \label{section:power}
 
-
+In this section we discuss the results obtained from the simulations which were presented in section \ref{section:simulation}. For a short recap, the results can be seen in table \ref{table:power}:
 
 \begin{table}[htbp]
 \begin{center}
 \begin{tabular}{|l|l|l|}
 \hline
-\textbf{Parameters}	& \textbf{Values}		& \textbf{Comment}\\ \hline
-Dynamic Power				&	5.91 mW				& MET\\ \hline
-Leakage Power 			&	11.04 uW			& MET\\ \hline
-Library Setup Time  & 0.08 ns				& - \\ \hline
-Data Arrival Time		& 0.43 ns				& - \\ \hline
-SLACK								& -0.01 ns			& VIOLATED \\ \hline
-Combinational Area	& 2700 um^2			& - \\ \hline
-Non-Combinational Area	& 1343 um^2	& - \\ \hline
-SVT cells						& 403						& - \\ \hline
-HVT cells						& 0							& - \\ \hline
+\textbf{}	& \textbf{Total Dynamic Power}		& \textbf{Cell Leakage Power}\\ \hline
+Design A &	55.2 uW				& 773.7 nW \\ \hline
+Design B &	47 uW					& 800.5 nW \\ \hline
+Design C &  32.6 uW				& 835.0 nW \\ \hline
 \end{tabular}
 \end{center}
-\caption{Clock time-period 0.5 ns, normal power}
-\label{tab:syn0.5.1}
+\caption{Overview of Results from Power Reports}
+\label{table:power}
 \end{table}
 
+It is quite clear from the results that Design A consumes the most power (dynamic), while Design C is the most efficient, among the three designs. Though, this was expected at the beginning of the exercise. The static power, which comes from the internal leakage currents, is considerably low as compared to the dynamic power, in all the designs. So, we would not consider it in our analysis. Also, we would mean dynamic power when writing power, from now on.
+
+In Design A, there is a transition at the output of each of the four registers, in every clock cycle. The input Qk is transferred from one register to the adjacent more significant register, every clock cycle, until it reaches the most significant register where it is just overwritten in the next clock cycle. This is the reason why the design is much consuming in terms of power. In every clock cycle, there is a switching activity in all the outputs of the four registers. Since switching accounts for a lot of power, for the entire time line of the simulation, we have high levels of power consumption. 
+
+Design B is efficient than Design A. Switching in Design B is controlled by the enable signals, which indicate which register should be loaded with Qk in the next clock event. If the enable signal is SET, the register is loaded with Qk, otherwise, the output is the same (rather, the previous value is reloaded into the register). What makes this design efficient than Design A is the reduction in the switching activity in terms of loading the register only when the enable is SET. 
+
+The overhead in this design, though, is the logic for the enable signals. It is interesting to note here that we have not implemented the logic for the enable signals as a separate combinational block. The enable signals are governed from the test bench, which was provided for the exercise. Thus there is no measure of the power dissipation in the enable block, which we think would be considerable. Also, from the lecture notes, we see that the ratio of power dissipated in Design A to that in Design B is 1:1.19, which indicates that Design B should consume more power. We believe this discripancy is because of we not implementing the enabling logic specifically.
+
+Lets consider Design C now. It is quite clear that this design is the most efficient than both Design A and Design B. This design is based on clock-gating, which means that the original clock signal is not sent directly to the registers, but sent only when the register should be loaded with a new value. This has the power saving advantage when compared with Design B. When the register gets a clock cycle, it loads Qk. Otherwise, there is no internal power dissipation due to clock cycles for which the output does not change. In Design B, even if the enable for a register was RESET, which meant that the register would output would not change, still, since there was a clock cycle there was some power dissipated internally in the cell. This is avoided tremendously in Design C. And moreover, since the switching activity is directly propotional to the clock cycles arriving, reducing the clock cycles to individual registers means reducing unnecessary switching activity.
+
+%The results differ slightly from what we expected on the register which was implemented with multiplexers and enable signals. Otherwise the results were not surprising.
+
+%We had expected that since the datapath was shallow, the power dissipation from the logic controlling the enabling signals and from the multiplexors would be more than the savings that are gained by eliminating unnecessary transitions in the 8-bit registers. According to these expectations the shiftregister with register enabling should have been powerhungrier than the shiftregister without register enabling. The simulation results, however, clearly show that this was not the case.
+
+%The shiftregister with clock gating performed pretty much as we expected. We expected it to have less power dissipation than the regular shiftregister, even with the shallow datapath, since the clock control logic was simple enough not to cause more power dissipation than what is avoided by eliminating three quarters of the 8-bit register transitions.
+
+%In our opinion the most likely reason for why the shiftregister with register enabling performed unexpectedly is the implementation of the enable signal control logic: The enable signal was controlled by logic within the test bench and was thus outside the scope of the power reports.
+
+%Judging by the obtained results we can safely say that if low power is the number one priority (after timing of course, we want our circuit to work) then clock gating is a better method than register enabling, as clock gating gave good results even with a shallow data path. With a deeper datapath the register enabling should become a feasible option and the deeper the datapath the smaller the differences between the two techniques (powerwise) should become. Register enabling will of course demand more area than clock gating since it requires multiplexors as well as the control logic, but on higher clock frequencies clock gating can cause problems with timing because of added delay. Thus it can be said that both techniques have their uses.
 
 
 
 
 \newpage
-\section{Implementation and Reports}
+\section{Implementation and Power Reports}
 \label{section:impl}
 
 \lstinputlisting[frame=trbl, caption={SHIFTREG.vhd}]{../code/SHIFTREG.vhd}
