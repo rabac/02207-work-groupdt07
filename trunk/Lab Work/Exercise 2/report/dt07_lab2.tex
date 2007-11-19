@@ -84,9 +84,9 @@ The purpose of this exercise was to estimate the power dissipation in a digital 
 
 Static power in digital circuits is due to the internal leakage currents in CMOS. Though, in this exercise, we are particularly interested in analyzing the dynamic power dissipation.
 
-We estimate the dynamic power in a serial to parallel converter. The converter takes in 8 bits (one byte) in every clock cycle, and gives out 32 bits (4 bytes) after every 4 clock cycles. The input byte at the first clock cycle is the most significant byte in the output, whereas the input byte in the fourth clock cycle is the lowest significant byte. The converter, thus, waits for four clock cycles to produce an output.
+We estimate the dynamic power in a serial to parallel converter. The converter takes in 8 bits (one byte) in every clock cycle, and gives out 32 bits (4 bytes) after every 4 clock cycles. The input byte at the first clock cycle is the most significant byte in the output, whereas the input byte in the fourth clock cycle is the lowest significant byte. The converter, thus, waits for four clock cycles to produce an output. We refer to the register holding the most significant byte in the output as the most significant register, and that holding the least significant byte as the least significant register.
 
-In the next section \ref{section:designs}, we discuss three designs for such a converter. In section \ref{section:simulation}, we simulate the VHDL code for the designs using Modelsim, and verify that all the designs are working correctly. The VHDL code is then synthesized using Design Vision, and a switching activity is produced using VSS simulator. Based on this switching activity, a power report is presented for the synthesized design. These reports are presented in the last section \ref{section:impl}, which also contains the VHDL code for the designs. In section \ref{section:power}, we discuss the results obtained.
+The report is organized as follows. In section \ref{section:designs}, we discuss three designs for a serial to parallel converter. In section \ref{section:simulation}, we simulate the VHDL code for the designs using Modelsim, and verify that all the designs are working correctly. Section \ref{section:power} contains the power results obtained from the synthesis of the VHDL using Design Vision, and Synopsys VSS for annotating the switching activity in a given time period. In this section, we discuss and justify the results obtained. Later, in section \ref{section:impl}, the VHDL is provided, alongwith the power reports from Design Vision. 
 
 \subsection{Authors by Section}
 \begin{itemize}
@@ -104,31 +104,27 @@ In this section, we give an overview of the three designs for serial to parallel
 
 \begin{figure}[htp]
 \centering
-\includegraphics[width = 4in]{./images/shiftregister.jpg}
+\includegraphics[width = 3.5in]{./images/shiftregister.jpg}
 \caption{Converter using a 8-bit Shift Register}
 \end{figure}
 
 The shift register is implemented with a simple way, first he makes a movements of 8 bits to the next significant 8 bits and finally he stores on the eight first the input data, the shift register works until the clock stops. Here the input is only connected with the register of less important bits.
 
-\newpage
 \subsection{Design B: Register with Enable}
 
 \begin{figure}[htp]
 \centering
-\includegraphics[width = 4in]{./images/shiftregisterenable.jpg}
+\includegraphics[width = 3.5in]{./images/shiftregisterenable.jpg}
 \caption{Converter using 8-bit Registers with Enable}
 \end{figure}
 
 For implement the shift register with an enable signal we use a multiplexor that open the door for store in a register, I mean the multiplexor is a filter that manage which register is going to store the input data, so the shift functionality is secure, the multiplexor make possible to store the first input on the most significant bits without through for the previous registers like the default shift register. In that version the input data is connected at the multiplexor and he give to the register the previous value of the register or the new input depending the value of the enable.
 
-\newpage
-
 \subsection{Design C: Register with Clock-Gating}
-
 
 \begin{figure}[htp]
 \centering
-\includegraphics[width = 4in]{./images/shiftregistergated.jpg}
+\includegraphics[width = 3.5in]{./images/shiftregistergated.jpg}
 \caption{Converter using 8-bit Registers with Clock Gating}
 \end{figure}
 
@@ -140,7 +136,7 @@ The shift register gated is developed using the same idea that the enable of doe
 \label{section:simulation}
 All the three designs are simulated with Modelsim, to verify the functionality.
  
-The following two screenshots demonstrate the working of implementation for Design A. The first screenshot id taken at 33ns while the second is taken at 43ns. It can be seen that in a new clock cycle, the 8 bit registers ripple their values to the more significant register, and the value of Qk for that clock cycle is fed into the least significant register.
+The following two screenshots demonstrate the working of implementation for Design A. The first screenshot is taken at 33ns while the second is taken at 43ns. It can be seen that in the new clock cycle, the 8 bit registers have rippled their values to the more significant register, and the value of Qk for that clock cycle is fed into the least significant register. The most significant register looses its old value.
 
 \begin{figure}[htp]
 \centering
@@ -155,7 +151,7 @@ The following two screenshots demonstrate the working of implementation for Desi
 \end{figure}
 
 \newpage
-The following screenshots are from the simulation of Design B. In the first instance, which is at 14ns on the timeline, we have some value at Qk, but no value at Q. Then, at 24ns, the value of Qk in the previous clock cycle is loaded into the most significant register. Further on, at 33ns, the value of Qk in the previous clock cycle is loaded into the second most significant register. This repeats for four clock cycles.
+The following screenshots are from the simulation of Design B. In the first instance, at 14ns on the timeline, we have some value at Qk, but it has not been transferred in any way to the output Q. Then, at 24ns, the value of Qk in the previous clock cycle is loaded into the most significant register. Further on, at 33ns, the value of Qk in the previous clock cycle is loaded into the second most significant register. This repeats for four clock cycles, after which the most significant register is again loaded.
 
 \begin{figure}[htp]
 \centering
@@ -176,7 +172,7 @@ The following screenshots are from the simulation of Design B. In the first inst
 \end{figure}
 
 \newpage
-Then, for Design C, we have the following screenshots. As we can see, the values of Qk are transferred to the output to different registers. Also, the values of Qk are transferred in the same clock cycle, which was not the case with the Design B.
+Then, for Design C, we have the following screenshots. As we can see, the values of Qk are transferred to different registers every clock cycle. This is practically the same functionality as Design B. The only difference though is that in Design C, Qk is transferred in the same clock cycle, while in Design B, it happens one clock cycle later. Ofcourse, the internal working of the two designs are completely different, which has already been discussed in section \ref{section:designs}
 
 \begin{figure}[htp]
 \centering
@@ -194,7 +190,7 @@ Then, for Design C, we have the following screenshots. As we can see, the values
 \section{Power Reports and Discussion}
 \label{section:power}
 
-In this section we discuss the results obtained from the simulations which were presented in section \ref{section:simulation}. For a short recap, the results can be seen in table \ref{table:power}:
+In this section we discuss the results obtained from the power-aware synthesis of the three designs. The Synopsys VSS Simulator is used to annotate the switching activity, based on a testbench for each design. This switching activity is used by Design Vision, which estimates the total dynamic power for us. The power reports obtained from the synthesis are presented in section \ref{section:impl}. Though, for a short recap, the results can be seen in table \ref{table:power}:
 
 \begin{table}[htbp]
 \begin{center}
@@ -212,13 +208,16 @@ Design C &  32.6 uW				& 835.0 nW \\ \hline
 
 It is quite clear from the results that Design A consumes the most power (dynamic), while Design C is the most efficient, among the three designs. Though, this was expected at the beginning of the exercise. The static power, which comes from the internal leakage currents, is considerably low as compared to the dynamic power, in all the designs. So, we would not consider it in our analysis. Also, we would mean dynamic power when writing power, from now on.
 
-In Design A, there is a transition at the output of each of the four registers, in every clock cycle. The input Qk is transferred from one register to the adjacent more significant register, every clock cycle, until it reaches the most significant register where it is just overwritten in the next clock cycle. This is the reason why the design is much consuming in terms of power. In every clock cycle, there is a switching activity in all the outputs of the four registers. Since switching accounts for a lot of power, for the entire time line of the simulation, we have high levels of power consumption. 
+In Design A, there is a transition at the output of each of the four registers, in every clock cycle. The input Qk is transferred from one register to the adjacent more significant register, every clock cycle, until it reaches the most significant register where it is just overwritten in the next clock cycle. This is the reason why the design is much consuming in terms of power: in every clock cycle, there is a switching activity in all the output bits of the four registers. Since switching accounts for a lot of power, for the entire time line of the simulation, we have high levels of power consumption. 
 
-Design B is efficient than Design A. Switching in Design B is controlled by the enable signals, which indicate which register should be loaded with Qk in the next clock event. If the enable signal is SET, the register is loaded with Qk, otherwise, the output is the same (rather, the previous value is reloaded into the register). What makes this design efficient than Design A is the reduction in the switching activity in terms of loading the register only when the enable is SET. 
+Design B is efficient than Design A. Switching in Design B is controlled by the enable signals, which indicate which register should be loaded with Qk in the next clock event. If the enable signal is SET, the register is loaded with Qk, otherwise, the output of the register remains the same. Rather, the previous value is reloaded into the register - which does have some power cost. What makes this design efficient than Design A is the reduction in the switching activity since the output of the register changes only when the enable signal is SET.
 
-The overhead in this design, though, is the logic for the enable signals. It is interesting to note here that we have not implemented the logic for the enable signals as a separate combinational block. The enable signals are governed from the test bench, which was provided for the exercise. Thus there is no measure of the power dissipation in the enable block, which we think would be considerable. Also, from the lecture notes, we see that the ratio of power dissipated in Design A to that in Design B is 1:1.19, which indicates that Design B should consume more power. We believe this discripancy is because of we not implementing the enabling logic specifically.
+An overhead in this design, though, is the logic for the enable signals. It is interesting to note here that we have not implemented the logic for the enable signals as a separate combinational block. The enable signals are governed from the test bench, which was provided for the exercise. Thus there is no measure of the power dissipation in the enable block, which we think would be considerable. Also, from the lecture notes, we see that the ratio of power dissipated in Design A to that in Design B is 1:1.19, which indicates that Design B should consume more power. We believe this discripancy is because the analysis does not containt the power dissipation in the logic for the enable signals.
 
-Lets consider Design C now. It is quite clear that this design is the most efficient than both Design A and Design B. This design is based on clock-gating, which means that the original clock signal is not sent directly to the registers, but sent only when the register should be loaded with a new value. This has the power saving advantage when compared with Design B. When the register gets a clock cycle, it loads Qk. Otherwise, there is no internal power dissipation due to clock cycles for which the output does not change. In Design B, even if the enable for a register was RESET, which meant that the register would output would not change, still, since there was a clock cycle there was some power dissipated internally in the cell. This is avoided tremendously in Design C. And moreover, since the switching activity is directly propotional to the clock cycles arriving, reducing the clock cycles to individual registers means reducing unnecessary switching activity.
+Lets consider Design C now. It is quite clear that this design is most efficient when compared with both Design A and Design B. This design is based on clock-gating, which means that the original clock signal is not sent directly to the registers, but sent only when the register should be loaded with a new value. So, if there is a clock signal, the register would function normally, and power is dissipated both internally and for charging/discharging the load (if the output changes). But for other cases, the clock would be cut off completely, thus saving atleast the internal power dissipation due to clock cycles. In Design B, even if the enable for a register was RESET, which meant that the register output would not change, still, since there was a clock cycle there was some power dissipated internally in the cell. This is avoided heavily in Design C.
+
+We see that the attempt to reduce power disspation has been successful, without affecting the functionality of the circuit. Though, with the reduction in power, there are added overheads, which cost us in area and timing. With extra logic in Design B and Design C, we need more area to accomodate the logic. And also, there is a little delay added to the critical path.
+
 
 %The results differ slightly from what we expected on the register which was implemented with multiplexers and enable signals. Otherwise the results were not surprising.
 
