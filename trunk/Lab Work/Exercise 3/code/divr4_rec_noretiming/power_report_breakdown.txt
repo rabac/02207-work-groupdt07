@@ -7,7 +7,7 @@ Report : power
 	-sort_mode dynamic_power
 Design : divr4_rec
 Version: X-2005.09-SP1
-Date   : Wed Nov 21 16:48:22 2007
+Date   : Wed Nov 21 17:51:27 2007
 ****************************************
 
 

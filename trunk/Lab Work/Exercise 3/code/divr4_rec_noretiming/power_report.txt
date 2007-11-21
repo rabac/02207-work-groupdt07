@@ -3,7 +3,7 @@ Report : power
 	-analysis_effort low
 Design : divr4_rec
 Version: X-2005.09-SP1
-Date   : Wed Nov 21 16:49:32 2007
+Date   : Wed Nov 21 17:50:57 2007
 ****************************************
 
 
@@ -56,4 +56,3 @@ Total Dynamic Power    = 892.0215 uW  (100%)
 
 
 Cell Leakage Power     =  31.9314 uW
-
