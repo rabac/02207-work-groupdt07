@@ -2,7 +2,7 @@
 (SAIFVERSION "2.0")
 (DIRECTION "forward")
 (DESIGN )
-(DATE "Wed Nov 21 16:41:14 2007")
+(DATE "Wed Nov 21 17:48:06 2007")
 (VENDOR "Synopsys, Inc")
 (PROGRAM_NAME "rtl2saif")
 (VERSION "1.0")
