@@ -1,0 +1,1 @@
+vhdlsim -t ns -i cmd.inc CFG_TB_DIVR4_REC_BEHAVIORAL
