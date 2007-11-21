@@ -1,0 +1,23 @@
+set power_preserve_rtl_hier_names true
+link
+rtl2saif
+
+
+
+vhdlan SHIFTREG.vhd tb_shiftreg.vhd
+vhdlsim -t ns -i cmd_saif.inc WORK.CFG_TB_SHIFTREG_BEHAVIORAL
+
+read_saif -input uut.saif -instance E/UUT -unit ns
+
+
+vhdlan MUX.vhd REG.vhd SHIFTREG_enable.vhd tb_shiftreg-enable.vhd
+vhdlsim -t ns -i cmd_saif_enable.inc WORK.CFG_TB_SHIFTREG_ENABLE_BEHAVIORAL
+
+read_saif -input uut_enable.saif -instance E/UUT -unit ns
+
+
+
+vhdlan REG.vhd Decoder.vhd counter.vhd SHIFTREG_GATED.vhd tb_shiftreg-gated2.vhd
+vhdlsim -t ns -i cmd_saif_gated.inc WORK.CFG_TB_SHIFTREG_GATED_BEHAVIORAL
+
+read_saif -input uut_gated.saif -instance E/UUT -unit ns
