@@ -27,6 +27,8 @@ architecture SCHEMATIC of divr4_rec is
    signal     MXLA : std_logic_vector(56 downto 0);
    signal     MXLB : std_logic_vector(56 downto 0);
    signal      qjD : std_logic_vector(56 downto 0);
+   signal      QLa : std_logic_vector(3 downto 0);
+   signal      QL : std_logic_vector(3 downto 0);
    signal    M2, M1, P1, P2 : std_logic;
    signal    DIGIT, ROUND : std_logic;
    signal     muxW : std_logic;
@@ -88,12 +90,12 @@ architecture SCHEMATIC of divr4_rec is
    component gl_dualreg_ld 
      GENERIC(n : integer);
       Port (      AS : In    std_logic_vector (n downto 0);
-                  AC : In    std_logic_vector (n downto 0);
+            
                RESET : In    std_logic;
                CLOCK : In    std_logic;
                 LOAD : In    std_logic;
-                  ZS : Out   std_logic_vector (n downto 0);
-                  ZC : Out   std_logic_vector (n downto 0) );
+                  ZS : Out   std_logic_vector (n downto 0)
+                  );
 
    end component;
 
@@ -129,8 +131,8 @@ GND <= '0';
 
    -- bits of d and y going into SEL
    D3(2 downto 0)<=D(51 downto 49);
-   Y1(6 downto 0)<=W1(56 downto 50);
-   Y2(6 downto 0)<=W2(56 downto 50);
+   Y1(6 downto 0)<=WS(56 downto 50);
+   Y2(6 downto 0)<=WC(56 downto 50);
 
 
    I_CTRL : CONTROL
@@ -150,7 +152,7 @@ GND <= '0';
    -- mux 4:1 acting as multiplier q_j*d
    I_MULT : MULT
       Port Map ( A(54 downto 0)=>DD(54 downto 0), 
-                 M1=>M1, M2=>M2, P1=>P1, P2=>P2, COUT=>qjD_c2,
+                 M1=>QLa(2), M2=>QLa(3), P1=>QLa(1), P2=>QLa(0), COUT=>qjD_c2,
                  Z(56 downto 0)=>qjD(56 downto 0) );
 
    -- CSA 3:2 is split into two slices
@@ -166,27 +168,44 @@ GND <= '0';
                  C=>qjD(47 downto 0), Cout=>carry_ex,
                  Y=>WC(47 downto 0),
                  Z=>WS(47 downto 0) );
+                 
+
 
    -- REG Ws and Wc are split into two slices
-   I_REG1 : gl_dualreg_ld Generic Map(n=>10)
-      Port Map ( AS=>WS(56 downto 46), AC=>WC(56 downto 46), 
-		 RESET=>CLR, CLOCK=>CLOCK, LOAD=>LOAD,
-                 ZS=>W1(56 downto 46), ZC=>W2(56 downto 46) );
-   I_REG2 : gl_dualreg_ld Generic Map(n=>45)
-      Port Map ( AS=>WS(45 downto 0), AC=>WC(45 downto 0), 
-		 RESET=>CLR, CLOCK=>CLOCK, LOAD=>LOAD,
-                ZS=>W1(45 downto 0), ZC=>W2(45 downto 0) );
 
+   I_REG1 : gl_dualreg_ld Generic Map(n=>56)
+      Port Map ( AS=>WS(56 downto 0),  
+		 RESET=>CLR, CLOCK=>CLOCK, LOAD=>LOAD,
+                 ZS=>W1(56 downto 0) );
+                 
+   I_REG2 : gl_dualreg_ld Generic Map(n=>56)
+      Port Map ( AS=>WC(56 downto 0),  
+		 RESET=>CLR, CLOCK=>CLOCK, LOAD=>LOAD,
+                 ZS=>W2(56 downto 0) );
+                 
+
+   
+   
    -- SELECTION FUNCTION
    I_SEL : QDSEL
       Port Map ( A1(6 downto 0)=>Y1(6 downto 0), A2(6 downto 0)=>Y2(6 downto 0),
                  D(2 downto 0)=>D3(2 downto 0), 
 		 M1=>M1, M2=>M2, P1=>P1, P2=>P2 );
+		 
+   QL(3)<=M2;
+   QL(2)<=M1;
+   QL(1)<=P1;
+   QL(0)<=P2;
+   I_REG3 : gl_dualreg_ld Generic Map(n=>3)
+      Port Map ( AS=>QL(3 downto 0), 
+                 RESET=>CLR, CLOCK=>CLOCK, LOAD=>LOAD,
+                 ZS=>QLa(3 downto 0) );
 
-QJ(3)<=M2;
-QJ(2)<=M1;
-QJ(1)<=P1;
-QJ(0)<=P2;
+QJ(3)<=QLa(3);
+QJ(2)<=QLa(2);
+QJ(1)<=QLa(1);
+QJ(0)<=QLa(0);
+
 
 end SCHEMATIC;
 
@@ -199,7 +218,7 @@ configuration CFG_divr4_rec_SCHEMATIC of divr4_rec is
       for I_MUX: MUX
          use configuration WORK.CFG_MUX_BEHAVIORAL;
       end for;
-      for I_REG1, I_REG2: gl_dualreg_ld
+      for I_REG1, I_REG2, I_REG3 : gl_dualreg_ld
          use configuration WORK.CFG_gl_dualreg_ld_BEHAVIORAL;
       end for;
       for I_CSA1: gl_csa32

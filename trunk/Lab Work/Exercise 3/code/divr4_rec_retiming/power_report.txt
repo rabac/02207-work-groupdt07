@@ -1,0 +1,51 @@
+****************************************
+Report : power
+	-analysis_effort low
+Design : divr4_rec
+Version: X-2005.09-SP1
+Date   : Thu Nov 22 13:54:21 2007
+****************************************
+
+
+Library(s) Used:
+
+    CORE90GPHVT (File: /cell_libs/cmos090_50a/CORE90GPHVT_SNPS-AVT_2.1.a/SIGNOFF/bc_1.10V_m40C_wc_0.90V_105C/PT_LIB/CORE90GPHVT_NomLeak.db)
+    CORE90GPSVT (File: /cell_libs/cmos090_50a/CORE90GPSVT_SNPS-AVT_2.1/SIGNOFF/bc_1.10V_m40C_wc_0.90V_105C/PT_LIB/CORE90GPSVT_NomLeak.db)
+
+
+Operating Conditions: NomLeak   Library: CORE90GPSVT
+Wire Load Model Mode: enclosed
+
+Design        Wire Load Model            Library
+------------------------------------------------
+divr4_rec              area_6Kto12K      CORE90GPSVT
+CONTROL                area_0to1K        CORE90GPSVT
+CONTROL_DW01_inc_0     area_0to1K        CORE90GPSVT
+MUX                    area_0to1K        CORE90GPSVT
+MULT                   area_0to1K        CORE90GPSVT
+gl_csa32_n8            area_0to1K        CORE90GPSVT
+csa32LSBs_n47          area_1Kto2K       CORE90GPSVT
+gl_dualreg_ld_n56_1    area_1Kto2K       CORE90GPSVT
+gl_dualreg_ld_n56_0    area_1Kto2K       CORE90GPSVT
+QDSEL                  area_0to1K        CORE90GPSVT
+QDS_TABLE              area_0to1K        CORE90GPSVT
+QDS_ADDER              area_0to1K        CORE90GPSVT
+gl_dualreg_ld_n3       area_0to1K        CORE90GPSVT
+
+
+Global Operating Voltage = 1    
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000pf
+    Time Units = 1ns
+    Dynamic Power Units = 1mW    (derived from V,C,T units)
+    Leakage Power Units = 1pW
+
+
+  Cell Internal Power  =   1.3766 mW   (65%)
+  Net Switching Power  = 756.9881 uW   (35%)
+                         ---------
+Total Dynamic Power    =   2.1336 mW  (100%)
+
+Cell Leakage Power     =   3.9810 uW
+
