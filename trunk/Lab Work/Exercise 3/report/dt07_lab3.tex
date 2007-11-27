@@ -79,12 +79,50 @@ Technical University of Denmark}}}
 
 \newpage 
 \section{Introduction}
+This document is report of the third exercise on DTU course Advanced Digital Design. In this exercise we studied the concept of retiming using digit recurrence division implementation with radix-4 and carry-save adder.
+
+In the introductory section we will briefly explain the concept of retiming, the original circuit and the retimed circuit. In the next section we will explain how the retimed circuit was implemented ie. what changes we made to the original circuit. In the last two sections we will present the power reports and cell counts of the two designs and discuss the results.
+
 \subsection{Retiming}
 % to just explain what retiming is - the concept and its purpose. that we need to retime circuits manually - so that the synthesizer could identify two different paths easily and perform low power synthesis for the non critical path.
+Retiming is an optimizing technique where structural location of registers is manually moved without affecting the functionality of the circuit in order to improve its performance. In our case the motivation was to create slack on a non-critical path, and to have the synthesizer substitute HS cells with LL cells on this path thus lowering the power dissipation in the whole circuit. According to the lecture slides the circuit we were studying should gain approximately 30\% power savings from retiming.
+
 \subsection{Simple Design for Division}
 %explain briefly the circuit for division. mention about the critical path in the circuit.
+The original design upon which we aimed to improve with the retiming is presented in figure 1.
+
+\begin{figure}
+	\centering
+		\includegraphics{./noretiming.PNG}
+	\caption{Figure 1: Digit recurrence division}
+	\label{fig:noretiming}
+\end{figure}
+
+The Sel. function -block implements the quotient digit selection function. The selection function determines a 4-bit quotient digit using 3 most significant bits of the divisor d and 7 most significant bits from the results stored in registers Ws and Wc.
+
+The MUX block selects the input for the divisor multiplication between the dividend, which is used only in the initialization phase of the division algorithm, and the result of the substraction of the quotient digit/divisor multiplication result from the dividend. The substraction result is stored in register Ws.
+
+The Multiple gen. -block implements the divisor multiplication ie. it multiplies the divisor d with the 4-bit quotient digit.
+
+The Carry Save Adder -block implements the substraction of the result of the divisor multiplication from the dividend. The substraction is done with a carry-save adder as the name of the block suggests.
+
+The registers Ws and Wc store the carry and the sum from the carry-save adder respectively.
+
+The critical path of this circuit is marked with red arrows in the figure.
+
 \subsection{Design for Division using Retiming}
 %explain in detail the circuit for division using retiming. we should argue what is expected from this, and how we should be able to save power in this.
+The retimed design is presented in figure 2.
+
+\begin{figure}
+	\centering
+		\includegraphics{./noretiming.PNG}
+	\caption{Figure 1: Digit recurrence division retimed}
+	\label{fig:retiming}
+\end{figure}
+
+
+
 \subsection{Authors by Section}
 \begin{itemize}
 \item \textit{Rajesh Bachani} 

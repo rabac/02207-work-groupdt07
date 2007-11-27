@@ -1,0 +1,37 @@
+TOP LEVEL:
+
+180 HVT
+787 SVT
+
+MUX:
+1 SVT, 57 HVT
+
+MULT:
+226 SVT, 51 HVT
+
+CONTROL_dw01_inc_0:
+3 SVT, 2HVT
+
+CONTROL:
+18 SVT, 22 HVT
+
+csa32LSBs_n47:
+123 SVT, 28 HVT
+
+gl_csa32_n8:
+18 SVT, 7 HVT
+
+gl_dualreg_ld_n10:
+73 SVT, 3 HVT
+
+gl_dualreg_ld_n45:
+242 SVT, 5 HVT
+
+qdsel:
+80 SVT, 5 HVT
+
+	qds_adder:
+	30 SVT, 1 HVT
+
+	qds_table:
+	50 SVT, 4 HVT
