@@ -146,6 +146,7 @@ Reg W & 13.3 & 336.7 & 350.0 & 315 & 8 	\\ \hline
 
 
 \section{Retimed Design}
+
 The retimed design is presented in figure 2.
 
 \begin{figure}
@@ -162,6 +163,7 @@ Since only the most significant bits of sum and carry are used in the quotient d
 We achieved these changes by editing the top-level VHDL file for the original design. We disconnected the higher bits of register W from the selection function and introduced the register q as a new component. We connected the high bits of CSA directly to the selection function and connected the new register between the selection and the multiple generation.
 
 These changes do not affect the functionality of the circuit, but by dividing the implementation to most significant and least significant slices we get two paths. The critical path is marked with red arrows in the figure 2. The delay on the critical path is T(SEL)+T(reg q)+T(mux)+T(CSA). The delay on the non-critical path is at maximum T(reg W)+T(mux)+T(CSA). From this it can be seen that the non critical path has some slack which the synthesizer should be able to use to optimize the least significant slice for power, namely by replacing HS cells with LL cells.
+
 
 \subsection{Power dissipation and cell count}
 Just as with the original design the Synopsys VSS Simulator was used to annotate the switching activity based on a testbench and test vectors. This switching activity was again used by Design Vision to estimate the power dissipation within the circuit. The results can be seen in table 2 for each composing block. The actual report is in appendix B.
