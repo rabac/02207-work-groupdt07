@@ -94,10 +94,12 @@ The original design upon which we aimed to improve with the retiming is presente
 
 \begin{figure}
 	\centering
-		\includegraphics{./noretiming.PNG}
-	\caption{Figure 1: Digit recurrence division}
+		\includegraphics[width=4in]{./noretiming.PNG}
+	\caption{Digit recurrence division}
 	\label{fig:noretiming}
 \end{figure}
+
+\FloatBarrier
 
 The Sel. function -block implements the quotient digit selection function. The selection function determines a 4-bit quotient digit using 3 most significant bits of the divisor d and 7 most significant bits from the results stored in registers Ws and Wc.
 
@@ -117,10 +119,12 @@ The retimed design is presented in figure 2.
 
 \begin{figure}
 	\centering
-		\includegraphics{./noretiming.PNG}
-	\caption{Figure 1: Digit recurrence division retimed}
+		\includegraphics[width=4in]{./retiming.PNG}
+	\caption{Digit recurrence division retimed}
 	\label{fig:retiming}
 \end{figure}
+
+\FloatBarrier
 
 Since only the most significant bits of sum and carry are used in the quotient digit selection it makes sense to separate the most significant bits from the least significant bits to separate structural slices. This is done in the VHDL code by disconnecting the quotient digit selection block from the W registers thus \textit{removing registers from the inputs} and adding new registers to the output of the block. This frees the W registers from the most significant slice. By also separating the implementation of the most significant bits of the adder and the multiplie generation from the implementation for the less significant bits more of the design is freed from the critical path.
 
