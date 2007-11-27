@@ -85,7 +85,8 @@ In the introductory section we will briefly explain the concept of retiming, the
 
 \subsection{Retiming}
 % to just explain what retiming is - the concept and its purpose. that we need to retime circuits manually - so that the synthesizer could identify two different paths easily and perform low power synthesis for the non critical path.
-Retiming is an optimizing technique where structural location of registers is manually moved without affecting the functionality of the circuit in order to improve its performance. In our case the motivation was to create slack on a non-critical path, and to have the synthesizer substitute HS cells with LL cells on this path thus lowering the power dissipation in the whole circuit. According to the lecture slides the circuit we were studying should gain approximately 30\% power savings from retiming.
+Retiming is an optimizing technique where structural location of registers is manually moved without affecting the functionality of the circuit in order to improve its performance. This is done either by removing a register from each input to a block and adding a register to each output, or by adding registers to the inputs and removing registers from the outputs.
+In our case the motivation for retiming was to create slack on a non-critical path, and to have the synthesizer substitute HS cells with LL cells on this path thus lowering the overall power dissipation in the whole circuit. According to the lecture slides the circuit we were studying should gain approximately 30\% power savings from this kind of retiming.
 
 \subsection{Simple Design for Division}
 %explain briefly the circuit for division. mention about the critical path in the circuit.
@@ -102,13 +103,13 @@ The Sel. function -block implements the quotient digit selection function. The s
 
 The MUX block selects the input for the divisor multiplication between the dividend, which is used only in the initialization phase of the division algorithm, and the result of the substraction of the quotient digit/divisor multiplication result from the dividend. The substraction result is stored in register Ws.
 
-The Multiple gen. -block implements the divisor multiplication ie. it multiplies the divisor d with the 4-bit quotient digit.
+The Multiple gen. -block implements the divisor multiplication ie. it multiplies the divisor d with the 4-bit quotient digit. This block is basically a multiplexer.
 
 The Carry Save Adder -block implements the substraction of the result of the divisor multiplication from the dividend. The substraction is done with a carry-save adder as the name of the block suggests.
 
 The registers Ws and Wc store the carry and the sum from the carry-save adder respectively.
 
-The critical path of this circuit is marked with red arrows in the figure.
+The critical path of this circuit is marked with red arrows in the figure 1.
 
 \subsection{Design for Division using Retiming}
 %explain in detail the circuit for division using retiming. we should argue what is expected from this, and how we should be able to save power in this.
@@ -121,6 +122,9 @@ The retimed design is presented in figure 2.
 	\label{fig:retiming}
 \end{figure}
 
+Since only the most significant bits of sum and carry are used in the quotient digit selection it makes sense to separate the most significant bits from the least significant bits to separate structural slices. This is done in the VHDL code by disconnecting the quotient digit selection block from the W registers thus \textit{removing registers from the inputs} and adding new registers to the output of the block. This frees the W registers from the most significant slice. By also separating the implementation of the most significant bits of the adder and the multiplie generation from the implementation for the less significant bits more of the design is freed from the critical path.
+
+These changes do not affect the functionality of the circuit, but by dividing the implementation to most significant and least significant slices we get two paths. The critical path is marked with red arrows in the figure 2. The delay on the critical path is T(SEL)+T(reg q)+T(mux)+T(CSA). The delay on the non-critical path is at maximum T(reg W)+T(mux)+T(CSA). From this it can be seen that the non critical path has some slack which the synthesizer should be able to use to optimize the least significant slice for power, namely by replacing HS cells with LL cells.
 
 
 \subsection{Authors by Section}
@@ -137,7 +141,10 @@ The retimed design is presented in figure 2.
 \section{Power Report and Cell Count}
 \label{section:power}
 % put the reports from the power analysis of both the designs here. also, give a short recap kind of a table here. also, write about the cells here.
+
 \section{Discussion}
 \label{section:discussion}
 %discuss the report at length here. we should clearly justify the results, by explaining why the SVT cells count has reduced and HVT has increased, and why the cell internal power has reduced. ofcourse this was expected, but nice explanation is needed here. 
+\section{Appendix A: The power reports}
+\label{section:reports}
 \end{document}
