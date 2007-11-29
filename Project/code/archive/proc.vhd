@@ -41,7 +41,7 @@ architecture SCHEMATIC of Processor is
 
 
 
-   component  csa32LSBs 
+   component  ADDER 
         Port (  A : In std_logic_vector (7 downto 0);
                 B : In std_logic_vector (7 downto 0);
                 C : In std_logic_vector (7 downto 0);
@@ -63,7 +63,7 @@ architecture SCHEMATIC of Processor is
    end component;
 
 
-   component MULT
+   component Multiplier
       Port (       A : In    std_logic_vector (7 downto 0);
 			 B : In    std_logic_vector (7 downto 0);
                    Z : Out   std_logic_vector (7 downto 0) );
@@ -99,36 +99,36 @@ GND <= '0';
  --A is the pixel value of the image and B is the filter value.
 
 
- Mult1: MULT 
+ Mult1: Multiplier
 	Port Map (A=>Y1(n+7 downto n), B=>M(7 downto 0),Z=>M1 );  
  
- Mult2: MULT 
+ Mult2: Multiplier
 	Port Map (A=>Y2(n+7 downto n), B=>M(31 downto 24),Z=>M2 );
  
- Mult3: MULT 
+ Mult3: Multiplier
 	Port Map (A=>Y3(n+7 downto n), B=>M(55 downto 48),Z=>M3 );
 
 	n=>n+8;
 
 
- Mult4: MULT 
+ Mult4: Multiplier
 	Port Map (A=>Y1(n+7 downto n), B=>M(15 downto 8),Z=>M4 );
 
- Mult5: MULT 
+ Mult5: Multiplier
 	Port Map (A=>Y2(n+7 downto n), B=>M(39 downto 32),Z=>M5 );
 
- Mult6: MULT 
+ Mult6: Multiplier
 	Port Map (A=>Y3(n+7 downto n), B=>M(63 downto 56),Z=>M6 );
 
 	n=>n+8;
 
- Mult7: MULT 
+ Mult7: Multiplier
 	Port Map (A=>Y1(n+7 downto n), B=>M(23 downto 16),Z=>M7 );
 
- Mult8: MULT 
+ Mult8: Multiplier
 	Port Map (A=>Y2(n+7 downto n), B=>M(47 downto 40),Z=>M8 );
 
- Mult9: MULT 
+ Mult9: Multiplier
 	Port Map (A=>Y3(n+7 downto n), B=>M(71 downto 64),Z=>M9 );
 
 	n=>n+8;
@@ -136,13 +136,13 @@ GND <= '0';
    --The adders, adding the previous values multiplieds
 
 
- Add1: csa32LSBs 
+ Add1: ADDER 
 	Port Map (A=>M1,B=>M2,C=>M3,Z=>A1);
  
- Add2: csa32LSBs 
+ Add2: ADDER 
 	Port Map (A=>M4,B=>M5,C=>M6,Z=>A2);
 
- Add3: csa32LSBs 
+ Add3: ADDER 
 	Port Map (A=>M7,B=>M8,C=>M9,Z=>A3);
 
 
@@ -150,13 +150,13 @@ GND <= '0';
   --maybe we have to add a signal to enable it on vertical.
 
 
- Add_update1: csa32LSBs 
+ Add_update1: ADDER 
 	Port Map (A=>A1,B=>image_pos_out,C=>0,Z=>E1);
 
- Add_update2: csa32LSBs 
+ Add_update2: ADDER  
 	Port Map (A=>A2,B=>image_pos_out,C=>0,Z=>E2);
 
- Add_update3: csa32LSBs 
+ Add_update3: ADDER  
 	Port Map (A=>A3,B=>image_pos_out,C=>0,Z=>E3);
 
 
@@ -182,11 +182,11 @@ configuration CFG_proc_SCHEMATIC of divr4_rec is
       end for;
 
       for Add1, Add2, Add3, Add_update1, Add_update2, Add_Update3: csa32LSBs
-         use configuration WORK.CFG_csa32LSBs_BEHAVIORAL;
+         use configuration WORK.CFG_ADDER_BEHAVIORAL;
       end for;
 
       for Mult1, Mult2, Mult3, Mult4, Mult5, Mult6, Mult7,Mult8,  Mult9, : MULT
-         use configuration WORK.CFG_MULT_BEHAVIORAL;
+         use configuration WORK.CFG_Multiplier_BEHAVIORAL;
       end for;
 
    end for;
