@@ -14,14 +14,15 @@ end FSM_in_3;
 
 architecture BEH_FSM_in_3 of FSM_in_3 is
     
-    type state_type is (S0, S1, S2, S3, S4);
+    type state_type is (init, h_read_1, h_read_2, h_read_3, h_wait,
+     v_read_1, v_read_2, v_read_3, v_wait, exit_in);
     signal next_state, current_state: state_type;
 
 begin    
 state_reg: process(clock, reset) 
 begin
 	          if (reset='1') then
-                current_state <= S0;             
+                current_state <= init;             
 	          elsif (clock'event and clock='1') then
 	             current_state <= next_state;
 	          end if;
@@ -29,64 +30,109 @@ end process;
 
 comb_logic: process(current_state) 
 
-    variable addr: INTEGER;
-    variable x, y: INTEGER;
+    variable addr_h: INTEGER;
+    variable addr_v: INTEGER;
+    variable x: INTEGER;
+    variable y: INTEGER;
+    variable temp_address: INTEGER;
 
 begin
 
 		case current_state is
 
-       when S0 =>
+       when init =>
            
            x := 1;
-           can_read <= '0';
-
-           addr := 0;
-           next_state <= S1;
+           y := 1;
            
+           next_state <= h_read_1;
+           can_read <= '0';
            address <= (others => '0');
            
-	    when S1 =>	
+	    when h_read_1 =>	
 
-         can_read <= '1';
-	      addr := x;
-         next_state <= S2;
-         
-         address <= conv_std_logic_vector(addr,16);
-     
-	    when S2 =>	
-	      
-         can_read <= '1';
-  	      next_state <= S3;
-         addr := addr + 256;
-         
-         
-         address <= conv_std_logic_vector(addr,16);
-         
-	    when S3 =>	
-  	      
-         next_state <= S4;
-         can_read <= '1';
-         
-         addr := addr + 256;
-         
-         
-         address <= conv_std_logic_vector(addr,16);
-         
-	    when S4 =>	
+            next_state <= h_read_2;
+            can_read <= '1';
+	         addr_h := x;
+            address <= conv_std_logic_vector(addr_h,16);
+	    
+	    when h_read_2 =>	
 
-	      next_state <= S1;
-         can_read <= '0';
-         addr := addr;
-         
-         x := x + 1;
-         address <= (others => '0');
-                  
-                           
+	         next_state <= h_read_3;
+            can_read <= '1';
+	         addr_h := addr_h + 256;
+            address <= conv_std_logic_vector(addr_h,16);
+
+	    when h_read_3 =>	
+	    
+	         next_state <= h_wait;
+            can_read <= '1';
+	         addr_h := addr_h + 256;
+            address <= conv_std_logic_vector(addr_h,16);
+
+	    when h_wait =>	
+   
+            x := x + 1;
+            
+            if(x > 65024) then
+                x := 1;
+                next_state <= v_read_1;
+            else
+                next_state <= h_read_1;
+            end if;
+    
+            
+            can_read <= '0';
+            address <= (others => '0');
+
+	    when v_read_1 =>	
+
+            next_state <= v_read_2;
+            can_read <= '1';
+	         addr_v := x;
+            address <= conv_std_logic_vector(addr_v,16);
+	    
+	    when v_read_2 =>	
+
+	         next_state <= v_read_3;
+            can_read <= '1';
+	         addr_v := addr_v + 1;
+            address <= conv_std_logic_vector(addr_v,16);
+
+	    when v_read_3 =>	
+	    
+	         next_state <= v_wait;
+            can_read <= '1';
+	         addr_v := addr_v + 1;
+            address <= conv_std_logic_vector(addr_v,16);
+
+	    when v_wait =>	
+   
+            x := x + 256;
+            
+            if(x > 65536) then
+                  y := y + 1;
+                  x := y;
+            end if;
+            
+            if(y = 255) then
+                  next_state <= exit_in;
+            else 
+                  next_state <= v_read_1;
+            end if;
+            can_read <= '0';
+            address <= (others => '0');
+
+       when exit_in =>
+           
+            can_read <= '0';
+            address <= (others => '0');
+            next_state <= exit_in;
+           
 	    when others =>
-			next_state <= S0;
-         can_read <= '0';
-         address <= (others => '0');
+         			next_state <= init;
+            can_read <= '0';
+            address <= (others => '0');
          
 	end case;
 
