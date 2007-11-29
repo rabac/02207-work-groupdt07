@@ -31,9 +31,9 @@ begin
     process
     begin
 	   T_clock <= '1';			
-	   wait for 5 ns;
+	   wait for 1 ns;
 	   T_clock <= '0';
-	   wait for 5 ns;
+	   wait for 1 ns;
     end process;
 	
     process		
@@ -41,18 +41,15 @@ begin
     begin
 	
 	   T_reset <= '1';
-	   wait for 20 ns;		
+	   wait for 2 ns;		
       -- can put assert statements to assure something holds
       T_reset <= '0';
-      counter := 0;
+      T_addr <= conv_integer(T_address);
       loop
+wait for 2 ns;
          T_addr <= conv_integer(T_address);
-         wait for 10 ns;
          
-         -- counter := counter + 1;
-         -- if(counter = 65536) then
-         --        exit;
-         -- end if;
+
       end loop;		
    end process;	 
 	

@@ -10,45 +10,42 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.std_logic_arith.all;
-use ieee.numeric_std.all;
 use ieee.std_logic_unsigned.all;
 
-
-entity Multiplier is
-port(	A, B:	in std_logic_vector(7 downto 0);
-	Z: 	out std_logic_vector(7 downto 0)
+-- two 4-bit inputs and one 8-bit outputs
+entity multiplier is
+port(	num1, num2:	in std_logic_vector(7 downto 0);
+	product: 	out std_logic_vector(15 downto 0)
 );
-end Multiplier;
+end multiplier;
 
-architecture BEHAVIORAL of Multiplier is
-      signal product_reg: integer;
-      signal product: std_logic_vector(17 downto 0);
-      signal A_int: NATURAL;
-      signal B_int: NATURAL;
-begin
-process(A, B)
-
+architecture behv of multiplier is
 
 begin
+process(num1, num2)
+	
+  variable num1_reg: std_logic_vector(8 downto 0);
+  variable product_reg: std_logic_vector(17 downto 0);
+	
+begin	 
+	
+  num1_reg := '0' & num1;
+  product_reg := "0000000000" & num2;
 
-  A_int<= conv_integer(A);
-  B_int<= conv_integer(B);
-  product_reg<=A_int*B_int;
-
+  -- use variables doing computation
+  -- algorithm is to repeat shifting/adding
+  for i in 1 to 15 loop
+    if product_reg(0)='1' then
+	  product_reg(5 downto 3) := product_reg(5 downto 3) 
+	  + num1_reg(2 downto 0);
+	end if;
+	product_reg(5 downto 0) := '0' & product_reg(5 downto 1);
+  end loop;
   
-   product<=conv_std_logic_vector(product_reg,18);
-   Z<=product(7  downto 0);
-
-  if (product_reg>=256) then
-	Z<="11111111";
-
-  end if;
+  -- assign the result of computation back to output signal
+  product <= product_reg(3 downto 0);
+  
 
 end process;
 
-end BEHAVIORAL;
-
-configuration CFG_Multiplier_BEHAVIORAL of Multiplier is
-	 for BEHAVIORAL
-	 end for;
-end CFG_Multiplier_BEHAVIORAL;
+end behv;
