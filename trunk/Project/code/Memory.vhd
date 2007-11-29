@@ -1,4 +1,5 @@
 -- a simple 256*256 pixel (256*256*8 bits) Memory module
+-- arranged in a linear fashion.
 
 library ieee;
 use ieee.std_logic_1164.all;

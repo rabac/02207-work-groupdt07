@@ -20,22 +20,11 @@ architecture BEH_FSM_in_3 of FSM_in_3 is
 begin    
 state_reg: process(clock, reset) 
 begin
-
 	          if (reset='1') then
-                
-                address <= (others => '0');
-                can_read <= '0';
-                current_state <= S0;
-                
+                current_state <= S0;             
 	          elsif (clock'event and clock='1') then
-	             
-	             can_read <= '0';
-	             address <= (others => '0');
 	             current_state <= next_state;
-	             
-	          
 	          end if;
-
 end process;	
 
 comb_logic: process(current_state) 
@@ -57,9 +46,6 @@ begin
            address <= (others => '0');
            
 	    when S1 =>	
-	      
-	      x := x;
-	      y := y;
 
 	      if(y = 255) then
 	         x := x + 1;
@@ -69,16 +55,16 @@ begin
 	      can_read <= '1';
 	      addr := (x*256) + y;
          next_state <= S2;
-         
+         address <= (others => '0');
          address <= conv_std_logic_vector(addr,16);
      
 	    when S2 =>	
 	      
-	      x := x;
-	      y := y;
          can_read <= '1';
   	      next_state <= S3;
          addr := addr + 256;
+         
+         address <= (others => '0');
          address <= conv_std_logic_vector(addr,16);
          
 	    when S3 =>	
@@ -90,6 +76,8 @@ begin
          can_read <= '1';
          
          addr := addr + 256;
+         
+         address <= (others => '0');
          address <= conv_std_logic_vector(addr,16);
          
 	    when S4 =>	
