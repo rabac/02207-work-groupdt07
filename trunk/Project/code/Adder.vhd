@@ -16,13 +16,14 @@ end ADDER;
 
 
 architecture BEHAVIORAL of ADDER is
-
+signal Cout : std_logic;
+signal Y : std_logic_vector (7 downto 0) ;
  begin
 process(A, B, C)
 	variable p : std_logic_vector (7 downto 0) ;
 	variable g : std_logic_vector (7 downto 0) ;
-	variable Y : std_logic_vector (7 downto 0) ;
-	variable Cout : std_logic;
+	
+	
 	variable i : integer;
 begin
 
@@ -32,11 +33,11 @@ for i in 0 to 7 loop
 end loop;
 
 -- CARRY -----------------------------------
-Y(0) <= 0;
+Y(0) <= '0';
 for i in 0 to 6 loop
 	Y(i+1) <= g(i) OR (c(i) AND p(i));
 end loop;
-Cout <= g(n) OR (c(n) AND p(n));
+Cout <= g(7) OR (c(7) AND p(7));
 
 
 
@@ -47,7 +48,7 @@ end loop;
 
 if (Cout='1') then
 	
-	Sum(7 downto 0)<='11111111';
+	Sum(7 downto 0)<="11111111";
 end if;
 
 
