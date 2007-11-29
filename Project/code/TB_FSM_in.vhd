@@ -1,7 +1,8 @@
-library	ieee;
-use ieee.std_logic_arith.all;  
-use ieee.std_logic_unsigned.all;
+library IEEE;
 use ieee.std_logic_1164.all;
+use ieee.std_logic_arith.all;
+use IEEE.numeric_std.all;
+use ieee.std_logic_unsigned.all;
 
 entity fsm_in_tb is	
 end fsm_in_tb;
@@ -12,6 +13,7 @@ signal T_clock: std_logic;
 signal T_reset:	std_logic;  
 signal T_can_read: std_logic;
 signal T_address: std_logic_vector(15 downto 0);
+signal t_addr: NATURAL;
 
 component FSM_in_3 is
 port (
@@ -35,8 +37,8 @@ begin
     end process;
 	
     process		
-       variable counter: integer;	   
-	 begin
+       variable counter: integer;	
+    begin
 	
 	   T_reset <= '1';
 	   wait for 20 ns;		
@@ -44,11 +46,13 @@ begin
       T_reset <= '0';
       counter := 0;
       loop
+         T_addr <= conv_integer(T_address);
          wait for 10 ns;
-         counter := counter + 1;
-         if(counter = 32) then
-                exit;
-         end if;
+         
+         -- counter := counter + 1;
+         -- if(counter = 65536) then
+         --        exit;
+         -- end if;
       end loop;		
    end process;	 
 	
