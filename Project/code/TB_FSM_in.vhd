@@ -44,11 +44,11 @@ begin
 	   wait for 2 ns;		
       -- can put assert statements to assure something holds
       T_reset <= '0';
-      T_addr <= conv_integer(T_address);
+      
       loop
-wait for 2 ns;
+
          T_addr <= conv_integer(T_address);
-         
+         wait for 2 ns;
 
       end loop;		
    end process;	 
