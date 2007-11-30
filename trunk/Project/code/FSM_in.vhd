@@ -14,8 +14,8 @@ end FSM_in_3;
 
 architecture BEH_FSM_in_3 of FSM_in_3 is
     
-    type state_type is (init, h_read_1, h_read_2, h_read_3, h_wait,
-     v_read_1, v_read_2, v_read_3, v_wait, exit_in);
+    type state_type is (init, h_read_1, h_read_2, h_read_3, h_wait, h_temp,
+     v_read_1, v_read_2, v_read_3, v_wait, v_temp, exit_in);
     signal next_state, current_state: state_type;
 
 begin    
@@ -35,6 +35,7 @@ comb_logic: process(current_state)
     variable x: INTEGER;
     variable y: INTEGER;
     variable temp_address: INTEGER;
+    variable counter: INTEGER;
 
 begin
 
@@ -44,6 +45,7 @@ begin
            
            x := 1;
            y := 1;
+           counter := 1;
            
            next_state <= h_read_1;
            can_read <= '0';
@@ -68,23 +70,38 @@ begin
 	         next_state <= h_wait;
             can_read <= '1';
 	         addr_h := addr_h + 256;
+	         x := x + 1;
             address <= conv_std_logic_vector(addr_h,16);
 
 	    when h_wait =>	
    
-            x := x + 1;
-            
-            if(x > 65024) then
-                x := 1;
-                next_state <= v_read_1;
-            else
-                next_state <= h_read_1;
-            end if;
-    
+            counter := counter + 1;
+            next_state <= h_temp;
             
             can_read <= '0';
             address <= (others => '0');
 
+       when h_temp =>
+           
+            counter := counter + 1;
+            if(counter > 6) then
+               
+               counter := 1;
+               if(x > 65024) then
+                   x := 1;
+                   next_state <= v_read_1;
+               else
+                   next_state <= h_read_1;
+               end if;
+
+            else
+               next_state <= h_wait;
+            end if;
+   
+            can_read <= '0';
+            address <= (others => '0');
+            
+           
 	    when v_read_1 =>	
 
             next_state <= v_read_2;
@@ -104,22 +121,37 @@ begin
 	         next_state <= v_wait;
             can_read <= '1';
 	         addr_v := addr_v + 1;
+	         x := x + 256;
             address <= conv_std_logic_vector(addr_v,16);
 
-	    when v_wait =>	
-   
-            x := x + 256;
+       when v_wait =>
             
-            if(x > 65536) then
-                  y := y + 1;
-                  x := y;
+            counter := counter + 1;
+            next_state <= v_temp;
+            
+            can_read <= '0';
+            address <= (others => '0');
+           
+	    when v_temp =>	
+
+            counter := counter + 1;
+            if(counter > 6) then
+               
+               counter := 1;
+               if(x > 65536) then
+                     y := y + 1;
+                     x := y;
+               end if;
+            
+               if(y = 255) then
+                     next_state <= exit_in;
+               else 
+                     next_state <= v_read_1;
+               end if;
+            else
+               next_state <= v_wait;
             end if;
             
-            if(y = 255) then
-                  next_state <= exit_in;
-            else 
-                  next_state <= v_read_1;
-            end if;
             can_read <= '0';
             address <= (others => '0');
 
