@@ -6,6 +6,7 @@ library IEEE;
 entity Processor3x3 is
       Port (   CLOCK : In    std_logic;
                    D : In    std_logic_vector (7 downto 0);
+                   
                RESET : In    std_logic;
                   Qj : Out   std_logic_vector (7 downto 0) );
 end Processor;
@@ -81,29 +82,8 @@ architecture SCHEMATIC of Processor3x3 is
 		             num2 : In    std_logic_vector (7 downto 0);
                    product : Out   std_logic_vector (7 downto 0) );
    end component;
-   component chargue is 
-	   port(
-			   clock: In std_logic;
-			   reset: In std_logic;
-			   loa: In std_logic
-			   QF: Out std_logic_vector(71 downto 0)
-	   
-			   );
-			   
-	   end component;
+
    
-   component Memory
-       Port (	
-               Clock:		in std_logic;	
-	            Enable:		in std_logic;
-	            Read:		in std_logic;
-	            Write:		in std_logic;
-	            Read_Addr:	in std_logic_vector(15 downto 0);
-	            Write_Addr: 	in std_logic_vector(15 downto 0); 
-	            Data_in: 	in std_logic_vector(7 downto 0);
-	            Data_out: 	out std_logic_vector(7 downto 0)
-            );
-    end component;
     
     component FSM_in_3
         port (
@@ -131,13 +111,9 @@ begin
 GND <= '0';
 
  
-	
-	
-	
- CHAR: chargue
-    Port Map (clock=>CLOCK,reset=>RESET,loa=>en_cha,QF=>Y(71 downto 0));
-
-
+ FSM_INIC1: FSM_in_3
+    Port Map(clock=>CLOCK,reset=>RESET, address=>AD(15 downto 0), can_read=>re);
+ 
 
 
  Reg_MASK1: REG

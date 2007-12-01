@@ -25,9 +25,9 @@ architecture BEHAVIORAL of SHIFTREG is
           end loop;
        elsif ((CLOCK = '1') AND (CLOCK'EVENT)) then
 		for i in 71 downto 8 loop
-		    q(i) <= q(i-8);
+		    q(i-8) <= q(i);
 		end loop;
-	        q(7 downto 0) <= qk;
+	        q(71 downto 64) <= qk;
        end if;
 
     end process;
