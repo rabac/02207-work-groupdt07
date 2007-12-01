@@ -11,21 +11,21 @@ architecture A of E is
 
    signal    CLOCK : std_logic;
    signal    RESET : std_logic;
-   signal    ENABLE : std_logic;
+   signal    disable : std_logic;
    signal       QK : std_logic_vector (7 downto 0);
    signal        Q : std_logic_vector (71 downto 0);
 
    component SHIFTREG
       Port (   CLOCK : In    std_logic;
                RESET : In    std_logic;
-              ENABLE : In    std_logic;
+              disable : In    std_logic;
                   QK : In    std_logic_vector (7 downto 0);
                    Q : InOut   std_logic_vector (71 downto 0) );
    end component;
 
 begin
    UUT : SHIFTREG
-      Port Map ( CLOCK, RESET, ENABLE, QK, Q );
+      Port Map ( CLOCK, RESET, disable, QK, Q );
 
    TB : block
    begin
@@ -38,6 +38,7 @@ begin
 	variable S: std_logic_vector(55 downto 0);
 	variable Z: std_logic_vector(71 downto 0);
 	variable ERR: std_logic_vector(55 downto 0);
+	variable d : integer;
 	variable c : integer;
 	-- constant TEST_PASSED: string := "Test passed:";
 	-- constant TEST_FAILED: string := "Test FAILED:";
@@ -46,12 +47,13 @@ begin
 
 
   c := 1;
+  d := 1;
   FILE_OPEN(cmdfile,"testvecs.in",READ_MODE);
   
   reset <= '0';
   clock <= '1'; wait for 5 ns;
   reset <= '1';
-  ENABLE <= '1';
+  disable <= '0';
   clock <= '0'; wait for 5 ns;
 
 -- -------------------------------------------------------------------------
@@ -90,6 +92,13 @@ begin
     writeline(OUTPUT,line_out);     -- write the message
     --assert (Z = S) report "Z does not match in pattern " severity error;
     c := c + 1;
+    d := d + 1;
+    if (d=25) then
+           disable <= '1';
+    end if;
+    if (d=45) then
+        disable <= '0';
+    end if;
   end loop;
 -- -------------------------------------------------------------------------
  
