@@ -12,7 +12,7 @@ port (
 );
 end FSM_in_3;
 
-architecture BEH_FSM_in_3 of FSM_in_3 is
+architecture BEHAVIORAL of FSM_in_3 is
     
     type state_type is (init, h_read_1, h_read_2, h_read_3, h_wait, h_temp,
      v_read_1, v_read_2, v_read_3, v_wait, v_temp, exit_in);
@@ -170,4 +170,9 @@ begin
 
 end process;   
   
-end architecture BEH_FSM_in_3;
+end BEHAVIORAL;
+
+configuration CFG_FSM_in_3_BEHAVIORAL of FSM_in_3 is
+	 for BEHAVIORAL
+	 end for;
+end CFG_FSM_in_3_BEHAVIORAL;

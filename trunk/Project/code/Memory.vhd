@@ -25,7 +25,7 @@ end MEMORY;
 
 --------------------------------------------------------------
 
-architecture BEH_MEMORY of MEMORY is
+architecture BEHAVIORAL of MEMORY is
 
 type memory_type is array (0 to depth-1) of std_logic_vector(width-1 downto 0);
 signal tmp_memory: memory_type;
@@ -61,4 +61,9 @@ begin
 	end if;
    end process;
 
-end BEH_MEMORY;
+end BEHAVIORAL;
+
+configuration CFG_MEMORY_BEHAVIORAL of MEMORY is
+	 for BEHAVIORAL
+	 end for;
+end CFG_MEMORY_BEHAVIORAL;
