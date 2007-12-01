@@ -81,6 +81,16 @@ architecture SCHEMATIC of Processor3x3 is
 		             num2 : In    std_logic_vector (7 downto 0);
                    product : Out   std_logic_vector (7 downto 0) );
    end component;
+   component chargue is 
+	   port(
+			   clock: In std_logic;
+			   reset: In std_logic;
+			   loa: In std_logic
+			   QF: Out std_logic_vector(71 downto 0)
+	   
+			   );
+			   
+	   end component;
    
    component Memory
        Port (	
@@ -123,45 +133,10 @@ GND <= '0';
  
 	
 	
- FSM_INIC: FSM_in_3
-    Port Map(clock=>CLOCK,reset=>RESET, adress=>AD(15 downto 0, can_read=>re);
- Mem_load: Memory
-    Port Map (clock=>CLOCK, enable=>en,read=>r,write=>w,
-    Read_addr=>AD, Writte_Add=>WA,Data_in=>,Data_out=>D1)
- Reg_IN1: REG
-	Port Map(D=>D1, Reset=>RESET,Clock=>CLOCK, Q=>Y(7 downto 0));
-
 	
-	
-	
-	--Y1 the first row
+ CHAR: chargue
+    Port Map (clock=>CLOCK,reset=>RESET,loa=>en_cha,QF=>Y(71 downto 0));
 
- Reg_IN2: REG
-	Port Map(D=>, Reset=>RESET,Clock=>CLOCK, Q=>Y(15 downto 8));
-
-	--Y2 the second row
-
- Reg_IN3: REG
-	Port Map(D=>, Reset=>RESET,Clock=>CLOCK, Q=>Y(23 downto 16));
-
-	--Y3 the third row
- Reg_IN4: REG
-	Port Map(D=>, Reset=>RESET,Clock=>CLOCK, Q=>Y(31 downto 24));
-
- Reg_IN5: REG
-	Port Map(D=>, Reset=>RESET,Clock=>CLOCK, Q=>Y(39 downto 32));
-
- Reg_IN6: REG
-	Port Map(D=>, Reset=>RESET,Clock=>CLOCK, Q=>Y(47 downto 40));
-
- Reg_IN7: REG
-	Port Map(D=>, Reset=>RESET,Clock=>CLOCK, Q=>Y(55 downto 48));
-
- Reg_IN8: REG
-	Port Map(D=>, Reset=>RESET,Clock=>CLOCK, Q=>Y(63 downto 56));
-
- Reg_IN9: REG
-	Port Map(D=>, Reset=>RESET,Clock=>CLOCK, Q=>Y(71 downto 64));
 
 
 
@@ -264,11 +239,11 @@ GND <= '0';
 
 end SCHEMATIC;
 
-configuration CFG_Processor3x3_SCHEMATIC of divr4_rec is
+configuration CFG_Processor3x3_SCHEMATIC of Processor3x3 is
 
    for SCHEMATIC
 
-      for Reg_IN1, Reg_IN2, Reg_IN3,Reg_IN4,Reg_IN5,Reg_IN6,Reg_IN7,Reg_IN8,Reg_IN9, Reg_MASK1,Reg_MASK2,Reg_MASK3,Reg_MASK4,Reg_MASK5,Reg_MASK6,Reg_MASK7,Reg_MASK8,Reg_MASK9, : REG
+      for Reg_MASK1,Reg_MASK2,Reg_MASK3,Reg_MASK4,Reg_MASK5,Reg_MASK6,Reg_MASK7,Reg_MASK8,Reg_MASK9, : REG
          use configuration WORK.CFG_REG_BEHAVIORAL;
       end for;
 
