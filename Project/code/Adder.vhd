@@ -6,24 +6,22 @@ use ieee.std_logic_arith.all;
 use ieee.std_logic_unsigned.all;
 
 entity ADDER is
-port(	
-A:	in std_logic_vector(7 downto 0);
-B:	in std_logic_vector(7 downto 0);
-C:	in std_logic_vector(7 downto 0);
-Sum:	out std_logic_vector(7 downto 0)
-);
+port(		A : In std_logic_vector (7 downto 0);
+		B : In std_logic_vector (7 downto 0);
+		C : In std_logic_vector (7 downto 0);
+		Cin : In std_logic;
+		Cout : Out std_logic;
+		Z : Out std_logic_vector (7 downto 0);
+		Y : Out std_logic_vector (7 downto 0) );
 end ADDER;
 
 
 architecture BEHAVIORAL of ADDER is
-signal Cout : std_logic;
-signal Y : std_logic_vector (7 downto 0) ;
+
  begin
-process(A, B, C)
+process(A, B, C, Cin)
 	variable p : std_logic_vector (7 downto 0) ;
 	variable g : std_logic_vector (7 downto 0) ;
-	
-	
 	variable i : integer;
 begin
 
@@ -33,24 +31,17 @@ for i in 0 to 7 loop
 end loop;
 
 -- CARRY -----------------------------------
-Y(0) <= '0';
-for i in 0 to 6 loop
+Y(0) <= Cin;
+for i in 0 to 7-1 loop
 	Y(i+1) <= g(i) OR (c(i) AND p(i));
 end loop;
 Cout <= g(7) OR (c(7) AND p(7));
 
 
-
 -- SUM -------------------------------------
 for i in 0 to 7 loop
-	Sum(i) <= p(i) XOR c(i);
+	Z(i) <= p(i) XOR c(i);
 end loop;
-
-if (Cout='1') then
-	
-	Sum(7 downto 0)<="11111111";
-end if;
-
 
 end process;
 end BEHAVIORAL;

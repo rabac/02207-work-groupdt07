@@ -14,7 +14,15 @@ architecture SCHEMATIC of Processor3x3 is
 
    signal       Y : std_logic_vector(71 downto 0);
    signal       F : std_logic_vector(71 downto 0);
+   signal       D1 : std_logic_vector(7 downto 0);
+   signal       D2 : std_logic_vector(7 downto 0);
    signal       D3 : std_logic_vector(7 downto 0);
+   signal       D4 : std_logic_vector(7 downto 0);
+   signal       D5 : std_logic_vector(7 downto 0);
+   signal       D6 : std_logic_vector(7 downto 0);
+   signal       D7 : std_logic_vector(7 downto 0);
+   signal       D8 : std_logic_vector(7 downto 0);
+   signal       D9 : std_logic_vector(7 downto 0);
    signal       M1 : std_logic_vector(7 downto 0);
    signal       M2 : std_logic_vector(7 downto 0);
    signal       M3 : std_logic_vector(7 downto 0);
@@ -30,8 +38,16 @@ architecture SCHEMATIC of Processor3x3 is
    signal       E1 : std_logic_vector(7 downto 0);
    signal       E2 : std_logic_vector(7 downto 0);
    signal       E3 : std_logic_vector(7 downto 0);
+   signal       AD : std_logic_vector(15 downto 0);
+   signal       WA : std_logic_vector(15 downto 0);
    signal     CLR : std_logic;
+   signal     en: std_logic;
+   signal     r : std_logic;
+   signal     re : std_logic;
+   signal     w : std_logic;
    signal     LOAD : std_logic;
+   signal     RESET : std_logic;
+   signal     CLOCK : std_logic;
    signal     SIGN : std_logic;
    signal     GND : std_logic;
    variable     n : integer;-- it has to be iniciate to 0.
@@ -40,10 +56,13 @@ architecture SCHEMATIC of Processor3x3 is
 
 
    component  ADDER 
-        Port (  A : In std_logic_vector (7 downto 0);
-                B : In std_logic_vector (7 downto 0);
-                C : In std_logic_vector (7 downto 0);
-                Sum : Out std_logic_vector (7 downto 0)
+        Port (    A : In std_logic_vector (7 downto 0);
+		            B : In std_logic_vector (7 downto 0);
+		            C : In std_logic_vector (7 downto 0);
+		            Cin : In std_logic;
+		            Cout : Out std_logic;
+		            Z : Out std_logic_vector (7 downto 0);
+		            Y : Out std_logic_vector (7 downto 0) 
                  );
    end component;
 
@@ -58,21 +77,63 @@ architecture SCHEMATIC of Processor3x3 is
 
 
    component Multiplier
-      Port (       A : In    std_logic_vector (7 downto 0);
-		   B : In    std_logic_vector (7 downto 0);
-                   Z : Out   std_logic_vector (7 downto 0) );
+      Port (       num1 : In    std_logic_vector (7 downto 0);
+		             num2 : In    std_logic_vector (7 downto 0);
+                   product : Out   std_logic_vector (7 downto 0) );
    end component;
+   
+   component Memory
+       Port (	
+               Clock:		in std_logic;	
+	            Enable:		in std_logic;
+	            Read:		in std_logic;
+	            Write:		in std_logic;
+	            Read_Addr:	in std_logic_vector(15 downto 0);
+	            Write_Addr: 	in std_logic_vector(15 downto 0); 
+	            Data_in: 	in std_logic_vector(7 downto 0);
+	            Data_out: 	out std_logic_vector(7 downto 0)
+            );
+    end component;
+    
+    component FSM_in_3
+        port (
+               clock:		in std_logic;
+	            reset:		in std_logic;
+	            address:		out std_logic_vector(15 downto 0);
+	            can_read:   out std_logic
+              );
+    end component;
+    
+    component FSM_out_3
+        port (
+               clock:		in std_logic;
+	            reset:		in std_logic;
+	            read_address:		out std_logic_vector(15 downto 0);
+	            write_address:		out std_logic_vector(15 downto 0);
+	            can_read:   out std_logic;
+	            can_write:  out std_logic;
+	            sel: out std_logic_vector(1 downto 0)
+              );
+    end component;
 
 begin
 
 GND <= '0';
 
  
-	--The three rows of the image are stored on the registers
-
+	
+	
+ FSM_INIC: FSM_in_3
+    Port Map(clock=>CLOCK,reset=>RESET, adress=>AD(15 downto 0, can_read=>re);
+ Mem_load: Memory
+    Port Map (clock=>CLOCK, enable=>en,read=>r,write=>w,
+    Read_addr=>AD, Writte_Add=>WA,Data_in=>,Data_out=>D1)
  Reg_IN1: REG
-	Port Map(D=>, Reset=>RESET,Clock=>CLOCK, Q=>Y(7 downto 0));
+	Port Map(D=>D1, Reset=>RESET,Clock=>CLOCK, Q=>Y(7 downto 0));
 
+	
+	
+	
 	--Y1 the first row
 
  Reg_IN2: REG
@@ -137,33 +198,33 @@ GND <= '0';
 
 
  Mult1: Multiplier
-	Port Map (A=>Y(7 downto 0), B=>F(7 downto 0),Z=>M1 );
+	Port Map (num1=>Y(7 downto 0), num2=>F(7 downto 0),product=>M1 );
 
  Mult2: Multiplier
-	Port Map (A=>Y(15 downto 8), B=>F(15 downto 8),Z=>M2 );
+	Port Map (num1=>Y(15 downto 8), num2=>F(15 downto 8),product=>M2 );
 
  Mult3: Multiplier
-	Port Map (A=>Y(23 downto 16), B=>F(23 downto 16),Z=>M3 );
+	Port Map (num1=>Y(23 downto 16), num2=>F(23 downto 16),product=>M3 );
 
 
  Mult4: Multiplier
-	Port Map (A=>Y(31 downto 24), B=>F(31 downto 24),Z=>M4 );
+	Port Map (num1=>Y(31 downto 24), num2=>F(31 downto 24),product=>M4 );
 
  Mult5: Multiplier
-	Port Map (A=>Y(39 downto 32), B=>F(39 downto 32),Z=>M5 );
+	Port Map (num1=>Y(39 downto 32), num2=>F(39 downto 32),product=>M5 );
 
  Mult6: Multiplier
-	Port Map (A=>Y(47 downto 40), B=>F(47 downto 40),Z=>M6 );
+	Port Map (num1=>Y(47 downto 40), num2=>F(47 downto 40),product=>M6 );
 
 
  Mult7: Multiplier
-	Port Map (A=>Y(55 downto 48), B=>F(55 downto 48),Z=>M7 );
+	Port Map (num1=>Y(55 downto 48), num2=>F(55 downto 48),product=>M7 );
 
  Mult8: Multiplier
-	Port Map (A=>Y(63 downto 56), B=>F(63 downto 56),Z=>M8 );
+	Port Map (num1=>Y(63 downto 56), num2=>F(63 downto 56),product=>M8 );
 
  Mult9: Multiplier
-	Port Map (A=>Y(71 downto 64), B=>F(71 downto 64),Z=>M9 );
+	Port Map (num1=>Y(71 downto 64), num2=>F(71 downto 64),product=>M9 );
 
    --The adders, adding the previous values multiplieds
 
