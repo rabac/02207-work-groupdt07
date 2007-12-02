@@ -5,20 +5,31 @@ library IEEE;
 	use IEEE.std_logic_textio.all;
 	use IEEE.std_logic_signed.all;
 
-entity E is
-end E;
+entity TB_Filter is
+end TB_Filter;
 
-architecture A of E is
+architecture A of TB_Filter is
 
-   signal tb_Clock: std_logic;	
-	signal tb_Enable:	std_logic;
-   signal tb_Read:	std_logic;
-	signal tb_Write:	std_logic;
-   signal tb_Read_Addr:	std_logic_vector(15 downto 0);
-	signal tb_Write_Addr: std_logic_vector(15 downto 0); 
-	signal tb_Data_in: std_logic_vector(7 downto 0);
-	signal tb_Data_out: std_logic_vector(7 downto 0);
+   signal Clock: std_logic;	
 
+	signal mem_Enable:	std_logic;
+   signal mem_Read:	std_logic;
+	signal mem_Write:	std_logic;
+   signal mem_Read_Addr:	std_logic_vector(15 downto 0);
+	signal mem_Write_Addr: std_logic_vector(15 downto 0); 
+	signal mem_Data_in: std_logic_vector(7 downto 0);
+	signal mem_Data_out: std_logic_vector(7 downto 0);
+	
+   signal proc_RESET: std_logic;	
+   signal proc_Read:	std_logic;
+	signal proc_Write:	std_logic;
+   signal proc_Read_Addr:	std_logic_vector(15 downto 0);
+	signal proc_Write_Addr: std_logic_vector(15 downto 0); 
+	signal proc_Data_in: std_logic_vector(7 downto 0);
+	signal proc_Data_out: std_logic_vector(7 downto 0);
+   
+	signal proc_filter_disable: std_logic;	
+	signal proc_filter: std_logic_vector(7 downto 0);   
 
 component MEMORY is
 port(	
@@ -50,12 +61,25 @@ end component Processor_3;
 
 
 begin
-   UUT : MEMORY
-      Port Map (tb_CLOCK, tb_Enable, tb_Read, tb_Write, tb_Read_Addr, tb_Write_Addr, tb_Data_In, tb_Data_Out);
+    
+   UUTP : PROCESSOR_3
+      Port Map (CLOCK, proc_RESET, proc_Read, proc_Write, proc_Read_Addr,
+                proc_Write_Addr, proc_Data_In, proc_Data_Out, proc_filter, 
+                proc_filter_disable);
 
-   TB : block
-   begin
-   process
+   UUTM : MEMORY
+      Port Map (CLOCK, mem_Enable, mem_Read, mem_Write, 
+                mem_Read_Addr, mem_Write_Addr, mem_Data_In, mem_Data_Out);
+          
+    clock_signal: 
+    process begin
+	   Clock <= '1';			
+	   wait for 1 ns;
+	   Clock <= '0';
+	   wait for 1 ns;
+    end process;
+
+    process
        
 	   CONSTANT NLOOPS : integer := 15;
 	   file cmdfile: TEXT; 		 -- Define the file 'handle'
@@ -74,10 +98,12 @@ begin
 	   FILE_OPEN(cmdfile,"lena_256x256.hex",READ_MODE);
 	   
 	   c := 1;
-	   tb_Enable <= '1';
-	   tb_Read <= '0';
-	   tb_Data_Out <= (others => '0');
-	   tb_Read_Addr <= (others => '0');
+	   proc_RESET <= '1';
+	   proc_filter_disable <= '1';
+	   mem_Enable <= '1';
+	   mem_Read <= '0';
+	   mem_Data_Out <= (others => '0');
+	   mem_Read_Addr <= (others => '0');
 	   
       loop
       
@@ -95,22 +121,71 @@ begin
          hread(line_in,A,good);         -- Read the D argument as hex value
          assert good report "Text I/O read error" severity ERROR;
 
-         tb_Write <= '1';
-         tb_Write_Addr <= conv_std_logic_vector(c, 16);
-         tb_Data_In <= A(7 downto 0);
-
-         tb_clock <= '1'; wait for 1 ns;
-         tb_clock <= '0'; wait for 1 ns;   
+         mem_Write <= '1';
+         mem_Write_Addr <= conv_std_logic_vector(c, 16);
+         mem_Data_In <= A(7 downto 0);
 
          c := c + 1;
          write(line_out,c);
       end loop;
+      
+      
+      proc_filter_disable <= '0';
+      proc_filter <= (others => '1');
+      
+      wait for 2 ns;
+
+      proc_filter <= (others => '1');
+      
+      wait for 2 ns;
+
+      proc_filter <= (others => '1');
+      
+      wait for 2 ns;
+
+      proc_filter <= (others => '1');
+      
+      wait for 2 ns;
+
+      proc_filter <= (others => '1');
+      
+      wait for 2 ns;
+
+      proc_filter <= (others => '1');
+      
+      wait for 2 ns;
+
+      proc_filter <= (others => '1');
+      
+      wait for 2 ns;
+
+      proc_filter <= (others => '1');
+      
+      wait for 2 ns;
+
+      proc_filter <= (others => '1');
+      
+      wait for 2 ns;
+
+      proc_reset <= '0';
+      
+      loop
+    
+         proc_Data_In <= mem_Data_Out; 
+         proc_Data_Out <= mem_Data_In;
+         proc_Read <= mem_Read;
+         proc_Write <= mem_Write;
+         proc_Read_Addr <= mem_Read_Addr;
+         proc_Write_Addr <= mem_Write_Addr;
+         
+         
+         wait for 2 ns;
+
+      end loop;		
 
     write(line_out, string'("--------- END-------------"));
     writeline(OUTPUT,line_out);
 
  end process;
- end block;
+ 
 end A;
-
-
