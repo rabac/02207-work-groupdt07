@@ -14,19 +14,21 @@ signal T_reset:	std_logic;
 signal T_can_read: std_logic;
 signal T_address: std_logic_vector(15 downto 0);
 signal t_addr: NATURAL;
+signal t_disable_cache: std_logic;
 
 component FSM_in_3 is
 port (
    clock:		in std_logic;
 	reset:		in std_logic;
 	address:		out std_logic_vector(15 downto 0);
-	can_read:   out std_logic
+	can_read:   out std_logic;
+	disable_cache: out std_logic
 );
 end component FSM_in_3;
 
 begin
 	
-    U_fsm: fsm_in_3 port map(T_clock, T_reset, T_address, T_can_read);
+    U_fsm: fsm_in_3 port map(T_clock, T_reset, T_address, T_can_read, T_disable_cache);
 	
     process
     begin

@@ -23,7 +23,7 @@ begin
 state_reg: process(clock, reset) 
 begin
 	          if (reset='1') then
-                current_state <= init;             
+                current_state <= init;
 	          elsif (clock'event and clock='1') then
 	             current_state <= next_state;
 	          end if;
@@ -47,7 +47,7 @@ begin
            x := 1;
            y := 1;
            counter := 1;
-           
+           disable_cache <= '1';
            next_state <= h_read_1;
            can_read <= '0';
            address <= (others => '0');
@@ -58,6 +58,7 @@ begin
             can_read <= '1';
 	         addr_h := x;
             address <= conv_std_logic_vector(addr_h,16);
+            disable_cache <= '0';
 	    
 	    when h_read_2 =>	
 
@@ -65,7 +66,7 @@ begin
             can_read <= '1';
 	         addr_h := addr_h + 256;
             address <= conv_std_logic_vector(addr_h,16);
-
+            
 	    when h_read_3 =>	
 	    
 	         next_state <= h_wait;
@@ -73,12 +74,12 @@ begin
 	         addr_h := addr_h + 256;
 	         x := x + 1;
             address <= conv_std_logic_vector(addr_h,16);
-
+            
 	    when h_wait =>	
    
             counter := counter + 1;
             next_state <= h_temp;
-            
+            disable_cache <= '1';
             can_read <= '0';
             address <= (others => '0');
 
@@ -104,7 +105,8 @@ begin
             
            
 	    when v_read_1 =>	
-
+	        
+            disable_cache <= '0';
             next_state <= v_read_2;
             can_read <= '1';
 	         addr_v := x;
@@ -133,6 +135,8 @@ begin
             can_read <= '0';
             address <= (others => '0');
            
+            disable_cache <= '1';
+            
 	    when v_temp =>	
 
             counter := counter + 1;
@@ -161,8 +165,10 @@ begin
             can_read <= '0';
             address <= (others => '0');
             next_state <= exit_in;
+            disable_cache <= '1';
            
 	    when others =>
+	         disable_cache <= '1';
          			next_state <= init;
             can_read <= '0';
             address <= (others => '0');

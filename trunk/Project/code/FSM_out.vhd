@@ -62,8 +62,16 @@ begin
        when h_init_1 =>
             
            counter := counter + 1;
-           next_state <= h_init_2;
-           
+           if(counter > 20) then
+               
+               counter := 1;
+               next_state <= h_read_1;
+               addr_h := x;
+               
+           else
+               next_state <= h_init_2;
+           end if;
+ 
            can_read <= '0';
            can_write <= '0';
            read_address <= (others => '0');
@@ -73,17 +81,12 @@ begin
        when h_init_2 =>
            
            counter := counter + 1;
-           if(counter > 20) then
-               
-               counter := 1;
-               next_state <= h_read_1;
-               addr_h := x;
-               
-           else
-               next_state <= h_init_1;
-           end if;
-            
-
+           next_state <= h_init_1;
+           can_read <= '0';
+           can_write <= '0';
+           read_address <= (others => '0');
+           write_address <= (others => '0');
+          
 	    when h_read_1 =>	
 
             next_state <= h_write_1;
