@@ -7,19 +7,15 @@ use ieee.std_logic_arith.all;
 use ieee.std_logic_unsigned.all;
 
 entity MEMORY is
-generic(
-	width:	integer:=8;
-	depth:	integer:=256*256;
-	addr:	integer:=16);
 port(	
    Clock:		in std_logic;	
 	Enable:		in std_logic;
 	Read:		in std_logic;
 	Write:		in std_logic;
-	Read_Addr:	in std_logic_vector(addr-1 downto 0);
-	Write_Addr: 	in std_logic_vector(addr-1 downto 0); 
-	Data_in: 	in std_logic_vector(width-1 downto 0);
-	Data_out: 	out std_logic_vector(width-1 downto 0)
+	Read_Addr:	in std_logic_vector(15 downto 0);
+	Write_Addr: 	in std_logic_vector(15 downto 0); 
+	Data_in: 	in std_logic_vector(7 downto 0);
+	Data_out: 	out std_logic_vector(7 downto 0)
 );
 end MEMORY;
 
@@ -27,7 +23,7 @@ end MEMORY;
 
 architecture BEH_MEMORY of MEMORY is
 
-type memory_type is array (0 to depth-1) of std_logic_vector(width-1 downto 0);
+type memory_type is array (0 to 65536) of std_logic_vector(7 downto 0);
 signal tmp_memory: memory_type;
 
 begin	

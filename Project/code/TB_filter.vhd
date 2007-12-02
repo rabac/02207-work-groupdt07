@@ -21,21 +21,33 @@ architecture A of E is
 
 
 component MEMORY is
-generic(
-	width:	integer:=8;
-	depth:	integer:=256*256;
-	addr:	integer:=16);
 port(	
    Clock:		in std_logic;	
 	Enable:		in std_logic;
 	Read:		in std_logic;
 	Write:		in std_logic;
-	Read_Addr:	in std_logic_vector(addr-1 downto 0);
-	Write_Addr: 	in std_logic_vector(addr-1 downto 0); 
-	Data_in: 	in std_logic_vector(width-1 downto 0);
-	Data_out: 	out std_logic_vector(width-1 downto 0)
+	Read_Addr:	in std_logic_vector(15 downto 0);
+	Write_Addr: 	in std_logic_vector(15 downto 0); 
+	Data_in: 	in std_logic_vector(7 downto 0);
+	Data_out: 	out std_logic_vector(7 downto 0)
 );
 end component MEMORY;
+
+component Processor_3 is
+      Port (   CLOCK : In    std_logic;
+               RESET : In    std_logic;
+	           
+	            Read:		Out std_logic;
+	            Write:	Out std_logic;
+	            Read_Addr:	Out std_logic_vector(15 downto 0);
+	            Write_Addr: Out std_logic_vector(15 downto 0); 
+	            Data_in: 	In std_logic_vector(7 downto 0);
+	            Data_out: Out std_logic_vector(7 downto 0);
+	            Filter: In std_logic_vector(7 downto 0);
+	            disable_filter: In std_logic
+	         );          
+end component Processor_3;
+
 
 begin
    UUT : MEMORY
