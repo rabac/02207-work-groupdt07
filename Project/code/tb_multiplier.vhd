@@ -10,12 +10,12 @@ architecture TB of TB_multiplier is
 
     component multiplier is
     port(   num1, num2:  in std_logic_vector(7 downto 0);
-	    product:     out std_logic_vector(15 downto 0)
+	    product:     out std_logic_vector(7 downto 0)
     );
     end component;
 
     signal T_num1, T_num2: std_logic_vector(7 downto 0);
-    signal T_product: std_logic_vector(15 downto 0);
+    signal T_product: std_logic_vector(7 downto 0);
 	
     begin											   
 
@@ -25,7 +25,7 @@ architecture TB of TB_multiplier is
     begin
 		
 	T_num1 <= "11111111";
-	T_num2 <= "00000001";
+	T_num2 <= "11111111";
 	wait for 20 ns;
 	--assert(T_product="1001") report "Error detected!"
 	--severity warning;	  
@@ -43,7 +43,7 @@ architecture TB of TB_multiplier is
 	--severity warning;	  
 		
 	T_num1 <= "11111111";
-	T_num2 <= "00000000";
+	T_num2 <= "00000001";
 	wait for 20 ns;
 	--assert(T_product="0110") report "Error detected!"
 	--severity warning;	  
