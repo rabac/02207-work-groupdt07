@@ -3,14 +3,14 @@ use ieee.std_logic_1164.all;
 use ieee.std_logic_arith.all;
 use ieee.std_logic_unsigned.all;
 
-entity ADDER is
+entity ADDER_3 is
 port(	A : In std_logic_vector (7 downto 0);
 		B : In std_logic_vector (7 downto 0);
 		C : In std_logic_vector (7 downto 0);
 		Z : Out std_logic_vector (7 downto 0));
-end ADDER;
+end ADDER_3;
 
-architecture BEH_ADDER of ADDER is
+architecture BEH_ADDER_3 of ADDER_3 is
    signal sum_out : unsigned(9 downto 0);
    begin	
 
@@ -30,6 +30,6 @@ architecture BEH_ADDER of ADDER is
    end if;
    
    end process;
-end BEH_ADDER;
+end BEH_ADDER_3;
 
 
