@@ -6,7 +6,7 @@ use ieee.std_logic_unsigned.all;
 -- two 4-bit inputs and one 8-bit outputs
 entity multiplier is
 port(	num1, num2:	in std_logic_vector(7 downto 0);
-	product: 	out std_logic_vector(15 downto 0)
+	product: 	out std_logic_vector(7 downto 0)
 );
 end multiplier;
 
@@ -50,6 +50,12 @@ architecture SCHEMATIC of multiplier is
                 Y : Out std_logic_vector (15 downto 0) );
    end component;
    
+   component ADDER_M
+       port (  A : In std_logic_vector (15 downto 0);
+              B : In std_logic_vector (15 downto 0);
+              C: In std_logic_vector(15 downto 0);
+               Z: In std_logic_vector(15 downto 0));
+           end component;
    component parcial
         port (  M1: in std_logic_vector(7 downto 0);
                 M2: in std_logic_vector(7 downto 0);
@@ -69,12 +75,12 @@ architecture SCHEMATIC of multiplier is
 	
   begin	 
    
- 
+    ca<='0';
 
   I_PAR : parcial
      Port Map(  
-                M1(7 downto 0)=>num1(7 downto 0),
-                M2(7 downto 0)=>num2 (7 downto 0),
+                M1=>num1,
+                M2=>num2 ,
                 O1(15 downto 0)=>P0(15 downto 0),
                 O2(15 downto 0)=>P1(15 downto 0),
                 O3(15 downto 0)=>P2(15 downto 0),
@@ -151,15 +157,15 @@ architecture SCHEMATIC of multiplier is
      Port Map (
                A(15 downto 0)=>B1(15 downto 0),
                B(15 downto 0)=>B2(15 downto 0),
-               C(15 downto 0)=>B5(15 downto 0),
+               C(15 downto 0)=>"0000000000000000",
                Cin=>carry_ex5,
                Cout=>carry_ex7,
                Z(15 downto 0)=>B3(15 downto 0),
                Y(15 downto 0)=>B4(15 downto 0)
                );
                                   
-               
-   product(15 downto 0)<= P7(15 downto 0);
+           
+     product(7 downto 0)<= B3(7 downto 0);
                
                
                

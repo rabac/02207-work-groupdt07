@@ -18,35 +18,44 @@ end parcial;
 
 architecture BEHAVIORAL of parcial is
     signal aux: std_logic;
-    signal Pa: std_logic_vector(15 downto 0);
-    signal P: std_logic_vector(127 downto 0);
+    
     begin
         
     process(M1,M2)
-        variable i,j,x,y: integer;
+        variable i: integer;
+        variable Pa1: std_logic_vector(15 downto 0):="0000000000000000";
+        variable Pa2: std_logic_vector(15 downto 0):="0000000000000000";
+        variable Pa3: std_logic_vector(15 downto 0):="0000000000000000";
+        variable Pa4: std_logic_vector(15 downto 0):="0000000000000000";
+        variable Pa5: std_logic_vector(15 downto 0):="0000000000000000";
+        variable Pa6: std_logic_vector(15 downto 0):="0000000000000000";
+        variable Pa7: std_logic_vector(15 downto 0):="0000000000000000";
+        variable Pa8: std_logic_vector(15 downto 0):="0000000000000000";
         
     begin
         
-        x:=15;
-        y:=0;
-        for i in 0 to 7 loop
         
-           for j in 0 to 7 loop
-           Pa(j+i)<= M1(j) AND M2(i);
-           end loop;
-           P(x downto y)<=Pa(15 downto 0);
-           x:=x+16;
-           y:=y+16;
+        for i in 0 to 7 loop
+           
+           Pa1(i):= M1(0) AND M2(i);
+           Pa2(i+1):=M1(1) AND M2(i);
+           Pa3(i+2):=M1(2) AND M2(i);
+           Pa4(i+3):=M1(3) AND M2(i);
+           Pa5(i+4):=M1(4) AND M2(i);
+           Pa6(i+5):=M1(5) AND M2(i);
+           Pa7(i+6):=M1(6) AND M2(i);
+           Pa8(i+7):=M1(7) AND M2(i);
+           
         end loop;
         
-        O1(15 downto 0)<= P(15 downto 0);
-        O2(15 downto 0)<= P(31 downto 16);
-        O3(15 downto 0)<= P(47 downto 32);
-        O4(15 downto 0)<= P(63 downto 48);
-        O5(15 downto 0)<= P(79 downto 64);
-        O6(15 downto 0)<= P(95 downto 80);
-        O7(15 downto 0)<= P(111 downto 96);
-        O8(15 downto 0)<= P(127 downto 112);
+        O1(15 downto 0)<= Pa1(15 downto 0);
+        O2(15 downto 0)<= Pa2(15 downto 0);
+        O3(15 downto 0)<= Pa3(15 downto 0);
+        O4(15 downto 0)<= Pa4(15 downto 0);
+        O5(15 downto 0)<= Pa5(15 downto 0);
+        O6(15 downto 0)<= Pa6(15 downto 0);
+        O7(15 downto 0)<= Pa7(15 downto 0);
+        O8(15 downto 0)<= Pa8(15 downto 0);
         
         
         
