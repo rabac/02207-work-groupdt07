@@ -12,7 +12,7 @@ entity SHIFTREG is
                    Q : InOut   std_logic_vector (71 downto 0) );
 end SHIFTREG;
 
-architecture BEHAVIORAL of SHIFTREG is
+architecture BEH_SHIFTREG of SHIFTREG is
 
    begin
     process(RESET,CLOCK,disable)
@@ -24,28 +24,22 @@ architecture BEHAVIORAL of SHIFTREG is
               q(i) <= '0';
           end loop;
        elsif (disable='0') then
-             
-             if((CLOCK = '1') AND (CLOCK'EVENT)) then
+
+          if((CLOCK = '1') AND (CLOCK'EVENT)) then
 		         for i in 71 downto 8 loop
 		               q(i-8) <= q(i);
 		         end loop;
-	           q(71 downto 64) <= qk;
-	           end if;
-	        else
-	           if((CLOCK = '1') AND (CLOCK'EVENT)) then
+               q(71 downto 64) <= qk;
+	       end if;
+	    else
+	       if((CLOCK = '1') AND (CLOCK'EVENT)) then
 		         for i in 71 downto 8 loop
 		               q(i) <= q(i);
 		         end loop;
-	           --q(71 downto 64) <= qk;
-	           end if;
+	          
+	       end if;
        end if;
 
     end process;
 
-end BEHAVIORAL;
-
-configuration CFG_SHIFTREG_BEHAVIORAL of SHIFTREG is
-   for BEHAVIORAL
-   end for;
-
-end CFG_SHIFTREG_BEHAVIORAL;
+end BEH_SHIFTREG;

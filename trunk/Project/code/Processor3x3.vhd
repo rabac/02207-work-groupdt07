@@ -2,97 +2,70 @@ library IEEE;
    use IEEE.std_logic_1164.all;
    use IEEE.std_logic_misc.all;
    use IEEE.std_logic_arith.all;
-
-entity Processor3x3 is
-      Port (   CLOCK : In    std_logic;
-                   D : In    std_logic_vector (7 downto 0);
-                   
-               RESET : In    std_logic;
-                  Qj : Out   std_logic_vector (7 downto 0) );
-end Processor;
-
-architecture SCHEMATIC of Processor3x3 is
-
-   signal       Y : std_logic_vector(71 downto 0);
-   signal       F : std_logic_vector(71 downto 0);
-   signal       D1 : std_logic_vector(7 downto 0);
-   signal       D2 : std_logic_vector(7 downto 0);
-   signal       D3 : std_logic_vector(7 downto 0);
-   signal       D4 : std_logic_vector(7 downto 0);
-   signal       D5 : std_logic_vector(7 downto 0);
-   signal       D6 : std_logic_vector(7 downto 0);
-   signal       D7 : std_logic_vector(7 downto 0);
-   signal       D8 : std_logic_vector(7 downto 0);
-   signal       D9 : std_logic_vector(7 downto 0);
-   signal       M1 : std_logic_vector(7 downto 0);
-   signal       M2 : std_logic_vector(7 downto 0);
-   signal       M3 : std_logic_vector(7 downto 0);
-   signal       M4 : std_logic_vector(7 downto 0);
-   signal       M5 : std_logic_vector(7 downto 0);
-   signal       M6 : std_logic_vector(7 downto 0);
-   signal       M7 : std_logic_vector(7 downto 0);
-   signal       M8 : std_logic_vector(7 downto 0);
-   signal       M9 : std_logic_vector(7 downto 0);
-   signal       A1 : std_logic_vector(7 downto 0);
-   signal       A2 : std_logic_vector(7 downto 0);
-   signal       A3 : std_logic_vector(7 downto 0);
-   signal       E1 : std_logic_vector(7 downto 0);
-   signal       E2 : std_logic_vector(7 downto 0);
-   signal       E3 : std_logic_vector(7 downto 0);
-   signal       AD : std_logic_vector(15 downto 0);
-   signal       WA : std_logic_vector(15 downto 0);
-   signal     CLR : std_logic;
-   signal     en: std_logic;
-   signal     r : std_logic;
-   signal     re : std_logic;
-   signal     w : std_logic;
-   signal     LOAD : std_logic;
-   signal     RESET : std_logic;
-   signal     CLOCK : std_logic;
-   signal     SIGN : std_logic;
-   signal     GND : std_logic;
-   variable     n : integer;-- it has to be iniciate to 0.
    
+entity Processor_3 is
+      Port (   CLOCK : In    std_logic;
+               RESET : In    std_logic;
+	           
+	            Read:		Out std_logic;
+	            Write:	Out std_logic;
+	            Read_Addr:	Out std_logic_vector(15 downto 0);
+	            Write_Addr: Out std_logic_vector(15 downto 0); 
+	            Data_in: 	In std_logic_vector(7 downto 0);
+	            Data_out: Out std_logic_vector(7 downto 0);
+	            Filter: In std_logic_vector(7 downto 0);
+	            disable_filter: In std_logic
+	         );          
+end Processor_3;
+
+architecture SCHEMATIC_PROC_3 of Processor_3 is
+  
+   component  ADDER_3
+   port(	A : In std_logic_vector (7 downto 0);
+		   B : In std_logic_vector (7 downto 0);
+		   C : In std_logic_vector (7 downto 0);
+		   Z : Out std_logic_vector (7 downto 0));
+   end component ADDER_3;
+
+  
+   component  ADDER_2 
+   port(	A : In std_logic_vector (7 downto 0);
+		   B : In std_logic_vector (7 downto 0);
+		   Z : Out std_logic_vector (7 downto 0));
+   end component ADDER_2;
 
 
-
-   component  ADDER 
-        Port (    A : In std_logic_vector (7 downto 0);
-		            B : In std_logic_vector (7 downto 0);
-		            C : In std_logic_vector (7 downto 0);
-		            Cin : In std_logic;
-		            Cout : Out std_logic;
-		            Z : Out std_logic_vector (7 downto 0);
-		            Y : Out std_logic_vector (7 downto 0) 
-                 );
-   end component;
-
-   component REG
-      Port (       D : In    std_logic_vector (7 downto 0);
-               Reset : In    std_logic;
-               Clock : In    std_logic;
-                   Q : Out   std_logic_vector (7 downto 0)
-                  );
-
-   end component;
-
+   component SHIFTREG is
+      Port (  CLOCK : In    std_logic;
+              RESET : In    std_logic;
+              disable : In    std_logic;
+              QK : In    std_logic_vector (7 downto 0);
+              Q : InOut   std_logic_vector (71 downto 0) );
+   end component SHIFTREG;
 
    component Multiplier
-      Port (       num1 : In    std_logic_vector (7 downto 0);
-		             num2 : In    std_logic_vector (7 downto 0);
-                   product : Out   std_logic_vector (7 downto 0) );
-   end component;
+      Port (       
+            num1 : In    std_logic_vector (7 downto 0);
+		      num2 : In    std_logic_vector (7 downto 0);
+            product : Out   std_logic_vector (7 downto 0) );
+   end component Multiplier;
 
-   
-    
-    component FSM_in_3
+   component MUX is 
+   port (
+         SEL: in STD_LOGIC_VECTOR (1 downto 0); 
+         A,B,C: in STD_LOGIC_VECTOR(7 downto 0);  
+         SIG: out STD_LOGIC_VECTOR(7 downto 0)); 
+   end component MUX; 
+
+   component FSM_in_3
         port (
                clock:		in std_logic;
 	            reset:		in std_logic;
 	            address:		out std_logic_vector(15 downto 0);
-	            can_read:   out std_logic
+	            can_read:   out std_logic;
+	            disable_cache: out std_logic
               );
-    end component;
+    end component FSM_in_3;
     
     component FSM_out_3
         port (
@@ -104,133 +77,84 @@ architecture SCHEMATIC of Processor3x3 is
 	            can_write:  out std_logic;
 	            sel: out std_logic_vector(1 downto 0)
               );
-    end component;
+    end component FSM_out_3;
 
-begin
+    signal disable_to_cache: std_logic;
+    signal cache_bits: std_logic_vector(71 downto 0);
+    signal filter_bits: std_logic_vector(71 downto 0);
+    signal mult1_out: std_logic_vector(7 downto 0);
+    signal mult2_out: std_logic_vector(7 downto 0);
+    signal mult3_out: std_logic_vector(7 downto 0);
+    signal mult4_out: std_logic_vector(7 downto 0);
+    signal mult5_out: std_logic_vector(7 downto 0);
+    signal mult6_out: std_logic_vector(7 downto 0);
+    signal mult7_out: std_logic_vector(7 downto 0);
+    signal mult8_out: std_logic_vector(7 downto 0);
+    signal mult9_out: std_logic_vector(7 downto 0);
+    signal add1_out: std_logic_vector(7 downto 0);
+    signal add2_out: std_logic_vector(7 downto 0);
+    signal add3_out: std_logic_vector(7 downto 0);
+    constant zeros: unsigned(7 downto 0) := (others => '0');
+    signal select_adder: std_logic_vector(1 downto 0);
+    signal mux_out: std_logic_vector(7 downto 0);
+    
+    begin
+        
+       fsm_input:
+       FSM_in_3 port map(CLOCK, RESET, Read_Addr, Read, disable_to_cache);
+        
+       fsm_output:
+       FSM_out_3 port map(CLOCK, RESET, Read_Addr, Write_Addr, Read, Write, select_adder);
 
-GND <= '0';
+       cache: 
+       SHIFTREG port map(CLOCK, RESET, disable_to_cache, Data_in, cache_bits);
+       
+       filtermask: 
+       SHIFTREG port map(CLOCK, RESET, disable_filter, Filter, filter_bits);
+       
+       
+       Mult1: 
+       Multiplier port map(cache_bits(7 downto 0), filter_bits(7 downto 0),mult1_out);
+      
+       Mult2: 
+       Multiplier port map(cache_bits(15 downto 8), filter_bits(15 downto 8),mult2_out);
 
- 
- FSM_INIC1: FSM_in_3
-    Port Map(clock=>CLOCK,reset=>RESET, address=>AD(15 downto 0), can_read=>re);
- 
+       Mult3: 
+       Multiplier port map(cache_bits(23 downto 16), filter_bits(23 downto 16),mult3_out);
 
+       Mult4: 
+       Multiplier port map(cache_bits(31 downto 24), filter_bits(31 downto 24),mult4_out);
 
- Reg_MASK1: REG
-	Port Map (D=>, Reset=>RESET,Clock=>CLOCK, Q=>F(7 downto 0));
+       Mult5: 
+       Multiplier port map(cache_bits(39 downto 32), filter_bits(39 downto 32),mult5_out);
 
- Reg_MASK2: REG
-	Port Map (D=>, Reset=>RESET,Clock=>CLOCK, Q=>F(15 downto 8));
+       Mult6: 
+       Multiplier port map(cache_bits(47 downto 40), filter_bits(47 downto 40),mult6_out);
 
- Reg_MASK3: REG
-	Port Map (D=>, Reset=>RESET,Clock=>CLOCK, Q=>F(23 downto 16));
+       Mult7: 
+       Multiplier port map(cache_bits(55 downto 48), filter_bits(55 downto 48),mult7_out);
 
- Reg_MASK4: REG
-	Port Map (D=>, Reset=>RESET,Clock=>CLOCK, Q=>F(31 downto 24));
+       Mult8: 
+       Multiplier port map(cache_bits(63 downto 56), filter_bits(63 downto 56),mult8_out);
 
- Reg_MASK5: REG
-	Port Map (D=>, Reset=>RESET,Clock=>CLOCK, Q=>F(39 downto 32));
+       Mult9: 
+       Multiplier port map(cache_bits(71 downto 64), filter_bits(71 downto 64),mult9_out);
 
- Reg_MASK6: REG
-	Port Map (D=>, Reset=>RESET,Clock=>CLOCK, Q=>F(47 downto 40));
+       Add1:
+       Adder_3 port map(mult1_out, mult2_out, mult3_out, add1_out);
 
- Reg_MASK7: REG
-	Port Map (D=>, Reset=>RESET,Clock=>CLOCK, Q=>F(55 downto 48));
+       Add2:
+       Adder_3 port map(mult4_out, mult5_out, mult6_out, add2_out);
 
- Reg_MASK8: REG
-	Port Map (D=>, Reset=>RESET,Clock=>CLOCK, Q=>F)(63 downto 56);
+       Add3:
+       Adder_3 port map(mult7_out, mult8_out, mult9_out, add3_out);
 
- Reg_MASK9: REG
-	Port Map (D=>, Reset=>RESET,Clock=>CLOCK, Q=>F(71 downto 64));
+       Multiplexer:
+       Mux port map(select_adder, add3_out, add2_out, add1_out, mux_out);
 
+       Add_new_value:
+       Adder_2 port map(Data_in, mux_out, Data_out);
+       
+       
+end SCHEMATIC_PROC_3;
 
-
- --A is the pixel value of the image and B is the filter value.
-
-
- Mult1: Multiplier
-	Port Map (num1=>Y(7 downto 0), num2=>F(7 downto 0),product=>M1 );
-
- Mult2: Multiplier
-	Port Map (num1=>Y(15 downto 8), num2=>F(15 downto 8),product=>M2 );
-
- Mult3: Multiplier
-	Port Map (num1=>Y(23 downto 16), num2=>F(23 downto 16),product=>M3 );
-
-
- Mult4: Multiplier
-	Port Map (num1=>Y(31 downto 24), num2=>F(31 downto 24),product=>M4 );
-
- Mult5: Multiplier
-	Port Map (num1=>Y(39 downto 32), num2=>F(39 downto 32),product=>M5 );
-
- Mult6: Multiplier
-	Port Map (num1=>Y(47 downto 40), num2=>F(47 downto 40),product=>M6 );
-
-
- Mult7: Multiplier
-	Port Map (num1=>Y(55 downto 48), num2=>F(55 downto 48),product=>M7 );
-
- Mult8: Multiplier
-	Port Map (num1=>Y(63 downto 56), num2=>F(63 downto 56),product=>M8 );
-
- Mult9: Multiplier
-	Port Map (num1=>Y(71 downto 64), num2=>F(71 downto 64),product=>M9 );
-
-   --The adders, adding the previous values multiplieds
-
-
- Add1: ADDER
-	Port Map (A=>M1,B=>M2,C=>M3,Sum=>A1);
-
- Add2: ADDER
-	Port Map (A=>M4,B=>M5,C=>M6,Sum=>A2);
-
- Add3: ADDER
-	Port Map (A=>M7,B=>M8,C=>M9,Sum=>A3);
-
-
-  --Update the old image value, only on the vertical pass.
-  --maybe we have to add a signal to enable it on vertical.
-
-
- Add_update1: ADDER 
-	Port Map (A=>A1,B=>image_pos_out,C=>0,Sum=>E1);
-
- Add_update2: ADDER
-	Port Map (A=>A2,B=>image_pos_out,C=>0,Sum=>E2);
-
- Add_update3: ADDER
-	Port Map (A=>A3,B=>image_pos_out,C=>0,Sum=>E3);
-
-
-
- -- On the first pass, initialized 0, on the second we take the values
- -- from de memory and store the updates from Add_update1,2,3
- -- A1,A2,A3 if horizontal or E1,E2,E3 if vertical
-
-
-
- 
-
-end SCHEMATIC;
-
-configuration CFG_Processor3x3_SCHEMATIC of Processor3x3 is
-
-   for SCHEMATIC
-
-      for Reg_MASK1,Reg_MASK2,Reg_MASK3,Reg_MASK4,Reg_MASK5,Reg_MASK6,Reg_MASK7,Reg_MASK8,Reg_MASK9, : REG
-         use configuration WORK.CFG_REG_BEHAVIORAL;
-      end for;
-
-      for Add1, Add2, Add3, Add_update1, Add_update2, Add_Update3: ADDER
-         use configuration WORK.CFG_ADDER_BEHAVIORAL;
-      end for;
-
-      for Mult1, Mult2, Mult3, Mult4, Mult5, Mult6, Mult7,Mult8,  Mult9, : Multiplier
-         use configuration WORK.CFG_Multiplier_BEHAVIORAL;
-      end for;
-
-   end for;
-
-end CFG_Processor3x3_SCHEMATIC;

@@ -11,7 +11,7 @@ library IEEE;
 		Q : out std_logic_vector(7 downto 0));
 end entity REG;
 
-architecture BEHAVIORAL of REG is
+architecture BEH_REG of REG is
    begin
    p0: process (Clock, Reset) is
       begin
@@ -21,9 +21,4 @@ architecture BEHAVIORAL of REG is
          Q <= D;
       end if;
    end process p0;
-end BEHAVIORAL;
-
-configuration CFG_REG_BEHAVIORAL of REG is
-	 for BEHAVIORAL
-	 end for;
-end CFG_REG_BEHAVIORAL;
+end BEH_REG;

@@ -8,7 +8,8 @@ port (
    clock:		in std_logic;
 	reset:		in std_logic;
 	address:		out std_logic_vector(15 downto 0);
-	can_read:   out std_logic
+	can_read:   out std_logic;
+	disable_cache: out std_logic
 );
 end FSM_in_3;
 
