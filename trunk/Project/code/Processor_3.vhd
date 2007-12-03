@@ -7,10 +7,16 @@ entity Processor_3 is
       Port (   CLOCK : In    std_logic;
                RESET : In    std_logic;
 	           
-	            Read:		Out std_logic;
-	            Write:	Out std_logic;
-	            Read_Addr:	Out std_logic_vector(15 downto 0);
-	            Write_Addr: Out std_logic_vector(15 downto 0); 
+	            Read_In_Mem:		Out std_logic;
+
+	            Read_Out_Mem:		Out std_logic;
+               Write_Out_Mem:	Out std_logic;
+
+	            Read_Addr_In_Mem:	Out std_logic_vector(15 downto 0);
+	              
+               Read_Addr_Out_Mem:	Out std_logic_vector(15 downto 0);
+	            Write_Addr_Out_Mem: Out std_logic_vector(15 downto 0); 
+
 	            Data_in: 	In std_logic_vector(7 downto 0);
 	            Data_out: Out std_logic_vector(7 downto 0);
 	            Filter: In std_logic_vector(7 downto 0);
@@ -96,7 +102,7 @@ architecture SCHEMATIC_PROC_3 of Processor_3 is
     signal disable_to_cache: std_logic;
     signal Read_fsm_in: std_logic;
     signal Read_fsm_out: std_logic;    
-    signal Read_Addr_fsm_in: std_logic_vector(15 downto 0);
+    signal Read_Addr_in: std_logic_vector(15 downto 0);
     signal Read_Addr_fsm_out: std_logic_vector(15 downto 0);    
     signal cache_bits: std_logic_vector(71 downto 0);
     signal filter_bits: std_logic_vector(71 downto 0);
@@ -119,23 +125,16 @@ architecture SCHEMATIC_PROC_3 of Processor_3 is
     begin
         
        fsm_input:
-       FSM_in_3 port map(CLOCK, RESET, Read_Addr_fsm_in, Read_fsm_in, disable_to_cache);
+       FSM_in_3 port map(CLOCK, RESET, Read_Addr_In_Mem, Read_In_Mem, disable_to_cache);
         
        fsm_output:
-       FSM_out_3 port map(CLOCK, RESET, Read_Addr_fsm_out, Write_Addr, Read_fsm_out, Write, select_adder);
+       FSM_out_3 port map(CLOCK, RESET, Read_Addr_Out_Mem, Write_Addr_Out_Mem, Read_Out_Mem, Write_Out_Mem, select_adder);
 
-       mux_2_proc_Read_Addr:
-       MUX_2 port map(disable_to_cache, Read_Addr_fsm_in, Read_Addr_fsm_out, Read_Addr);
-
-       mux_2_1_proc_Read:
-       MUX_2_1 port map(disable_to_cache, Read_fsm_in, Read_fsm_out, Read);
-       
        cache: 
        SHIFTREG port map(CLOCK, RESET, disable_to_cache, Data_in, cache_bits);
        
        filtermask: 
        SHIFTREG port map(CLOCK, RESET, disable_filter, Filter, filter_bits);
-       
        
        Mult1: 
        Multiplier port map(cache_bits(7 downto 0), filter_bits(7 downto 0),mult1_out);
@@ -177,7 +176,7 @@ architecture SCHEMATIC_PROC_3 of Processor_3 is
        Mux_4 port map(select_adder, add3_out, add2_out, add1_out, mux_out);
 
        Add_new_value:
-       Adder_2 port map(Data_in, mux_out, Data_out);
+       Adder_2 port map(Data_in, mult1_out, Data_out);
        
        
 end SCHEMATIC_PROC_3;

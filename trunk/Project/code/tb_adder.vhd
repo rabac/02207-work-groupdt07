@@ -9,7 +9,7 @@ end ADDER_TB;
 
 architecture TB of ADDER_TB is
 
-    component ADDER is
+    component ADDER_3 is
     port(	A : In std_logic_vector (7 downto 0);
 		B : In std_logic_vector (7 downto 0);
 		C : In std_logic_vector (7 downto 0);
@@ -23,7 +23,7 @@ architecture TB of ADDER_TB is
    
     begin
 
-        U_ADDER: ADDER port map (t_A, t_B, t_C, t_Z);
+        U_ADDER: ADDER_3 port map (t_A, t_B, t_C, t_Z);
 	
     process			
 	    
