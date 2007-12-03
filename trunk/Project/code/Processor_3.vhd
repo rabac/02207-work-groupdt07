@@ -64,6 +64,13 @@ architecture SCHEMATIC_PROC_3 of Processor_3 is
          SIG: out STD_LOGIC_VECTOR(15 downto 0)); 
    end component MUX_2; 
 
+   component MUX_2_1 is 
+   port (
+         SEL: in STD_LOGIC; 
+         A,B: in STD_LOGIC;  
+         SIG: out STD_LOGIC); 
+   end component MUX_2_1; 
+
    component FSM_in_3
         port (
                clock:		in std_logic;
@@ -87,6 +94,8 @@ architecture SCHEMATIC_PROC_3 of Processor_3 is
     end component FSM_out_3;
 
     signal disable_to_cache: std_logic;
+    signal Read_fsm_in: std_logic;
+    signal Read_fsm_out: std_logic;    
     signal Read_Addr_fsm_in: std_logic_vector(15 downto 0);
     signal Read_Addr_fsm_out: std_logic_vector(15 downto 0);    
     signal cache_bits: std_logic_vector(71 downto 0);
@@ -110,13 +119,16 @@ architecture SCHEMATIC_PROC_3 of Processor_3 is
     begin
         
        fsm_input:
-       FSM_in_3 port map(CLOCK, RESET, Read_Addr_fsm_in, Read, disable_to_cache);
+       FSM_in_3 port map(CLOCK, RESET, Read_Addr_fsm_in, Read_fsm_in, disable_to_cache);
         
        fsm_output:
-       FSM_out_3 port map(CLOCK, RESET, Read_Addr_fsm_out, Write_Addr, Read, Write, select_adder);
+       FSM_out_3 port map(CLOCK, RESET, Read_Addr_fsm_out, Write_Addr, Read_fsm_out, Write, select_adder);
 
-       mux2_proc_Read_Addr:
+       mux_2_proc_Read_Addr:
        MUX_2 port map(disable_to_cache, Read_Addr_fsm_in, Read_Addr_fsm_out, Read_Addr);
+
+       mux_2_1_proc_Read:
+       MUX_2_1 port map(disable_to_cache, Read_fsm_in, Read_fsm_out, Read);
        
        cache: 
        SHIFTREG port map(CLOCK, RESET, disable_to_cache, Data_in, cache_bits);
