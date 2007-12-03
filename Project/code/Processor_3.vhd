@@ -50,12 +50,19 @@ architecture SCHEMATIC_PROC_3 of Processor_3 is
             product : Out   std_logic_vector (7 downto 0) );
    end component Multiplier;
 
-   component MUX is 
+   component MUX_4 is 
    port (
          SEL: in STD_LOGIC_VECTOR (1 downto 0); 
          A,B,C: in STD_LOGIC_VECTOR(7 downto 0);  
          SIG: out STD_LOGIC_VECTOR(7 downto 0)); 
-   end component MUX; 
+   end component MUX_4; 
+
+   component MUX_2 is 
+   port (
+         SEL: in STD_LOGIC; 
+         A,B: in STD_LOGIC_VECTOR(15 downto 0);  
+         SIG: out STD_LOGIC_VECTOR(15 downto 0)); 
+   end component MUX_2; 
 
    component FSM_in_3
         port (
@@ -80,6 +87,8 @@ architecture SCHEMATIC_PROC_3 of Processor_3 is
     end component FSM_out_3;
 
     signal disable_to_cache: std_logic;
+    signal Read_Addr_fsm_in: std_logic_vector(15 downto 0);
+    signal Read_Addr_fsm_out: std_logic_vector(15 downto 0);    
     signal cache_bits: std_logic_vector(71 downto 0);
     signal filter_bits: std_logic_vector(71 downto 0);
     signal mult1_out: std_logic_vector(7 downto 0);
@@ -101,11 +110,14 @@ architecture SCHEMATIC_PROC_3 of Processor_3 is
     begin
         
        fsm_input:
-       FSM_in_3 port map(CLOCK, RESET, Read_Addr, Read, disable_to_cache);
+       FSM_in_3 port map(CLOCK, RESET, Read_Addr_fsm_in, Read, disable_to_cache);
         
        fsm_output:
-       FSM_out_3 port map(CLOCK, RESET, Read_Addr, Write_Addr, Read, Write, select_adder);
+       FSM_out_3 port map(CLOCK, RESET, Read_Addr_fsm_out, Write_Addr, Read, Write, select_adder);
 
+       mux2_proc_Read_Addr:
+       MUX_2 port map(disable_to_cache, Read_Addr_fsm_in, Read_Addr_fsm_out, Read_Addr);
+       
        cache: 
        SHIFTREG port map(CLOCK, RESET, disable_to_cache, Data_in, cache_bits);
        
@@ -150,7 +162,7 @@ architecture SCHEMATIC_PROC_3 of Processor_3 is
        Adder_3 port map(mult7_out, mult8_out, mult9_out, add3_out);
 
        Multiplexer:
-       Mux port map(select_adder, add3_out, add2_out, add1_out, mux_out);
+       Mux_4 port map(select_adder, add3_out, add2_out, add1_out, mux_out);
 
        Add_new_value:
        Adder_2 port map(Data_in, mux_out, Data_out);

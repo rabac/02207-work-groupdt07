@@ -100,9 +100,10 @@ begin
 	   c := 1;
 	   proc_RESET <= '1';
 	   proc_filter_disable <= '1';
+
 	   mem_Enable <= '1';
 	   mem_Read <= '0';
-	   mem_Data_Out <= (others => '0');
+	   --mem_Data_Out <= (others => '0');
 	   mem_Read_Addr <= (others => '0');
 	   
       loop
@@ -127,57 +128,40 @@ begin
 
          c := c + 1;
          write(line_out,c);
+         
+         wait for 2 ns;
+         
       end loop;
       
-      
       proc_filter_disable <= '0';
-      proc_filter <= (others => '1');
+      c := 0;
       
-      wait for 2 ns;
-
-      proc_filter <= (others => '1');
+      loop
+         if(c = 9) then
+            assert false;
+            report "Filter has been initialized."
+	         severity NOTE;
+	         exit;
+         end if;   
+         
+         proc_filter <= (others => '1');
       
-      wait for 2 ns;
-
-      proc_filter <= (others => '1');
+         wait for 2 ns;
+         c := c + 1;
+         
+      end loop;
       
-      wait for 2 ns;
-
-      proc_filter <= (others => '1');
-      
-      wait for 2 ns;
-
-      proc_filter <= (others => '1');
-      
-      wait for 2 ns;
-
-      proc_filter <= (others => '1');
-      
-      wait for 2 ns;
-
-      proc_filter <= (others => '1');
-      
-      wait for 2 ns;
-
-      proc_filter <= (others => '1');
-      
-      wait for 2 ns;
-
-      proc_filter <= (others => '1');
-      
-      wait for 2 ns;
-
+      proc_filter_disable <= '1';
       proc_reset <= '0';
       
       loop
     
          proc_Data_In <= mem_Data_Out; 
-         proc_Data_Out <= mem_Data_In;
-         proc_Read <= mem_Read;
-         proc_Write <= mem_Write;
-         proc_Read_Addr <= mem_Read_Addr;
-         proc_Write_Addr <= mem_Write_Addr;
-         
+         mem_Data_In <= proc_Data_Out;
+         mem_Read <= proc_Read;
+         mem_Write <= proc_Write;
+         mem_Read_Addr <= proc_Read_Addr;
+         mem_Write_Addr <= proc_Write_Addr;
          
          wait for 2 ns;
 
