@@ -13,18 +13,29 @@ architecture A of TB_Filter is
    signal Clock: std_logic;	
 
 	signal mem_Enable:	std_logic;
-   signal mem_Read:	std_logic;
-	signal mem_Write:	std_logic;
-   signal mem_Read_Addr:	std_logic_vector(15 downto 0);
-	signal mem_Write_Addr: std_logic_vector(15 downto 0); 
-	signal mem_Data_in: std_logic_vector(7 downto 0);
-	signal mem_Data_out: std_logic_vector(7 downto 0);
+	
+   signal mem1_Read:	std_logic;
+	signal mem1_Write:	std_logic;
+   signal mem1_Read_Addr:	std_logic_vector(15 downto 0);
+	signal mem1_Write_Addr: std_logic_vector(15 downto 0); 
+	signal mem1_Data_in: std_logic_vector(7 downto 0);
+	signal mem1_Data_out: std_logic_vector(7 downto 0);
+
+   signal mem2_Read:	std_logic;
+	signal mem2_Write:	std_logic;
+   signal mem2_Read_Addr:	std_logic_vector(15 downto 0);
+	signal mem2_Write_Addr: std_logic_vector(15 downto 0); 
+	signal mem2_Data_in: std_logic_vector(7 downto 0);
+	signal mem2_Data_out: std_logic_vector(7 downto 0);
 	
    signal proc_RESET: std_logic;	
-   signal proc_Read:	std_logic;
-	signal proc_Write:	std_logic;
-   signal proc_Read_Addr:	std_logic_vector(15 downto 0);
-	signal proc_Write_Addr: std_logic_vector(15 downto 0); 
+   signal proc_Read_In_Mem:	std_logic;
+   signal proc_Read_Out_Mem:	std_logic;   
+	signal proc_Write_Out_Mem:	std_logic;
+   signal proc_Read_Addr_In_Mem:	std_logic_vector(15 downto 0);
+   signal proc_Read_Addr_Out_Mem:	std_logic_vector(15 downto 0);   
+	signal proc_Write_Addr_Out_Mem: std_logic_vector(15 downto 0); 
+
 	signal proc_Data_in: std_logic_vector(7 downto 0);
 	signal proc_Data_out: std_logic_vector(7 downto 0);
    
@@ -45,13 +56,19 @@ port(
 end component MEMORY;
 
 component Processor_3 is
-      Port (   CLOCK : In    std_logic;
+       Port (  CLOCK : In    std_logic;
                RESET : In    std_logic;
 	           
-	            Read:		Out std_logic;
-	            Write:	Out std_logic;
-	            Read_Addr:	Out std_logic_vector(15 downto 0);
-	            Write_Addr: Out std_logic_vector(15 downto 0); 
+	            Read_In_Mem:		Out std_logic;
+
+	            Read_Out_Mem:		Out std_logic;
+               Write_Out_Mem:	Out std_logic;
+
+	            Read_Addr_In_Mem:	Out std_logic_vector(15 downto 0);
+	              
+               Read_Addr_Out_Mem:	Out std_logic_vector(15 downto 0);
+	            Write_Addr_Out_Mem: Out std_logic_vector(15 downto 0); 
+
 	            Data_in: 	In std_logic_vector(7 downto 0);
 	            Data_out: Out std_logic_vector(7 downto 0);
 	            Filter: In std_logic_vector(7 downto 0);
@@ -63,14 +80,18 @@ end component Processor_3;
 begin
     
    UUTP : PROCESSOR_3
-      Port Map (CLOCK, proc_RESET, proc_Read, proc_Write, proc_Read_Addr,
-                proc_Write_Addr, proc_Data_In, proc_Data_Out, proc_filter, 
-                proc_filter_disable);
+      Port Map (CLOCK, proc_RESET, proc_Read_In_Mem, proc_Read_Out_Mem, proc_Write_Out_Mem, 
+                proc_Read_Addr_In_Mem, proc_Read_Addr_Out_Mem, proc_Write_Addr_Out_Mem, 
+                proc_Data_In, proc_Data_Out, proc_filter, proc_filter_disable);
 
-   UUTM : MEMORY
-      Port Map (CLOCK, mem_Enable, mem_Read, mem_Write, 
-                mem_Read_Addr, mem_Write_Addr, mem_Data_In, mem_Data_Out);
+   UUTM_in : MEMORY
+      Port Map (CLOCK, mem_Enable, mem1_Read, mem1_Write, 
+                mem1_Read_Addr, mem1_Write_Addr, mem1_Data_In, mem1_Data_Out);
           
+   UUTM_out : MEMORY
+      Port Map (CLOCK, mem_Enable, mem2_Read, mem2_Write, 
+                mem2_Read_Addr, mem2_Write_Addr, mem2_Data_In, mem2_Data_Out);
+
     clock_signal: 
     process begin
 	   Clock <= '1';			
@@ -101,11 +122,17 @@ begin
 	   proc_RESET <= '1';
 	   proc_filter_disable <= '1';
 
-	   mem_Enable <= '1';
-	   mem_Read <= '0';
-	   --mem_Data_Out <= (others => '0');
-	   mem_Read_Addr <= (others => '0');
+      mem_Enable <= '1';
+	   mem1_Read <= '0';
+	   mem1_Read_Addr <= (others => '0');
 	   
+	   mem2_Read <= '0';
+	   mem2_Read_Addr <= (others => '0');
+	   mem2_Write <= '0';
+	   mem2_Write_Addr <= (others => '0');
+	   mem2_Data_In <= (others => '0');
+
+      -- start filling memory 1 with the image pixels from hex file.
       loop
       
          if endfile(cmdfile) then  -- Check EOF
@@ -122,9 +149,9 @@ begin
          hread(line_in,A,good);         -- Read the D argument as hex value
          assert good report "Text I/O read error" severity ERROR;
 
-         mem_Write <= '1';
-         mem_Write_Addr <= conv_std_logic_vector(c, 16);
-         mem_Data_In <= A(7 downto 0);
+         mem1_Write <= '1';
+         mem1_Write_Addr <= conv_std_logic_vector(c, 16);
+         mem1_Data_In <= A(7 downto 0);
 
          c := c + 1;
          write(line_out,c);
@@ -132,7 +159,44 @@ begin
          wait for 2 ns;
          
       end loop;
+	   
+	   c := 1;
+	   
+	   
+	   mem1_Read <= '0';
+	   mem1_Read_Addr <= (others => '0');
+	   mem1_Write <= '0';
+	   mem1_Write_Addr <= (others => '0');
+
+      mem2_Read <= '0';
+      mem2_Read_Addr <= (others => '0');
       
+	   -- initialize memory 2 with pixels of value "00000000"
+      loop
+      
+      if(c = 65536) then
+            assert false;
+            report "Filter has been initialized."
+	         severity NOTE;
+	         exit;
+         end if;   
+
+         mem2_Write <= '1';
+         mem2_Write_Addr <= conv_std_logic_vector(c, 16);
+         mem2_Data_In <= "00000000";
+
+         c := c + 1;
+         write(line_out,c);
+         
+         wait for 2 ns;
+         
+         
+      end loop;
+      
+      
+      
+      
+      -- initialize the filter with pixels "11111111"
       proc_filter_disable <= '0';
       c := 0;
       
@@ -151,17 +215,24 @@ begin
          
       end loop;
       
+      
+      
+      
+      -- start the processor.
       proc_filter_disable <= '1';
       proc_reset <= '0';
       
       loop
     
-         proc_Data_In <= mem_Data_Out; 
-         mem_Data_In <= proc_Data_Out;
-         mem_Read <= proc_Read;
-         mem_Write <= proc_Write;
-         mem_Read_Addr <= proc_Read_Addr;
-         mem_Write_Addr <= proc_Write_Addr;
+         mem1_Read <= proc_Read_In_Mem;
+         mem1_Read_Addr <= proc_Read_Addr_In_Mem;
+         proc_Data_In <= mem1_Data_Out;
+         
+         mem2_Data_In <= proc_Data_Out;
+         mem2_Read <= proc_Read_Out_Mem;
+         mem2_Write <= proc_Write_Out_Mem;
+         mem2_Read_Addr <= proc_Read_Addr_Out_Mem;
+         mem2_Write_Addr <= proc_Write_Addr_Out_Mem;
          
          wait for 2 ns;
 
