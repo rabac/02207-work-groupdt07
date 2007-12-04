@@ -23,22 +23,20 @@ architecture BEH_SHIFTREG of SHIFTREG is
           for i in 0 to 71 loop
               q(i) <= '0';
           end loop;
-       elsif (disable='0') then
+       elsif ((CLOCK = '1') AND (CLOCK'EVENT)) then
 
-          if((CLOCK = '1') AND (CLOCK'EVENT)) then
+          if(disable='0') then
 		         for i in 71 downto 8 loop
 		               q(i-8) <= q(i);
 		         end loop;
                q(71 downto 64) <= qk;
 	       end if;
 	    else
-	       if((CLOCK = '1') AND (CLOCK'EVENT)) then
-		         for i in 71 downto 8 loop
+	            for i in 71 downto 8 loop
 		               q(i) <= q(i);
 		         end loop;
 	          
 	       end if;
-       end if;
 
     end process;
 
