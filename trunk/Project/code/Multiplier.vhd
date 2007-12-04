@@ -40,7 +40,7 @@ architecture SCHEMATIC of multiplier is
    signal ca: std_logic;
    
 
-   component csa8bit
+   component csa15bit
         port (  A : In std_logic_vector (15 downto 0);
                 B : In std_logic_vector (15 downto 0);
                 C : In std_logic_vector (15 downto 0);
@@ -68,6 +68,13 @@ architecture SCHEMATIC of multiplier is
                 O7: out std_logic_vector(15 downto 0);
                 O8: out std_logic_vector(15 downto 0) );
    end component;
+   component CRA_15 is
+        port(		A : In std_logic_vector (15 downto 0);
+		         B : In std_logic_vector (15 downto 0);
+		         Cin : In std_logic;
+		         Cout : Out std_logic;
+		         Y : Out std_logic_vector (15 downto 0) );
+   end component;
 
 
 
@@ -92,7 +99,7 @@ architecture SCHEMATIC of multiplier is
                 );
 
 
-  I_CSA1 : csa8bit
+  I_CSA1 : csa15bit
      Port Map (
                A(15 downto 0)=>P0(15 downto 0),
                B(15 downto 0)=>P1(15 downto 0),
@@ -103,7 +110,7 @@ architecture SCHEMATIC of multiplier is
                Y(15 downto 0)=>A1(15 downto 0)
                );
                
-  I_CSA2 : csa8bit
+  I_CSA2 : csa15bit
      Port Map ( 
                A(15 downto 0)=>P3(15 downto 0),
                B(15 downto 0)=>P4(15 downto 0),
@@ -113,7 +120,7 @@ architecture SCHEMATIC of multiplier is
                Z(15 downto 0)=>A2(15 downto 0),
                Y(15 downto 0)=>A3(15 downto 0)
                );
-  I_CSA3 : csa8bit
+  I_CSA3 : csa15bit
      Port Map ( 
                A(15 downto 0)=>A0(15 downto 0),
                B(15 downto 0)=>A1(15 downto 0),
@@ -123,7 +130,7 @@ architecture SCHEMATIC of multiplier is
                Z(15 downto 0)=>A4(15 downto 0),
                Y(15 downto 0)=>A5(15 downto 0)
                );
-  I_CSA4 : csa8bit
+  I_CSA4 : csa15bit
      Port Map (
                A(15 downto 0)=>A3(15 downto 0),
                B(15 downto 0)=>P6(15 downto 0),
@@ -133,7 +140,7 @@ architecture SCHEMATIC of multiplier is
                Z(15 downto 0)=>A6(15 downto 0),
                Y(15 downto 0)=>A7(15 downto 0)
                );
-  I_CSA5 : csa8bit
+  I_CSA5 : csa15bit
      Port Map (
                A(15 downto 0)=>A4(15 downto 0),
                B(15 downto 0)=>A5(15 downto 0),
@@ -143,7 +150,7 @@ architecture SCHEMATIC of multiplier is
                Z(15 downto 0)=>A8(15 downto 0),
                Y(15 downto 0)=>A9(15 downto 0)
                );
-   I_CSA6 : csa8bit
+   I_CSA6 : csa15bit
      Port Map (
                A(15 downto 0)=>A7(15 downto 0),
                B(15 downto 0)=>A8(15 downto 0),
@@ -153,15 +160,13 @@ architecture SCHEMATIC of multiplier is
                Z(15 downto 0)=>B1(15 downto 0),
                Y(15 downto 0)=>B2(15 downto 0)
                );
-   I_CSA7 : csa8bit
+   I_CRA : CRA_15
      Port Map (
                A(15 downto 0)=>B1(15 downto 0),
                B(15 downto 0)=>B2(15 downto 0),
-               C(15 downto 0)=>"0000000000000000",
                Cin=>carry_ex5,
                Cout=>carry_ex7,
-               Z(15 downto 0)=>B3(15 downto 0),
-               Y(15 downto 0)=>B4(15 downto 0)
+               Y(15 downto 0)=>B3(15 downto 0)
                );
                                   
            
@@ -171,49 +176,3 @@ architecture SCHEMATIC of multiplier is
                
 
 end SCHEMATIC;
-
-configuration CFG_multiplier_SCHEMATIC of multiplier is
-
-   for SCHEMATIC
-      
-      for I_CSA1,I_CSA2,I_CSA3,I_CSA4,I_CSA5,I_CSA6,I_CSA7: csa8bit
-         use configuration WORK.CFG_csa8bit_BEHAVIORAL;
-      end for;
-      for I_PAR: parcial
-         use configuration WORK.CFG_parcial_BEHAVIORAL;
-      end for;
-   end for;
-
-end CFG_multiplier_SCHEMATIC;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
- -- num1_reg := '0' & num1;
- -- product_reg := "0000000000" & num2;
-
-  -- use variables doing computation
-  -- algorithm is to repeat shifting/adding
---  for i in 1 to 15 loop
---   if product_reg(0)='1' then
---	  product_reg(5 downto 3) := product_reg(5 downto 3) 
---	  + num1_reg(2 downto 0);
---	end if;
---	product_reg(5 downto 0) := '0' & product_reg(5 downto 1);
- -- end loop;
-  
-  -- assign the result of computation back to output signal
- -- product <= product_reg(3 downto 0);
