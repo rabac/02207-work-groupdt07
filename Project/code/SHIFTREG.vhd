@@ -30,13 +30,14 @@ architecture BEH_SHIFTREG of SHIFTREG is
 		               q(i-8) <= q(i);
 		         end loop;
                q(71 downto 64) <= qk;
-	       end if;
-	    else
+	      
+	       else
 	            for i in 71 downto 8 loop
 		               q(i) <= q(i);
 		         end loop;
 	          
 	       end if;
+	    end if;
 
     end process;
 
