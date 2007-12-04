@@ -115,17 +115,3 @@ begin
    end process;
  end block;
 end A;
-
-configuration CFG_tb_shiftreg_BEHAVIORAL of E is
-   for A
-      for UUT : SHIFTREG
-         -- use configuration WORK.CFG_q_regs_enable_SCHEMATIC;
-         use configuration WORK.CFG_SHIFTREG_BEHAVIORAL;
-      end for;
-
-      for TB
-      end for;
-
-   end for;
-end CFG_tb_shiftreg_BEHAVIORAL;
-
