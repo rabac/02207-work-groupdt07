@@ -15,9 +15,9 @@ begin
     SEL_PROCESS: process (SEL,A,B,C) 
     begin 
       case SEL is  
-        when "01"  => SIG <= A;  
-        when "10"  => SIG <= B;  
-        when "11"  => SIG <= C;  
+        when "00"  => SIG <= A;  
+        when "01"  => SIG <= B;  
+        when "10"  => SIG <= C;  
         when others => SIG <= (others => '0');  
       end case;  
     end process SEL_PROCESS; 
