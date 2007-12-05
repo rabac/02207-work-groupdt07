@@ -45,22 +45,6 @@ for i in 0 to 15 loop
 	Z_aux(i) := p(i) XOR c(i);
 end loop;
 
-if (aux='1') then
-   Z_aux(7 downto 0):="11111111";
-end if;
-
-for i in 0 to 15 loop
-   if (Y_aux(i)='1') then
-        Z_aux(7 downto 0):="11111111";
-   end if;
-end loop;
-
-for i in 0 to 7 loop
-   if (Z_aux(i+8)='1') then
-        Z_aux(7 downto 0):="11111111";
-   end if;
-end loop;
-
 
 Z(15 downto 0)<= Z_aux(15 downto 0);
 
