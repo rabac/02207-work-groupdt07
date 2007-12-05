@@ -35,10 +35,11 @@ begin
                      Yaux(i):= P(i) xor tempC(i);
                      tempC(i+1):=G(i) OR (tempC(i) AND P(i));
                 end loop;
-                Y(7 downto 0)<= Yaux(7 downto 0);
+                
                 if (tempC(8)='1') then
-                    Y(7 downto 0)<= "11111111";
+                    Yaux(7 downto 0):= "11111111";
                 end if;
+                Y(7 downto 0)<= Yaux(7 downto 0);
                 Cout<=tempC(8);
                 
             end process;
