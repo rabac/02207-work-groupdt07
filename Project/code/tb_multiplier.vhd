@@ -42,8 +42,8 @@ architecture TB of TB_multiplier is
 	--assert(T_product="0100") report "Error detected!"
 	--severity warning;	  
 		
-	T_num1 <= "11111111";
-	T_num2 <= "00000001";
+	T_num1 <= "11111100";
+	T_num2 <= "00000010";
 	wait for 20 ns;
 	--assert(T_product="0110") report "Error detected!"
 	--severity warning;	  
