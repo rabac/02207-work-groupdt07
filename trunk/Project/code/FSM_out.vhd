@@ -17,7 +17,7 @@ end FSM_out_3;
 
 architecture BEH_FSM_out_3 of FSM_out_3 is
     
-    type state_type is (init, h_init_1, h_init_2, h_read_1, h_read_write, h_write_1, h_wait_1, h_wait_2,
+    type state_type is (init, h_init_1, h_init_2, h_read_1, h_read_write_1, h_read_write_2, h_write_1, h_wait_1, h_wait_2,
      v_init_1, v_init_2, v_read_1, v_write_1, v_wait_1, v_wait_2, exit_in);
     signal next_state, current_state: state_type;
 
@@ -88,7 +88,7 @@ begin
           
 	    when h_read_1 =>	
 
-            next_state <= h_read_write;
+            next_state <= h_read_write_1;
            
             can_read <= '1';
             can_write <= '0';
@@ -97,7 +97,7 @@ begin
             sel <= conv_std_logic_vector(sel_num,2);
             sel_num := sel_num + 1;
             
-       when h_read_write =>
+       when h_read_write_1 =>
            
            next_state <= h_write_1;
 
@@ -106,6 +106,15 @@ begin
             read_address <= (others => '0');
             write_address <= (others => '0');
             
+       when h_read_write_2 =>
+           
+           next_state <= h_write_1;
+
+            can_read <= '0';
+            can_write <= '0';
+            read_address <= (others => '0');
+            write_address <= (others => '0');
+
 	    when h_write_1 =>	
             
             rwcount := rwcount + 1;
