@@ -22,8 +22,8 @@ architecture BEH_ADDER_3 of ADDER_3 is
    c1 <= std_logic(sum_out(8));
 
    temp <= std_logic_vector(sum_out(7 downto 0));
-   temp <= "11111111" when c2 <= '1';
-   temp <= "11111111" when c1 <= '1';
+   --temp <= "11111111" when c2 <= '1';
+   --temp <= "11111111" when c1 <= '1';
    
    Z <= temp;
 

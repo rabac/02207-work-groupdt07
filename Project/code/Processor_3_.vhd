@@ -17,7 +17,8 @@ entity Processor_3 is
                Read_Addr_Out_Mem:	Out std_logic_vector(15 downto 0);
 	            Write_Addr_Out_Mem: Out std_logic_vector(15 downto 0); 
 
-	            Data_in: 	In std_logic_vector(7 downto 0);
+	            Data_in_1: 	In std_logic_vector(7 downto 0);
+	            Data_in_2: 	In std_logic_vector(7 downto 0);
 	            Data_out: Out std_logic_vector(7 downto 0);
 	            Filter: In std_logic_vector(7 downto 0);
 	            disable_filter: In std_logic
@@ -143,7 +144,7 @@ end component;
        FSM_out_3 port map(CLOCK, RESET, Read_Addr_Out_Mem, Write_Addr_Out_Mem, Read_Out_Mem, Write_Out_Mem, select_adder);
 
        cache: 
-       SHIFTREG port map(CLOCK, RESET, disable_to_cache, Data_in, cache_bits);
+       SHIFTREG port map(CLOCK, RESET, disable_to_cache, Data_in_1, cache_bits);
        
        filtermask: 
        SHIFTREG port map(CLOCK, RESET, disable_filter, Filter, filter_bits);
@@ -198,7 +199,7 @@ end component;
        Mux_4 port map(select_adder, add3_out, add2_out, add1_out, mux_out);
 
        Add_new_value:
-       CRA_8 port map(Data_in, mux_out,'0',cfi, Data_out);
+       CRA_8 port map(Data_in_2, mux_out,'0',cfi, Data_out);
        
        
 end SCHEMATIC_PROC_3;

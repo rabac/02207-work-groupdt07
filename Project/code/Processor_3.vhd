@@ -17,7 +17,8 @@ entity Processor_3 is
                Read_Addr_Out_Mem:	Out std_logic_vector(15 downto 0);
 	            Write_Addr_Out_Mem: Out std_logic_vector(15 downto 0); 
 
-	            Data_in: 	In std_logic_vector(7 downto 0);
+	            Data_in_1: 	In std_logic_vector(7 downto 0);
+	            Data_in_2: 	In std_logic_vector(7 downto 0);
 	            Data_out: Out std_logic_vector(7 downto 0);
 	            Filter: In std_logic_vector(7 downto 0);
 	            disable_filter: In std_logic
@@ -136,7 +137,7 @@ architecture SCHEMATIC_PROC_3 of Processor_3 is
                             Read_Out_Mem, Write_Out_Mem, select_adder);
 
        cache: 
-       SHIFTREG port map(CLOCK, RESET, disable_to_cache, Data_in, cache_bits);
+       SHIFTREG port map(CLOCK, RESET, disable_to_cache, Data_in_1, cache_bits);
        
        filtermask: 
        SHIFTREG port map(CLOCK, RESET, disable_filter, Filter, filter_bits);
@@ -177,18 +178,28 @@ architecture SCHEMATIC_PROC_3 of Processor_3 is
        Add3:
        Adder_3 port map(mult7_out, mult8_out, mult9_out, add3_out);
 
+--       Add1:
+--       Adder_3 port map(cache_bits(7 downto 0), cache_bits(7 downto 0), cache_bits(7 downto 0), add1_out);
+--
+--       Add2:
+--       Adder_3 port map(cache_bits(7 downto 0), cache_bits(7 downto 0), cache_bits(7 downto 0), add2_out);
+--
+--       Add3:
+--       Adder_3 port map(cache_bits(7 downto 0), cache_bits(7 downto 0), cache_bits(7 downto 0), add3_out);
+--
+
        Multiplexer:
-       Mux_4 port map(select_adder, add3_out, add2_out, add1_out, mux_out);
+       Mux_4 port map(select_adder, add1_out, add2_out, add3_out, mux_out);
 
        Add_new_value:
-       Adder_2 port map(Data_in, mux_out, Data_out);
+       Adder_2 port map(Data_in_2, mux_out, Data_out);
 
 --       Multiplexer:
 --       Mux_4 port map(select_adder, cache_bits(7 downto 0), cache_bits(7 downto 0), 
 --                      cache_bits(7 downto 0), mux_out);
-
+--
 --       Add_new_value:
---       Adder_2 port map(Data_in, mux_out, Data_out);
+--       Adder_2 port map(Data_in_2, mux_out, Data_out);
 
        
        

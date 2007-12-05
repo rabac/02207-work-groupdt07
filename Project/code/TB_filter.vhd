@@ -36,7 +36,8 @@ architecture A of TB_Filter is
    signal proc_Read_Addr_Out_Mem:	std_logic_vector(15 downto 0);   
 	signal proc_Write_Addr_Out_Mem: std_logic_vector(15 downto 0); 
 
-	signal proc_Data_in: std_logic_vector(7 downto 0);
+	signal proc_Data_in_1: std_logic_vector(7 downto 0);
+	signal proc_Data_in_2: std_logic_vector(7 downto 0);
 	signal proc_Data_out: std_logic_vector(7 downto 0);
    
 	signal proc_filter_disable: std_logic;	
@@ -69,7 +70,9 @@ component Processor_3 is
                Read_Addr_Out_Mem:	Out std_logic_vector(15 downto 0);
 	            Write_Addr_Out_Mem: Out std_logic_vector(15 downto 0); 
 
-	            Data_in: 	In std_logic_vector(7 downto 0);
+	            Data_in_1: 	In std_logic_vector(7 downto 0);
+	            Data_in_2: 	In std_logic_vector(7 downto 0);
+
 	            Data_out: Out std_logic_vector(7 downto 0);
 	            Filter: In std_logic_vector(7 downto 0);
 	            disable_filter: In std_logic
@@ -82,7 +85,7 @@ begin
    UUTP : PROCESSOR_3
       Port Map (CLOCK, proc_RESET, proc_Read_In_Mem, proc_Read_Out_Mem, proc_Write_Out_Mem, 
                 proc_Read_Addr_In_Mem, proc_Read_Addr_Out_Mem, proc_Write_Addr_Out_Mem, 
-                proc_Data_In, proc_Data_Out, proc_filter, proc_filter_disable);
+                proc_Data_In_1, proc_Data_In_2, proc_Data_Out, proc_filter, proc_filter_disable);
 
    UUTM_in : MEMORY
       Port Map (CLOCK, mem_Enable, mem1_Read, mem1_Write, 
@@ -221,14 +224,16 @@ begin
       -- start the processor.
       proc_filter_disable <= '1';
       proc_reset <= '0';
+      proc_data_out <= (others => '0');
       
       loop
     
    
          mem1_Read <= proc_Read_In_Mem;
          mem1_Read_Addr <= proc_Read_Addr_In_Mem;
-         proc_Data_In <= mem1_Data_Out;
+         proc_Data_In_1 <= mem1_Data_Out;
          
+         proc_Data_In_2 <= mem2_Data_Out;
          mem2_Data_In <= proc_Data_Out;
          mem2_Read <= proc_Read_Out_Mem;
          mem2_Write <= proc_Write_Out_Mem;
