@@ -58,8 +58,3 @@ begin
    end process;
 
 end BEH_MEMORY;
-
-configuration CFG_MEMORY_BEHAVIORAL of MEMORY is
-	 for BEH_MEMORY
-	 end for;
-end CFG_MEMORY_BEHAVIORAL;

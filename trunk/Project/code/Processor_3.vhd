@@ -21,6 +21,10 @@ entity Processor_3 is
 	            Data_out: Out std_logic_vector(7 downto 0);
 	            Filter: In std_logic_vector(7 downto 0);
 	            disable_filter: In std_logic
+	            
+	            
+	            --- signals just for debugging ---
+	            
 	         );          
 end Processor_3;
 
@@ -128,7 +132,8 @@ architecture SCHEMATIC_PROC_3 of Processor_3 is
        FSM_in_3 port map(CLOCK, RESET, Read_Addr_In_Mem, Read_In_Mem, disable_to_cache);
         
        fsm_output:
-       FSM_out_3 port map(CLOCK, RESET, Read_Addr_Out_Mem, Write_Addr_Out_Mem, Read_Out_Mem, Write_Out_Mem, select_adder);
+       FSM_out_3 port map(CLOCK, RESET, Read_Addr_Out_Mem, Write_Addr_Out_Mem, 
+                            Read_Out_Mem, Write_Out_Mem, select_adder);
 
        cache: 
        SHIFTREG port map(CLOCK, RESET, disable_to_cache, Data_in, cache_bits);
@@ -136,47 +141,55 @@ architecture SCHEMATIC_PROC_3 of Processor_3 is
        filtermask: 
        SHIFTREG port map(CLOCK, RESET, disable_filter, Filter, filter_bits);
        
-       Mult1: 
-       Multiplier port map(cache_bits(7 downto 0), filter_bits(7 downto 0),mult1_out);
-      
-       Mult2: 
-       Multiplier port map(cache_bits(15 downto 8), filter_bits(15 downto 8),mult2_out);
-
-       Mult3: 
-       Multiplier port map(cache_bits(23 downto 16), filter_bits(23 downto 16),mult3_out);
-
-       Mult4: 
-       Multiplier port map(cache_bits(31 downto 24), filter_bits(31 downto 24),mult4_out);
-
-       Mult5: 
-       Multiplier port map(cache_bits(39 downto 32), filter_bits(39 downto 32),mult5_out);
-
-       Mult6: 
-       Multiplier port map(cache_bits(47 downto 40), filter_bits(47 downto 40),mult6_out);
-
-       Mult7: 
-       Multiplier port map(cache_bits(55 downto 48), filter_bits(55 downto 48),mult7_out);
-
-       Mult8: 
-       Multiplier port map(cache_bits(63 downto 56), filter_bits(63 downto 56),mult8_out);
-
-       Mult9: 
-       Multiplier port map(cache_bits(71 downto 64), filter_bits(71 downto 64),mult9_out);
-
-       Add1:
-       Adder_3 port map(mult1_out, mult2_out, mult3_out, add1_out);
-
-       Add2:
-       Adder_3 port map(mult4_out, mult5_out, mult6_out, add2_out);
-
-       Add3:
-       Adder_3 port map(mult7_out, mult8_out, mult9_out, add3_out);
+--       Mult1: 
+--       Multiplier port map(cache_bits(7 downto 0), filter_bits(7 downto 0),mult1_out);
+--      
+--       Mult2: 
+--       Multiplier port map(cache_bits(15 downto 8), filter_bits(15 downto 8),mult2_out);
+--
+--       Mult3: 
+--       Multiplier port map(cache_bits(23 downto 16), filter_bits(23 downto 16),mult3_out);
+--
+--       Mult4: 
+--       Multiplier port map(cache_bits(31 downto 24), filter_bits(31 downto 24),mult4_out);
+--
+--       Mult5: 
+--       Multiplier port map(cache_bits(39 downto 32), filter_bits(39 downto 32),mult5_out);
+--
+--       Mult6: 
+--       Multiplier port map(cache_bits(47 downto 40), filter_bits(47 downto 40),mult6_out);
+--
+--       Mult7: 
+--       Multiplier port map(cache_bits(55 downto 48), filter_bits(55 downto 48),mult7_out);
+--
+--       Mult8: 
+--       Multiplier port map(cache_bits(63 downto 56), filter_bits(63 downto 56),mult8_out);
+--
+--       Mult9: 
+--       Multiplier port map(cache_bits(71 downto 64), filter_bits(71 downto 64),mult9_out);
+--
+--       Add1:
+--       Adder_3 port map(mult1_out, mult2_out, mult3_out, add1_out);
+--
+--       Add2:
+--       Adder_3 port map(mult4_out, mult5_out, mult6_out, add2_out);
+--
+--       Add3:
+--       Adder_3 port map(mult7_out, mult8_out, mult9_out, add3_out);
+--
+--       Multiplexer:
+--       Mux_4 port map(select_adder, add3_out, add2_out, add1_out, mux_out);
+--
+--       Add_new_value:
+--       Adder_2 port map(Data_in, mux_out, Data_out);
 
        Multiplexer:
-       Mux_4 port map(select_adder, add3_out, add2_out, add1_out, mux_out);
+       Mux_4 port map(select_adder, cache_bits(7 downto 0), cache_bits(7 downto 0), 
+                      cache_bits(7 downto 0), mux_out);
 
        Add_new_value:
-       Adder_2 port map(Data_in, mult1_out, Data_out);
+       Adder_2 port map(Data_in, mux_out, Data_out);
+
        
        
 end SCHEMATIC_PROC_3;

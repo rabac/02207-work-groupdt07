@@ -224,6 +224,7 @@ begin
       
       loop
     
+   
          mem1_Read <= proc_Read_In_Mem;
          mem1_Read_Addr <= proc_Read_Addr_In_Mem;
          proc_Data_In <= mem1_Data_Out;
@@ -234,8 +235,8 @@ begin
          mem2_Read_Addr <= proc_Read_Addr_Out_Mem;
          mem2_Write_Addr <= proc_Write_Addr_Out_Mem;
          
-         wait for 2 ns;
-
+          wait for 2 ns;
+          
       end loop;		
 
     write(line_out, string'("--------- END-------------"));
