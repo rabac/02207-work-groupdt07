@@ -7,26 +7,24 @@ entity ADDER_3 is
 port(	A : In std_logic_vector (7 downto 0);
 		B : In std_logic_vector (7 downto 0);
 		C : In std_logic_vector (7 downto 0);
-		Z : Out std_logic_vector (9 downto 0));
+		Z : Out std_logic_vector (7 downto 0));
 end ADDER_3;
 
 architecture BEH_ADDER_3 of ADDER_3 is
    signal sum_out : unsigned(9 downto 0);
+   signal temp : std_logic_vector(7 downto 0);
+   signal c2, c1: std_logic;
    begin	
 
-   process(A, B, C)
+   sum_out <= ("00" & unsigned(A)) + ("00" & unsigned(B)) + ("00" & unsigned(C));
    
-      constant zeros: unsigned(1 downto 0) := (others => '0');
-      variable sum_int: INTEGER;
-      
-   begin
-   sum_out <= (zeros & unsigned(A)) + (zeros & unsigned(B)) + (zeros & unsigned(C));
-   sum_int := conv_integer(sum_out);
---   if(sum_int > 255) then
---      Z <= "11111111";
---   else
-      Z <= std_logic_vector(sum_out);   
---   end if;
+   c2 <= std_logic(sum_out(9));
+   c1 <= std_logic(sum_out(8));
+
+   temp <= std_logic_vector(sum_out(7 downto 0));
+   temp <= "11111111" when c2 <= '1';
+   temp <= "11111111" when c1 <= '1';
    
-   end process;
+   Z <= temp;
+
 end BEH_ADDER_3;
