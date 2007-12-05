@@ -76,17 +76,10 @@ begin
             address <= conv_std_logic_vector(addr_h,16);
             
 	    when h_wait =>	
-   
-            counter := counter + 1;
-            next_state <= h_temp;
-            disable_cache <= '1';
-            can_read <= '0';
-            address <= (others => '0');
 
-       when h_temp =>
-           
             counter := counter + 1;
-            if(counter > 6) then
+            disable_cache <= '1';
+            if(counter > 8) then
                
                counter := 1;
                if(x > 65024) then
@@ -97,12 +90,20 @@ begin
                end if;
 
             else
-               next_state <= h_wait;
+               next_state <= h_temp;
             end if;
    
             can_read <= '0';
             address <= (others => '0');
-            
+    
+
+       when h_temp =>
+           
+            counter := counter + 1;
+            next_state <= h_wait;
+            can_read <= '0';
+            address <= (others => '0');
+        
            
 	    when v_read_1 =>	
 	        
