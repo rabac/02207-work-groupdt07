@@ -42,10 +42,10 @@ begin
        variable counter: integer;	
     begin
 	
-	   T_reset <= '1';
+	   T_reset <= '0';
 	   wait for 2 ns;		
       -- can put assert statements to assure something holds
-      T_reset <= '0';
+      T_reset <= '1';
       
       loop
 

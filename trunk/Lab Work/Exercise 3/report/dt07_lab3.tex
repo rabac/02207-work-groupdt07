@@ -15,7 +15,7 @@
 \usepackage{fancyhdr,a4wide}
 \usepackage{makeidx}
 \usepackage{placeins}
-\usepackage[procnames,noindent]{lgrind}
+%\usepackage[procnames,noindent]{lgrind}
 
 \lstset{ %
 language=VHDL,                % choose the language of the code
@@ -100,15 +100,15 @@ Retiming is an optimizing technique where structural location of registers is ma
 In our case the motivation for retiming was to create slack on a non-critical path, and to have the synthesizer substitute HS cells with LL cells on this path thus lowering the overall power dissipation in the whole circuit. According to the lecture slides the circuit we were studying should gain approximately 30\% power savings from this kind of retiming.
 
 \section{Original Design}
+\floatbarrier
 The original design upon which we aimed to improve with the retiming is presented in figure 1.
 
-\begin{figure}
+\begin{figure}[!]
 	\centering
 		\includegraphics[width=4in]{./noretiming.PNG}
 	\caption{Digit recurrence division}	\label{fig:noretiming}
 \end{figure}
 
-\FloatBarrier
 
 The Sel. function -block implements the quotient digit selection function. The selection function determines a 4-bit quotient digit using 3 most significant bits of the divisor d and 7 most significant bits from the results stored in registers Ws and Wc.
 
@@ -122,16 +122,17 @@ The registers Ws and Wc store the carry and the sum from the carry-save adder re
 
 The critical path of this circuit is marked with red arrows in the figure 1.
 
+\floatbarrier
 \subsection{Power dissipation and cell count}
+\floatbarrier
 The Synopsys VSS Simulator was used to annotate the switching activity based on a testbench and test vectors. This switching activity was used by Design Vision to estimate the power dissipation within the circuit. The results can be seen in table 1 for each composing block. The actual report is in appendix A.
 
 The table also shows the number of HVT and SVT cells in each composing block.
 
-% ----------------------------------------------------- Which component does Control belong to? Mux?
-\begin{table}[htbp]
+\begin{table}[!]
 \caption{Power dissipation in original circuit (uW) and cell count}
 \begin{center}
-\begin{tabular}{|l|l|l|l|l|l|} % I don't know if this is the correct way, I was just guessing from what I saw in the lab2 tex file
+\begin{tabular}{|l|l|l|l|l|l|}
 \hline
 \textbf{Block}	& \textbf{P static}		& \textbf{P dynamic}	& \textbf{P total} & \textbf{SVT cells} & \textbf{HVT cells}\\ \hline
 Control & 0.8 & 35.7 & 36.5 & 21 & 24 \\ \hline
@@ -144,42 +145,42 @@ Reg W & 13.3 & 336.7 & 350.0 & 315 & 8 	\\ \hline
 \end{center}
 \label{table:powerOriginal}
 \end{table}
-
-
+\floatbarrier
 \section{Retimed Design}
-
+\floatbarrier
 The retimed design is presented in figure 2.
 
-\begin{figure}
+\begin{figure}[h !]
 	\centering
 		\includegraphics[width=4in]{./retiming.PNG}
 	\caption{Digit recurrence division retimed}
 	\label{fig:retiming}
 \end{figure}
 
-\FloatBarrier
 
 Since only the most significant bits of sum and carry are used in the quotient digit selection it makes sense to separate the most significant bits from the least significant bits to separate structural slices. This is done in the VHDL code by disconnecting the quotient digit selection block from the W registers thus \textit{removing registers from the inputs} and adding new registers to the output of the block. This frees the W registers from the most significant slice. By also separating the implementation of the most significant bits of the adder and the multiplie generation from the implementation for the less significant bits more of the design is freed from the critical path.
+
 
 We achieved these changes by editing the top-level VHDL file for the original design. We disconnected the higher bits of register W from the selection function and introduced the register q as a new component. We connected the high bits of CSA directly to the selection function and connected the new register between the selection and the multiple generation.
 
 These changes do not affect the functionality of the circuit, but by dividing the implementation to most significant and least significant slices we get two paths. The critical path is marked with red arrows in the figure 2. The delay on the critical path is T(SEL)+T(reg q)+T(mux)+T(CSA). The delay on the non-critical path is at maximum T(reg W)+T(mux)+T(CSA). From this it can be seen that the non critical path has some slack which the synthesizer should be able to use to optimize the least significant slice for power, namely by replacing HS cells with LL cells.
 
-
+\floatbarrier
 \subsection{Power dissipation and cell count}
+\floatbarrier
 Just as with the original design the Synopsys VSS Simulator was used to annotate the switching activity based on a testbench and test vectors. This switching activity was again used by Design Vision to estimate the power dissipation within the circuit. The results can be seen in table 2 for each composing block. The actual report is in appendix B.
 
 The table also shows the number of HVT and SVT cells in each composing block.
-% ----------------------------------------------------- Which component does Control belong to? Mux?
-\begin{table}[htbp]
+
+\begin{table}[h !]
 \caption{Power dissipation in retimed circuit (uW) and cell count}
 \begin{center}
 \begin{tabular}{|l|l|l|l|l|l|} % I don't know if this is the correct way, I was just guessing from what I saw in the lab2 tex file
 \hline
 \textbf{Block}	& \textbf{P static}		& \textbf{P dynamic}	& \textbf{P total} & \textbf{SVT cells} & \textbf{HVT cells}\\ \hline
-Control & 0.9 & 34.9 & 35.8 & 18 & 20 \\ \hline
+Control & 0.9 & 34.9 & 35.8 & 21 & 22 \\ \hline
 Mux & 0.3 & 24.9 & 25.2 & 9 & 53 	\\ \hline
-Mult. gen. & 0.7 & 48.1 & 48.8 & 1 & 1 	\\ \hline
+Mult. gen. & 0.7 & 48.1 & 48.8 & 20 & 154 	\\ \hline
 CSA & 1.6 & 116.3 & 117.9 & 26 & 150 	\\ \hline
 SEL & 3.0 & 64.2 & 67.2 & 71 & 7 	\\ \hline
 Reg W & 3.0 & 258.4 & 261.4 & 118 & 116 	\\ \hline
@@ -188,7 +189,7 @@ Reg q & 0.7 & 16.3 & 17.0 & 20 & 3 \\ \hline
 \end{center}
 \label{table:powerRetimed}
 \end{table}
-
+\floatbarrier
 \section{Discussion}
 % Discussion on the results
 
