@@ -22,7 +22,7 @@ architecture BEH_FSM_in_3 of FSM_in_3 is
 begin    
 state_reg: process(clock, reset) 
 begin
-	          if (reset='1') then
+	          if (reset='0') then
                 current_state <= init;
 	          elsif (clock'event and clock='1') then
 	             current_state <= next_state;
