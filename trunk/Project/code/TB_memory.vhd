@@ -20,7 +20,7 @@ architecture TB of MEM_TB is
 component SRAM is	
 port(	Clock:		in std_logic;	
 	Enable:		in std_logic;
-	Give_Zeros: std_logic;
+	Give_Zeros: in std_logic;
 	Read:		in std_logic;
 	Write:		in std_logic;
 	Read_Addr:	in std_logic_vector(1 downto 0);
@@ -58,7 +58,7 @@ begin
 	T_Write_Addr <= (T_Write_Addr'range => '0');
 	T_Read_Addr <= (T_Read_Addr'range => '0');
 	T_Data_in <= (T_Data_in'range => '0');		
-	T_Zeros <= '1';
+	T_Zeros <= '0';
 	wait for 20 ns;
 	
 	-- test write		
@@ -70,7 +70,7 @@ begin
 	end loop;
 
    T_Read_Addr <= (T_Read_Addr'range => '0');
-   T_Zeros <= '0';
+   T_Zeros <= '1';
 	-- test read
 		
 	-- test read
