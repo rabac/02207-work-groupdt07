@@ -46,6 +46,12 @@ end component;
 		            Y : Out std_logic_vector (7 downto 0) );
       end component;
 
+component REG is
+	port(
+		D : in std_logic_vector(7 downto 0);
+		Clock, Reset : in std_logic;
+		Q : out std_logic_vector(7 downto 0));
+end component REG;
 
    component SHIFTREG is
       Port (  CLOCK : In    std_logic;
@@ -143,64 +149,64 @@ end component;
        fsm_output:
        FSM_out_3 port map(CLOCK, RESET, Read_Addr_Out_Mem, Write_Addr_Out_Mem, Read_Out_Mem, Write_Out_Mem, select_adder);
 
-       cache: 
-       SHIFTREG port map(CLOCK, RESET, disable_to_cache, Data_in_1, cache_bits);
+ --      cache: 
+ --      SHIFTREG port map(CLOCK, RESET, disable_to_cache, Data_in_1, cache_bits);
        
-       filtermask: 
-       SHIFTREG port map(CLOCK, RESET, disable_filter, Filter, filter_bits);
+ --      filtermask: 
+ --      SHIFTREG port map(CLOCK, RESET, disable_filter, Filter, filter_bits);
        
-       Mult1: 
-       Multiplier port map(cache_bits(7 downto 0), filter_bits(7 downto 0),mult1_out);
-      
-       Mult2: 
-       Multiplier port map(cache_bits(15 downto 8), filter_bits(15 downto 8),mult2_out);
+--       Mult1: 
+--       Multiplier port map(cache_bits(7 downto 0), filter_bits(7 downto 0),mult1_out);
+--      
+--       Mult2: 
+--       Multiplier port map(cache_bits(15 downto 8), filter_bits(15 downto 8),mult2_out);
+--
+--       Mult3: 
+--       Multiplier port map(cache_bits(23 downto 16), filter_bits(23 downto 16),mult3_out);
+--
+--       Mult4: 
+--       Multiplier port map(cache_bits(31 downto 24), filter_bits(31 downto 24),mult4_out);
+--
+--       Mult5: 
+--       Multiplier port map(cache_bits(39 downto 32), filter_bits(39 downto 32),mult5_out);
+--
+--       Mult6: 
+--       Multiplier port map(cache_bits(47 downto 40), filter_bits(47 downto 40),mult6_out);
+--
+--       Mult7: 
+--       Multiplier port map(cache_bits(55 downto 48), filter_bits(55 downto 48),mult7_out);
+--
+--       Mult8: 
+--       Multiplier port map(cache_bits(63 downto 56), filter_bits(63 downto 56),mult8_out);
+--
+--       Mult9: 
+--       Multiplier port map(cache_bits(71 downto 64), filter_bits(71 downto 64),mult9_out);
+--
+--       Add1:
+--       csa8bit port map(mult1_out, mult2_out, mult3_out,'0',co1, add1_out1,add1_out2);
+--       
+--       Add1_2:
+--       CRA_8 port map(add1_out1,add1_out2,co1,cou1,add1_out);
+--       
+--       Add2:
+--       csa8bit port map(mult4_out, mult5_out, mult6_out, '0',co2, add2_out1,add2_out2);
+--       
+--       Add2_2:
+--       CRA_8 port map(add2_out1,add2_out2,co2,cou2,add2_out);
+--
+--
+--       Add3:
+--       csa8bit port map(mult7_out, mult8_out, mult9_out, '0',co3, add3_out1,add3_out2);
+--
+--       Add3_2:
+--       CRA_8 port map(add3_out1,add3_out2,co3,cou3,add3_out);
 
-       Mult3: 
-       Multiplier port map(cache_bits(23 downto 16), filter_bits(23 downto 16),mult3_out);
+--       Multiplexer:
+--       Mux_4 port map(select_adder, cache_bits(15 downto 8), cache_bits(39 downto 32), cache_bits(63 downto 56), data_out);
 
-       Mult4: 
-       Multiplier port map(cache_bits(31 downto 24), filter_bits(31 downto 24),mult4_out);
-
-       Mult5: 
-       Multiplier port map(cache_bits(39 downto 32), filter_bits(39 downto 32),mult5_out);
-
-       Mult6: 
-       Multiplier port map(cache_bits(47 downto 40), filter_bits(47 downto 40),mult6_out);
-
-       Mult7: 
-       Multiplier port map(cache_bits(55 downto 48), filter_bits(55 downto 48),mult7_out);
-
-       Mult8: 
-       Multiplier port map(cache_bits(63 downto 56), filter_bits(63 downto 56),mult8_out);
-
-       Mult9: 
-       Multiplier port map(cache_bits(71 downto 64), filter_bits(71 downto 64),mult9_out);
-
-       Add1:
-       csa8bit port map(mult1_out, mult2_out, mult3_out,'0',co1, add1_out1,add1_out2);
-       
-       Add1_2:
-       CRA_8 port map(add1_out1,add1_out2,co1,cou1,add1_out);
-       
-       Add2:
-       csa8bit port map(mult4_out, mult5_out, mult6_out, '0',co2, add2_out1,add2_out2);
-       
-       Add2_2:
-       CRA_8 port map(add2_out1,add2_out2,co2,cou2,add2_out);
-
-
-       Add3:
-       csa8bit port map(mult7_out, mult8_out, mult9_out, '0',co3, add3_out1,add3_out2);
-
-       Add3_2:
-       CRA_8 port map(add3_out1,add3_out2,co3,cou3,add3_out);
-
-       Multiplexer:
-       Mux_4 port map(select_adder, add3_out, add2_out, add1_out, mux_out);
-
-       Add_new_value:
-       CRA_8 port map(Data_in_2, mux_out,'0',cfi, Data_out);
-       
+--       Add_new_value:
+--       CRA_8 port map(Data_in_2, mux_out,'0',cfi, Data_out);
+       registr: Reg port map ("11111111", Clock, Reset, Data_out);
        
 end SCHEMATIC_PROC_3;
 

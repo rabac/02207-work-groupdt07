@@ -106,7 +106,7 @@ begin
     process
        
 	   CONSTANT NLOOPS : integer := 15;
-	   file cmdfile: TEXT; 		 -- Define the file 'handle'
+	   file cmdfile, outfile: TEXT; 		 -- Define the file 'handle'
 	   variable line_in,line_out: Line; -- Line buffers
 	   variable good: boolean;   	 -- Status of the read operations
 	   variable A,B: std_logic_vector(7 downto 0);
@@ -118,8 +118,6 @@ begin
 	   -- constant TEST_FAILED: string := "Test FAILED:";
 
 	begin
-	   
-	   FILE_OPEN(cmdfile,"lena_256x256.hex",READ_MODE);
 	   
 	   c := 1;
 	   proc_RESET <= '1';
@@ -135,6 +133,7 @@ begin
 	   mem2_Write_Addr <= (others => '0');
 	   mem2_Data_In <= (others => '0');
 
+      FILE_OPEN(cmdfile,"lena_256x256.hex",READ_MODE);
       -- start filling memory 1 with the image pixels from hex file.
       loop
       
@@ -211,7 +210,7 @@ begin
 	         exit;
          end if;   
          
-         proc_filter <= (others => '1');
+         proc_filter <= "10101010";
       
          wait for 2 ns;
          c := c + 1;
@@ -224,7 +223,9 @@ begin
       -- start the processor.
       proc_filter_disable <= '1';
       proc_reset <= '0';
-      proc_data_out <= (others => '0');
+      --proc_data_out <= (others => '0');
+    
+       c := 1;
       
       loop
     
@@ -234,7 +235,7 @@ begin
          proc_Data_In_1 <= mem1_Data_Out;
          
          proc_Data_In_2 <= mem2_Data_Out;
-         mem2_Data_In <= proc_Data_Out;
+         --mem2_Data_In <= proc_Data_Out;
          mem2_Read <= proc_Read_Out_Mem;
          mem2_Write <= proc_Write_Out_Mem;
          mem2_Read_Addr <= proc_Read_Addr_Out_Mem;
@@ -242,7 +243,39 @@ begin
          
           wait for 2 ns;
           
+          c := c + 1;
+          
+          if(c = 780288) then  -- ( 3 + 9 ) * 254 * 256 (780288)
+             exit;
+        end if;
+          
       end loop;		
+
+     
+      -- read the output memory into a file
+       c := 1;
+      	FILE_OPEN(outfile,"lena_256x256_filtered.hex",WRITE_MODE);
+	   
+
+      loop
+      
+         if (c > 65536) then
+	         exit;
+         end if;
+
+         mem2_Read <= '1';
+         mem1_Read_Addr <= conv_std_logic_vector(c, 16);
+         A := mem2_Data_Out;
+         
+         hwrite(line_out,A,RIGHT,0);
+         writeline(outfile, line_out);
+       
+         c := c + 1;
+                  
+         wait for 2 ns;
+         
+      end loop;
+	   
 
     write(line_out, string'("--------- END-------------"));
     writeline(OUTPUT,line_out);

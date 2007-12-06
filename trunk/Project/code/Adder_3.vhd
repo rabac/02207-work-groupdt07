@@ -16,15 +16,19 @@ architecture BEH_ADDER_3 of ADDER_3 is
    signal c2, c1: std_logic;
    begin	
 
-   sum_out <= ("00" & unsigned(A)) + ("00" & unsigned(B)) + ("00" & unsigned(C));
-   
-   c2 <= std_logic(sum_out(9));
-   c1 <= std_logic(sum_out(8));
 
-   temp <= std_logic_vector(sum_out(7 downto 0));
-   --temp <= "11111111" when c2 <= '1';
-   --temp <= "11111111" when c1 <= '1';
+   process(A, B, C)
    
-   Z <= temp;
-
+      constant zeros: unsigned(1 downto 0) := (others => '0');
+      variable sum_int: INTEGER;
+      
+   begin
+   sum_out <= (zeros & unsigned(A)) + (zeros & unsigned(B)) + (zeros & unsigned(C));
+   sum_int := conv_integer(sum_out);
+   if(sum_int < 255) then
+      Z <= std_logic_vector(sum_out(7 downto 0));
+   else
+      Z <= "11111111";   
+   end if;
+   end process;
 end BEH_ADDER_3;
