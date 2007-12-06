@@ -10,6 +10,7 @@ entity MEMORY is
 port(	
    Clock:		in std_logic;	
 	Enable:		in std_logic;
+	Give_Zeros: in std_logic;
 	Read:		in std_logic;
 	Write:		in std_logic;
 	Read_Addr:	in std_logic_vector(15 downto 0);
@@ -29,14 +30,18 @@ signal tmp_memory: memory_type;
 begin	
 			   
    -- Read Functional Section
-   process(Clock, Read)
+   process(Clock, Read, Give_Zeros)
    begin
 	if (Clock'event and Clock='1') then
 	    if Enable='1' then
 		   if Read='1' then
 		    -- buildin function conv_integer change the type
 		    -- from std_logic_vector to integer
-		    Data_out <= tmp_memory(conv_integer(Read_Addr)); 
+   		       if(Give_Zeros = '1') then
+		              Data_out <= (Data_out'range => '0');
+             else
+                    Data_out <= tmp_memory(conv_integer(Read_Addr)); 
+             end if;
 		   else
 		    Data_out <= (Data_out'range => 'Z');
 		   end if;

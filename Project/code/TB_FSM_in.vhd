@@ -43,7 +43,7 @@ begin
     begin
 	
 	   T_reset <= '0';
-	   wait for 2 ns;		
+	   wait for 10 ns;		
       -- can put assert statements to assure something holds
       T_reset <= '1';
       

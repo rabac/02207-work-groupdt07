@@ -8,7 +8,8 @@ entity Processor_3 is
                RESET : In    std_logic;
 	           
 	            Read_In_Mem:		Out std_logic;
-
+               Write_In_Mem : Out std_logic;
+               
 	            Read_Out_Mem:		Out std_logic;
                Write_Out_Mem:	Out std_logic;
 
@@ -85,6 +86,7 @@ architecture SCHEMATIC_PROC_3 of Processor_3 is
 	            reset:		in std_logic;
 	            address:		out std_logic_vector(15 downto 0);
 	            can_read:   out std_logic;
+	            can_write:  out std_logic;
 	            disable_cache: out std_logic
               );
     end component FSM_in_3;
@@ -100,6 +102,13 @@ architecture SCHEMATIC_PROC_3 of Processor_3 is
 	            sel: out std_logic_vector(1 downto 0)
               );
     end component FSM_out_3;
+   
+   component REG is
+	port(
+		D : in std_logic_vector(7 downto 0);
+		Clock, Reset : in std_logic;
+		Q : out std_logic_vector(7 downto 0));
+   end component REG;
 
     signal disable_to_cache: std_logic;
     signal Read_fsm_in: std_logic;
@@ -123,11 +132,12 @@ architecture SCHEMATIC_PROC_3 of Processor_3 is
     constant zeros: unsigned(7 downto 0) := (others => '0');
     signal select_adder: std_logic_vector(1 downto 0);
     signal mux_out: std_logic_vector(7 downto 0);
-    
+
+   signal reg_temp: std_logic_vector(7 downto 0);    
     begin
         
        fsm_input:
-       FSM_in_3 port map(CLOCK, RESET, Read_Addr_In_Mem, Read_In_Mem, disable_to_cache);
+       FSM_in_3 port map(CLOCK, RESET, Read_Addr_In_Mem, Read_In_Mem, Write_In_Mem, disable_to_cache);
         
        fsm_output:
        FSM_out_3 port map(CLOCK, RESET, Read_Addr_Out_Mem, Write_Addr_Out_Mem, 
@@ -175,30 +185,12 @@ architecture SCHEMATIC_PROC_3 of Processor_3 is
        Add3:
        Adder_3 port map(mult7_out, mult8_out, mult9_out, add3_out);
 
---       Add1:
---       Adder_3 port map(cache_bits(7 downto 0), cache_bits(7 downto 0), cache_bits(7 downto 0), add1_out);
---
---       Add2:
---       Adder_3 port map(cache_bits(7 downto 0), cache_bits(7 downto 0), cache_bits(7 downto 0), add2_out);
---
---       Add3:
---       Adder_3 port map(cache_bits(7 downto 0), cache_bits(7 downto 0), cache_bits(7 downto 0), add3_out);
---
-
        Multiplexer:
-       Mux_4 port map(select_adder, add1_out, add2_out, add3_out, mux_out);
+       Mux_4 port map(select_adder, mult1_out, mult2_out, mult3_out, mux_out);
 
        Add_new_value:
        Adder_2 port map(Data_in_2, mux_out, Data_out);
 
---       Multiplexer:
---       Mux_4 port map(select_adder, cache_bits(7 downto 0), cache_bits(7 downto 0), 
---                      cache_bits(7 downto 0), mux_out);
---
---       Add_new_value:
---       Adder_2 port map(Data_in_2, mux_out, Data_out);
-
-       
-       
+--      regster : Reg port map("11111111", Clock, Reset, data_out);
 end SCHEMATIC_PROC_3;
 
