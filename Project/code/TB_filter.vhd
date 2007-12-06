@@ -140,7 +140,7 @@ begin
 	         exit;
          end if;   
          
-         proc_filter <= "10101010";
+         proc_filter <= "00000001";
       
          wait for 2 ns;
          c := c + 1;
