@@ -16,7 +16,7 @@ end FSM_in_3;
 
 architecture BEH_FSM_in_3 of FSM_in_3 is
     
-    type state_type is (init, init_in_memory_1, init_in_memory_2, h_read_1, h_read_2, h_read_3, h_wait, h_temp,
+    type state_type is (init, init_in_memory_1, init_in_memory_2, h_read_1, h_read_2, h_read_3, h_cache_1, h_cache_2, h_wait, h_temp,
      v_read_1, v_read_2, v_read_3, v_wait, v_temp, exit_in);
     signal next_state, current_state: state_type;
 
@@ -84,7 +84,7 @@ begin
             can_read <= '1';
 	         addr_h := x;
             address <= conv_std_logic_vector(addr_h,16);
-            disable_cache <= '0';
+            disable_cache <= '1';
 	    
 	    when h_read_2 =>	
 
@@ -96,17 +96,35 @@ begin
             
 	    when h_read_3 =>	
 	    
-	         next_state <= h_wait;
+	         next_state <= h_cache_1;
             can_read <= '1';
 	         addr_h := addr_h + 256;
 	         x := x + 1;
             address <= conv_std_logic_vector(addr_h,16);
             disable_cache <= '0';
-            
+      
+      when h_cache_1 =>
+             disable_cache <= '0';
+             can_read <= '0';
+             
+             next_state <= h_wait;
+             
 	    when h_wait =>	
   
-              counter := counter + 1;
-            
+            counter := counter + 1;
+   
+            can_read <= '0';
+            address <= (others => '0');
+            next_state <= h_temp;
+            disable_cache <= '1';
+
+       when h_temp =>
+
+            counter := counter + 1;
+            can_read <= '0';
+            address <= (others => '0');
+            disable_cache <= '1';
+
             if(counter > 8) then
                
                counter := 1;
@@ -118,22 +136,9 @@ begin
                end if;
 
             else
-               next_state <= h_temp;
+               next_state <= h_wait;
             end if;
-   
-            can_read <= '0';
-            address <= (others => '0');
-        
             
-            disable_cache <= '1';
-
-       when h_temp =>
-            
-            counter := counter + 1;
-            next_state <= h_wait;
-            can_read <= '0';
-            address <= (others => '0');
-          disable_cache <= '1';
            
 	    when v_read_1 =>	
 	        
