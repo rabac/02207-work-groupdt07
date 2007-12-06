@@ -22,10 +22,7 @@ entity Processor_3 is
 	            Data_out: Out std_logic_vector(7 downto 0);
 	            Filter: In std_logic_vector(7 downto 0);
 	            disable_filter: In std_logic
-	            
-	            
-	            --- signals just for debugging ---
-	            
+   	            
 	         );          
 end Processor_3;
 

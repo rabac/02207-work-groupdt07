@@ -120,7 +120,7 @@ begin
 	begin
 	   
 	   c := 1;
-	   proc_RESET <= '1';
+	   proc_RESET <= '0';
 	   proc_filter_disable <= '1';
 
       mem_Enable <= '1';
@@ -218,12 +218,11 @@ begin
       end loop;
       
       
-      
-      
       -- start the processor.
       proc_filter_disable <= '1';
-      proc_reset <= '0';
-      --proc_data_out <= (others => '0');
+      proc_filter <= "00000000";
+      proc_reset <= '1';
+      proc_data_out <= (others => '0');
     
        c := 1;
       
@@ -235,7 +234,7 @@ begin
          proc_Data_In_1 <= mem1_Data_Out;
          
          proc_Data_In_2 <= mem2_Data_Out;
-         --mem2_Data_In <= proc_Data_Out;
+         mem2_Data_In <= proc_Data_Out;
          mem2_Read <= proc_Read_Out_Mem;
          mem2_Write <= proc_Write_Out_Mem;
          mem2_Read_Addr <= proc_Read_Addr_Out_Mem;
