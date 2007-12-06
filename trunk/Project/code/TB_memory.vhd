@@ -20,6 +20,7 @@ architecture TB of MEM_TB is
 component SRAM is	
 port(	Clock:		in std_logic;	
 	Enable:		in std_logic;
+	Give_Zeros: std_logic;
 	Read:		in std_logic;
 	Write:		in std_logic;
 	Read_Addr:	in std_logic_vector(1 downto 0);
@@ -29,14 +30,14 @@ port(	Clock:		in std_logic;
 );	
 end component;
 
-signal T_Clock, T_Enable, T_Read, T_Write: std_logic;
+signal T_Clock, T_Enable, T_Read, T_Write, T_Zeros: std_logic;
 signal T_Data_in, T_Data_out: std_logic_vector(3 downto 0);
 signal T_Read_Addr: std_logic_vector(1 downto 0);
 signal T_Write_Addr: std_logic_vector(1 downto 0);
 
 begin 
 	
-    U_CKT: SRAM port map (T_Clock, T_Enable, T_Read, T_Write,
+    U_CKT: SRAM port map (T_Clock, T_Enable, T_Zeros, T_Read, T_Write,
 		T_Read_Addr, T_Write_Addr, T_Data_in, T_Data_out);
 
     Clk_sig: process
@@ -57,6 +58,7 @@ begin
 	T_Write_Addr <= (T_Write_Addr'range => '0');
 	T_Read_Addr <= (T_Read_Addr'range => '0');
 	T_Data_in <= (T_Data_in'range => '0');		
+	T_Zeros <= '1';
 	wait for 20 ns;
 	
 	-- test write		
@@ -65,39 +67,30 @@ begin
 	    T_Data_in <= T_Data_in + "10";
 	    T_Write <= '1';
 	    wait for 10 ns;				
-	    assert (T_Data_out="ZZZZ") 
-                report "Something wrong!" severity Error;
-            if (T_Data_out /= "ZZZZ") then
-                err_cnt := err_cnt + 1;
-            end if; 
 	end loop;
+
+   T_Read_Addr <= (T_Read_Addr'range => '0');
+   T_Zeros <= '0';
+	-- test read
 		
 	-- test read
 	for i in 0 to 2 loop
 	    T_Read_Addr <= T_Read_Addr + '1';
 	    T_Read <= '1';
 	    wait for 10 ns;	
-	    assert (conv_integer(T_Data_out)=2*conv_integer(T_Read_Addr))
-		report "Something wrong!" severity Error;
-	    if (conv_integer(T_Data_out)/=2*conv_integer(T_Read_Addr)) then
-		err_cnt := err_cnt + 1;
-	    end if;			  
 	end loop;
-		
-	-- summary of all the tests
-        if (err_cnt=0) then                     
-            assert false 
-            report "Testbench of ROM completed successfully!" 
-            severity note; 
-        else
-            assert true
-            report "Something wrong, try again"
-            severity error;
-        end if;
+
+T_Read_Addr <= (T_Read_Addr'range => '0');
+T_Zeros <= '0';		
+	for i in 0 to 2 loop
+	    T_Read_Addr <= T_Read_Addr + '1';
+	    T_Read <= '1';
+	    wait for 10 ns;	
+	end loop;
 
 	wait;
 
-    end process;
+   end process;
 
 end TB;
 

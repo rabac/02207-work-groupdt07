@@ -8,7 +8,7 @@ entity Processor_3 is
                RESET : In    std_logic;
 	           
 	            Read_In_Mem:		Out std_logic;
-
+               Write_In_Mem : Out std_logic;
 	            Read_Out_Mem:		Out std_logic;
                Write_Out_Mem:	Out std_logic;
 
@@ -95,6 +95,7 @@ end component REG;
 	            reset:		in std_logic;
 	            address:		out std_logic_vector(15 downto 0);
 	            can_read:   out std_logic;
+	            can_write:   out std_logic;
 	            disable_cache: out std_logic
               );
     end component FSM_in_3;
@@ -144,7 +145,7 @@ end component REG;
     begin
         
        fsm_input:
-       FSM_in_3 port map(CLOCK, RESET, Read_Addr_In_Mem, Read_In_Mem, disable_to_cache);
+       FSM_in_3 port map(CLOCK, RESET, Read_Addr_In_Mem, Read_In_Mem, Write_In_Mem, disable_to_cache);
         
        fsm_output:
        FSM_out_3 port map(CLOCK, RESET, Read_Addr_Out_Mem, Write_Addr_Out_Mem, Read_Out_Mem, Write_Out_Mem, select_adder);
@@ -205,6 +206,6 @@ end component REG;
 
        Add_new_value:
        CRA_8 port map(Data_in_2, mux_out,'0',cfi, Data_out);
-       
+ 
 end SCHEMATIC_PROC_3;
 
