@@ -15,7 +15,7 @@ end SHIFTREG;
 architecture BEH_SHIFTREG of SHIFTREG is
 
    begin
-    process(RESET,CLOCK,disable)
+    process(RESET,CLOCK)
      variable i,j,k,l : integer;
      begin
 
