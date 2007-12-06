@@ -111,10 +111,6 @@ architecture SCHEMATIC_PROC_3 of Processor_3 is
    end component REG;
 
     signal disable_to_cache: std_logic;
-    signal Read_fsm_in: std_logic;
-    signal Read_fsm_out: std_logic;    
-    signal Read_Addr_in: std_logic_vector(15 downto 0);
-    signal Read_Addr_fsm_out: std_logic_vector(15 downto 0);    
     signal cache_bits: std_logic_vector(71 downto 0);
     signal filter_bits: std_logic_vector(71 downto 0);
     signal mult1_out: std_logic_vector(7 downto 0);
@@ -133,7 +129,6 @@ architecture SCHEMATIC_PROC_3 of Processor_3 is
     signal select_adder: std_logic_vector(1 downto 0);
     signal mux_out: std_logic_vector(7 downto 0);
 
-   signal reg_temp: std_logic_vector(7 downto 0);    
     begin
         
        fsm_input:
