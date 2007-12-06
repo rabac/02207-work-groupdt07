@@ -27,39 +27,19 @@ architecture BEH_MEMORY of MEMORY is
 type memory_type is array (0 to 65536) of std_logic_vector(7 downto 0);
 signal tmp_memory: memory_type;
 
-begin	
-			   
-   -- Read Functional Section
-   process(Clock, Read, Give_Zeros)
-   begin
-	if (Clock'event and Clock='1') then
-	    if Enable='1' then
-		   if Read='1' then
-		    -- buildin function conv_integer change the type
-		    -- from std_logic_vector to integer
-   		       if(Give_Zeros = '1') then
-		              Data_out <= (Data_out'range => '0');
-             else
-                    Data_out <= tmp_memory(conv_integer(Read_Addr)); 
-             end if;
-		   else
-		    Data_out <= (Data_out'range => 'Z');
-		   end if;
-	    end if;
-	end if;
-   end process;
-
-	
-   -- Write Functional Section
-   process(Clock, Write)
-   begin
-	if (Clock'event and Clock='1') then
-	    if Enable='1' then
-		   if Write='1' then
-		    tmp_memory(conv_integer(Write_Addr)) <= Data_in;
-		   end if;
-	    end if;
-	end if;
-   end process;
+begin
+    process(Clock)
+    begin
+        if (Clock'EVENT and Clock='1' and enable='1') then
+            if (Give_Zeros='1') then
+                Data_out <= (Data_out'range => '0');
+            elsif (Read='1') then
+                Data_out <= tmp_memory(conv_integer(Read_Addr));
+            end if;
+            if (Write='1') then
+                tmp_memory(conv_integer(Write_Addr)) <= Data_in;
+            end if;
+        end if;
+    end process;
 
 end BEH_MEMORY;
