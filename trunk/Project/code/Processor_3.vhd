@@ -181,7 +181,7 @@ architecture SCHEMATIC_PROC_3 of Processor_3 is
        Adder_3 port map(mult7_out, mult8_out, mult9_out, add3_out);
 
        Multiplexer:
-       Mux_4 port map(select_adder, mult1_out, mult2_out, mult3_out, mux_out);
+       Mux_4 port map(select_adder, add1_out, add2_out, add3_out, mux_out);
 
        Add_new_value:
        Adder_2 port map(Data_in_2, mux_out, Data_out);
