@@ -124,33 +124,18 @@ begin
 	begin
 	   
 	   proc_RESET <= '0';
+	   
+	   wait for 2 ns;
+	   
 	   mem_Enable <= '1';
 	   mem_give_zeros <= '1';
 
       -- initialize the filter with pixels
       proc_filter_disable <= '0';
-      c := 0;
+      c := 1;
       
-      loop
-      
-         if(c = 18) then
-             
-            assert false;
-            report "Filter has been initialized."
-	         severity NOTE;
-	         
-	         exit;
-         end if;   
-        
-            proc_filter <= "00000001";
-       
-         wait for 2 ns;
-         c := c + 1;
-         
-      end loop;
-      
-      --proc_filter_disable <= '1';
-      proc_reset <= '1';
+      proc_RESET <= '1';
+      proc_filter_disable <= '0';
       FILE_OPEN(cmdfile,"lena_256x256.hex",READ_MODE);
       -- start filling memory 1 with the image pixels from hex file.
       
@@ -173,8 +158,19 @@ begin
          mem1_Data_In <= A(7 downto 0);
          write(line_out,c);
          
+        if(c = 10) then
+              proc_filter_disable <= '1';
+         elsif ((c mod 2) = 0) then
+            proc_filter <= "00000001";
+            else 
+            proc_filter <= "00000000";
+        end if;
+
          wait for 2 ns;
+         c := c + 1;
+
          
+               
       end loop;
 	   
 	   c := 1;

@@ -17,8 +17,9 @@ end FSM_out_3;
 
 architecture BEH_FSM_out_3 of FSM_out_3 is
     
-    type state_type is (init, init_out_memory_1, init_out_memory_2, h_init_1, h_init_2, h_read_1, h_read_write_1, h_read_write_2, h_write_1, h_wait_1, h_wait_2,
-     v_init_1, v_init_2, v_read_1, v_write_1, v_wait_1, v_wait_2, exit_in);
+    type state_type is (init, init_out_memory_1, init_out_memory_2, h_init_1, h_init_2, 
+    h_read_1, h_read_write, h_read_write_2, h_write_1, h_wait_1, h_wait_2,
+     v_init_1, v_init_2, v_read_1, v_read_write, v_write_1, v_wait_1, v_wait_2, exit_in);
     signal next_state, current_state: state_type;
 
 begin    
@@ -118,7 +119,7 @@ begin
           
 	    when h_read_1 =>	
 
-            next_state <= h_read_write_1;
+            next_state <= h_read_write;
            
             can_read <= '1';
             can_write <= '0';
@@ -127,7 +128,7 @@ begin
             sel <= conv_std_logic_vector(sel_num,2);
             sel_num := sel_num + 1;
             
-       when h_read_write_1 =>
+       when h_read_write =>
            
            next_state <= h_write_1;
 
@@ -143,6 +144,7 @@ begin
                 if(x > 65277) then
                    x := 2;
                    next_state <= v_init_1;
+                   counter := 1;
                    rwcount := 1;
                    sel_num := 0;
                 
@@ -207,9 +209,16 @@ begin
        when v_init_1 =>
             
            counter := counter + 1;
-           
-           next_state <= v_init_2;
-           
+             if(counter > 27) then
+               
+               counter := 1;
+               next_state <= v_read_1;
+               addr_v := x;
+                             
+           else
+               next_state <= v_init_2;
+           end if;
+        
            can_read <= '0';
            can_write <= '0';
            read_address <= (others => '0');
@@ -217,20 +226,17 @@ begin
             
        when v_init_2 =>
            
+           can_read <= '0';
+           can_write <= '0';
+           read_address <= (others => '0');
+           write_address <= (others => '0');
+
            counter := counter + 1;
-           if(counter > 20) then
-               
-               counter := 1;
-               next_state <= v_read_1;
-               addr_v := x;
-                             
-           else
-               next_state <= v_init_1;
-           end if;
-            
+           next_state <= v_init_1;
+             
 	    when v_read_1 =>	
 
-            next_state <= v_write_1;
+            next_state <= v_read_write;
                
             can_read <= '1';
             can_write <= '0';
@@ -238,6 +244,16 @@ begin
             write_address <= (others => '0');
             sel <= conv_std_logic_vector(sel_num,2);
             sel_num := sel_num + 1;
+
+       when v_read_write =>
+           
+           next_state <= v_write_1;
+
+            can_read <= '0';
+            can_write <= '0';
+            read_address <= (others => '0');
+            write_address <= (others => '0');
+
 	    
 	    when v_write_1 =>	
             
