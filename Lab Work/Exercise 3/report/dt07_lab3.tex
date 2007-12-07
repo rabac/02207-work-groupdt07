@@ -6,9 +6,6 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage{amsmath}
 \usepackage{multirow}
 \usepackage{listings}
 \usepackage{fullpage}
@@ -89,9 +86,9 @@ In the following sections we will briefly explain the concept of retiming, prese
 
 \subsection{Authors by Section}
 \begin{itemize}
-\item \textit{Rajesh Bachani} 
-\item \textit{Josep Renard} 
-\item \textit{Markku Eerola} 
+\item \textit{Rajesh Bachani - Simulating the retimed design, cell counts for original, Report: introduction, retimed design} 
+\item \textit{Josep Renard - Editing the top level, cell counts for retimed, Report: retiming, discussion} 
+\item \textit{Markku Eerola - Synthesis and power reports, Report: original design, appendices} 
 \end{itemize}
 
 \section{Retiming}
@@ -100,10 +97,10 @@ Retiming is an optimizing technique where structural location of registers is ma
 In our case the motivation for retiming was to create slack on a non-critical path, and to have the synthesizer substitute HS cells with LL cells on this path thus lowering the overall power dissipation in the whole circuit. According to the lecture slides the circuit we were studying should gain approximately 30\% power savings from this kind of retiming.
 
 \section{Original Design}
-\floatbarrier
+
 The original design upon which we aimed to improve with the retiming is presented in figure 1.
 
-\begin{figure}[!]
+\begin{figure}[h]
 	\centering
 		\includegraphics[width=4in]{./noretiming.PNG}
 	\caption{Digit recurrence division}	\label{fig:noretiming}
@@ -122,14 +119,12 @@ The registers Ws and Wc store the carry and the sum from the carry-save adder re
 
 The critical path of this circuit is marked with red arrows in the figure 1.
 
-\floatbarrier
+\FloatBarrier
 \subsection{Power dissipation and cell count}
-\floatbarrier
-The Synopsys VSS Simulator was used to annotate the switching activity based on a testbench and test vectors. This switching activity was used by Design Vision to estimate the power dissipation within the circuit. The results can be seen in table 1 for each composing block. The actual report is in appendix A.
 
-The table also shows the number of HVT and SVT cells in each composing block.
+The Synopsys VSS Simulator was used to annotate the switching activity based on a testbench and test vectors. This switching activity was used by Design Vision to estimate the power dissipation within the circuit. The results can be seen in table~1 for each composing block. The actual report is in appendix~A. The table also shows the number of HVT and SVT cells in each composing block.
 
-\begin{table}[!]
+\begin{table}[h]
 \caption{Power dissipation in original circuit (uW) and cell count}
 \begin{center}
 \begin{tabular}{|l|l|l|l|l|l|}
@@ -140,39 +135,36 @@ Mux & 0.12 & 28.3 & 28.4 & 1 & 57 	\\ \hline
 Mult. gen. & 6.8 & 124.0 & 130.8 & 226 & 51 	\\ \hline
 CSA & 7.4 & 196.4 & 203.8 & 141 & 35 	\\ \hline
 SEL & 3.3 & 68.1 & 71.4 & 80 & 5 	\\ \hline
-Reg W & 13.3 & 336.7 & 350.0 & 315 & 8 	\\ \hline
+Reg W & 13.3 & 336.7 & 350.0 & 315 & 8 	\\ \hline \hline
+Total & 31.7 & 789.2 & 820.9 & 784 & 180 \\ \hline
 \end{tabular}
 \end{center}
 \label{table:powerOriginal}
 \end{table}
-\floatbarrier
+\FloatBarrier
 \section{Retimed Design}
-\floatbarrier
+
 The retimed design is presented in figure 2.
 
-\begin{figure}[h !]
+\begin{figure}[h]
 	\centering
 		\includegraphics[width=4in]{./retiming.PNG}
 	\caption{Digit recurrence division retimed}
 	\label{fig:retiming}
 \end{figure}
 
-
 Since only the most significant bits of sum and carry are used in the quotient digit selection it makes sense to separate the most significant bits from the least significant bits to separate structural slices. This is done in the VHDL code by disconnecting the quotient digit selection block from the W registers thus \textit{removing registers from the inputs} and adding new registers to the output of the block. This frees the W registers from the most significant slice. By also separating the implementation of the most significant bits of the adder and the multiplie generation from the implementation for the less significant bits more of the design is freed from the critical path.
-
 
 We achieved these changes by editing the top-level VHDL file for the original design. We disconnected the higher bits of register W from the selection function and introduced the register q as a new component. We connected the high bits of CSA directly to the selection function and connected the new register between the selection and the multiple generation.
 
-These changes do not affect the functionality of the circuit, but by dividing the implementation to most significant and least significant slices we get two paths. The critical path is marked with red arrows in the figure 2. The delay on the critical path is T(SEL)+T(reg q)+T(mux)+T(CSA). The delay on the non-critical path is at maximum T(reg W)+T(mux)+T(CSA). From this it can be seen that the non critical path has some slack which the synthesizer should be able to use to optimize the least significant slice for power, namely by replacing HS cells with LL cells.
+These changes do not affect the functionality of the circuit, but by dividing the implementation to most significant and least significant slices we get two paths. The critical path is marked with red arrows in the figure~2. The delay on the critical path is T(SEL)+T(reg q)+T(mux)+T(CSA). The delay on the non-critical path is at maximum T(reg W)+T(mux)+T(CSA). From this it can be seen that the non critical path has some slack which the synthesizer should be able to use to optimize the least significant slice for power, namely by replacing HS cells with LL cells.
 
-\floatbarrier
+\FloatBarrier
 \subsection{Power dissipation and cell count}
-\floatbarrier
-Just as with the original design the Synopsys VSS Simulator was used to annotate the switching activity based on a testbench and test vectors. This switching activity was again used by Design Vision to estimate the power dissipation within the circuit. The results can be seen in table 2 for each composing block. The actual report is in appendix B.
 
-The table also shows the number of HVT and SVT cells in each composing block.
+Just as with the original design the Synopsys VSS Simulator was used to annotate the switching activity based on a testbench and test vectors. This switching activity was again used by Design Vision to estimate the power dissipation within the circuit. The results can be seen in table~2 for each composing block. The actual report is in appendix~B. The table also shows the number of HVT and SVT cells in each composing block.
 
-\begin{table}[h !]
+\begin{table}[h]
 \caption{Power dissipation in retimed circuit (uW) and cell count}
 \begin{center}
 \begin{tabular}{|l|l|l|l|l|l|} % I don't know if this is the correct way, I was just guessing from what I saw in the lab2 tex file
@@ -184,21 +176,26 @@ Mult. gen. & 0.7 & 48.1 & 48.8 & 20 & 154 	\\ \hline
 CSA & 1.6 & 116.3 & 117.9 & 26 & 150 	\\ \hline
 SEL & 3.0 & 64.2 & 67.2 & 71 & 7 	\\ \hline
 Reg W & 3.0 & 258.4 & 261.4 & 118 & 116 	\\ \hline
-Reg q & 0.7 & 16.3 & 17.0 & 20 & 3 \\ \hline
+Reg q & 0.7 & 16.3 & 17.0 & 20 & 3 \\ \hline \hline
+Total & 10.2 & 563.1 & 573.3 & 285 & 505 \\ \hline
 \end{tabular}
 \end{center}
 \label{table:powerRetimed}
 \end{table}
-\floatbarrier
+\FloatBarrier
+
 \section{Discussion}
 % Discussion on the results
+Looking at the results from tables 1 and 2 we can see, that separating the design in two slices has reduced power dissipation. This split makes it possible for the synthesizing tool, Synopsys Design Vision, to optimize the slice with the critical path for speed and the non-critical part for low power. The composing blocks that have been separated from the critical path have been optimized for power by the synthesizer and this shows in SVT cells being replaced by HVT cells. Since these separated blocks contain the large register W and most of the CSA and multiple generator from the original design, the power savings are notable. Namely, we save approximately 30\% - which was expected.
 
+\newpage
 \section{Appendix A: Power reports from the original design}
 % Add the files
-
+\lstinputlisting[frame=trbl, caption={Power Report - Original}] {../code/divr4_rec_noretiming/power_report_breakdown.txt}
+\newpage
 \section{Appendix B: Power reports from the retimed design}
 % Add the files
-
+\lstinputlisting[frame=trbl, caption={Power Report - Retimed}] {../code/divr4_rec_retiming/power_report_breakdown.txt}
 
 
 %----------------------------------------------------------- the old structure is below
