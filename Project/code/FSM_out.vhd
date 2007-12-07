@@ -135,21 +135,24 @@ begin
             can_write <= '0';
             read_address <= (others => '0');
             write_address <= (others => '0');
-            
-       when h_read_write_2 =>
-           
-           next_state <= h_write_1;
-
-            can_read <= '0';
-            can_write <= '0';
-            read_address <= (others => '0');
-            write_address <= (others => '0');
 
 	    when h_write_1 =>	
             
             rwcount := rwcount + 1;
             if(rwcount > 3) then
-               next_state <= h_wait_1;
+                if(x > 65277) then
+                   x := 2;
+                   next_state <= v_init_1;
+                   rwcount := 1;
+                   sel_num := 0;
+                
+                elsif((addr_h mod 256) = 0) then
+                    x := addr_h + 1;
+                    next_state <= h_init_1;
+                else 
+                     next_state <= h_wait_1;
+                end if;
+               
                rwcount := 1;
                sel_num := 0;
             else
@@ -170,23 +173,14 @@ begin
             if(counter > 3) then
                
                counter := 1;
-               if(x > 65277) then
-                   x := 2;
-                   next_state <= v_init_1;
-                   rwcount := 1;
-                   sel_num := 0;
                   
-               else
-                   if((addr_h mod 256) = 1) then
-                        x := addr_h;
-                   else
+  
                         x := x + 1; 
                         addr_h := x;
-                   end if;
-               
-                   next_state <= h_read_1;
-               end if;
-
+                        next_state <= h_read_1;
+             
+                   
+              
             else
                next_state <= h_wait_2;
             end if;

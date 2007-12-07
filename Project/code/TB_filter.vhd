@@ -147,6 +147,7 @@ begin
          
       end loop;
       
+      --proc_filter_disable <= '1';
       proc_reset <= '1';
       FILE_OPEN(cmdfile,"lena_256x256.hex",READ_MODE);
       -- start filling memory 1 with the image pixels from hex file.
@@ -183,7 +184,7 @@ begin
           
           c := c + 1;
           
-          if(c = 780288) then  -- ( 3 + 9 ) * 254 * 256 (780288)
+          if(c = 1560577) then  -- ( 3 + 9 ) * 254 * 256 (780288)
              exit;
         end if;
           
@@ -194,7 +195,7 @@ begin
        c := 1;
       	FILE_OPEN(outfile,"lena_256x256_filtered.hex",WRITE_MODE);
 	   
---
+
 --      loop
 --      
 --         if (c > 65536) then
@@ -213,7 +214,7 @@ begin
 --         wait for 2 ns;
 --         
 --      end loop;
-	   
+--	   
 
     write(line_out, string'("--------- END-------------"));
     writeline(OUTPUT,line_out);

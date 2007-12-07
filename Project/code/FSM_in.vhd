@@ -16,8 +16,9 @@ end FSM_in_3;
 
 architecture BEH_FSM_in_3 of FSM_in_3 is
     
-    type state_type is (init, init_in_memory_1, init_in_memory_2, h_read_1, h_read_2, h_read_3, h_cache_1, h_cache_2, h_wait, h_temp,
-     v_read_1, v_read_2, v_read_3, v_wait, v_temp, exit_in);
+    type state_type is (init, init_in_memory_1, init_in_memory_2, h_read_1, h_read_2, 
+                         h_read_3, h_cache, v_cache, h_wait, h_temp,
+                          v_read_1, v_read_2, v_read_3, v_wait, v_temp, exit_in);
     signal next_state, current_state: state_type;
 
 begin    
@@ -96,14 +97,14 @@ begin
             
 	    when h_read_3 =>	
 	    
-	         next_state <= h_cache_1;
+	         next_state <= h_cache;
             can_read <= '1';
 	         addr_h := addr_h + 256;
 	         x := x + 1;
             address <= conv_std_logic_vector(addr_h,16);
             disable_cache <= '0';
       
-      when h_cache_1 =>
+      when h_cache =>
              disable_cache <= '0';
              can_read <= '0';
              
@@ -142,7 +143,7 @@ begin
            
 	    when v_read_1 =>	
 	        
-            disable_cache <= '0';
+            disable_cache <= '1';
             next_state <= v_read_2;
             can_read <= '1';
 	         addr_v := x;
@@ -157,11 +158,17 @@ begin
 
 	    when v_read_3 =>	
 	    
-	         next_state <= v_wait;
+	         next_state <= v_cache;
             can_read <= '1';
 	         addr_v := addr_v + 1;
 	         x := x + 256;
             address <= conv_std_logic_vector(addr_v,16);
+
+      when v_cache =>
+             disable_cache <= '0';
+             can_read <= '0';
+             
+             next_state <= v_wait;
 
        when v_wait =>
             
@@ -176,7 +183,7 @@ begin
 	    when v_temp =>	
 
             counter := counter + 1;
-            if(counter > 6) then
+            if(counter > 8) then
                
                counter := 1;
                if(x > 65536) then
