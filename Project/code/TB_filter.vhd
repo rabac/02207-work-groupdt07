@@ -160,8 +160,8 @@ begin
          
         if(c = 10) then
               proc_filter_disable <= '1';
-         elsif ((c mod 2) = 0) then
-            proc_filter <= "00000001";
+         elsif (c = 5) then
+            proc_filter <= "00000100";
             else 
             proc_filter <= "00000000";
         end if;
