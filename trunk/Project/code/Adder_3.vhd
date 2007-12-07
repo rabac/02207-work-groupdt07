@@ -11,19 +11,19 @@ port(	A : In std_logic_vector (7 downto 0);
 end ADDER_3;
 
 architecture BEH_ADDER_3 of ADDER_3 is
-signal sum_out : std_logic_vector(8 downto 0);
+signal sum_out : std_logic_vector(9 downto 0);
    begin
       
-      sum_out <= ('0' & A) + ('0' & B) + ('0' & C);
+      sum_out <= ("00" & A) + ("00" & B) + ("00" & C);
       
-      Z(0) <= sum_out(8) OR sum_out(0);
-      Z(1) <= sum_out(8) OR sum_out(1);
-      Z(2) <= sum_out(8) OR sum_out(2);
-      Z(3) <= sum_out(8) OR sum_out(3);
-      Z(4) <= sum_out(8) OR sum_out(4);
-      Z(5) <= sum_out(8) OR sum_out(5);
-      Z(6) <= sum_out(8) OR sum_out(6);
-      Z(7) <= sum_out(8) OR sum_out(7);
+      Z(0) <= sum_out(9) OR sum_out(8) OR sum_out(0);
+      Z(1) <= sum_out(9) OR sum_out(8) OR sum_out(1);
+      Z(2) <= sum_out(9) OR sum_out(8) OR sum_out(2);
+      Z(3) <= sum_out(9) OR sum_out(8) OR sum_out(3);
+      Z(4) <= sum_out(9) OR sum_out(8) OR sum_out(4);
+      Z(5) <= sum_out(9) OR sum_out(8) OR sum_out(5);
+      Z(6) <= sum_out(9) OR sum_out(8) OR sum_out(6);
+      Z(7) <= sum_out(9) OR sum_out(8) OR sum_out(7);
   
 
 end BEH_ADDER_3;
