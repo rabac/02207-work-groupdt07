@@ -259,9 +259,22 @@ begin
             
             rwcount := rwcount + 1;
             if(rwcount > 3) then
-               next_state <= v_wait_1;
+
                rwcount := 1;
                sel_num := 0;
+               
+               if(addr_v > 65280) then
+                   x := x + 1;
+                   if(x = 256) then
+                      next_state <= exit_in;
+                   else                 
+                      addr_v := x;
+                      next_state <= v_init_1;
+                   end if;
+               else
+                   next_state <= v_wait_1;
+               end if;
+
             else
                next_state <= v_read_1;
             end if;
@@ -280,21 +293,11 @@ begin
             if(counter > 3) then
                
                counter := 1;
-               if(addr_v > 65536) then
-                   x := x + 1;
-                   if(x = 256) then
-                      next_state <= exit_in;
-                   else                 
-                      addr_v := x;
-                      next_state <= v_read_1;
-                   end if;
-               else
-                   addr_v := addr_v - 512;
-                   next_state <= v_read_1;
-               end if;
-
+               next_state <= v_read_1;    
             else
+               
                next_state <= v_wait_2;
+            
             end if;
 
            can_read <= '0';
@@ -306,7 +309,7 @@ begin
            
            counter := counter + 1;
            next_state <= v_wait_1;
-           
+           addr_v := addr_v - 512;
            can_read <= '0';
            can_write <= '0';
            read_address <= (others => '0');

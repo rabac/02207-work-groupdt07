@@ -161,7 +161,7 @@ begin
         if(c = 10) then
               proc_filter_disable <= '1';
          elsif (c = 5) then
-            proc_filter <= "00000100";
+            proc_filter <= "00000001";
             else 
             proc_filter <= "00000000";
         end if;
