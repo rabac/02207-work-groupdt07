@@ -155,6 +155,7 @@ begin
             can_read <= '1';
 	         addr_v := addr_v + 1;
             address <= conv_std_logic_vector(addr_v,16);
+            disable_cache <= '0';
 
 	    when v_read_3 =>	
 	    
@@ -163,6 +164,7 @@ begin
 	         addr_v := addr_v + 1;
 	         x := x + 256;
             address <= conv_std_logic_vector(addr_v,16);
+            disable_cache <= '0';
 
       when v_cache =>
              disable_cache <= '0';
