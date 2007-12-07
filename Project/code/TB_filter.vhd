@@ -123,25 +123,27 @@ begin
 
 	begin
 	   
-	   c := 1;
 	   proc_RESET <= '0';
 	   mem_Enable <= '1';
 	   mem_give_zeros <= '1';
 
-      -- initialize the filter with pixels "11111111"
+      -- initialize the filter with pixels
       proc_filter_disable <= '0';
       c := 0;
       
       loop
-         if(c = 9) then
+      
+         if(c = 18) then
+             
             assert false;
             report "Filter has been initialized."
 	         severity NOTE;
+	         
 	         exit;
          end if;   
-         
-         proc_filter <= "00000001";
-      
+        
+            proc_filter <= "00000001";
+       
          wait for 2 ns;
          c := c + 1;
          

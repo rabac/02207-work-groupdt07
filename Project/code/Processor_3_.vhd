@@ -3,7 +3,7 @@ library IEEE;
    use IEEE.std_logic_misc.all;
    use IEEE.std_logic_arith.all;
    
-entity Processor_3 is
+entity Processor_3a is
       Port (   CLOCK : In    std_logic;
                RESET : In    std_logic;
 	           
@@ -23,9 +23,9 @@ entity Processor_3 is
 	            Filter: In std_logic_vector(7 downto 0);
 	            disable_filter: In std_logic
 	         );          
-end Processor_3;
+end Processor_3a;
 
-architecture SCHEMATIC_PROC_3 of Processor_3 is
+architecture SCHEMATIC_PROC_3a of Processor_3a is
   
 component csa8bit is
 	Port (	A : In std_logic_vector (7 downto 0);
@@ -203,5 +203,5 @@ end component REG;
        Add_new_value:
        CRA_8 port map(Data_in_2, mux_out,'0',cfi, Data_out);
  
-end SCHEMATIC_PROC_3;
+end SCHEMATIC_PROC_3a;
 
