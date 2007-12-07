@@ -184,8 +184,9 @@ architecture SCHEMATIC_PROC_3 of Processor_3 is
        Mux_4 port map(select_adder, add1_out, add2_out, add3_out, mux_out);
 
        Add_new_value:
-       Adder_2 port map(Data_in_2, mux_out, Data_out);
+      Adder_2 port map(Data_in_2, mux_out, Data_out);
 
 --      regster : Reg port map("11111111", Clock, Reset, data_out);
+
 end SCHEMATIC_PROC_3;
 

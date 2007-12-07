@@ -51,7 +51,7 @@ Z(15 downto 0)<= Z_aux(15 downto 0);
 end process;
 end BEHAVIORAL;
 
-configuration CFG_csa15bit_BEHAVIORAL of csa8bit is
+configuration CFG_csa15bit_BEHAVIORAL of csa15bit is
 	 for BEHAVIORAL
 	 end for;
 end CFG_csa15bit_BEHAVIORAL;
