@@ -136,7 +136,7 @@ begin
       
       proc_RESET <= '1';
       proc_filter_disable <= '0';
-      FILE_OPEN(cmdfile,"lena_256x256.hex",READ_MODE);
+      FILE_OPEN(cmdfile,"lena_256x256.mem",READ_MODE);
       -- start filling memory 1 with the image pixels from hex file.
       
       loop
@@ -160,7 +160,7 @@ begin
          
         if(c = 10) then
               proc_filter_disable <= '1';
-         elsif ((c mod 2) = 0) then
+         elsif ((c mod 3) = 2) then
             proc_filter <= "00000001";
             else 
             proc_filter <= "00000000";
@@ -187,32 +187,6 @@ begin
         end if;
           
       end loop;		
-
-     
-      -- read the output memory into a file
-       c := 1;
-      	FILE_OPEN(outfile,"lena_256x256_filtered.hex",WRITE_MODE);
-	   
-
---      loop
---      
---         if (c > 65536) then
---	         exit;
---         end if;
---
---         proc_Read_Out_Mem <= '1';
---         proc_Read_Addr_Out_Mem <= conv_std_logic_vector(c, 16);
---         A := proc_Data_In_2;
---         
---         hwrite(line_out,A,RIGHT,0);
---         writeline(outfile, line_out);
---       
---         c := c + 1;
---                  
---         wait for 2 ns;
---         
---      end loop;
---	   
 
     write(line_out, string'("--------- END-------------"));
     writeline(OUTPUT,line_out);
