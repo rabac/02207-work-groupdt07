@@ -1,7 +1,4 @@
-// memory data file (do not edit the following line - required for mem load use)
-// instance=/tb_filter/uutm_out/tmp_memory
-// format=mti addressradix=h dataradix=h version=1.0 wordsperline=1 noaddress
-XX
+00
 00
 00
 00
@@ -65537,4 +65534,3 @@ FF
 00
 00
 58
-XX
