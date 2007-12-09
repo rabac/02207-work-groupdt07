@@ -1,0 +1,53 @@
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+        -sort_by group
+Design : Processor_3
+Version: X-2005.09-SP1
+Date   : Sun Dec  9 16:44:41 2007
+****************************************
+ 
+Operating Conditions: NomLeak   Library: CORE90GPSVT
+Wire Load Model Mode: enclosed
+ 
+  Startpoint: fsm_output/current_state_reg[4]
+              (rising edge-triggered flip-flop clocked by clock)
+  Endpoint: fsm_output/current_state_reg[1]
+            (rising edge-triggered flip-flop clocked by clock)
+  Path Group: clock
+  Path Type: max
+ 
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  Processor_3        area_48Kto72K         CORE90GPSVT
+  FSM_out_3          area_12Kto18K         CORE90GPSVT
+ 
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock clock (rise edge)                                 0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  fsm_output/current_state_reg[4]/CP (FD2QNSVTX1)         0.00       0.00 r
+  fsm_output/current_state_reg[4]/QN (FD2QNSVTX1)         0.20       0.20 f
+  fsm_output/U1296/Z (AN2SVTX6)                           0.09       0.29 f
+  fsm_output/U1327/Z (IVSVTX8)                            0.03       0.31 r
+  fsm_output/U1338/Z (NR2ASVTX6)                          0.02       0.33 f
+  fsm_output/U1354/Z (AN2SVTX6)                           0.05       0.38 f
+  fsm_output/U1352/Z (AN2SVTX6)                           0.04       0.42 f
+  fsm_output/U1347/Z (NR3SVTX8)                           0.03       0.45 r
+  fsm_output/U1402/Z (ND4ABSVTX4)                         0.02       0.47 f
+  fsm_output/current_state_reg[1]/D (FD2QSVTX2)           0.00       0.47 f
+  data arrival time                                                  0.47
+ 
+  clock clock (rise edge)                                 2.00       2.00
+  clock network delay (ideal)                             0.00       2.00
+  fsm_output/current_state_reg[1]/CP (FD2QSVTX2)          0.00       2.00 r
+  library setup time                                     -0.07       1.93
+  data required time                                                 1.93
+  --------------------------------------------------------------------------
+  data required time                                                 1.93
+  data arrival time                                                 -0.47
+  --------------------------------------------------------------------------
+  slack (MET)                                                        1.46
+ 
