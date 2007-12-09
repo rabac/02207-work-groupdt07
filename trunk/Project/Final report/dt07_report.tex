@@ -70,14 +70,48 @@ Technical University of Denmark}}}
 \newpage
 
 \section{Introduction}
+The project that we have implemented is a 2x1D filter of size 3x3 for convolution of an image of size 256x256 pixels.  
 
-\section{Design}
+\section{Design Architecture}
+%give the block design here. we need the following figure:
+%a complete diagram of the processor - indicating the input and output signals, and also containing the internal blocks like the cache register,filter register, fsm_in, the multipliers, adders, mux, and fsm_out.
 
-\section{Implementation}
+%here we should mention the details about the data path, bit widths etc. 
+%we should give a brief explanation of each of the components in the architecture - just a couple of lines explanation should be good enough. 
+%also we should explain the purpose of each of the input and output signals of the memory and the processor.
+
+\section{Sequencing of Operations}
+%explain the entire sequence in which the image is convoluted. in particular
+\subsection{Memory Initialization}
+%how the initialization is done - the input FSM keeps the write of the input memory till 65526 clock cycles - so all the pixels are read from the hex file.
+%in the meantime, the output FSM keeps the write signal of the output memory to 1 and it is initialized with 0.
+\subsection{Memory Read and Write by Processor}
+%Once the initialization is done, 
+% 1. the input fsm reads 3 pixels - and then waits for 9 clock cycles
+% 2. the output fsm starts when the input fsm becomes idle - and runs the sequence read-idle-write 3 times.
+%give picture from modelsim here showing how the two fsms synchronize.
+\subsection{Memory Access Sequence}
+%mention the sequence of the memory access from the input fsm and the output fsm
+
+\section{Finite State Machines}
+\subsection{Input Controller}
+
+%state machine diagram
+\subsection{Output Controller}
+
+%state machine diagram
 
 \section{Synthesis}
+%present the results from the various reports here. 
+% the critical path
+% area 
+% power dissipation
+
+\section{Results}
+%put the convoluted and the original image here to show the results.
 
 \section{Discussion}
-
+%explain how would the design change if the filter size is changed. parameters that would change:
+%number of adders and multipliers.
 
 \end{document}
