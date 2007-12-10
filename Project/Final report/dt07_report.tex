@@ -131,7 +131,7 @@ We synthesized the design using four different clock periods, namely 7ns, 5ns, 3
 	\caption{Summary of Design Vision reports}
 	\begin{center}
 		\begin{tabular}{|l|l|l|l|l|l|l|} \hline
-			\textbf{T}_{C} [ns]	& \textbf{P}_{stat}	[mW] & \textbf{P}_{dyn} [mW]	& \textbf{P}_{tot} [mW] & \textbf{A}_{comb} [um^2]& \textbf{A}_{tot} [um^2] & \textbf{T}_{cp} [ns] \\ \hline
+			\textbf{T}_{C} [ns]	& \textbf{P}_{stat}	[mW] & \textbf{P}_{dyn} [mW]	& \textbf{P}_{tot} [mW] & \textbf{A}_{comb} [\mu m^2]& \textbf{A}_{tot} [\mu m^2] & \textbf{T}_{cp} [ns] \\ \hline
 			7 & 0.11 & 1.60 & 1.71 & 44067 & 53079 & 4.7 \\ \hline
 			5 & 0.11 & 1.71 & 1.82 & 44067 & 53079 & 4.7 \\ \hline
 			3 & 0.13 & 2.19 & 2.32 & 49595 & 58611 & 2.9 \\ \hline
@@ -149,5 +149,23 @@ We synthesized the design using four different clock periods, namely 7ns, 5ns, 3
 \section{Discussion}
 %explain how would the design change if the filter size is changed. parameters that would change:
 %number of adders and multipliers.
+
+\section{Conclusion}
+%A conclusion describing the work performed and the results obtained.
+
+\begin{table}[h]
+	\caption{Summary}
+	\begin{center}
+		\begin{tabular}{|p{1cm}|p{2cm}|p{2cm}|l|l|} \hline
+			\textbf{T}_C [ns] & \textbf{Critical Path} [ns] & \textbf{N. cycles} (256 x 256) & \textbf{E}_{pc} [mW/MHz] & \textbf{AREA} [\mu m^2] \\ \hline
+			7 & 4.7 & 3121152 & 0.01197 & 53079 \\ \hline
+			5 & 4.7 & 3121152 & 0.00910 & 53079 \\ \hline
+			3 & 2.9 & 3121152 & 0.00696 & 58611 \\ \hline
+			2 & 1.9 & 3121152 & 0.00560 & 67700 \\ \hline
+		
+		\end{tabular}
+	\end{center}
+	\label{tab:conclusion}
+\end{table}
 
 \end{document}
