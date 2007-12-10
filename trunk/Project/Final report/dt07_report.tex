@@ -75,17 +75,30 @@ The project that we have implemented is a 2x1D filter of size 3x3 for convolutio
 \section{Design Architecture}
 %give the block design here. we need the following figure:
 %a complete diagram of the processor - indicating the input and output signals, and also containing the internal blocks like the cache register,filter register, fsm_in, the multipliers, adders, mux, and fsm_out.
+The overall design of the filter unit can be seen in figure \ref{fig:proc}. More detailed architecture can be seen in figure \ref{fig:procdetail}.
 
+\begin{figure}[h]
+	\centering
+		\includegraphics[width=4in]{./processador.PNG}
+	\caption{Filter unit design}	\label{fig:proc}
+\end{figure}
+
+\begin{figure}[h]
+	\centering
+		\includegraphics[width=4in]{./insideproc.PNG}
+	\caption{Processor architecture}	\label{fig:procdetail}
+\end{figure}
 %here we should mention the details about the data path, bit widths etc. 
 %we should give a brief explanation of each of the components in the architecture - just a couple of lines explanation should be good enough. 
 %also we should explain the purpose of each of the input and output signals of the memory and the processor.
 
+\FlowBarrier
 \section{Sequencing of Operations}
 %explain the entire sequence in which the image is convoluted. in particular
 \subsection{Memory Initialization}
 %how the initialization is done - the input FSM keeps the write of the input memory till 65526 clock cycles - so all the pixels are read from the hex file.
 %in the meantime, the output FSM keeps the write signal of the output memory to 1 and it is initialized with 0.
-In our case we have an image on format .hex, is the values of the image on hexadecimal, 2 values of 4 bits, 8 bits total, and we have to pass all the image to the memory so there are 65536 values on our image, so the processor are going to spend this amount on clock cycles, but we need too another memory to store the new values of the convolution for the next vertical filter pass. For this task we have a final state machine that is in charge to create an address and store the value on the memory with this address. So now we have to create two memories, the first one that we call memory in are going to be the values of the image to filter with their correspondent address, the final state machine generate the address and give to the memory the value of the image with their correspondent address, at the same time because are different state machine and memory, the space for the filtered image is created in a parallel way, but now the difference between the first one is that we want the memory empty, all with zeros, and we use the processor to make this operation, the final state machine for the output create the addresses and has the property to say the multiplexor of the final output which one wants, and one of the outputs is all zeros, so with that the processor knows that in this time period for initializing the memory out throws by Data_out a value 0 all the time.
+In our case we have an image on format .hex, is the values of the image on hexadecimal, 2 values of 4 bits, 8 bits total, and we have to pass all the image to the memory so there are 65536 values on our image, so the processor are going to spend this amount on clock cycles, but we need too another memory to store the new values of the convolution for the next vertical filter pass. For this task we have a final state machine that is in charge to create an address and store the value on the memory with this address. So now we have to create two memories, the first one that we call memory in are going to be the values of the image to filter with their correspondent address, the final state machine generate the address and give to the memory the value of the image with their correspondent address, at the same time because are different state machine and memory, the space for the filtered image is created in a parallel way, but now the difference between the first one is that we want the memory empty, all with zeros, and we use the processor to make this operation, the final state machine for the output create the addresses and has the property to say the multiplexor of the final output which one wants, and one of the outputs is all zeros, so with that the processor knows that in this time period for initializing the memory out throws by Data\_out a value 0 all the time.
 When the 65536 clock cycles are ended the memory in is with the values of the image and the memory out empty, all with values zeros.	
 
 \subsection{Memory Read and Write by Processor}
@@ -106,12 +119,30 @@ For the memory sequence we use a particular way, we want to access to the memory
 
 %state machine diagram
 
+\FlowBarrier
 \section{Synthesis}
 %present the results from the various reports here. 
 % the critical path
 % area 
 % power dissipation
+We synthesized the design using four different clock periods, namely 7ns, 5ns, 3ns and 2ns, and let Design Vision try to optimize the design for speed to get the fastest possible design. Turns out 2ns is the minimum clock period for our design, Design Vision was not able to synthesize a faster design even when we tried. To get meaningful power reports we simulated switching activity with the VSS Simulator and the activity was passed on to Design Vision. On top of power reports we also obtained area and timing reports from the design on all four clock cycles. The actual reports can be seen in the appendix, but a summary of the results can be seen in table \ref{tab:synth}.
 
+\begin{table}[h]
+	\caption{Summary of Design Vision reports}
+	\begin{center}
+		\begin{tabular}{|l|l|l|l|l|l|l|} \hline
+			\textbf{T}_{C} [ns]	& \textbf{P}_{stat}	[mW] & \textbf{P}_{dyn} [mW]	& \textbf{P}_{tot} [mW] & \textbf{A}_{comb} [um^2]& \textbf{A}_{tot} [um^2] & \textbf{T}_{cp} [ns] \\ \hline
+			7 & 0.11 & 1.60 & 1.71 & 44067 & 53079 & 4.7 \\ \hline
+			5 & 0.11 & 1.71 & 1.82 & 44067 & 53079 & 4.7 \\ \hline
+			3 & 0.13 & 2.19 & 2.32 & 49595 & 58611 & 2.9 \\ \hline
+			2 & 0.20 & 2.60 & 2.80 & 58668 & 67700 & 1.9 \\ \hline
+			
+		\end{tabular}
+	\end{center}
+	\label{tab:synth}
+\end{table}
+
+\FlowBarrier
 \section{Results}
 %put the convoluted and the original image here to show the results.
 
