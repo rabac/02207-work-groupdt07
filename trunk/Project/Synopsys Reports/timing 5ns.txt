@@ -1,0 +1,149 @@
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -max_paths 1
+        -sort_by group
+Design : Processor_3
+Version: X-2005.09-SP1
+Date   : Mon Dec 10 20:29:49 2007
+****************************************
+
+Operating Conditions: NomLeak   Library: CORE90GPSVT
+Wire Load Model Mode: enclosed
+
+  Startpoint: filtermask/Q_reg[48]
+              (rising edge-triggered flip-flop clocked by CLOCK)
+  Endpoint: regster/Q_reg[7]
+            (rising edge-triggered flip-flop clocked by CLOCK)
+  Path Group: CLOCK
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  Processor_3        area_48Kto72K         CORE90GPSVT
+  parcial_2          area_0to1K            CORE90GPSVT
+  multiplier_2       area_3Kto4K           CORE90GPSVT
+  csa15bit_17        area_0to1K            CORE90GPSVT
+  csa15bit_15        area_0to1K            CORE90GPSVT
+  csa15bit_13        area_0to1K            CORE90GPSVT
+  csa15bit_12        area_0to1K            CORE90GPSVT
+  CRA_15_2           area_0to1K            CORE90GPSVT
+  ADDER_3_0_DW01_add_1
+                     area_0to1K            CORE90GPSVT
+  ADDER_3_0          area_0to1K            CORE90GPSVT
+  ADDER_3_0_DW01_add_0
+                     area_0to1K            CORE90GPSVT
+  ADDER_2_DW01_add_0 area_0to1K            CORE90GPSVT
+  ADDER_2            area_0to1K            CORE90GPSVT
+
+  Point                                                   Incr       Path
+  --------------------------------------------------------------------------
+  clock CLOCK (rise edge)                                 0.00       0.00
+  clock network delay (ideal)                             0.00       0.00
+  filtermask/Q_reg[48]/CP (FD2QSVTX2)                     0.00       0.00 r
+  filtermask/Q_reg[48]/Q (FD2QSVTX2)                      0.11       0.11 f
+  filtermask/Q[48] (SHIFTREG_0)                           0.00       0.11 f
+  Mult7/num2[0] (multiplier_2)                            0.00       0.11 f
+  Mult7/I_PAR/M2[0] (parcial_2)                           0.00       0.11 f
+  Mult7/I_PAR/U78/Z (IVSVTX0H)                            0.18       0.28 r
+  Mult7/I_PAR/U77/Z (NR2ASVTX1)                           0.13       0.41 f
+  Mult7/I_PAR/O1[0] (parcial_2)                           0.00       0.41 f
+  Mult7/I_CSA1/A[0] (csa15bit_17)                         0.00       0.41 f
+  Mult7/I_CSA1/U40/Z (EOSVTX1)                            0.12       0.53 r
+  Mult7/I_CSA1/U22/Z (EOSVTX1)                            0.11       0.64 r
+  Mult7/I_CSA1/Z[0] (csa15bit_17)                         0.00       0.64 r
+  Mult7/I_CSA3/A[0] (csa15bit_15)                         0.00       0.64 r
+  Mult7/I_CSA3/U40/Z (EOSVTX1)                            0.11       0.75 r
+  Mult7/I_CSA3/U22/Z (EOSVTX1)                            0.11       0.85 r
+  Mult7/I_CSA3/Z[0] (csa15bit_15)                         0.00       0.85 r
+  Mult7/I_CSA5/A[0] (csa15bit_13)                         0.00       0.85 r
+  Mult7/I_CSA5/U40/Z (EOSVTX1)                            0.11       0.96 r
+  Mult7/I_CSA5/U22/Z (EOSVTX1)                            0.11       1.06 r
+  Mult7/I_CSA5/Z[0] (csa15bit_13)                         0.00       1.06 r
+  Mult7/I_CSA6/B[0] (csa15bit_12)                         0.00       1.06 r
+  Mult7/I_CSA6/U40/Z (EOSVTX1)                            0.10       1.16 r
+  Mult7/I_CSA6/U22/Z (EOSVTX1)                            0.11       1.27 r
+  Mult7/I_CSA6/Z[0] (csa15bit_12)                         0.00       1.27 r
+  Mult7/I_CRA/A[0] (CRA_15_2)                             0.00       1.27 r
+  Mult7/I_CRA/U54/Z (EOSVTX1)                             0.11       1.37 r
+  Mult7/I_CRA/U53/Z (AO2SVTX1)                            0.08       1.45 f
+  Mult7/I_CRA/U51/Z (AO2ASVTX1)                           0.15       1.61 f
+  Mult7/I_CRA/U49/Z (AO2ASVTX1)                           0.15       1.76 f
+  Mult7/I_CRA/U47/Z (AO2ASVTX1)                           0.15       1.92 f
+  Mult7/I_CRA/U45/Z (AO2ASVTX1)                           0.15       2.07 f
+  Mult7/I_CRA/U43/Z (AO2ASVTX1)                           0.15       2.22 f
+  Mult7/I_CRA/U41/Z (AO2ASVTX1)                           0.15       2.37 f
+  Mult7/I_CRA/U39/Z (AO4ABSVTX1)                          0.07       2.44 r
+  Mult7/I_CRA/U25/Z (NR3ASVTX1)                           0.05       2.49 f
+  Mult7/I_CRA/U23/Z (ND4SVTX1)                            0.06       2.55 r
+  Mult7/I_CRA/U22/Z (IVSVTX0H)                            0.15       2.70 f
+  Mult7/I_CRA/U21/Z (ND2SVTX1)                            0.12       2.82 r
+  Mult7/I_CRA/Y[0] (CRA_15_2)                             0.00       2.82 r
+  Mult7/product[0] (multiplier_2)                         0.00       2.82 r
+  Add3/A[0] (ADDER_3_0)                                   0.00       2.82 r
+  Add3/add_1_root_add_0_root_add_17/plus/plus_1/B[0] (ADDER_3_0_DW01_add_1)
+                                                          0.00       2.82 r
+  Add3/add_1_root_add_0_root_add_17/plus/plus_1/U4/Z (AN2SVTX1)
+                                                          0.09       2.90 r
+  Add3/add_1_root_add_0_root_add_17/plus/plus_1/U1_1/Z (FA1SVTX4)
+                                                          0.12       3.03 f
+  Add3/add_1_root_add_0_root_add_17/plus/plus_1/SUM[1] (ADDER_3_0_DW01_add_1)
+                                                          0.00       3.03 f
+  Add3/add_0_root_add_0_root_add_17/plus/plus_1/B[1] (ADDER_3_0_DW01_add_0)
+                                                          0.00       3.03 f
+  Add3/add_0_root_add_0_root_add_17/plus/plus_1/U1_1/CO (FA1SVTX4)
+                                                          0.08       3.11 f
+  Add3/add_0_root_add_0_root_add_17/plus/plus_1/U1_2/CO (FA1SVTX4)
+                                                          0.07       3.18 f
+  Add3/add_0_root_add_0_root_add_17/plus/plus_1/U1_3/CO (FA1SVTX4)
+                                                          0.07       3.25 f
+  Add3/add_0_root_add_0_root_add_17/plus/plus_1/U1_4/CO (FA1SVTX4)
+                                                          0.07       3.32 f
+  Add3/add_0_root_add_0_root_add_17/plus/plus_1/U1_5/CO (FA1SVTX4)
+                                                          0.07       3.39 f
+  Add3/add_0_root_add_0_root_add_17/plus/plus_1/U1_6/CO (FA1SVTX4)
+                                                          0.07       3.46 f
+  Add3/add_0_root_add_0_root_add_17/plus/plus_1/U1_7/CO (FA1SVTX4)
+                                                          0.07       3.53 f
+  Add3/add_0_root_add_0_root_add_17/plus/plus_1/U5/Z (EOSVTX1)
+                                                          0.07       3.60 f
+  Add3/add_0_root_add_0_root_add_17/plus/plus_1/SUM[8] (ADDER_3_0_DW01_add_0)
+                                                          0.00       3.60 f
+  Add3/U20/Z (NR2SVTX1)                                   0.15       3.75 r
+  Add3/U19/Z (ND2ASVTX1)                                  0.07       3.82 f
+  Add3/Z[0] (ADDER_3_0)                                   0.00       3.82 f
+  Multiplexer/C[0] (MUX_4)                                0.00       3.82 f
+  Multiplexer/U30/Z (AO11NSVTX1)                          0.20       4.02 f
+  Multiplexer/SIG[0] (MUX_4)                              0.00       4.02 f
+  Add_new_value/B[0] (ADDER_2)                            0.00       4.02 f
+  Add_new_value/add_17/plus/plus/B[0] (ADDER_2_DW01_add_0)
+                                                          0.00       4.02 f
+  Add_new_value/add_17/plus/plus/U4/Z (AN2SVTX1)          0.10       4.12 f
+  Add_new_value/add_17/plus/plus/U1_1/CO (FA1SVTX4)       0.08       4.20 f
+  Add_new_value/add_17/plus/plus/U1_2/CO (FA1SVTX4)       0.07       4.27 f
+  Add_new_value/add_17/plus/plus/U1_3/CO (FA1SVTX4)       0.07       4.34 f
+  Add_new_value/add_17/plus/plus/U1_4/CO (FA1SVTX4)       0.07       4.41 f
+  Add_new_value/add_17/plus/plus/U1_5/CO (FA1SVTX4)       0.07       4.48 f
+  Add_new_value/add_17/plus/plus/U1_6/CO (FA1SVTX4)       0.07       4.55 f
+  Add_new_value/add_17/plus/plus/U1_7/Z (FA1SVTX4)        0.10       4.65 f
+  Add_new_value/add_17/plus/plus/SUM[7] (ADDER_2_DW01_add_0)
+                                                          0.00       4.65 f
+  Add_new_value/U10/Z (OR2SVTX1)                          0.08       4.73 f
+  Add_new_value/Z[7] (ADDER_2)                            0.00       4.73 f
+  regster/D[7] (REG)                                      0.00       4.73 f
+  regster/Q_reg[7]/D (FD2QSVTX2)                          0.00       4.73 f
+  data arrival time                                                  4.73
+
+  clock CLOCK (rise edge)                                 5.00       5.00
+  clock network delay (ideal)                             0.00       5.00
+  regster/Q_reg[7]/CP (FD2QSVTX2)                         0.00       5.00 r
+  library setup time                                     -0.07       4.93
+  data required time                                                 4.93
+  --------------------------------------------------------------------------
+  data required time                                                 4.93
+  data arrival time                                                 -4.73
+  --------------------------------------------------------------------------
+  slack (MET)                                                        0.20
+
+
