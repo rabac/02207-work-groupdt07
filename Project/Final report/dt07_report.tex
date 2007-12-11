@@ -136,17 +136,32 @@ Hence we have chosen the approach in which at no point of time, would both the C
 
 \subsection{Memory Access Sequence}
 \label{sec:memoryaccess}
-%mention the sequence of the memory access from the input fsm and the output fsm
+
 \begin{figure}[h]
 	\centering
 		\includegraphics[width=5in]{./images/memoryAccess.PNG}
-	\caption{Sequence of Memory Address Access}	
+	\caption{Sequence of Input Memory Address Access}	
 	\label{fig:memaccess}
 \end{figure}
 
+\FloatBarrier
 
-%For the memory sequence we use a particular way, we want to access to the memory the less time possible, so we have created one kind of memory cache inside the processor, the cache consist in one ShiftRegister for store 9 pixels, the number of pixels that we need to filter with our mask of 3x3, and on the beginning the final state machine take from the memory 9 values, for fill all the cache, but on the next clock cycle only take 3 values from the memory, the next column if we are on the horizontal pass (Figure 1(file horizontal pass)) or the next row if we are on the vertical pass (Figure 2(file vertical pass)) as we can see. But the sequence has a particular thing, when the values of the memory arrives to the end of the picture now doesn't work the shiftregister because we have to come back to the beginning and start again, so when the image values seized from the memory, last column on the horizontal pass and last row on the vertical pass, there are another time 9 lectures from the memory to fill up all the shift register and continue the same mechanism like l say before.
-%
+The figure \ref{fig:memaccess} shows the sequence in which the input memory pixels are accessed by the Input Controller. During the horizontal movement, the 3 pixels are accessed in every column, with the direction of movement of the access being the same as the direction of movement of the filter, from left to right. Once a horizontal end of the image is reached, the access is done beginning from the next row, with again three pixels in every column and the direction of movement being horizontal. 
+
+When the horizontal movement is completed, the vertical movement takes place. During this, 3 pixels are accessed in every row of the image, and the movement is vertical, from top to bottom. On reaching a vertical end of the image, the reading starts at the top of the next column, again with 3 pixels in each row and movement from top to bottom.
+
+\begin{figure}[h]
+	\centering
+		\includegraphics[width=5in]{./images/outmemoryaccess.jpg}
+	\caption{Sequence of Output Memory Address Access}	
+	\label{fig:outmemaccess}
+\end{figure}
+\FloatBarrier
+
+The memory access for the Output Controller is simple as compared to the memory access by the Input Controller. The right part of the figure \ref{fig:outmemaccess} shows the access for the horizontal movement. The top most and the bottom most rows are not written. Once a row is completed the next row pixels are read and written.
+
+For the vertical movement, the first and the last columns are not written. The read and write sequence starts from the second column, and ends when the second last column is finished.
+
 
 \section{Finite State Machines}
 \label{sec:controller}
@@ -299,7 +314,7 @@ We have designed and implemented the architecture for an image filtering process
 		\item Select signal from the Output Controller would be 3 bits for 5x5 and 7x7, and 4 bits for 9x9 filter.
 	\end{itemize}	
 	
-	In addition the synchronization of the Input and the Output Controllers would change due to the number of clock cycles required to get $n$ new pixels from the memory and compute the output for n pixels at a time. This means the cases described in section \ref{sec:memreadwrite} would now be the following:
+	In addition the synchronization of the Input and the Output Controllers would change due to the number of clock cycles required to get $n$ new pixels from the memory and compute the output for $n$ pixels at a time. This means the cases described in section \ref{sec:memreadwrite} would now be the following:
 	
 	
 \item It is assumed that the filter is symmetric along the two dimensional x and y axes. We need this since the indices of the filter which need to be multiplied with the image pixels would change in horizontal and vertical movements. For simplicity therefore, we have made this assumption.
