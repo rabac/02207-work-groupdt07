@@ -1,0 +1,1975 @@
+****************************************
+Report : power
+	-net
+	-cell
+	-hier
+	-analysis_effort low
+	-sort_mode dynamic_power
+Design : Processor_3
+Version: X-2005.09-SP1
+Date   : Tue Dec 11 20:02:19 2007
+****************************************
+
+
+
+
+Library(s) Used:
+
+    CORE90GPSVT (File: /cell_libs/cmos090_50a/CORE90GPSVT_SNPS-AVT_2.1/SIGNOFF/bc_1.10V_m40C_wc_0.90V_105C/PT_LIB/CORE90GPSVT_NomLeak.db)
+    CORE90GPHVT (File: /cell_libs/cmos090_50a/CORE90GPHVT_SNPS-AVT_2.1.a/SIGNOFF/bc_1.10V_m40C_wc_0.90V_105C/PT_LIB/CORE90GPHVT_NomLeak.db)
+
+
+
+
+Operating Conditions: NomLeak   Library: CORE90GPSVT
+Wire Load Model Mode: enclosed
+
+Design        Wire Load Model            Library
+------------------------------------------------
+Processor_3            area_48Kto72K     CORE90GPSVT
+FSM_in_3               area_6Kto12K      CORE90GPSVT
+FSM_in_3_DW01_inc_3    area_0to1K        CORE90GPSVT
+FSM_in_3_DW01_add_1    area_0to1K        CORE90GPSVT
+FSM_in_3_DW01_inc_2    area_0to1K        CORE90GPSVT
+FSM_in_3_DW01_inc_0    area_0to1K        CORE90GPSVT
+FSM_out_3              area_6Kto12K      CORE90GPSVT
+FSM_out_3_DW01_inc_5   area_0to1K        CORE90GPSVT
+FSM_out_3_DW01_add_0   area_0to1K        CORE90GPSVT
+FSM_out_3_DW01_sub_0   area_0to1K        CORE90GPSVT
+FSM_out_3_DW01_inc_4   area_0to1K        CORE90GPSVT
+FSM_out_3_DW01_inc_2   area_0to1K        CORE90GPSVT
+FSM_out_3_DW01_inc_1   area_0to1K        CORE90GPSVT
+FSM_out_3_DW01_inc_0   area_0to1K        CORE90GPSVT
+SHIFTREG_1             area_1Kto2K       CORE90GPSVT
+SHIFTREG_0             area_1Kto2K       CORE90GPSVT
+multiplier_8           area_4Kto5K       CORE90GPSVT
+parcial_8              area_0to1K        CORE90GPSVT
+csa15bit_53            area_0to1K        CORE90GPSVT
+csa15bit_52            area_0to1K        CORE90GPSVT
+csa15bit_51            area_0to1K        CORE90GPSVT
+csa15bit_50            area_0to1K        CORE90GPSVT
+csa15bit_49            area_0to1K        CORE90GPSVT
+csa15bit_48            area_0to1K        CORE90GPSVT
+CRA_15_8               area_0to1K        CORE90GPSVT
+multiplier_7           area_4Kto5K       CORE90GPSVT
+parcial_7              area_0to1K        CORE90GPSVT
+csa15bit_47            area_0to1K        CORE90GPSVT
+csa15bit_46            area_0to1K        CORE90GPSVT
+csa15bit_45            area_0to1K        CORE90GPSVT
+csa15bit_44            area_0to1K        CORE90GPSVT
+csa15bit_43            area_0to1K        CORE90GPSVT
+csa15bit_42            area_0to1K        CORE90GPSVT
+CRA_15_7               area_0to1K        CORE90GPSVT
+multiplier_6           area_4Kto5K       CORE90GPSVT
+parcial_6              area_0to1K        CORE90GPSVT
+csa15bit_41            area_0to1K        CORE90GPSVT
+csa15bit_40            area_0to1K        CORE90GPSVT
+csa15bit_39            area_0to1K        CORE90GPSVT
+csa15bit_38            area_0to1K        CORE90GPSVT
+csa15bit_37            area_0to1K        CORE90GPSVT
+csa15bit_36            area_0to1K        CORE90GPSVT
+CRA_15_6               area_0to1K        CORE90GPSVT
+multiplier_5           area_4Kto5K       CORE90GPSVT
+parcial_5              area_0to1K        CORE90GPSVT
+csa15bit_35            area_0to1K        CORE90GPSVT
+csa15bit_34            area_0to1K        CORE90GPSVT
+csa15bit_33            area_0to1K        CORE90GPSVT
+csa15bit_32            area_0to1K        CORE90GPSVT
+csa15bit_31            area_0to1K        CORE90GPSVT
+csa15bit_30            area_0to1K        CORE90GPSVT
+CRA_15_5               area_0to1K        CORE90GPSVT
+multiplier_4           area_4Kto5K       CORE90GPSVT
+parcial_4              area_0to1K        CORE90GPSVT
+csa15bit_29            area_0to1K        CORE90GPSVT
+csa15bit_28            area_0to1K        CORE90GPSVT
+csa15bit_27            area_0to1K        CORE90GPSVT
+csa15bit_26            area_0to1K        CORE90GPSVT
+csa15bit_25            area_0to1K        CORE90GPSVT
+csa15bit_24            area_0to1K        CORE90GPSVT
+CRA_15_4               area_0to1K        CORE90GPSVT
+multiplier_3           area_4Kto5K       CORE90GPSVT
+parcial_3              area_0to1K        CORE90GPSVT
+csa15bit_23            area_0to1K        CORE90GPSVT
+csa15bit_22            area_0to1K        CORE90GPSVT
+csa15bit_21            area_0to1K        CORE90GPSVT
+csa15bit_20            area_0to1K        CORE90GPSVT
+csa15bit_19            area_0to1K        CORE90GPSVT
+csa15bit_18            area_0to1K        CORE90GPSVT
+CRA_15_3               area_0to1K        CORE90GPSVT
+multiplier_2           area_4Kto5K       CORE90GPSVT
+parcial_2              area_0to1K        CORE90GPSVT
+csa15bit_17            area_0to1K        CORE90GPSVT
+csa15bit_16            area_0to1K        CORE90GPSVT
+csa15bit_15            area_0to1K        CORE90GPSVT
+csa15bit_14            area_0to1K        CORE90GPSVT
+csa15bit_13            area_0to1K        CORE90GPSVT
+csa15bit_12            area_0to1K        CORE90GPSVT
+CRA_15_2               area_0to1K        CORE90GPSVT
+multiplier_1           area_4Kto5K       CORE90GPSVT
+parcial_1              area_0to1K        CORE90GPSVT
+csa15bit_11            area_0to1K        CORE90GPSVT
+csa15bit_10            area_0to1K        CORE90GPSVT
+csa15bit_9             area_0to1K        CORE90GPSVT
+csa15bit_8             area_0to1K        CORE90GPSVT
+csa15bit_7             area_0to1K        CORE90GPSVT
+csa15bit_6             area_0to1K        CORE90GPSVT
+CRA_15_1               area_0to1K        CORE90GPSVT
+multiplier_0           area_4Kto5K       CORE90GPSVT
+parcial_0              area_0to1K        CORE90GPSVT
+csa15bit_5             area_0to1K        CORE90GPSVT
+csa15bit_4             area_0to1K        CORE90GPSVT
+csa15bit_3             area_0to1K        CORE90GPSVT
+csa15bit_2             area_0to1K        CORE90GPSVT
+csa15bit_1             area_0to1K        CORE90GPSVT
+csa15bit_0             area_0to1K        CORE90GPSVT
+CRA_15_0               area_0to1K        CORE90GPSVT
+ADDER_3_2              area_1Kto2K       CORE90GPSVT
+ADDER_3_2_DW01_add_0   area_0to1K        CORE90GPSVT
+ADDER_3_2_DW01_add_2   area_0to1K        CORE90GPSVT
+ADDER_3_1              area_1Kto2K       CORE90GPSVT
+ADDER_3_1_DW01_add_0   area_0to1K        CORE90GPSVT
+ADDER_3_1_DW01_add_2   area_0to1K        CORE90GPSVT
+ADDER_3_0              area_1Kto2K       CORE90GPSVT
+ADDER_3_0_DW01_add_1   area_0to1K        CORE90GPSVT
+ADDER_3_0_DW01_add_2   area_0to1K        CORE90GPSVT
+MUX_4                  area_0to1K        CORE90GPSVT
+ADDER_2                area_1Kto2K       CORE90GPSVT
+ADDER_2_DW01_add_1     area_1Kto2K       CORE90GPSVT
+REG                    area_0to1K        CORE90GPSVT
+
+
+
+
+Global Operating Voltage = 1    
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000pf
+    Time Units = 1ns
+    Dynamic Power Units = 1mW    (derived from V,C,T units)
+    Leakage Power Units = 1pW
+
+
+
+
+
+  Attributes
+  ----------
+      a  -  Switching activity information annotated on net
+      d  -  Default switching activity information on net
+
+
+                             Total      Static   Toggle   Switching
+Net                          Net Load   Prob.    Rate     Power      Attrs
+--------------------------------------------------------------------------------
+Data_out[0]                    0.002    0.216    0.1604      0.0002  
+Data_out[1]                    0.002    0.213    0.1591      0.0002  
+Data_out[3]                    0.002    0.215    0.1594      0.0002  
+filter_bits[65]                0.026    0.141    0.0916      0.0012  
+filter_bits[64]                0.022    0.144    0.0920      0.0010  
+filter_bits[69]                0.018    0.142    0.0926      0.0008  
+filter_bits[67]                0.018    0.143    0.0919      0.0008  
+filter_bits[68]                0.018    0.146    0.0926      0.0008  
+filter_bits[66]                0.018    0.142    0.0917      0.0008  
+filter_bits[70]                0.018    0.140    0.0903      0.0008  
+filter_bits[71]                0.018    0.142    0.0922      0.0008  
+Data_out[6]                    0.002    0.219    0.1626      0.0002  
+Data_out[7]                    0.002    0.218    0.1620      0.0002  
+Data_out[5]                    0.002    0.220    0.1620      0.0002  
+Data_out[4]                    0.002    0.219    0.1608      0.0002  
+Data_out[2]                    0.002    0.216    0.1583      0.0002  
+filter_bits[60]                0.018    0.060    0.0402      0.0004  
+filter_bits[59]                0.018    0.061    0.0398      0.0004  
+filter_bits[61]                0.018    0.061    0.0387      0.0003  
+filter_bits[63]                0.018    0.058    0.0385      0.0003  
+filter_bits[62]                0.018    0.056    0.0379      0.0003  
+filter_bits[56]                0.022    0.063    0.0404      0.0004  
+filter_bits[58]                0.018    0.059    0.0390      0.0003  
+filter_bits[57]                0.018    0.060    0.0386      0.0003  
+filter_bits[52]                0.018    0.024    0.0162      0.0001  
+filter_bits[48]                0.018    0.026    0.0161      0.0001  
+filter_bits[54]                0.018    0.024    0.0158      0.0001  
+filter_bits[46]                0.018    0.011    0.0075   6.650e-05  
+filter_bits[43]                0.018    0.011    0.0072   6.432e-05  
+filter_bits[44]                0.018    0.010    0.0069   6.134e-05  
+filter_bits[51]                0.018    0.025    0.0164      0.0001  
+filter_bits[53]                0.018    0.026    0.0166      0.0001  
+filter_bits[55]                0.018    0.024    0.0157      0.0001  
+filter_bits[49]                0.018    0.025    0.0158      0.0001  
+filter_bits[50]                0.014    0.024    0.0155      0.0001  
+filter_bits[32]                0.018    0.006    0.0033   2.904e-05  
+filter_bits[29]                0.018    0.002    0.0013   1.113e-05  
+filter_bits[25]                0.018    0.002    0.0014   1.221e-05  
+filter_bits[23]                0.018    0.001    0.0005   4.343e-06  
+filter_bits[14]                0.018    0.001    0.0003   3.059e-06  
+filter_bits[8]                 0.018    0.001    0.0003   2.700e-06  
+filter_bits[11]                0.018    0.001    0.0003   2.781e-06  
+filter_bits[12]                0.018    0.000    0.0002   1.947e-06  
+filter_bits[2]                 0.014    0.000    0.0002   1.076e-06  
+filter_bits[4]                 0.014    0.000    0.61e-4  4.303e-07  
+cache_bits[24]                 0.009    0.000    0.0000      0.0000  
+cache_bits[40]                 0.014    0.000    0.0000      0.0000  
+cache_bits[65]                 0.009    0.000    0.0000      0.0000  
+filter_bits[40]                0.022    0.013    0.0074   8.178e-05  
+filter_bits[41]                0.018    0.012    0.0080   7.111e-05  
+filter_bits[47]                0.022    0.010    0.0068   7.502e-05  
+filter_bits[45]                0.018    0.011    0.0073   6.487e-05  
+filter_bits[42]                0.018    0.011    0.0072   6.432e-05  
+filter_bits[37]                0.018    0.005    0.0034   3.013e-05  
+filter_bits[33]                0.018    0.005    0.0032   2.877e-05  
+filter_bits[38]                0.018    0.005    0.0033   2.904e-05  
+filter_bits[34]                0.018    0.005    0.0032   2.877e-05  
+filter_bits[35]                0.018    0.005    0.0031   2.714e-05  
+Write_In_Mem                   0.002    0.435    0.2173      0.0002  
+filter_bits[36]                0.018    0.005    0.0030   2.660e-05  
+filter_bits[39]                0.018    0.004    0.0030   2.633e-05  
+filter_bits[24]                0.022    0.003    0.0015   1.656e-05  
+filter_bits[30]                0.018    0.003    0.0016   1.466e-05  
+filter_bits[26]                0.018    0.002    0.0014   1.276e-05  
+filter_bits[27]                0.018    0.002    0.0013   1.167e-05  
+filter_bits[28]                0.018    0.002    0.0013   1.194e-05  
+filter_bits[31]                0.018    0.002    0.0012   1.059e-05  
+filter_bits[16]                0.028    0.001    0.0005   7.259e-06  
+filter_bits[22]                0.018    0.001    0.0005   4.614e-06  
+filter_bits[18]                0.018    0.001    0.0005   4.885e-06  
+filter_bits[17]                0.023    0.001    0.0005   6.068e-06  
+filter_bits[20]                0.018    0.001    0.0004   3.800e-06  
+filter_bits[21]                0.018    0.001    0.0004   3.528e-06  
+filter_bits[19]                0.018    0.001    0.0004   3.528e-06  
+filter_bits[9]                 0.018    0.001    0.0003   2.996e-06  
+filter_bits[10]                0.018    0.000    0.0003   2.503e-06  
+filter_bits[13]                0.018    0.000    0.0002   1.947e-06  
+filter_bits[0]                 0.030    0.000    0.0002   2.717e-06  
+filter_bits[15]                0.018    0.000    0.0002   1.669e-06  
+filter_bits[1]                 0.019    0.000    0.0002   1.717e-06  
+filter_bits[3]                 0.014    0.000    0.0002   1.506e-06  
+filter_bits[6]                 0.014    0.000    0.0002   1.291e-06  
+filter_bits[5]                 0.014    0.000    0.92e-4  6.455e-07  
+filter_bits[7]                 0.018    0.000    0.92e-4  8.451e-07  
+cache_bits[0]                  0.014    0.000    0.0000      0.0000  
+cache_bits[2]                  0.036    0.000    0.0000      0.0000  
+cache_bits[6]                  0.034    0.000    0.0000      0.0000  
+cache_bits[7]                  0.035    0.000    0.0000      0.0000  
+cache_bits[13]                 0.038    0.000    0.0000      0.0000  
+cache_bits[14]                 0.037    0.000    0.0000      0.0000  
+cache_bits[15]                 0.037    0.000    0.0000      0.0000  
+cache_bits[16]                 0.018    0.000    0.0000      0.0000  
+cache_bits[22]                 0.037    0.000    0.0000      0.0000  
+cache_bits[23]                 0.037    0.000    0.0000      0.0000  
+cache_bits[30]                 0.037    0.000    0.0000      0.0000  
+cache_bits[31]                 0.037    0.000    0.0000      0.0000  
+cache_bits[37]                 0.037    0.000    0.0000      0.0000  
+cache_bits[38]                 0.037    0.000    0.0000      0.0000  
+cache_bits[39]                 0.037    0.000    0.0000      0.0000  
+cache_bits[46]                 0.037    0.000    0.0000      0.0000  
+cache_bits[47]                 0.037    0.000    0.0000      0.0000  
+cache_bits[54]                 0.037    0.000    0.0000      0.0000  
+cache_bits[55]                 0.037    0.000    0.0000      0.0000  
+cache_bits[62]                 0.037    0.000    0.0000      0.0000  
+cache_bits[63]                 0.037    0.000    0.0000      0.0000  
+cache_bits[64]                 0.018    0.000    0.0000      0.0000  
+cache_bits[70]                 0.037    0.000    0.0000      0.0000  
+cache_bits[71]                 0.037    0.000    0.0000      0.0000  
+cache_bits[1]                  0.042    0.000    0.0000      0.0000  
+cache_bits[3]                  0.036    0.000    0.0000      0.0000  
+cache_bits[4]                  0.035    0.000    0.0000      0.0000  
+cache_bits[5]                  0.034    0.000    0.0000      0.0000  
+cache_bits[8]                  0.043    0.000    0.0000      0.0000  
+cache_bits[9]                  0.043    0.000    0.0000      0.0000  
+cache_bits[10]                 0.037    0.000    0.0000      0.0000  
+cache_bits[11]                 0.039    0.000    0.0000      0.0000  
+cache_bits[12]                 0.036    0.000    0.0000      0.0000  
+cache_bits[17]                 0.043    0.000    0.0000      0.0000  
+cache_bits[18]                 0.039    0.000    0.0000      0.0000  
+cache_bits[19]                 0.040    0.000    0.0000      0.0000  
+cache_bits[20]                 0.043    0.000    0.0000      0.0000  
+cache_bits[21]                 0.039    0.000    0.0000      0.0000  
+cache_bits[25]                 0.050    0.000    0.0000      0.0000  
+cache_bits[26]                 0.037    0.000    0.0000      0.0000  
+cache_bits[27]                 0.036    0.000    0.0000      0.0000  
+cache_bits[28]                 0.038    0.000    0.0000      0.0000  
+cache_bits[29]                 0.039    0.000    0.0000      0.0000  
+cache_bits[32]                 0.040    0.000    0.0000      0.0000  
+cache_bits[33]                 0.040    0.000    0.0000      0.0000  
+cache_bits[34]                 0.039    0.000    0.0000      0.0000  
+cache_bits[35]                 0.036    0.000    0.0000      0.0000  
+cache_bits[36]                 0.038    0.000    0.0000      0.0000  
+cache_bits[41]                 0.043    0.000    0.0000      0.0000  
+cache_bits[42]                 0.041    0.000    0.0000      0.0000  
+cache_bits[43]                 0.043    0.000    0.0000      0.0000  
+cache_bits[44]                 0.045    0.000    0.0000      0.0000  
+cache_bits[45]                 0.040    0.000    0.0000      0.0000  
+cache_bits[48]                 0.044    0.000    0.0000      0.0000  
+cache_bits[49]                 0.042    0.000    0.0000      0.0000  
+cache_bits[50]                 0.040    0.000    0.0000      0.0000  
+cache_bits[51]                 0.039    0.000    0.0000      0.0000  
+cache_bits[52]                 0.041    0.000    0.0000      0.0000  
+cache_bits[53]                 0.039    0.000    0.0000      0.0000  
+cache_bits[56]                 0.039    0.000    0.0000      0.0000  
+cache_bits[57]                 0.047    0.000    0.0000      0.0000  
+cache_bits[58]                 0.037    0.000    0.0000      0.0000  
+cache_bits[59]                 0.041    0.000    0.0000      0.0000  
+cache_bits[60]                 0.037    0.000    0.0000      0.0000  
+cache_bits[61]                 0.037    0.000    0.0000      0.0000  
+cache_bits[66]                 0.040    0.000    0.0000      0.0000  
+cache_bits[67]                 0.039    0.000    0.0000      0.0000  
+cache_bits[68]                 0.041    0.000    0.0000      0.0000  
+cache_bits[69]                 0.040    0.000    0.0000      0.0000  
+add4_out[4]                    0.004    0.500    0.2514      0.0005  
+add4_out[7]                    0.004    0.498    0.2492      0.0005  
+add4_out[6]                    0.004    0.504    0.2505      0.0005  
+Read_In_Mem                    0.002    0.000    0.0000      0.0000  
+Write_Addr_Out_Mem[0]          0.002    0.186    0.3725      0.0004  
+Read_Addr_In_Mem[1]            0.002    0.209    0.2383      0.0003  
+select_adder[0]                0.013    0.998    0.0005   3.237e-06  
+Read_Addr_In_Mem[0]            0.002    0.186    0.3725      0.0004  
+add4_out[5]                    0.004    0.501    0.2507      0.0005  
+add4_out[2]                    0.004    0.498    0.2477      0.0005  
+Write_Addr_Out_Mem[1]          0.002    0.209    0.2383      0.0003  
+add4_out[0]                    0.004    0.499    0.2508      0.0005  
+add4_out[3]                    0.004    0.494    0.2500      0.0005  
+add4_out[1]                    0.004    0.494    0.2498      0.0005  
+Read_Addr_Out_Mem[3]           0.002    0.000    0.0000      0.0000  
+Write_Out_Mem                  0.002    0.435    0.2173      0.0002  
+Read_Addr_In_Mem[2]            0.002    0.138    0.1012      0.0001  
+Read_Addr_Out_Mem[4]           0.002    0.000    0.0000      0.0000  
+select_adder[1]                0.014    0.998    0.0005   3.483e-06  
+disable_to_cache               0.293    1.000    0.0000      0.0000  
+Read_Addr_Out_Mem[0]           0.002    0.000    0.0000      0.0000  
+Read_Addr_Out_Mem[1]           0.002    0.000    0.0000      0.0000  
+Read_Addr_Out_Mem[2]           0.002    0.000    0.0000      0.0000  
+Read_Addr_Out_Mem[5]           0.002    0.000    0.0000      0.0000  
+Read_Addr_Out_Mem[6]           0.002    0.000    0.0000      0.0000  
+Read_Addr_Out_Mem[7]           0.002    0.000    0.0000      0.0000  
+Read_Addr_Out_Mem[8]           0.002    0.000    0.0000      0.0000  
+Read_Addr_Out_Mem[9]           0.002    0.000    0.0000      0.0000  
+Read_Addr_Out_Mem[10]          0.002    0.000    0.0000      0.0000  
+Read_Addr_Out_Mem[11]          0.002    0.000    0.0000      0.0000  
+Read_Addr_Out_Mem[12]          0.002    0.000    0.0000      0.0000  
+Read_Addr_Out_Mem[13]          0.002    0.000    0.0000      0.0000  
+Read_Addr_Out_Mem[14]          0.002    0.000    0.0000      0.0000  
+Read_Addr_Out_Mem[15]          0.002    0.000    0.0000      0.0000  
+Read_Out_Mem                   0.002    0.000    0.0000      0.0000  
+Write_Addr_Out_Mem[2]          0.002    0.138    0.1012      0.0001  
+Write_Addr_Out_Mem[3]          0.002    0.055    0.0296   3.222e-05  
+Read_Addr_In_Mem[3]            0.002    0.055    0.0296   3.222e-05  
+Write_Addr_Out_Mem[4]          0.002    0.006    0.0032   3.519e-06  
+Read_Addr_In_Mem[4]            0.002    0.006    0.0032   3.519e-06  
+Write_Addr_Out_Mem[5]          0.002    0.000    0.31e-4  3.320e-08  
+Read_Addr_In_Mem[5]            0.002    0.000    0.31e-4  3.320e-08  
+Read_Addr_In_Mem[6]            0.002    0.000    0.0000      0.0000  
+Read_Addr_In_Mem[7]            0.002    0.000    0.0000      0.0000  
+Read_Addr_In_Mem[8]            0.002    0.000    0.0000      0.0000  
+Read_Addr_In_Mem[9]            0.002    0.000    0.0000      0.0000  
+Read_Addr_In_Mem[10]           0.002    0.000    0.0000      0.0000  
+Read_Addr_In_Mem[11]           0.002    0.000    0.0000      0.0000  
+Read_Addr_In_Mem[12]           0.002    0.000    0.0000      0.0000  
+Read_Addr_In_Mem[13]           0.002    0.000    0.0000      0.0000  
+Read_Addr_In_Mem[14]           0.002    0.000    0.0000      0.0000  
+Read_Addr_In_Mem[15]           0.002    0.000    0.0000      0.0000  
+Write_Addr_Out_Mem[6]          0.002    0.000    0.0000      0.0000  
+Write_Addr_Out_Mem[7]          0.002    0.000    0.0000      0.0000  
+Write_Addr_Out_Mem[8]          0.002    0.000    0.0000      0.0000  
+Write_Addr_Out_Mem[9]          0.002    0.000    0.0000      0.0000  
+Write_Addr_Out_Mem[10]         0.002    0.000    0.0000      0.0000  
+Write_Addr_Out_Mem[11]         0.002    0.000    0.0000      0.0000  
+Write_Addr_Out_Mem[12]         0.002    0.000    0.0000      0.0000  
+Write_Addr_Out_Mem[13]         0.002    0.000    0.0000      0.0000  
+Write_Addr_Out_Mem[14]         0.002    0.000    0.0000      0.0000  
+Write_Addr_Out_Mem[15]         0.002    0.000    0.0000      0.0000  
+add1_out[0]                    0.009    0.000    0.0000      0.0000  
+add1_out[1]                    0.009    0.000    0.0000      0.0000  
+add1_out[2]                    0.009    0.000    0.0000      0.0000  
+add1_out[3]                    0.009    0.000    0.0000      0.0000  
+add1_out[4]                    0.009    0.000    0.0000      0.0000  
+add1_out[5]                    0.009    0.000    0.0000      0.0000  
+add1_out[6]                    0.009    0.000    0.0000      0.0000  
+add1_out[7]                    0.009    0.000    0.0000      0.0000  
+add2_out[0]                    0.010    0.000    0.0000      0.0000  
+add2_out[1]                    0.010    0.000    0.0000      0.0000  
+add2_out[2]                    0.010    0.000    0.0000      0.0000  
+add2_out[3]                    0.010    0.000    0.0000      0.0000  
+add2_out[4]                    0.010    0.000    0.0000      0.0000  
+add2_out[5]                    0.010    0.000    0.0000      0.0000  
+add2_out[6]                    0.010    0.000    0.0000      0.0000  
+add2_out[7]                    0.010    0.000    0.0000      0.0000  
+add3_out[0]                    0.009    0.000    0.0000      0.0000  
+add3_out[1]                    0.009    0.000    0.0000      0.0000  
+add3_out[2]                    0.009    0.000    0.0000      0.0000  
+add3_out[3]                    0.009    0.000    0.0000      0.0000  
+add3_out[4]                    0.009    0.000    0.0000      0.0000  
+add3_out[5]                    0.009    0.000    0.0000      0.0000  
+add3_out[6]                    0.009    0.000    0.0000      0.0000  
+add3_out[7]                    0.009    0.000    0.0000      0.0000  
+mult1_out[0]                   0.047    0.000    0.0000      0.0000  
+mult1_out[1]                   0.031    0.000    0.0000      0.0000  
+mult1_out[2]                   0.019    0.000    0.0000      0.0000  
+mult1_out[3]                   0.022    0.000    0.0000      0.0000  
+mult1_out[4]                   0.022    0.000    0.0000      0.0000  
+mult1_out[5]                   0.015    0.000    0.0000      0.0000  
+mult1_out[6]                   0.019    0.000    0.0000      0.0000  
+mult1_out[7]                   0.019    0.000    0.0000      0.0000  
+mult2_out[0]                   0.018    0.000    0.0000      0.0000  
+mult2_out[1]                   0.019    0.000    0.0000      0.0000  
+mult2_out[2]                   0.020    0.000    0.0000      0.0000  
+mult2_out[3]                   0.024    0.000    0.0000      0.0000  
+mult2_out[4]                   0.019    0.000    0.0000      0.0000  
+mult2_out[5]                   0.019    0.000    0.0000      0.0000  
+mult2_out[6]                   0.019    0.000    0.0000      0.0000  
+mult2_out[7]                   0.057    0.000    0.0000      0.0000  
+mult3_out[0]                   0.046    0.000    0.0000      0.0000  
+mult3_out[1]                   0.025    0.000    0.0000      0.0000  
+mult3_out[2]                   0.023    0.000    0.0000      0.0000  
+mult3_out[3]                   0.022    0.000    0.0000      0.0000  
+mult3_out[4]                   0.022    0.000    0.0000      0.0000  
+mult3_out[5]                   0.015    0.000    0.0000      0.0000  
+mult3_out[6]                   0.019    0.000    0.0000      0.0000  
+mult3_out[7]                   0.019    0.000    0.0000      0.0000  
+mult4_out[0]                   0.024    0.000    0.0000      0.0000  
+mult4_out[1]                   0.027    0.000    0.0000      0.0000  
+mult4_out[2]                   0.019    0.000    0.0000      0.0000  
+mult4_out[3]                   0.019    0.000    0.0000      0.0000  
+mult4_out[4]                   0.015    0.000    0.0000      0.0000  
+mult4_out[5]                   0.019    0.000    0.0000      0.0000  
+mult4_out[6]                   0.019    0.000    0.0000      0.0000  
+mult4_out[7]                   0.019    0.000    0.0000      0.0000  
+mult5_out[0]                   0.018    0.000    0.0000      0.0000  
+mult5_out[1]                   0.023    0.000    0.0000      0.0000  
+mult5_out[2]                   0.026    0.000    0.0000      0.0000  
+mult5_out[3]                   0.019    0.000    0.0000      0.0000  
+mult5_out[4]                   0.019    0.000    0.0000      0.0000  
+mult5_out[5]                   0.019    0.000    0.0000      0.0000  
+mult5_out[6]                   0.019    0.000    0.0000      0.0000  
+mult5_out[7]                   0.059    0.000    0.0000      0.0000  
+mult6_out[0]                   0.027    0.000    0.0000      0.0000  
+mult6_out[1]                   0.032    0.000    0.0000      0.0000  
+mult6_out[2]                   0.019    0.000    0.0000      0.0000  
+mult6_out[3]                   0.019    0.000    0.0000      0.0000  
+mult6_out[4]                   0.015    0.000    0.0000      0.0000  
+mult6_out[5]                   0.019    0.000    0.0000      0.0000  
+mult6_out[6]                   0.019    0.000    0.0000      0.0000  
+mult6_out[7]                   0.019    0.000    0.0000      0.0000  
+mult7_out[0]                   0.021    0.000    0.0000      0.0000  
+mult7_out[1]                   0.023    0.000    0.0000      0.0000  
+mult7_out[2]                   0.019    0.000    0.0000      0.0000  
+mult7_out[3]                   0.027    0.000    0.0000      0.0000  
+mult7_out[4]                   0.016    0.000    0.0000      0.0000  
+mult7_out[5]                   0.019    0.000    0.0000      0.0000  
+mult7_out[6]                   0.019    0.000    0.0000      0.0000  
+mult7_out[7]                   0.019    0.000    0.0000      0.0000  
+mult8_out[0]                   0.021    0.000    0.0000      0.0000  
+mult8_out[1]                   0.031    0.000    0.0000      0.0000  
+mult8_out[2]                   0.019    0.000    0.0000      0.0000  
+mult8_out[3]                   0.019    0.000    0.0000      0.0000  
+mult8_out[4]                   0.024    0.000    0.0000      0.0000  
+mult8_out[5]                   0.028    0.000    0.0000      0.0000  
+mult8_out[6]                   0.040    0.000    0.0000      0.0000  
+mult8_out[7]                   0.037    0.000    0.0000      0.0000  
+mult9_out[0]                   0.025    0.000    0.0000      0.0000  
+mult9_out[1]                   0.023    0.000    0.0000      0.0000  
+mult9_out[2]                   0.023    0.000    0.0000      0.0000  
+mult9_out[3]                   0.021    0.000    0.0000      0.0000  
+mult9_out[4]                   0.011    0.000    0.0000      0.0000  
+mult9_out[5]                   0.019    0.000    0.0000      0.0000  
+mult9_out[6]                   0.019    0.000    0.0000      0.0000  
+mult9_out[7]                   0.019    0.000    0.0000      0.0000  
+mux_out[0]                     0.049    0.000    0.0000      0.0000  
+mux_out[1]                     0.023    0.000    0.0000      0.0000  
+mux_out[2]                     0.039    0.000    0.0000      0.0000  
+mux_out[3]                     0.036    0.000    0.0000      0.0000  
+mux_out[4]                     0.031    0.000    0.0000      0.0000  
+mux_out[5]                     0.031    0.000    0.0000      0.0000  
+mux_out[6]                     0.031    0.000    0.0000      0.0000  
+mux_out[7]                     0.022    0.000    0.0000      0.0000  
+--------------------------------------------------------------------------------
+Total (319 nets)                                            19.6593 uW
+
+
+
+  Attributes
+  ----------
+      h  -  Hierarchical cell
+
+
+                        Cell      Driven Net  Tot Dynamic      Cell
+                        Internal  Switching   Power            Leakage
+Cell                    Power     Power       (% Cell/Tot)     Power      Attrs
+--------------------------------------------------------------------------------
+Add1                       0.0000       N/A        N/A (N/A)   4778760.5000
+                                                                          h
+Add2                       0.0000       N/A        N/A (N/A)   4777800.5000
+                                                                          h
+Add3                       0.0000       N/A        N/A (N/A)   5222657.0000
+                                                                          h
+Add_new_value              0.1384       N/A        N/A (N/A)   4106502.7500
+                                                                          h
+Mult1                   7.433e-06       N/A        N/A (N/A)   15664176.0000
+                                                                          h
+Mult2                   1.318e-05       N/A        N/A (N/A)   9917935.0000
+                                                                          h
+Mult3                   2.201e-05       N/A        N/A (N/A)   15814483.0000
+                                                                          h
+Mult4                   6.895e-05       N/A        N/A (N/A)   14619347.0000
+                                                                          h
+Mult5                   1.432e-04       N/A        N/A (N/A)   10598882.0000
+                                                                          h
+Mult6                   3.935e-04       N/A        N/A (N/A)   14789382.0000
+                                                                          h
+Mult7                   7.111e-04       N/A        N/A (N/A)   14410650.0000
+                                                                          h
+Mult8                   2.072e-03       N/A        N/A (N/A)   10796598.0000
+                                                                          h
+Mult9                   5.485e-03       N/A        N/A (N/A)   15792171.0000
+                                                                          h
+Multiplexer             1.537e-06       N/A        N/A (N/A)   676184.6875
+                                                                          h
+cache                      0.4682       N/A        N/A (N/A)   2157886.7500
+                                                                          h
+filtermask                 0.5180       N/A        N/A (N/A)   1643177.3750
+                                                                          h
+fsm_input                  0.3961       N/A        N/A (N/A)   20528276.0000
+                                                                          h
+fsm_output                 0.4342       N/A        N/A (N/A)   31070584.0000
+                                                                          h
+regster                    0.0703       N/A        N/A (N/A)   219247.2812
+                                                                          h
+--------------------------------------------------------------------------------
+Totals (19 cells)          2.034mW     N/A         N/A (N/A)    197.585uW
+
+
+--------------------------------------------------------------------------------
+                                       Switch   Int      Leak     Total
+Hierarchy                              Power    Power    Power    Power    %
+--------------------------------------------------------------------------------
+Processor_3                               0.583    2.034 1.98e+08    2.815 100.0
+  regster (REG)                        1.40e-03 7.03e-02 2.19e+05 7.19e-02   2.6
+  Add_new_value (ADDER_2)              9.64e-02    0.138 4.11e+06    0.239   8.5
+    add_17/plus/plus (ADDER_2_DW01_add_1)
+                                       9.22e-02    0.124 3.98e+06    0.220   7.8
+  Multiplexer (MUX_4)                  1.92e-05 1.54e-06 6.76e+05 6.97e-04   0.0
+  Add3 (ADDER_3_0)                        0.000    0.000 5.22e+06 5.22e-03   0.2
+    add_1_root_add_0_root_add_17/plus/plus_1 (ADDER_3_0_DW01_add_2)
+                                          0.000    0.000 2.12e+06 2.12e-03   0.1
+    add_0_root_add_0_root_add_17/plus/plus_1 (ADDER_3_0_DW01_add_1)
+                                          0.000    0.000 2.85e+06 2.85e-03   0.1
+  Add2 (ADDER_3_1)                        0.000    0.000 4.78e+06 4.78e-03   0.2
+    add_0_root_add_0_root_add_17/plus/plus_1 (ADDER_3_1_DW01_add_2)
+                                          0.000    0.000 2.10e+06 2.10e-03   0.1
+    add_1_root_add_0_root_add_17/plus/plus_1 (ADDER_3_1_DW01_add_0)
+                                          0.000    0.000 2.49e+06 2.49e-03   0.1
+  Add1 (ADDER_3_2)                        0.000    0.000 4.78e+06 4.78e-03   0.2
+    add_0_root_add_0_root_add_17/plus/plus_1 (ADDER_3_2_DW01_add_2)
+                                          0.000    0.000 2.05e+06 2.05e-03   0.1
+    add_1_root_add_0_root_add_17/plus/plus_1 (ADDER_3_2_DW01_add_0)
+                                          0.000    0.000 2.57e+06 2.57e-03   0.1
+  Mult9 (multiplier_0)                 1.56e-02 5.48e-03 1.58e+07 3.68e-02   1.3
+    I_CRA (CRA_15_0)                      0.000    0.000 2.63e+06 2.63e-03   0.1
+    I_CSA6 (csa15bit_0)                   0.000    0.000 3.41e+06 3.41e-03   0.1
+    I_CSA5 (csa15bit_1)                   0.000    0.000 2.36e+06 2.36e-03   0.1
+    I_CSA4 (csa15bit_2)                   0.000    0.000 1.20e+06 1.20e-03   0.0
+    I_CSA3 (csa15bit_3)                   0.000    0.000 2.29e+06 2.29e-03   0.1
+    I_CSA2 (csa15bit_4)                   0.000    0.000 1.08e+06 1.08e-03   0.0
+    I_CSA1 (csa15bit_5)                   0.000    0.000 1.80e+06 1.80e-03   0.1
+    I_PAR (parcial_0)                  1.56e-02 5.48e-03 9.92e+05 2.20e-02   0.8
+  Mult8 (multiplier_1)                 5.16e-03 2.07e-03 1.08e+07 1.80e-02   0.6
+    I_CRA (CRA_15_1)                      0.000    0.000 1.76e+06 1.76e-03   0.1
+    I_CSA6 (csa15bit_6)                   0.000    0.000 3.00e+06 3.00e-03   0.1
+    I_CSA5 (csa15bit_7)                   0.000    0.000 1.82e+06 1.82e-03   0.1
+    I_CSA4 (csa15bit_8)                   0.000    0.000 5.62e+05 5.62e-04   0.0
+    I_CSA3 (csa15bit_9)                   0.000    0.000 9.79e+05 9.79e-04   0.0
+    I_CSA2 (csa15bit_10)                  0.000    0.000 9.11e+05 9.11e-04   0.0
+    I_CSA1 (csa15bit_11)                  0.000    0.000 1.28e+06 1.28e-03   0.0
+    I_PAR (parcial_1)                  5.16e-03 2.07e-03 4.85e+05 7.71e-03   0.3
+  Mult7 (multiplier_2)                 2.18e-03 7.11e-04 1.44e+07 1.73e-02   0.6
+    I_CRA (CRA_15_2)                      0.000    0.000 2.51e+06 2.51e-03   0.1
+    I_CSA6 (csa15bit_12)                  0.000    0.000 2.80e+06 2.80e-03   0.1
+    I_CSA5 (csa15bit_13)                  0.000    0.000 2.74e+06 2.74e-03   0.1
+    I_CSA4 (csa15bit_14)                  0.000    0.000 1.06e+06 1.06e-03   0.0
+    I_CSA3 (csa15bit_15)                  0.000    0.000 1.96e+06 1.96e-03   0.1
+    I_CSA2 (csa15bit_16)                  0.000    0.000 9.76e+05 9.76e-04   0.0
+    I_CSA1 (csa15bit_17)                  0.000    0.000 1.72e+06 1.72e-03   0.1
+    I_PAR (parcial_2)                  2.18e-03 7.11e-04 6.10e+05 3.50e-03   0.1
+  Mult6 (multiplier_3)                 1.16e-03 3.94e-04 1.48e+07 1.63e-02   0.6
+    I_CRA (CRA_15_3)                      0.000    0.000 2.36e+06 2.36e-03   0.1
+    I_CSA6 (csa15bit_18)                  0.000    0.000 3.17e+06 3.17e-03   0.1
+    I_CSA5 (csa15bit_19)                  0.000    0.000 2.48e+06 2.48e-03   0.1
+    I_CSA4 (csa15bit_20)                  0.000    0.000 1.01e+06 1.01e-03   0.0
+    I_CSA3 (csa15bit_21)                  0.000    0.000 2.15e+06 2.15e-03   0.1
+    I_CSA2 (csa15bit_22)                  0.000    0.000 1.32e+06 1.32e-03   0.0
+    I_CSA1 (csa15bit_23)                  0.000    0.000 1.42e+06 1.42e-03   0.1
+    I_PAR (parcial_3)                  1.16e-03 3.94e-04 8.93e+05 2.45e-03   0.1
+  Mult5 (multiplier_4)                 3.86e-04 1.43e-04 1.06e+07 1.11e-02   0.4
+    I_CRA (CRA_15_4)                      0.000    0.000 2.01e+06 2.01e-03   0.1
+    I_CSA6 (csa15bit_24)                  0.000    0.000 2.15e+06 2.15e-03   0.1
+    I_CSA5 (csa15bit_25)                  0.000    0.000 1.65e+06 1.65e-03   0.1
+    I_CSA4 (csa15bit_26)                  0.000    0.000 6.93e+05 6.93e-04   0.0
+    I_CSA3 (csa15bit_27)                  0.000    0.000 1.49e+06 1.49e-03   0.1
+    I_CSA2 (csa15bit_28)                  0.000    0.000 1.07e+06 1.07e-03   0.0
+    I_CSA1 (csa15bit_29)                  0.000    0.000 1.14e+06 1.14e-03   0.0
+    I_PAR (parcial_4)                  3.86e-04 1.43e-04 3.95e+05 9.24e-04   0.0
+  Mult4 (multiplier_5)                 1.92e-04 6.90e-05 1.46e+07 1.49e-02   0.5
+    I_CRA (CRA_15_5)                      0.000    0.000 2.34e+06 2.34e-03   0.1
+    I_CSA6 (csa15bit_30)                  0.000    0.000 3.07e+06 3.07e-03   0.1
+    I_CSA5 (csa15bit_31)                  0.000    0.000 2.48e+06 2.48e-03   0.1
+    I_CSA4 (csa15bit_32)                  0.000    0.000 1.27e+06 1.27e-03   0.0
+    I_CSA3 (csa15bit_33)                  0.000    0.000 1.74e+06 1.74e-03   0.1
+    I_CSA2 (csa15bit_34)                  0.000    0.000 1.16e+06 1.16e-03   0.0
+    I_CSA1 (csa15bit_35)                  0.000    0.000 1.86e+06 1.86e-03   0.1
+    I_PAR (parcial_5)                  1.92e-04 6.90e-05 6.51e+05 9.11e-04   0.0
+  Mult3 (multiplier_6)                 6.54e-05 2.20e-05 1.58e+07 1.59e-02   0.6
+    I_CRA (CRA_15_6)                      0.000    0.000 2.85e+06 2.85e-03   0.1
+    I_CSA6 (csa15bit_36)                  0.000    0.000 3.72e+06 3.72e-03   0.1
+    I_CSA5 (csa15bit_37)                  0.000    0.000 2.80e+06 2.80e-03   0.1
+    I_CSA4 (csa15bit_38)                  0.000    0.000 6.39e+05 6.39e-04   0.0
+    I_CSA3 (csa15bit_39)                  0.000    0.000 2.21e+06 2.21e-03   0.1
+    I_CSA2 (csa15bit_40)                  0.000    0.000 1.06e+06 1.06e-03   0.0
+    I_CSA1 (csa15bit_41)                  0.000    0.000 1.76e+06 1.76e-03   0.1
+    I_PAR (parcial_6)                  6.54e-05 2.20e-05 7.27e+05 8.15e-04   0.0
+  Mult2 (multiplier_7)                 3.61e-05 1.32e-05 9.92e+06 9.97e-03   0.4
+    I_CRA (CRA_15_7)                      0.000    0.000 1.63e+06 1.63e-03   0.1
+    I_CSA6 (csa15bit_42)                  0.000    0.000 2.14e+06 2.14e-03   0.1
+    I_CSA5 (csa15bit_43)                  0.000    0.000 1.67e+06 1.67e-03   0.1
+    I_CSA4 (csa15bit_44)                  0.000    0.000 4.41e+05 4.41e-04   0.0
+    I_CSA3 (csa15bit_45)         ****************************************
+Report : power
+	-net
+	-cell
+	-hier
+	-analysis_effort low
+	-sort_mode dynamic_power
+Design : Processor_3
+Version: X-2005.09-SP1
+Date   : Tue Dec 11 20:02:19 2007
+****************************************
+
+
+
+
+Library(s) Used:
+
+    CORE90GPSVT (File: /cell_libs/cmos090_50a/CORE90GPSVT_SNPS-AVT_2.1/SIGNOFF/bc_1.10V_m40C_wc_0.90V_105C/PT_LIB/CORE90GPSVT_NomLeak.db)
+    CORE90GPHVT (File: /cell_libs/cmos090_50a/CORE90GPHVT_SNPS-AVT_2.1.a/SIGNOFF/bc_1.10V_m40C_wc_0.90V_105C/PT_LIB/CORE90GPHVT_NomLeak.db)
+
+
+
+
+Operating Conditions: NomLeak   Library: CORE90GPSVT
+Wire Load Model Mode: enclosed
+
+Design        Wire Load Model            Library
+------------------------------------------------
+Processor_3            area_48Kto72K     CORE90GPSVT
+FSM_in_3               area_6Kto12K      CORE90GPSVT
+FSM_in_3_DW01_inc_3    area_0to1K        CORE90GPSVT
+FSM_in_3_DW01_add_1    area_0to1K        CORE90GPSVT
+FSM_in_3_DW01_inc_2    area_0to1K        CORE90GPSVT
+FSM_in_3_DW01_inc_0    area_0to1K        CORE90GPSVT
+FSM_out_3              area_6Kto12K      CORE90GPSVT
+FSM_out_3_DW01_inc_5   area_0to1K        CORE90GPSVT
+FSM_out_3_DW01_add_0   area_0to1K        CORE90GPSVT
+FSM_out_3_DW01_sub_0   area_0to1K        CORE90GPSVT
+FSM_out_3_DW01_inc_4   area_0to1K        CORE90GPSVT
+FSM_out_3_DW01_inc_2   area_0to1K        CORE90GPSVT
+FSM_out_3_DW01_inc_1   area_0to1K        CORE90GPSVT
+FSM_out_3_DW01_inc_0   area_0to1K        CORE90GPSVT
+SHIFTREG_1             area_1Kto2K       CORE90GPSVT
+SHIFTREG_0             area_1Kto2K       CORE90GPSVT
+multiplier_8           area_4Kto5K       CORE90GPSVT
+parcial_8              area_0to1K        CORE90GPSVT
+csa15bit_53            area_0to1K        CORE90GPSVT
+csa15bit_52            area_0to1K        CORE90GPSVT
+csa15bit_51            area_0to1K        CORE90GPSVT
+csa15bit_50            area_0to1K        CORE90GPSVT
+csa15bit_49            area_0to1K        CORE90GPSVT
+csa15bit_48            area_0to1K        CORE90GPSVT
+CRA_15_8               area_0to1K        CORE90GPSVT
+multiplier_7           area_4Kto5K       CORE90GPSVT
+parcial_7              area_0to1K        CORE90GPSVT
+csa15bit_47            area_0to1K        CORE90GPSVT
+csa15bit_46            area_0to1K        CORE90GPSVT
+csa15bit_45            area_0to1K        CORE90GPSVT
+csa15bit_44            area_0to1K        CORE90GPSVT
+csa15bit_43            area_0to1K        CORE90GPSVT
+csa15bit_42            area_0to1K        CORE90GPSVT
+CRA_15_7               area_0to1K        CORE90GPSVT
+multiplier_6           area_4Kto5K       CORE90GPSVT
+parcial_6              area_0to1K        CORE90GPSVT
+csa15bit_41            area_0to1K        CORE90GPSVT
+csa15bit_40            area_0to1K        CORE90GPSVT
+csa15bit_39            area_0to1K        CORE90GPSVT
+csa15bit_38            area_0to1K        CORE90GPSVT
+csa15bit_37            area_0to1K        CORE90GPSVT
+csa15bit_36            area_0to1K        CORE90GPSVT
+CRA_15_6               area_0to1K        CORE90GPSVT
+multiplier_5           area_4Kto5K       CORE90GPSVT
+parcial_5              area_0to1K        CORE90GPSVT
+csa15bit_35            area_0to1K        CORE90GPSVT
+csa15bit_34            area_0to1K        CORE90GPSVT
+csa15bit_33            area_0to1K        CORE90GPSVT
+csa15bit_32            area_0to1K        CORE90GPSVT
+csa15bit_31            area_0to1K        CORE90GPSVT
+csa15bit_30            area_0to1K        CORE90GPSVT
+CRA_15_5               area_0to1K        CORE90GPSVT
+multiplier_4           area_4Kto5K       CORE90GPSVT
+parcial_4              area_0to1K        CORE90GPSVT
+csa15bit_29            area_0to1K        CORE90GPSVT
+csa15bit_28            area_0to1K        CORE90GPSVT
+csa15bit_27            area_0to1K        CORE90GPSVT
+csa15bit_26            area_0to1K        CORE90GPSVT
+csa15bit_25            area_0to1K        CORE90GPSVT
+csa15bit_24            area_0to1K        CORE90GPSVT
+CRA_15_4               area_0to1K        CORE90GPSVT
+multiplier_3           area_4Kto5K       CORE90GPSVT
+parcial_3              area_0to1K        CORE90GPSVT
+csa15bit_23            area_0to1K        CORE90GPSVT
+csa15bit_22            area_0to1K        CORE90GPSVT
+csa15bit_21            area_0to1K        CORE90GPSVT
+csa15bit_20            area_0to1K        CORE90GPSVT
+csa15bit_19            area_0to1K        CORE90GPSVT
+csa15bit_18            area_0to1K        CORE90GPSVT
+CRA_15_3               area_0to1K        CORE90GPSVT
+multiplier_2           area_4Kto5K       CORE90GPSVT
+parcial_2              area_0to1K        CORE90GPSVT
+csa15bit_17            area_0to1K        CORE90GPSVT
+csa15bit_16            area_0to1K        CORE90GPSVT
+csa15bit_15            area_0to1K        CORE90GPSVT
+csa15bit_14            area_0to1K        CORE90GPSVT
+csa15bit_13            area_0to1K        CORE90GPSVT
+csa15bit_12            area_0to1K        CORE90GPSVT
+CRA_15_2               area_0to1K        CORE90GPSVT
+multiplier_1           area_4Kto5K       CORE90GPSVT
+parcial_1              area_0to1K        CORE90GPSVT
+csa15bit_11            area_0to1K        CORE90GPSVT
+csa15bit_10            area_0to1K        CORE90GPSVT
+csa15bit_9             area_0to1K        CORE90GPSVT
+csa15bit_8             area_0to1K        CORE90GPSVT
+csa15bit_7             area_0to1K        CORE90GPSVT
+csa15bit_6             area_0to1K        CORE90GPSVT
+CRA_15_1               area_0to1K        CORE90GPSVT
+multiplier_0           area_4Kto5K       CORE90GPSVT
+parcial_0              area_0to1K        CORE90GPSVT
+csa15bit_5             area_0to1K        CORE90GPSVT
+csa15bit_4             area_0to1K        CORE90GPSVT
+csa15bit_3             area_0to1K        CORE90GPSVT
+csa15bit_2             area_0to1K        CORE90GPSVT
+csa15bit_1             area_0to1K        CORE90GPSVT
+csa15bit_0             area_0to1K        CORE90GPSVT
+CRA_15_0               area_0to1K        CORE90GPSVT
+ADDER_3_2              area_1Kto2K       CORE90GPSVT
+ADDER_3_2_DW01_add_0   area_0to1K        CORE90GPSVT
+ADDER_3_2_DW01_add_2   area_0to1K        CORE90GPSVT
+ADDER_3_1              area_1Kto2K       CORE90GPSVT
+ADDER_3_1_DW01_add_0   area_0to1K        CORE90GPSVT
+ADDER_3_1_DW01_add_2   area_0to1K        CORE90GPSVT
+ADDER_3_0              area_1Kto2K       CORE90GPSVT
+ADDER_3_0_DW01_add_1   area_0to1K        CORE90GPSVT
+ADDER_3_0_DW01_add_2   area_0to1K        CORE90GPSVT
+MUX_4                  area_0to1K        CORE90GPSVT
+ADDER_2                area_1Kto2K       CORE90GPSVT
+ADDER_2_DW01_add_1     area_1Kto2K       CORE90GPSVT
+REG                    area_0to1K        CORE90GPSVT
+
+
+
+
+Global Operating Voltage = 1    
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000pf
+    Time Units = 1ns
+    Dynamic Power Units = 1mW    (derived from V,C,T units)
+    Leakage Power Units = 1pW
+
+
+
+
+
+  Attributes
+  ----------
+      a  -  Switching activity information annotated on net
+      d  -  Default switching activity information on net
+
+
+                             Total      Static   Toggle   Switching
+Net                          Net Load   Prob.    Rate     Power      Attrs
+--------------------------------------------------------------------------------
+Data_out[0]                    0.002    0.216    0.1604      0.0002  
+Data_out[1]                    0.002    0.213    0.1591      0.0002  
+Data_out[3]                    0.002    0.215    0.1594      0.0002  
+filter_bits[65]                0.026    0.141    0.0916      0.0012  
+filter_bits[64]                0.022    0.144    0.0920      0.0010  
+filter_bits[69]                0.018    0.142    0.0926      0.0008  
+filter_bits[67]                0.018    0.143    0.0919      0.0008  
+filter_bits[68]                0.018    0.146    0.0926      0.0008  
+filter_bits[66]                0.018    0.142    0.0917      0.0008  
+filter_bits[70]                0.018    0.140    0.0903      0.0008  
+filter_bits[71]                0.018    0.142    0.0922      0.0008  
+Data_out[6]                    0.002    0.219    0.1626      0.0002  
+Data_out[7]                    0.002    0.218    0.1620      0.0002  
+Data_out[5]                    0.002    0.220    0.1620      0.0002  
+Data_out[4]                    0.002    0.219    0.1608      0.0002  
+Data_out[2]                    0.002    0.216    0.1583      0.0002  
+filter_bits[60]                0.018    0.060    0.0402      0.0004  
+filter_bits[59]                0.018    0.061    0.0398      0.0004  
+filter_bits[61]                0.018    0.061    0.0387      0.0003  
+filter_bits[63]                0.018    0.058    0.0385      0.0003  
+filter_bits[62]                0.018    0.056    0.0379      0.0003  
+filter_bits[56]                0.022    0.063    0.0404      0.0004  
+filter_bits[58]                0.018    0.059    0.0390      0.0003  
+filter_bits[57]                0.018    0.060    0.0386      0.0003  
+filter_bits[52]                0.018    0.024    0.0162      0.0001  
+filter_bits[48]                0.018    0.026    0.0161      0.0001  
+filter_bits[54]                0.018    0.024    0.0158      0.0001  
+filter_bits[46]                0.018    0.011    0.0075   6.650e-05  
+filter_bits[43]                0.018    0.011    0.0072   6.432e-05  
+filter_bits[44]                0.018    0.010    0.0069   6.134e-05  
+filter_bits[51]                0.018    0.025    0.0164      0.0001  
+filter_bits[53]                0.018    0.026    0.0166      0.0001  
+filter_bits[55]                0.018    0.024    0.0157      0.0001  
+filter_bits[49]                0.018    0.025    0.0158      0.0001  
+filter_bits[50]                0.014    0.024    0.0155      0.0001  
+filter_bits[32]                0.018    0.006    0.0033   2.904e-05  
+filter_bits[29]                0.018    0.002    0.0013   1.113e-05  
+filter_bits[25]                0.018    0.002    0.0014   1.221e-05  
+filter_bits[23]                0.018    0.001    0.0005   4.343e-06  
+filter_bits[14]                0.018    0.001    0.0003   3.059e-06  
+filter_bits[8]                 0.018    0.001    0.0003   2.700e-06  
+filter_bits[11]                0.018    0.001    0.0003   2.781e-06  
+filter_bits[12]                0.018    0.000    0.0002   1.947e-06  
+filter_bits[2]                 0.014    0.000    0.0002   1.076e-06  
+filter_bits[4]                 0.014    0.000    0.61e-4  4.303e-07  
+cache_bits[24]                 0.009    0.000    0.0000      0.0000  
+cache_bits[40]                 0.014    0.000    0.0000      0.0000  
+cache_bits[65]                 0.009    0.000    0.0000      0.0000  
+filter_bits[40]                0.022    0.013    0.0074   8.178e-05  
+filter_bits[41]                0.018    0.012    0.0080   7.111e-05  
+filter_bits[47]                0.022    0.010    0.0068   7.502e-05  
+filter_bits[45]                0.018    0.011    0.0073   6.487e-05  
+filter_bits[42]                0.018    0.011    0.0072   6.432e-05  
+filter_bits[37]                0.018    0.005    0.0034   3.013e-05  
+filter_bits[33]                0.018    0.005    0.0032   2.877e-05  
+filter_bits[38]                0.018    0.005    0.0033   2.904e-05  
+filter_bits[34]                0.018    0.005    0.0032   2.877e-05  
+filter_bits[35]                0.018    0.005    0.0031   2.714e-05  
+Write_In_Mem                   0.002    0.435    0.2173      0.0002  
+filter_bits[36]                0.018    0.005    0.0030   2.660e-05  
+filter_bits[39]                0.018    0.004    0.0030   2.633e-05  
+filter_bits[24]                0.022    0.003    0.0015   1.656e-05  
+filter_bits[30]                0.018    0.003    0.0016   1.466e-05  
+filter_bits[26]                0.018    0.002    0.0014   1.276e-05  
+filter_bits[27]                0.018    0.002    0.0013   1.167e-05  
+filter_bits[28]                0.018    0.002    0.0013   1.194e-05  
+filter_bits[31]                0.018    0.002    0.0012   1.059e-05  
+filter_bits[16]                0.028    0.001    0.0005   7.259e-06  
+filter_bits[22]                0.018    0.001    0.0005   4.614e-06  
+filter_bits[18]                0.018    0.001    0.0005   4.885e-06  
+filter_bits[17]                0.023    0.001    0.0005   6.068e-06  
+filter_bits[20]                0.018    0.001    0.0004   3.800e-06  
+filter_bits[21]                0.018    0.001    0.0004   3.528e-06  
+filter_bits[19]                0.018    0.001    0.0004   3.528e-06  
+filter_bits[9]                 0.018    0.001    0.0003   2.996e-06  
+filter_bits[10]                0.018    0.000    0.0003   2.503e-06  
+filter_bits[13]                0.018    0.000    0.0002   1.947e-06  
+filter_bits[0]                 0.030    0.000    0.0002   2.717e-06  
+filter_bits[15]                0.018    0.000    0.0002   1.669e-06  
+filter_bits[1]                 0.019    0.000    0.0002   1.717e-06  
+filter_bits[3]                 0.014    0.000    0.0002   1.506e-06  
+filter_bits[6]                 0.014    0.000    0.0002   1.291e-06  
+filter_bits[5]                 0.014    0.000    0.92e-4  6.455e-07  
+filter_bits[7]                 0.018    0.000    0.92e-4  8.451e-07  
+cache_bits[0]                  0.014    0.000    0.0000      0.0000  
+cache_bits[2]                  0.036    0.000    0.0000      0.0000  
+cache_bits[6]                  0.034    0.000    0.0000      0.0000  
+cache_bits[7]                  0.035    0.000    0.0000      0.0000  
+cache_bits[13]                 0.038    0.000    0.0000      0.0000  
+cache_bits[14]                 0.037    0.000    0.0000      0.0000  
+cache_bits[15]                 0.037    0.000    0.0000      0.0000  
+cache_bits[16]                 0.018    0.000    0.0000      0.0000  
+cache_bits[22]                 0.037    0.000    0.0000      0.0000  
+cache_bits[23]                 0.037    0.000    0.0000      0.0000  
+cache_bits[30]                 0.037    0.000    0.0000      0.0000  
+cache_bits[31]                 0.037    0.000    0.0000      0.0000  
+cache_bits[37]                 0.037    0.000    0.0000      0.0000  
+cache_bits[38]                 0.037    0.000    0.0000      0.0000  
+cache_bits[39]                 0.037    0.000    0.0000      0.0000  
+cache_bits[46]                 0.037    0.000    0.0000      0.0000  
+cache_bits[47]                 0.037    0.000    0.0000      0.0000  
+cache_bits[54]                 0.037    0.000    0.0000      0.0000  
+cache_bits[55]                 0.037    0.000    0.0000      0.0000  
+cache_bits[62]                 0.037    0.000    0.0000      0.0000  
+cache_bits[63]                 0.037    0.000    0.0000      0.0000  
+cache_bits[64]                 0.018    0.000    0.0000      0.0000  
+cache_bits[70]                 0.037    0.000    0.0000      0.0000  
+cache_bits[71]                 0.037    0.000    0.0000      0.0000  
+cache_bits[1]                  0.042    0.000    0.0000      0.0000  
+cache_bits[3]                  0.036    0.000    0.0000      0.0000  
+cache_bits[4]                  0.035    0.000    0.0000      0.0000  
+cache_bits[5]                  0.034    0.000    0.0000      0.0000  
+cache_bits[8]                  0.043    0.000    0.0000      0.0000  
+cache_bits[9]                  0.043    0.000    0.0000      0.0000  
+cache_bits[10]                 0.037    0.000    0.0000      0.0000  
+cache_bits[11]                 0.039    0.000    0.0000      0.0000  
+cache_bits[12]                 0.036    0.000    0.0000      0.0000  
+cache_bits[17]                 0.043    0.000    0.0000      0.0000  
+cache_bits[18]                 0.039    0.000    0.0000      0.0000  
+cache_bits[19]                 0.040    0.000    0.0000      0.0000  
+cache_bits[20]                 0.043    0.000    0.0000      0.0000  
+cache_bits[21]                 0.039    0.000    0.0000      0.0000  
+cache_bits[25]                 0.050    0.000    0.0000      0.0000  
+cache_bits[26]                 0.037    0.000    0.0000      0.0000  
+cache_bits[27]                 0.036    0.000    0.0000      0.0000  
+cache_bits[28]                 0.038    0.000    0.0000      0.0000  
+cache_bits[29]                 0.039    0.000    0.0000      0.0000  
+cache_bits[32]                 0.040    0.000    0.0000      0.0000  
+cache_bits[33]                 0.040    0.000    0.0000      0.0000  
+cache_bits[34]                 0.039    0.000    0.0000      0.0000  
+cache_bits[35]                 0.036    0.000    0.0000      0.0000  
+cache_bits[36]                 0.038    0.000    0.0000      0.0000  
+cache_bits[41]                 0.043    0.000    0.0000      0.0000  
+cache_bits[42]                 0.041    0.000    0.0000      0.0000  
+cache_bits[43]                 0.043    0.000    0.0000      0.0000  
+cache_bits[44]                 0.045    0.000    0.0000      0.0000  
+cache_bits[45]                 0.040    0.000    0.0000      0.0000  
+cache_bits[48]                 0.044    0.000    0.0000      0.0000  
+cache_bits[49]                 0.042    0.000    0.0000      0.0000  
+cache_bits[50]                 0.040    0.000    0.0000      0.0000  
+cache_bits[51]                 0.039    0.000    0.0000      0.0000  
+cache_bits[52]                 0.041    0.000    0.0000      0.0000  
+cache_bits[53]                 0.039    0.000    0.0000      0.0000  
+cache_bits[56]                 0.039    0.000    0.0000      0.0000  
+cache_bits[57]                 0.047    0.000    0.0000      0.0000  
+cache_bits[58]                 0.037    0.000    0.0000      0.0000  
+cache_bits[59]                 0.041    0.000    0.0000      0.0000  
+cache_bits[60]                 0.037    0.000    0.0000      0.0000  
+cache_bits[61]                 0.037    0.000    0.0000      0.0000  
+cache_bits[66]                 0.040    0.000    0.0000      0.0000  
+cache_bits[67]                 0.039    0.000    0.0000      0.0000  
+cache_bits[68]                 0.041    0.000    0.0000      0.0000  
+cache_bits[69]                 0.040    0.000    0.0000      0.0000  
+add4_out[4]                    0.004    0.500    0.2514      0.0005  
+add4_out[7]                    0.004    0.498    0.2492      0.0005  
+add4_out[6]                    0.004    0.504    0.2505      0.0005  
+Read_In_Mem                    0.002    0.000    0.0000      0.0000  
+Write_Addr_Out_Mem[0]          0.002    0.186    0.3725      0.0004  
+Read_Addr_In_Mem[1]            0.002    0.209    0.2383      0.0003  
+select_adder[0]                0.013    0.998    0.0005   3.237e-06  
+Read_Addr_In_Mem[0]            0.002    0.186    0.3725      0.0004  
+add4_out[5]                    0.004    0.501    0.2507      0.0005  
+add4_out[2]                    0.004    0.498    0.2477      0.0005  
+Write_Addr_Out_Mem[1]          0.002    0.209    0.2383      0.0003  
+add4_out[0]                    0.004    0.499    0.2508      0.0005  
+add4_out[3]                    0.004    0.494    0.2500      0.0005  
+add4_out[1]                    0.004    0.494    0.2498      0.0005  
+Read_Addr_Out_Mem[3]           0.002    0.000    0.0000      0.0000  
+Write_Out_Mem                  0.002    0.435    0.2173      0.0002  
+Read_Addr_In_Mem[2]            0.002    0.138    0.1012      0.0001  
+Read_Addr_Out_Mem[4]           0.002    0.000    0.0000      0.0000  
+select_adder[1]                0.014    0.998    0.0005   3.483e-06  
+disable_to_cache               0.293    1.000    0.0000      0.0000  
+Read_Addr_Out_Mem[0]           0.002    0.000    0.0000      0.0000  
+Read_Addr_Out_Mem[1]           0.002    0.000    0.0000      0.0000  
+Read_Addr_Out_Mem[2]           0.002    0.000    0.0000      0.0000  
+Read_Addr_Out_Mem[5]           0.002    0.000    0.0000      0.0000  
+Read_Addr_Out_Mem[6]           0.002    0.000    0.0000      0.0000  
+Read_Addr_Out_Mem[7]           0.002    0.000    0.0000      0.0000  
+Read_Addr_Out_Mem[8]           0.002    0.000    0.0000      0.0000  
+Read_Addr_Out_Mem[9]           0.002    0.000    0.0000      0.0000  
+Read_Addr_Out_Mem[10]          0.002    0.000    0.0000      0.0000  
+Read_Addr_Out_Mem[11]          0.002    0.000    0.0000      0.0000  
+Read_Addr_Out_Mem[12]          0.002    0.000    0.0000      0.0000  
+Read_Addr_Out_Mem[13]          0.002    0.000    0.0000      0.0000  
+Read_Addr_Out_Mem[14]          0.002    0.000    0.0000      0.0000  
+Read_Addr_Out_Mem[15]          0.002    0.000    0.0000      0.0000  
+Read_Out_Mem                   0.002    0.000    0.0000      0.0000  
+Write_Addr_Out_Mem[2]          0.002    0.138    0.1012      0.0001  
+Write_Addr_Out_Mem[3]          0.002    0.055    0.0296   3.222e-05  
+Read_Addr_In_Mem[3]            0.002    0.055    0.0296   3.222e-05  
+Write_Addr_Out_Mem[4]          0.002    0.006    0.0032   3.519e-06  
+Read_Addr_In_Mem[4]            0.002    0.006    0.0032   3.519e-06  
+Write_Addr_Out_Mem[5]          0.002    0.000    0.31e-4  3.320e-08  
+Read_Addr_In_Mem[5]            0.002    0.000    0.31e-4  3.320e-08  
+Read_Addr_In_Mem[6]            0.002    0.000    0.0000      0.0000  
+Read_Addr_In_Mem[7]            0.002    0.000    0.0000      0.0000  
+Read_Addr_In_Mem[8]            0.002    0.000    0.0000      0.0000  
+Read_Addr_In_Mem[9]            0.002    0.000    0.0000      0.0000  
+Read_Addr_In_Mem[10]           0.002    0.000    0.0000      0.0000  
+Read_Addr_In_Mem[11]           0.002    0.000    0.0000      0.0000  
+Read_Addr_In_Mem[12]           0.002    0.000    0.0000      0.0000  
+Read_Addr_In_Mem[13]           0.002    0.000    0.0000      0.0000  
+Read_Addr_In_Mem[14]           0.002    0.000    0.0000      0.0000  
+Read_Addr_In_Mem[15]           0.002    0.000    0.0000      0.0000  
+Write_Addr_Out_Mem[6]          0.002    0.000    0.0000      0.0000  
+Write_Addr_Out_Mem[7]          0.002    0.000    0.0000      0.0000  
+Write_Addr_Out_Mem[8]          0.002    0.000    0.0000      0.0000  
+Write_Addr_Out_Mem[9]          0.002    0.000    0.0000      0.0000  
+Write_Addr_Out_Mem[10]         0.002    0.000    0.0000      0.0000  
+Write_Addr_Out_Mem[11]         0.002    0.000    0.0000      0.0000  
+Write_Addr_Out_Mem[12]         0.002    0.000    0.0000      0.0000  
+Write_Addr_Out_Mem[13]         0.002    0.000    0.0000      0.0000  
+Write_Addr_Out_Mem[14]         0.002    0.000    0.0000      0.0000  
+Write_Addr_Out_Mem[15]         0.002    0.000    0.0000      0.0000  
+add1_out[0]                    0.009    0.000    0.0000      0.0000  
+add1_out[1]                    0.009    0.000    0.0000      0.0000  
+add1_out[2]                    0.009    0.000    0.0000      0.0000  
+add1_out[3]                    0.009    0.000    0.0000      0.0000  
+add1_out[4]                    0.009    0.000    0.0000      0.0000  
+add1_out[5]                    0.009    0.000    0.0000      0.0000  
+add1_out[6]                    0.009    0.000    0.0000      0.0000  
+add1_out[7]                    0.009    0.000    0.0000      0.0000  
+add2_out[0]                    0.010    0.000    0.0000      0.0000  
+add2_out[1]                    0.010    0.000    0.0000      0.0000  
+add2_out[2]                    0.010    0.000    0.0000      0.0000  
+add2_out[3]                    0.010    0.000    0.0000      0.0000  
+add2_out[4]                    0.010    0.000    0.0000      0.0000  
+add2_out[5]                    0.010    0.000    0.0000      0.0000  
+add2_out[6]                    0.010    0.000    0.0000      0.0000  
+add2_out[7]                    0.010    0.000    0.0000      0.0000  
+add3_out[0]                    0.009    0.000    0.0000      0.0000  
+add3_out[1]                    0.009    0.000    0.0000      0.0000  
+add3_out[2]                    0.009    0.000    0.0000      0.0000  
+add3_out[3]                    0.009    0.000    0.0000      0.0000  
+add3_out[4]                    0.009    0.000    0.0000      0.0000  
+add3_out[5]                    0.009    0.000    0.0000      0.0000  
+add3_out[6]                    0.009    0.000    0.0000      0.0000  
+add3_out[7]                    0.009    0.000    0.0000      0.0000  
+mult1_out[0]                   0.047    0.000    0.0000      0.0000  
+mult1_out[1]                   0.031    0.000    0.0000      0.0000  
+mult1_out[2]                   0.019    0.000    0.0000      0.0000  
+mult1_out[3]                   0.022    0.000    0.0000      0.0000  
+mult1_out[4]                   0.022    0.000    0.0000      0.0000  
+mult1_out[5]                   0.015    0.000    0.0000      0.0000  
+mult1_out[6]                   0.019    0.000    0.0000      0.0000  
+mult1_out[7]                   0.019    0.000    0.0000      0.0000  
+mult2_out[0]                   0.018    0.000    0.0000      0.0000  
+mult2_out[1]                   0.019    0.000    0.0000      0.0000  
+mult2_out[2]                   0.020    0.000    0.0000      0.0000  
+mult2_out[3]                   0.024    0.000    0.0000      0.0000  
+mult2_out[4]                   0.019    0.000    0.0000      0.0000  
+mult2_out[5]                   0.019    0.000    0.0000      0.0000  
+mult2_out[6]                   0.019    0.000    0.0000      0.0000  
+mult2_out[7]                   0.057    0.000    0.0000      0.0000  
+mult3_out[0]                   0.046    0.000    0.0000      0.0000  
+mult3_out[1]                   0.025    0.000    0.0000      0.0000  
+mult3_out[2]                   0.023    0.000    0.0000      0.0000  
+mult3_out[3]                   0.022    0.000    0.0000      0.0000  
+mult3_out[4]                   0.022    0.000    0.0000      0.0000  
+mult3_out[5]                   0.015    0.000    0.0000      0.0000  
+mult3_out[6]                   0.019    0.000    0.0000      0.0000  
+mult3_out[7]                   0.019    0.000    0.0000      0.0000  
+mult4_out[0]                   0.024    0.000    0.0000      0.0000  
+mult4_out[1]                   0.027    0.000    0.0000      0.0000  
+mult4_out[2]                   0.019    0.000    0.0000      0.0000  
+mult4_out[3]                   0.019    0.000    0.0000      0.0000  
+mult4_out[4]                   0.015    0.000    0.0000      0.0000  
+mult4_out[5]                   0.019    0.000    0.0000      0.0000  
+mult4_out[6]                   0.019    0.000    0.0000      0.0000  
+mult4_out[7]                   0.019    0.000    0.0000      0.0000  
+mult5_out[0]                   0.018    0.000    0.0000      0.0000  
+mult5_out[1]                   0.023    0.000    0.0000      0.0000  
+mult5_out[2]                   0.026    0.000    0.0000      0.0000  
+mult5_out[3]                   0.019    0.000    0.0000      0.0000  
+mult5_out[4]                   0.019    0.000    0.0000      0.0000  
+mult5_out[5]                   0.019    0.000    0.0000      0.0000  
+mult5_out[6]                   0.019    0.000    0.0000      0.0000  
+mult5_out[7]                   0.059    0.000    0.0000      0.0000  
+mult6_out[0]                   0.027    0.000    0.0000      0.0000  
+mult6_out[1]                   0.032    0.000    0.0000      0.0000  
+mult6_out[2]                   0.019    0.000    0.0000      0.0000  
+mult6_out[3]                   0.019    0.000    0.0000      0.0000  
+mult6_out[4]                   0.015    0.000    0.0000      0.0000  
+mult6_out[5]                   0.019    0.000    0.0000      0.0000  
+mult6_out[6]                   0.019    0.000    0.0000      0.0000  
+mult6_out[7]                   0.019    0.000    0.0000      0.0000  
+mult7_out[0]                   0.021    0.000    0.0000      0.0000  
+mult7_out[1]                   0.023    0.000    0.0000      0.0000  
+mult7_out[2]                   0.019    0.000    0.0000      0.0000  
+mult7_out[3]                   0.027    0.000    0.0000      0.0000  
+mult7_out[4]                   0.016    0.000    0.0000      0.0000  
+mult7_out[5]                   0.019    0.000    0.0000      0.0000  
+mult7_out[6]                   0.019    0.000    0.0000      0.0000  
+mult7_out[7]                   0.019    0.000    0.0000      0.0000  
+mult8_out[0]                   0.021    0.000    0.0000      0.0000  
+mult8_out[1]                   0.031    0.000    0.0000      0.0000  
+mult8_out[2]                   0.019    0.000    0.0000      0.0000  
+mult8_out[3]                   0.019    0.000    0.0000      0.0000  
+mult8_out[4]                   0.024    0.000    0.0000      0.0000  
+mult8_out[5]                   0.028    0.000    0.0000      0.0000  
+mult8_out[6]                   0.040    0.000    0.0000      0.0000  
+mult8_out[7]                   0.037    0.000    0.0000      0.0000  
+mult9_out[0]                   0.025    0.000    0.0000      0.0000  
+mult9_out[1]                   0.023    0.000    0.0000      0.0000  
+mult9_out[2]                   0.023    0.000    0.0000      0.0000  
+mult9_out[3]                   0.021    0.000    0.0000      0.0000  
+mult9_out[4]                   0.011    0.000    0.0000      0.0000  
+mult9_out[5]                   0.019    0.000    0.0000      0.0000  
+mult9_out[6]                   0.019    0.000    0.0000      0.0000  
+mult9_out[7]                   0.019    0.000    0.0000      0.0000  
+mux_out[0]                     0.049    0.000    0.0000      0.0000  
+mux_out[1]                     0.023    0.000    0.0000      0.0000  
+mux_out[2]                     0.039    0.000    0.0000      0.0000  
+mux_out[3]                     0.036    0.000    0.0000      0.0000  
+mux_out[4]                     0.031    0.000    0.0000      0.0000  
+mux_out[5]                     0.031    0.000    0.0000      0.0000  
+mux_out[6]                     0.031    0.000    0.0000      0.0000  
+mux_out[7]                     0.022    0.000    0.0000      0.0000  
+--------------------------------------------------------------------------------
+Total (319 nets)                                            19.6593 uW
+
+
+
+  Attributes
+  ----------
+      h  -  Hierarchical cell
+
+
+                        Cell      Driven Net  Tot Dynamic      Cell
+                        Internal  Switching   Power            Leakage
+Cell                    Power     Power       (% Cell/Tot)     Power      Attrs
+--------------------------------------------------------------------------------
+Add1                       0.0000       N/A        N/A (N/A)   4778760.5000
+                                                                          h
+Add2                       0.0000       N/A        N/A (N/A)   4777800.5000
+                                                                          h
+Add3                       0.0000       N/A        N/A (N/A)   5222657.0000
+                                                                          h
+Add_new_value              0.1384       N/A        N/A (N/A)   4106502.7500
+                                                                          h
+Mult1                   7.433e-06       N/A        N/A (N/A)   15664176.0000
+                                                                          h
+Mult2                   1.318e-05       N/A        N/A (N/A)   9917935.0000
+                                                                          h
+Mult3                   2.201e-05       N/A        N/A (N/A)   15814483.0000
+                                                                          h
+Mult4                   6.895e-05       N/A        N/A (N/A)   14619347.0000
+                                                                          h
+Mult5                   1.432e-04       N/A        N/A (N/A)   10598882.0000
+                                                                          h
+Mult6                   3.935e-04       N/A        N/A (N/A)   14789382.0000
+                                                                          h
+Mult7                   7.111e-04       N/A        N/A (N/A)   14410650.0000
+                                                                          h
+Mult8                   2.072e-03       N/A        N/A (N/A)   10796598.0000
+                                                                          h
+Mult9                   5.485e-03       N/A        N/A (N/A)   15792171.0000
+                                                                          h
+Multiplexer             1.537e-06       N/A        N/A (N/A)   676184.6875
+                                                                          h
+cache                      0.4682       N/A        N/A (N/A)   2157886.7500
+                                                                          h
+filtermask                 0.5180       N/A        N/A (N/A)   1643177.3750
+                                                                          h
+fsm_input                  0.3961       N/A        N/A (N/A)   20528276.0000
+                                                                          h
+fsm_output                 0.4342       N/A        N/A (N/A)   31070584.0000
+                                                                          h
+regster                    0.0703       N/A        N/A (N/A)   219247.2812
+                                                                          h
+--------------------------------------------------------------------------------
+Totals (19 cells)          2.034mW     N/A         N/A (N/A)    197.585uW
+
+
+--------------------------------------------------------------------------------
+                                       Switch   Int      Leak     Total
+Hierarchy                              Power    Power    Power    Power    %
+--------------------------------------------------------------------------------
+Processor_3                               0.583    2.034 1.98e+08    2.815 100.0
+  regster (REG)                        1.40e-03 7.03e-02 2.19e+05 7.19e-02   2.6
+  Add_new_value (ADDER_2)              9.64e-02    0.138 4.11e+06    0.239   8.5
+    add_17/plus/plus (ADDER_2_DW01_add_1)
+                                       9.22e-02    0.124 3.98e+06    0.220   7.8
+  Multiplexer (MUX_4)                  1.92e-05 1.54e-06 6.76e+05 6.97e-04   0.0
+  Add3 (ADDER_3_0)                        0.000    0.000 5.22e+06 5.22e-03   0.2
+    add_1_root_add_0_root_add_17/plus/plus_1 (ADDER_3_0_DW01_add_2)
+                                          0.000    0.000 2.12e+06 2.12e-03   0.1
+    add_0_root_add_0_root_add_17/plus/plus_1 (ADDER_3_0_DW01_add_1)
+                                          0.000    0.000 2.85e+06 2.85e-03   0.1
+  Add2 (ADDER_3_1)                        0.000    0.000 4.78e+06 4.78e-03   0.2
+    add_0_root_add_0_root_add_17/plus/plus_1 (ADDER_3_1_DW01_add_2)
+                                          0.000    0.000 2.10e+06 2.10e-03   0.1
+    add_1_root_add_0_root_add_17/plus/plus_1 (ADDER_3_1_DW01_add_0)
+                                          0.000    0.000 2.49e+06 2.49e-03   0.1
+  Add1 (ADDER_3_2)                        0.000    0.000 4.78e+06 4.78e-03   0.2
+    add_0_root_add_0_root_add_17/plus/plus_1 (ADDER_3_2_DW01_add_2)
+                                          0.000    0.000 2.05e+06 2.05e-03   0.1
+    add_1_root_add_0_root_add_17/plus/plus_1 (ADDER_3_2_DW01_add_0)
+                                          0.000    0.000 2.57e+06 2.57e-03   0.1
+  Mult9 (multiplier_0)                 1.56e-02 5.48e-03 1.58e+07 3.68e-02   1.3
+    I_CRA (CRA_15_0)                      0.000    0.000 2.63e+06 2.63e-03   0.1
+    I_CSA6 (csa15bit_0)                   0.000    0.000 3.41e+06 3.41e-03   0.1
+    I_CSA5 (csa15bit_1)                   0.000    0.000 2.36e+06 2.36e-03   0.1
+    I_CSA4 (csa15bit_2)                   0.000    0.000 1.20e+06 1.20e-03   0.0
+    I_CSA3 (csa15bit_3)                   0.000    0.000 2.29e+06 2.29e-03   0.1
+    I_CSA2 (csa15bit_4)                   0.000    0.000 1.08e+06 1.08e-03   0.0
+    I_CSA1 (csa15bit_5)                   0.000    0.000 1.80e+06 1.80e-03   0.1
+    I_PAR (parcial_0)                  1.56e-02 5.48e-03 9.92e+05 2.20e-02   0.8
+  Mult8 (multiplier_1)                 5.16e-03 2.07e-03 1.08e+07 1.80e-02   0.6
+    I_CRA (CRA_15_1)                      0.000    0.000 1.76e+06 1.76e-03   0.1
+    I_CSA6 (csa15bit_6)                   0.000    0.000 3.00e+06 3.00e-03   0.1
+    I_CSA5 (csa15bit_7)                   0.000    0.000 1.82e+06 1.82e-03   0.1
+    I_CSA4 (csa15bit_8)                   0.000    0.000 5.62e+05 5.62e-04   0.0
+    I_CSA3 (csa15bit_9)                   0.000    0.000 9.79e+05 9.79e-04   0.0
+    I_CSA2 (csa15bit_10)                  0.000    0.000 9.11e+05 9.11e-04   0.0
+    I_CSA1 (csa15bit_11)                  0.000    0.000 1.28e+06 1.28e-03   0.0
+    I_PAR (parcial_1)                  5.16e-03 2.07e-03 4.85e+05 7.71e-03   0.3
+  Mult7 (multiplier_2)                 2.18e-03 7.11e-04 1.44e+07 1.73e-02   0.6
+    I_CRA (CRA_15_2)                      0.000    0.000 2.51e+06 2.51e-03   0.1
+    I_CSA6 (csa15bit_12)                  0.000    0.000 2.80e+06 2.80e-03   0.1
+    I_CSA5 (csa15bit_13)                  0.000    0.000 2.74e+06 2.74e-03   0.1
+    I_CSA4 (csa15bit_14)                  0.000    0.000 1.06e+06 1.06e-03   0.0
+    I_CSA3 (csa15bit_15)                  0.000    0.000 1.96e+06 1.96e-03   0.1
+    I_CSA2 (csa15bit_16)                  0.000    0.000 9.76e+05 9.76e-04   0.0
+    I_CSA1 (csa15bit_17)                  0.000    0.000 1.72e+06 1.72e-03   0.1
+    I_PAR (parcial_2)                  2.18e-03 7.11e-04 6.10e+05 3.50e-03   0.1
+  Mult6 (multiplier_3)                 1.16e-03 3.94e-04 1.48e+07 1.63e-02   0.6
+    I_CRA (CRA_15_3)                      0.000    0.000 2.36e+06 2.36e-03   0.1
+    I_CSA6 (csa15bit_18)                  0.000    0.000 3.17e+06 3.17e-03   0.1
+    I_CSA5 (csa15bit_19)                  0.000    0.000 2.48e+06 2.48e-03   0.1
+    I_CSA4 (csa15bit_20)                  0.000    0.000 1.01e+06 1.01e-03   0.0
+    I_CSA3 (csa15bit_21)                  0.000    0.000 2.15e+06 2.15e-03   0.1
+    I_CSA2 (csa15bit_22)                  0.000    0.000 1.32e+06 1.32e-03   0.0
+    I_CSA1 (csa15bit_23)                  0.000    0.000 1.42e+06 1.42e-03   0.1
+    I_PAR (parcial_3)                  1.16e-03 3.94e-04 8.93e+05 2.45e-03   0.1
+  Mult5 (multiplier_4)                 3.86e-04 1.43e-04 1.06e+07 1.11e-02   0.4
+    I_CRA (CRA_15_4)                      0.000    0.000 2.01e+06 2.01e-03   0.1
+    I_CSA6 (csa15bit_24)                  0.000    0.000 2.15e+06 2.15e-03   0.1
+    I_CSA5 (csa15bit_25)                  0.000    0.000 1.65e+06 1.65e-03   0.1
+    I_CSA4 (csa15bit_26)                  0.000    0.000 6.93e+05 6.93e-04   0.0
+    I_CSA3 (csa15bit_27)                  0.000    0.000 1.49e+06 1.49e-03   0.1
+    I_CSA2 (csa15bit_28)                  0.000    0.000 1.07e+06 1.07e-03   0.0
+    I_CSA1 (csa15bit_29)                  0.000    0.000 1.14e+06 1.14e-03   0.0
+    I_PAR (parcial_4)                  3.86e-04 1.43e-04 3.95e+05 9.24e-04   0.0
+  Mult4 (multiplier_5)                 1.92e-04 6.90e-05 1.46e+07 1.49e-02   0.5
+    I_CRA (CRA_15_5)                      0.000    0.000 2.34e+06 2.34e-03   0.1
+    I_CSA6 (csa15bit_30)                  0.000    0.000 3.07e+06 3.07e-03   0.1
+    I_CSA5 (csa15bit_31)                  0.000    0.000 2.48e+06 2.48e-03   0.1
+    I_CSA4 (csa15bit_32)                  0.000    0.000 1.27e+06 1.27e-03   0.0
+    I_CSA3 (csa15bit_33)                  0.000    0.000 1.74e+06 1.74e-03   0.1
+    I_CSA2 (csa15bit_34)                  0.000    0.000 1.16e+06 1.16e-03   0.0
+    I_CSA1 (csa15bit_35)                  0.000    0.000 1.86e+06 1.86e-03   0.1
+    I_PAR (parcial_5)                  1.92e-04 6.90e-05 6.51e+05 9.11e-04   0.0
+  Mult3 (multiplier_6)                 6.54e-05 2.20e-05 1.58e+07 1.59e-02   0.6
+    I_CRA (CRA_15_6)                      0.000    0.000 2.85e+06 2.85e-03   0.1
+    I_CSA6 (csa15bit_36)                  0.000    0.000 3.72e+06 3.72e-03   0.1
+    I_CSA5 (csa15bit_37)                  0.000    0.000 2.80e+06 2.80e-03   0.1
+    I_CSA4 (csa15bit_38)                  0.000    0.000 6.39e+05 6.39e-04   0.0
+    I_CSA3 (csa15bit_39)                  0.000    0.000 2.21e+06 2.21e-03   0.1
+    I_CSA2 (csa15bit_40)                  0.000    0.000 1.06e+06 1.06e-03   0.0
+    I_CSA1 (csa15bit_41)                  0.000    0.000 1.76e+06 1.76e-03   0.1
+    I_PAR (parcial_6)                  6.54e-05 2.20e-05 7.27e+05 8.15e-04   0.0
+  Mult2 (multiplier_7)                 3.61e-05 1.32e-05 9.92e+06 9.97e-03   0.4
+    I_CRA (CRA_15_7)                      0.000    0.000 1.63e+06 1.63e-03   0.1
+    I_CSA6 (csa15bit_42)                  0.000    0.000 2.14e+06 2.14e-03   0.1
+    I_CSA5 (csa15bit_43)                  0.000    0.000 1.67e+06 1.67e-03   0.1
+    I_CSA4 (csa15bit_44)                  0.000    0.000 4.41e+05 4.41e-04   0.0
+    I_CSA3 (csa15bit_45)                  0.000    0.000 1.44e+06 1.44e-03   0.1
+    I_CSA2 (csa15bit_46)                  0.000    0.000 6.34e+05 6.34e-04   0.0
+    I_CSA1 (csa15bit_47)                  0.000    0.000 1.44e+06 1.44e-03   0.1
+    I_PAR (parcial_7)                  3.61e-05 1.32e-05 5.21e+05 5.70e-04   0.0
+  Mult1 (multiplier_8)                 1.86e-05 7.43e-06 1.57e+07 1.57e-02   0.6
+    I_CRA (CRA_15_8)                      0.000    0.000 2.52e+06 2.52e-03   0.1
+    I_CSA6 (csa15bit_48)                  0.000    0.000 3.55e+06 3.55e-03   0.1
+    I_CSA5 (csa15bit_49)                  0.000    0.000 2.47e+06 2.47e-03   0.1
+    I_CSA4 (csa15bit_50)                  0.000    0.000 1.11e+06 1.11e-03   0.0
+    I_CSA3 (csa15bit_51)                  0.000    0.000 2.47e+06 2.47e-03   0.1
+    I_CSA2 (csa15bit_52)                  0.000    0.000 9.02e+05 9.02e-04   0.0
+    I_CSA1 (csa15bit_53)                  0.000    0.000 1.97e+06 1.97e-03   0.1
+    I_PAR (parcial_8)                  1.86e-05 7.43e-06 6.83e+05 7.09e-04   0.0
+  filtermask (SHIFTREG_0)              4.89e-02    0.518 1.64e+06    0.568  20.2
+  cache (SHIFTREG_1)                      0.000    0.468 2.16e+06    0.470  16.7
+  fsm_output (FSM_out_3)                  0.221    0.434 3.11e+07    0.686  24.4
+    r156 (FSM_out_3_DW01_inc_0)        5.39e-03 3.53e-02 3.80e+06 4.45e-02   1.6
+    r159 (FSM_out_3_DW01_inc_1)           0.000    0.000 3.80e+06 3.80e-03   0.1
+    r162 (FSM_out_3_DW01_inc_2)           0.000    0.000 3.82e+06 3.82e-03   0.1
+    r167 (FSM_out_3_DW01_inc_4)           0.000    0.000 3.78e+06 3.78e-03   0.1
+    sub_312 (FSM_out_3_DW01_sub_0)        0.000    0.000 4.46e+04 4.46e-05   0.0
+    add_287 (FSM_out_3_DW01_add_0)        0.000    0.000 4.76e+04 4.76e-05   0.0
+    add_109 (FSM_out_3_DW01_inc_5)     4.33e-03 3.74e-02 3.80e+06 4.55e-02   1.6
+  fsm_input (FSM_in_3)                    0.191    0.396 2.05e+07    0.607  21.6
+    r111 (FSM_in_3_DW01_inc_0)         6.53e-03 3.51e-02 3.80e+06 4.55e-02   1.6
+    add_192 (FSM_in_3_DW01_inc_2)         0.000    0.000 3.80e+06 3.80e-03   0.1
+    add_165 (FSM_in_3_DW01_add_1)         0.000    0.000 4.35e+04 4.35e-05   0.0
+    add_103 (FSM_in_3_DW01_inc_3)      7.08e-04 4.66e-03 3.79e+06 9.15e-03   0.3****************************************
+Report : power
+	-net
+	-cell
+	-hier
+	-analysis_effort low
+	-sort_mode dynamic_power
+Design : Processor_3
+Version: X-2005.09-SP1
+Date   : Tue Dec 11 20:02:19 2007
+****************************************
+
+
+
+
+Library(s) Used:
+
+    CORE90GPSVT (File: /cell_libs/cmos090_50a/CORE90GPSVT_SNPS-AVT_2.1/SIGNOFF/bc_1.10V_m40C_wc_0.90V_105C/PT_LIB/CORE90GPSVT_NomLeak.db)
+    CORE90GPHVT (File: /cell_libs/cmos090_50a/CORE90GPHVT_SNPS-AVT_2.1.a/SIGNOFF/bc_1.10V_m40C_wc_0.90V_105C/PT_LIB/CORE90GPHVT_NomLeak.db)
+
+
+
+
+Operating Conditions: NomLeak   Library: CORE90GPSVT
+Wire Load Model Mode: enclosed
+
+Design        Wire Load Model            Library
+------------------------------------------------
+Processor_3            area_48Kto72K     CORE90GPSVT
+FSM_in_3               area_6Kto12K      CORE90GPSVT
+FSM_in_3_DW01_inc_3    area_0to1K        CORE90GPSVT
+FSM_in_3_DW01_add_1    area_0to1K        CORE90GPSVT
+FSM_in_3_DW01_inc_2    area_0to1K        CORE90GPSVT
+FSM_in_3_DW01_inc_0    area_0to1K        CORE90GPSVT
+FSM_out_3              area_6Kto12K      CORE90GPSVT
+FSM_out_3_DW01_inc_5   area_0to1K        CORE90GPSVT
+FSM_out_3_DW01_add_0   area_0to1K        CORE90GPSVT
+FSM_out_3_DW01_sub_0   area_0to1K        CORE90GPSVT
+FSM_out_3_DW01_inc_4   area_0to1K        CORE90GPSVT
+FSM_out_3_DW01_inc_2   area_0to1K        CORE90GPSVT
+FSM_out_3_DW01_inc_1   area_0to1K        CORE90GPSVT
+FSM_out_3_DW01_inc_0   area_0to1K        CORE90GPSVT
+SHIFTREG_1             area_1Kto2K       CORE90GPSVT
+SHIFTREG_0             area_1Kto2K       CORE90GPSVT
+multiplier_8           area_4Kto5K       CORE90GPSVT
+parcial_8              area_0to1K        CORE90GPSVT
+csa15bit_53            area_0to1K        CORE90GPSVT
+csa15bit_52            area_0to1K        CORE90GPSVT
+csa15bit_51            area_0to1K        CORE90GPSVT
+csa15bit_50            area_0to1K        CORE90GPSVT
+csa15bit_49            area_0to1K        CORE90GPSVT
+csa15bit_48            area_0to1K        CORE90GPSVT
+CRA_15_8               area_0to1K        CORE90GPSVT
+multiplier_7           area_4Kto5K       CORE90GPSVT
+parcial_7              area_0to1K        CORE90GPSVT
+csa15bit_47            area_0to1K        CORE90GPSVT
+csa15bit_46            area_0to1K        CORE90GPSVT
+csa15bit_45            area_0to1K        CORE90GPSVT
+csa15bit_44            area_0to1K        CORE90GPSVT
+csa15bit_43            area_0to1K        CORE90GPSVT
+csa15bit_42            area_0to1K        CORE90GPSVT
+CRA_15_7               area_0to1K        CORE90GPSVT
+multiplier_6           area_4Kto5K       CORE90GPSVT
+parcial_6              area_0to1K        CORE90GPSVT
+csa15bit_41            area_0to1K        CORE90GPSVT
+csa15bit_40            area_0to1K        CORE90GPSVT
+csa15bit_39            area_0to1K        CORE90GPSVT
+csa15bit_38            area_0to1K        CORE90GPSVT
+csa15bit_37            area_0to1K        CORE90GPSVT
+csa15bit_36            area_0to1K        CORE90GPSVT
+CRA_15_6               area_0to1K        CORE90GPSVT
+multiplier_5           area_4Kto5K       CORE90GPSVT
+parcial_5              area_0to1K        CORE90GPSVT
+csa15bit_35            area_0to1K        CORE90GPSVT
+csa15bit_34            area_0to1K        CORE90GPSVT
+csa15bit_33            area_0to1K        CORE90GPSVT
+csa15bit_32            area_0to1K        CORE90GPSVT
+csa15bit_31            area_0to1K        CORE90GPSVT
+csa15bit_30            area_0to1K        CORE90GPSVT
+CRA_15_5               area_0to1K        CORE90GPSVT
+multiplier_4           area_4Kto5K       CORE90GPSVT
+parcial_4              area_0to1K        CORE90GPSVT
+csa15bit_29            area_0to1K        CORE90GPSVT
+csa15bit_28            area_0to1K        CORE90GPSVT
+csa15bit_27            area_0to1K        CORE90GPSVT
+csa15bit_26            area_0to1K        CORE90GPSVT
+csa15bit_25            area_0to1K        CORE90GPSVT
+csa15bit_24            area_0to1K        CORE90GPSVT
+CRA_15_4               area_0to1K        CORE90GPSVT
+multiplier_3           area_4Kto5K       CORE90GPSVT
+parcial_3              area_0to1K        CORE90GPSVT
+csa15bit_23            area_0to1K        CORE90GPSVT
+csa15bit_22            area_0to1K        CORE90GPSVT
+csa15bit_21            area_0to1K        CORE90GPSVT
+csa15bit_20            area_0to1K        CORE90GPSVT
+csa15bit_19            area_0to1K        CORE90GPSVT
+csa15bit_18            area_0to1K        CORE90GPSVT
+CRA_15_3               area_0to1K        CORE90GPSVT
+multiplier_2           area_4Kto5K       CORE90GPSVT
+parcial_2              area_0to1K        CORE90GPSVT
+csa15bit_17            area_0to1K        CORE90GPSVT
+csa15bit_16            area_0to1K        CORE90GPSVT
+csa15bit_15            area_0to1K        CORE90GPSVT
+csa15bit_14            area_0to1K        CORE90GPSVT
+csa15bit_13            area_0to1K        CORE90GPSVT
+csa15bit_12            area_0to1K        CORE90GPSVT
+CRA_15_2               area_0to1K        CORE90GPSVT
+multiplier_1           area_4Kto5K       CORE90GPSVT
+parcial_1              area_0to1K        CORE90GPSVT
+csa15bit_11            area_0to1K        CORE90GPSVT
+csa15bit_10            area_0to1K        CORE90GPSVT
+csa15bit_9             area_0to1K        CORE90GPSVT
+csa15bit_8             area_0to1K        CORE90GPSVT
+csa15bit_7             area_0to1K        CORE90GPSVT
+csa15bit_6             area_0to1K        CORE90GPSVT
+CRA_15_1               area_0to1K        CORE90GPSVT
+multiplier_0           area_4Kto5K       CORE90GPSVT
+parcial_0              area_0to1K        CORE90GPSVT
+csa15bit_5             area_0to1K        CORE90GPSVT
+csa15bit_4             area_0to1K        CORE90GPSVT
+csa15bit_3             area_0to1K        CORE90GPSVT
+csa15bit_2             area_0to1K        CORE90GPSVT
+csa15bit_1             area_0to1K        CORE90GPSVT
+csa15bit_0             area_0to1K        CORE90GPSVT
+CRA_15_0               area_0to1K        CORE90GPSVT
+ADDER_3_2              area_1Kto2K       CORE90GPSVT
+ADDER_3_2_DW01_add_0   area_0to1K        CORE90GPSVT
+ADDER_3_2_DW01_add_2   area_0to1K        CORE90GPSVT
+ADDER_3_1              area_1Kto2K       CORE90GPSVT
+ADDER_3_1_DW01_add_0   area_0to1K        CORE90GPSVT
+ADDER_3_1_DW01_add_2   area_0to1K        CORE90GPSVT
+ADDER_3_0              area_1Kto2K       CORE90GPSVT
+ADDER_3_0_DW01_add_1   area_0to1K        CORE90GPSVT
+ADDER_3_0_DW01_add_2   area_0to1K        CORE90GPSVT
+MUX_4                  area_0to1K        CORE90GPSVT
+ADDER_2                area_1Kto2K       CORE90GPSVT
+ADDER_2_DW01_add_1     area_1Kto2K       CORE90GPSVT
+REG                    area_0to1K        CORE90GPSVT
+
+
+
+
+Global Operating Voltage = 1    
+Power-specific unit information :
+    Voltage Units = 1V
+    Capacitance Units = 1.000000pf
+    Time Units = 1ns
+    Dynamic Power Units = 1mW    (derived from V,C,T units)
+    Leakage Power Units = 1pW
+
+
+
+
+
+  Attributes
+  ----------
+      a  -  Switching activity information annotated on net
+      d  -  Default switching activity information on net
+
+
+                             Total      Static   Toggle   Switching
+Net                          Net Load   Prob.    Rate     Power      Attrs
+--------------------------------------------------------------------------------
+Data_out[0]                    0.002    0.216    0.1604      0.0002  
+Data_out[1]                    0.002    0.213    0.1591      0.0002  
+Data_out[3]                    0.002    0.215    0.1594      0.0002  
+filter_bits[65]                0.026    0.141    0.0916      0.0012  
+filter_bits[64]                0.022    0.144    0.0920      0.0010  
+filter_bits[69]                0.018    0.142    0.0926      0.0008  
+filter_bits[67]                0.018    0.143    0.0919      0.0008  
+filter_bits[68]                0.018    0.146    0.0926      0.0008  
+filter_bits[66]                0.018    0.142    0.0917      0.0008  
+filter_bits[70]                0.018    0.140    0.0903      0.0008  
+filter_bits[71]                0.018    0.142    0.0922      0.0008  
+Data_out[6]                    0.002    0.219    0.1626      0.0002  
+Data_out[7]                    0.002    0.218    0.1620      0.0002  
+Data_out[5]                    0.002    0.220    0.1620      0.0002  
+Data_out[4]                    0.002    0.219    0.1608      0.0002  
+Data_out[2]                    0.002    0.216    0.1583      0.0002  
+filter_bits[60]                0.018    0.060    0.0402      0.0004  
+filter_bits[59]                0.018    0.061    0.0398      0.0004  
+filter_bits[61]                0.018    0.061    0.0387      0.0003  
+filter_bits[63]                0.018    0.058    0.0385      0.0003  
+filter_bits[62]                0.018    0.056    0.0379      0.0003  
+filter_bits[56]                0.022    0.063    0.0404      0.0004  
+filter_bits[58]                0.018    0.059    0.0390      0.0003  
+filter_bits[57]                0.018    0.060    0.0386      0.0003  
+filter_bits[52]                0.018    0.024    0.0162      0.0001  
+filter_bits[48]                0.018    0.026    0.0161      0.0001  
+filter_bits[54]                0.018    0.024    0.0158      0.0001  
+filter_bits[46]                0.018    0.011    0.0075   6.650e-05  
+filter_bits[43]                0.018    0.011    0.0072   6.432e-05  
+filter_bits[44]                0.018    0.010    0.0069   6.134e-05  
+filter_bits[51]                0.018    0.025    0.0164      0.0001  
+filter_bits[53]                0.018    0.026    0.0166      0.0001  
+filter_bits[55]                0.018    0.024    0.0157      0.0001  
+filter_bits[49]                0.018    0.025    0.0158      0.0001  
+filter_bits[50]                0.014    0.024    0.0155      0.0001  
+filter_bits[32]                0.018    0.006    0.0033   2.904e-05  
+filter_bits[29]                0.018    0.002    0.0013   1.113e-05  
+filter_bits[25]                0.018    0.002    0.0014   1.221e-05  
+filter_bits[23]                0.018    0.001    0.0005   4.343e-06  
+filter_bits[14]                0.018    0.001    0.0003   3.059e-06  
+filter_bits[8]                 0.018    0.001    0.0003   2.700e-06  
+filter_bits[11]                0.018    0.001    0.0003   2.781e-06  
+filter_bits[12]                0.018    0.000    0.0002   1.947e-06  
+filter_bits[2]                 0.014    0.000    0.0002   1.076e-06  
+filter_bits[4]                 0.014    0.000    0.61e-4  4.303e-07  
+cache_bits[24]                 0.009    0.000    0.0000      0.0000  
+cache_bits[40]                 0.014    0.000    0.0000      0.0000  
+cache_bits[65]                 0.009    0.000    0.0000      0.0000  
+filter_bits[40]                0.022    0.013    0.0074   8.178e-05  
+filter_bits[41]                0.018    0.012    0.0080   7.111e-05  
+filter_bits[47]                0.022    0.010    0.0068   7.502e-05  
+filter_bits[45]                0.018    0.011    0.0073   6.487e-05  
+filter_bits[42]                0.018    0.011    0.0072   6.432e-05  
+filter_bits[37]                0.018    0.005    0.0034   3.013e-05  
+filter_bits[33]                0.018    0.005    0.0032   2.877e-05  
+filter_bits[38]                0.018    0.005    0.0033   2.904e-05  
+filter_bits[34]                0.018    0.005    0.0032   2.877e-05  
+filter_bits[35]                0.018    0.005    0.0031   2.714e-05  
+Write_In_Mem                   0.002    0.435    0.2173      0.0002  
+filter_bits[36]                0.018    0.005    0.0030   2.660e-05  
+filter_bits[39]                0.018    0.004    0.0030   2.633e-05  
+filter_bits[24]                0.022    0.003    0.0015   1.656e-05  
+filter_bits[30]                0.018    0.003    0.0016   1.466e-05  
+filter_bits[26]                0.018    0.002    0.0014   1.276e-05  
+filter_bits[27]                0.018    0.002    0.0013   1.167e-05  
+filter_bits[28]                0.018    0.002    0.0013   1.194e-05  
+filter_bits[31]                0.018    0.002    0.0012   1.059e-05  
+filter_bits[16]                0.028    0.001    0.0005   7.259e-06  
+filter_bits[22]                0.018    0.001    0.0005   4.614e-06  
+filter_bits[18]                0.018    0.001    0.0005   4.885e-06  
+filter_bits[17]                0.023    0.001    0.0005   6.068e-06  
+filter_bits[20]                0.018    0.001    0.0004   3.800e-06  
+filter_bits[21]                0.018    0.001    0.0004   3.528e-06  
+filter_bits[19]                0.018    0.001    0.0004   3.528e-06  
+filter_bits[9]                 0.018    0.001    0.0003   2.996e-06  
+filter_bits[10]                0.018    0.000    0.0003   2.503e-06  
+filter_bits[13]                0.018    0.000    0.0002   1.947e-06  
+filter_bits[0]                 0.030    0.000    0.0002   2.717e-06  
+filter_bits[15]                0.018    0.000    0.0002   1.669e-06  
+filter_bits[1]                 0.019    0.000    0.0002   1.717e-06  
+filter_bits[3]                 0.014    0.000    0.0002   1.506e-06  
+filter_bits[6]                 0.014    0.000    0.0002   1.291e-06  
+filter_bits[5]                 0.014    0.000    0.92e-4  6.455e-07  
+filter_bits[7]                 0.018    0.000    0.92e-4  8.451e-07  
+cache_bits[0]                  0.014    0.000    0.0000      0.0000  
+cache_bits[2]                  0.036    0.000    0.0000      0.0000  
+cache_bits[6]                  0.034    0.000    0.0000      0.0000  
+cache_bits[7]                  0.035    0.000    0.0000      0.0000  
+cache_bits[13]                 0.038    0.000    0.0000      0.0000  
+cache_bits[14]                 0.037    0.000    0.0000      0.0000  
+cache_bits[15]                 0.037    0.000    0.0000      0.0000  
+cache_bits[16]                 0.018    0.000    0.0000      0.0000  
+cache_bits[22]                 0.037    0.000    0.0000      0.0000  
+cache_bits[23]                 0.037    0.000    0.0000      0.0000  
+cache_bits[30]                 0.037    0.000    0.0000      0.0000  
+cache_bits[31]                 0.037    0.000    0.0000      0.0000  
+cache_bits[37]                 0.037    0.000    0.0000      0.0000  
+cache_bits[38]                 0.037    0.000    0.0000      0.0000  
+cache_bits[39]                 0.037    0.000    0.0000      0.0000  
+cache_bits[46]                 0.037    0.000    0.0000      0.0000  
+cache_bits[47]                 0.037    0.000    0.0000      0.0000  
+cache_bits[54]                 0.037    0.000    0.0000      0.0000  
+cache_bits[55]                 0.037    0.000    0.0000      0.0000  
+cache_bits[62]                 0.037    0.000    0.0000      0.0000  
+cache_bits[63]                 0.037    0.000    0.0000      0.0000  
+cache_bits[64]                 0.018    0.000    0.0000      0.0000  
+cache_bits[70]                 0.037    0.000    0.0000      0.0000  
+cache_bits[71]                 0.037    0.000    0.0000      0.0000  
+cache_bits[1]                  0.042    0.000    0.0000      0.0000  
+cache_bits[3]                  0.036    0.000    0.0000      0.0000  
+cache_bits[4]                  0.035    0.000    0.0000      0.0000  
+cache_bits[5]                  0.034    0.000    0.0000      0.0000  
+cache_bits[8]                  0.043    0.000    0.0000      0.0000  
+cache_bits[9]                  0.043    0.000    0.0000      0.0000  
+cache_bits[10]                 0.037    0.000    0.0000      0.0000  
+cache_bits[11]                 0.039    0.000    0.0000      0.0000  
+cache_bits[12]                 0.036    0.000    0.0000      0.0000  
+cache_bits[17]                 0.043    0.000    0.0000      0.0000  
+cache_bits[18]                 0.039    0.000    0.0000      0.0000  
+cache_bits[19]                 0.040    0.000    0.0000      0.0000  
+cache_bits[20]                 0.043    0.000    0.0000      0.0000  
+cache_bits[21]                 0.039    0.000    0.0000      0.0000  
+cache_bits[25]                 0.050    0.000    0.0000      0.0000  
+cache_bits[26]                 0.037    0.000    0.0000      0.0000  
+cache_bits[27]                 0.036    0.000    0.0000      0.0000  
+cache_bits[28]                 0.038    0.000    0.0000      0.0000  
+cache_bits[29]                 0.039    0.000    0.0000      0.0000  
+cache_bits[32]                 0.040    0.000    0.0000      0.0000  
+cache_bits[33]                 0.040    0.000    0.0000      0.0000  
+cache_bits[34]                 0.039    0.000    0.0000      0.0000  
+cache_bits[35]                 0.036    0.000    0.0000      0.0000  
+cache_bits[36]                 0.038    0.000    0.0000      0.0000  
+cache_bits[41]                 0.043    0.000    0.0000      0.0000  
+cache_bits[42]                 0.041    0.000    0.0000      0.0000  
+cache_bits[43]                 0.043    0.000    0.0000      0.0000  
+cache_bits[44]                 0.045    0.000    0.0000      0.0000  
+cache_bits[45]                 0.040    0.000    0.0000      0.0000  
+cache_bits[48]                 0.044    0.000    0.0000      0.0000  
+cache_bits[49]                 0.042    0.000    0.0000      0.0000  
+cache_bits[50]                 0.040    0.000    0.0000      0.0000  
+cache_bits[51]                 0.039    0.000    0.0000      0.0000  
+cache_bits[52]                 0.041    0.000    0.0000      0.0000  
+cache_bits[53]                 0.039    0.000    0.0000      0.0000  
+cache_bits[56]                 0.039    0.000    0.0000      0.0000  
+cache_bits[57]                 0.047    0.000    0.0000      0.0000  
+cache_bits[58]                 0.037    0.000    0.0000      0.0000  
+cache_bits[59]                 0.041    0.000    0.0000      0.0000  
+cache_bits[60]                 0.037    0.000    0.0000      0.0000  
+cache_bits[61]                 0.037    0.000    0.0000      0.0000  
+cache_bits[66]                 0.040    0.000    0.0000      0.0000  
+cache_bits[67]                 0.039    0.000    0.0000      0.0000  
+cache_bits[68]                 0.041    0.000    0.0000      0.0000  
+cache_bits[69]                 0.040    0.000    0.0000      0.0000  
+add4_out[4]                    0.004    0.500    0.2514      0.0005  
+add4_out[7]                    0.004    0.498    0.2492      0.0005  
+add4_out[6]                    0.004    0.504    0.2505      0.0005  
+Read_In_Mem                    0.002    0.000    0.0000      0.0000  
+Write_Addr_Out_Mem[0]          0.002    0.186    0.3725      0.0004  
+Read_Addr_In_Mem[1]            0.002    0.209    0.2383      0.0003  
+select_adder[0]                0.013    0.998    0.0005   3.237e-06  
+Read_Addr_In_Mem[0]            0.002    0.186    0.3725      0.0004  
+add4_out[5]                    0.004    0.501    0.2507      0.0005  
+add4_out[2]                    0.004    0.498    0.2477      0.0005  
+Write_Addr_Out_Mem[1]          0.002    0.209    0.2383      0.0003  
+add4_out[0]                    0.004    0.499    0.2508      0.0005  
+add4_out[3]                    0.004    0.494    0.2500      0.0005  
+add4_out[1]                    0.004    0.494    0.2498      0.0005  
+Read_Addr_Out_Mem[3]           0.002    0.000    0.0000      0.0000  
+Write_Out_Mem                  0.002    0.435    0.2173      0.0002  
+Read_Addr_In_Mem[2]            0.002    0.138    0.1012      0.0001  
+Read_Addr_Out_Mem[4]           0.002    0.000    0.0000      0.0000  
+select_adder[1]                0.014    0.998    0.0005   3.483e-06  
+disable_to_cache               0.293    1.000    0.0000      0.0000  
+Read_Addr_Out_Mem[0]           0.002    0.000    0.0000      0.0000  
+Read_Addr_Out_Mem[1]           0.002    0.000    0.0000      0.0000  
+Read_Addr_Out_Mem[2]           0.002    0.000    0.0000      0.0000  
+Read_Addr_Out_Mem[5]           0.002    0.000    0.0000      0.0000  
+Read_Addr_Out_Mem[6]           0.002    0.000    0.0000      0.0000  
+Read_Addr_Out_Mem[7]           0.002    0.000    0.0000      0.0000  
+Read_Addr_Out_Mem[8]           0.002    0.000    0.0000      0.0000  
+Read_Addr_Out_Mem[9]           0.002    0.000    0.0000      0.0000  
+Read_Addr_Out_Mem[10]          0.002    0.000    0.0000      0.0000  
+Read_Addr_Out_Mem[11]          0.002    0.000    0.0000      0.0000  
+Read_Addr_Out_Mem[12]          0.002    0.000    0.0000      0.0000  
+Read_Addr_Out_Mem[13]          0.002    0.000    0.0000      0.0000  
+Read_Addr_Out_Mem[14]          0.002    0.000    0.0000      0.0000  
+Read_Addr_Out_Mem[15]          0.002    0.000    0.0000      0.0000  
+Read_Out_Mem                   0.002    0.000    0.0000      0.0000  
+Write_Addr_Out_Mem[2]          0.002    0.138    0.1012      0.0001  
+Write_Addr_Out_Mem[3]          0.002    0.055    0.0296   3.222e-05  
+Read_Addr_In_Mem[3]            0.002    0.055    0.0296   3.222e-05  
+Write_Addr_Out_Mem[4]          0.002    0.006    0.0032   3.519e-06  
+Read_Addr_In_Mem[4]            0.002    0.006    0.0032   3.519e-06  
+Write_Addr_Out_Mem[5]          0.002    0.000    0.31e-4  3.320e-08  
+Read_Addr_In_Mem[5]            0.002    0.000    0.31e-4  3.320e-08  
+Read_Addr_In_Mem[6]            0.002    0.000    0.0000      0.0000  
+Read_Addr_In_Mem[7]            0.002    0.000    0.0000      0.0000  
+Read_Addr_In_Mem[8]            0.002    0.000    0.0000      0.0000  
+Read_Addr_In_Mem[9]            0.002    0.000    0.0000      0.0000  
+Read_Addr_In_Mem[10]           0.002    0.000    0.0000      0.0000  
+Read_Addr_In_Mem[11]           0.002    0.000    0.0000      0.0000  
+Read_Addr_In_Mem[12]           0.002    0.000    0.0000      0.0000  
+Read_Addr_In_Mem[13]           0.002    0.000    0.0000      0.0000  
+Read_Addr_In_Mem[14]           0.002    0.000    0.0000      0.0000  
+Read_Addr_In_Mem[15]           0.002    0.000    0.0000      0.0000  
+Write_Addr_Out_Mem[6]          0.002    0.000    0.0000      0.0000  
+Write_Addr_Out_Mem[7]          0.002    0.000    0.0000      0.0000  
+Write_Addr_Out_Mem[8]          0.002    0.000    0.0000      0.0000  
+Write_Addr_Out_Mem[9]          0.002    0.000    0.0000      0.0000  
+Write_Addr_Out_Mem[10]         0.002    0.000    0.0000      0.0000  
+Write_Addr_Out_Mem[11]         0.002    0.000    0.0000      0.0000  
+Write_Addr_Out_Mem[12]         0.002    0.000    0.0000      0.0000  
+Write_Addr_Out_Mem[13]         0.002    0.000    0.0000      0.0000  
+Write_Addr_Out_Mem[14]         0.002    0.000    0.0000      0.0000  
+Write_Addr_Out_Mem[15]         0.002    0.000    0.0000      0.0000  
+add1_out[0]                    0.009    0.000    0.0000      0.0000  
+add1_out[1]                    0.009    0.000    0.0000      0.0000  
+add1_out[2]                    0.009    0.000    0.0000      0.0000  
+add1_out[3]                    0.009    0.000    0.0000      0.0000  
+add1_out[4]                    0.009    0.000    0.0000      0.0000  
+add1_out[5]                    0.009    0.000    0.0000      0.0000  
+add1_out[6]                    0.009    0.000    0.0000      0.0000  
+add1_out[7]                    0.009    0.000    0.0000      0.0000  
+add2_out[0]                    0.010    0.000    0.0000      0.0000  
+add2_out[1]                    0.010    0.000    0.0000      0.0000  
+add2_out[2]                    0.010    0.000    0.0000      0.0000  
+add2_out[3]                    0.010    0.000    0.0000      0.0000  
+add2_out[4]                    0.010    0.000    0.0000      0.0000  
+add2_out[5]                    0.010    0.000    0.0000      0.0000  
+add2_out[6]                    0.010    0.000    0.0000      0.0000  
+add2_out[7]                    0.010    0.000    0.0000      0.0000  
+add3_out[0]                    0.009    0.000    0.0000      0.0000  
+add3_out[1]                    0.009    0.000    0.0000      0.0000  
+add3_out[2]                    0.009    0.000    0.0000      0.0000  
+add3_out[3]                    0.009    0.000    0.0000      0.0000  
+add3_out[4]                    0.009    0.000    0.0000      0.0000  
+add3_out[5]                    0.009    0.000    0.0000      0.0000  
+add3_out[6]                    0.009    0.000    0.0000      0.0000  
+add3_out[7]                    0.009    0.000    0.0000      0.0000  
+mult1_out[0]                   0.047    0.000    0.0000      0.0000  
+mult1_out[1]                   0.031    0.000    0.0000      0.0000  
+mult1_out[2]                   0.019    0.000    0.0000      0.0000  
+mult1_out[3]                   0.022    0.000    0.0000      0.0000  
+mult1_out[4]                   0.022    0.000    0.0000      0.0000  
+mult1_out[5]                   0.015    0.000    0.0000      0.0000  
+mult1_out[6]                   0.019    0.000    0.0000      0.0000  
+mult1_out[7]                   0.019    0.000    0.0000      0.0000  
+mult2_out[0]                   0.018    0.000    0.0000      0.0000  
+mult2_out[1]                   0.019    0.000    0.0000      0.0000  
+mult2_out[2]                   0.020    0.000    0.0000      0.0000  
+mult2_out[3]                   0.024    0.000    0.0000      0.0000  
+mult2_out[4]                   0.019    0.000    0.0000      0.0000  
+mult2_out[5]                   0.019    0.000    0.0000      0.0000  
+mult2_out[6]                   0.019    0.000    0.0000      0.0000  
+mult2_out[7]                   0.057    0.000    0.0000      0.0000  
+mult3_out[0]                   0.046    0.000    0.0000      0.0000  
+mult3_out[1]                   0.025    0.000    0.0000      0.0000  
+mult3_out[2]                   0.023    0.000    0.0000      0.0000  
+mult3_out[3]                   0.022    0.000    0.0000      0.0000  
+mult3_out[4]                   0.022    0.000    0.0000      0.0000  
+mult3_out[5]                   0.015    0.000    0.0000      0.0000  
+mult3_out[6]                   0.019    0.000    0.0000      0.0000  
+mult3_out[7]                   0.019    0.000    0.0000      0.0000  
+mult4_out[0]                   0.024    0.000    0.0000      0.0000  
+mult4_out[1]                   0.027    0.000    0.0000      0.0000  
+mult4_out[2]                   0.019    0.000    0.0000      0.0000  
+mult4_out[3]                   0.019    0.000    0.0000      0.0000  
+mult4_out[4]                   0.015    0.000    0.0000      0.0000  
+mult4_out[5]                   0.019    0.000    0.0000      0.0000  
+mult4_out[6]                   0.019    0.000    0.0000      0.0000  
+mult4_out[7]                   0.019    0.000    0.0000      0.0000  
+mult5_out[0]                   0.018    0.000    0.0000      0.0000  
+mult5_out[1]                   0.023    0.000    0.0000      0.0000  
+mult5_out[2]                   0.026    0.000    0.0000      0.0000  
+mult5_out[3]                   0.019    0.000    0.0000      0.0000  
+mult5_out[4]                   0.019    0.000    0.0000      0.0000  
+mult5_out[5]                   0.019    0.000    0.0000      0.0000  
+mult5_out[6]                   0.019    0.000    0.0000      0.0000  
+mult5_out[7]                   0.059    0.000    0.0000      0.0000  
+mult6_out[0]                   0.027    0.000    0.0000      0.0000  
+mult6_out[1]                   0.032    0.000    0.0000      0.0000  
+mult6_out[2]                   0.019    0.000    0.0000      0.0000  
+mult6_out[3]                   0.019    0.000    0.0000      0.0000  
+mult6_out[4]                   0.015    0.000    0.0000      0.0000  
+mult6_out[5]                   0.019    0.000    0.0000      0.0000  
+mult6_out[6]                   0.019    0.000    0.0000      0.0000  
+mult6_out[7]                   0.019    0.000    0.0000      0.0000  
+mult7_out[0]                   0.021    0.000    0.0000      0.0000  
+mult7_out[1]                   0.023    0.000    0.0000      0.0000  
+mult7_out[2]                   0.019    0.000    0.0000      0.0000  
+mult7_out[3]                   0.027    0.000    0.0000      0.0000  
+mult7_out[4]                   0.016    0.000    0.0000      0.0000  
+mult7_out[5]                   0.019    0.000    0.0000      0.0000  
+mult7_out[6]                   0.019    0.000    0.0000      0.0000  
+mult7_out[7]                   0.019    0.000    0.0000      0.0000  
+mult8_out[0]                   0.021    0.000    0.0000      0.0000  
+mult8_out[1]                   0.031    0.000    0.0000      0.0000  
+mult8_out[2]                   0.019    0.000    0.0000      0.0000  
+mult8_out[3]                   0.019    0.000    0.0000      0.0000  
+mult8_out[4]                   0.024    0.000    0.0000      0.0000  
+mult8_out[5]                   0.028    0.000    0.0000      0.0000  
+mult8_out[6]                   0.040    0.000    0.0000      0.0000  
+mult8_out[7]                   0.037    0.000    0.0000      0.0000  
+mult9_out[0]                   0.025    0.000    0.0000      0.0000  
+mult9_out[1]                   0.023    0.000    0.0000      0.0000  
+mult9_out[2]                   0.023    0.000    0.0000      0.0000  
+mult9_out[3]                   0.021    0.000    0.0000      0.0000  
+mult9_out[4]                   0.011    0.000    0.0000      0.0000  
+mult9_out[5]                   0.019    0.000    0.0000      0.0000  
+mult9_out[6]                   0.019    0.000    0.0000      0.0000  
+mult9_out[7]                   0.019    0.000    0.0000      0.0000  
+mux_out[0]                     0.049    0.000    0.0000      0.0000  
+mux_out[1]                     0.023    0.000    0.0000      0.0000  
+mux_out[2]                     0.039    0.000    0.0000      0.0000  
+mux_out[3]                     0.036    0.000    0.0000      0.0000  
+mux_out[4]                     0.031    0.000    0.0000      0.0000  
+mux_out[5]                     0.031    0.000    0.0000      0.0000  
+mux_out[6]                     0.031    0.000    0.0000      0.0000  
+mux_out[7]                     0.022    0.000    0.0000      0.0000  
+--------------------------------------------------------------------------------
+Total (319 nets)                                            19.6593 uW
+
+
+
+  Attributes
+  ----------
+      h  -  Hierarchical cell
+
+
+                        Cell      Driven Net  Tot Dynamic      Cell
+                        Internal  Switching   Power            Leakage
+Cell                    Power     Power       (% Cell/Tot)     Power      Attrs
+--------------------------------------------------------------------------------
+Add1                       0.0000       N/A        N/A (N/A)   4778760.5000
+                                                                          h
+Add2                       0.0000       N/A        N/A (N/A)   4777800.5000
+                                                                          h
+Add3                       0.0000       N/A        N/A (N/A)   5222657.0000
+                                                                          h
+Add_new_value              0.1384       N/A        N/A (N/A)   4106502.7500
+                                                                          h
+Mult1                   7.433e-06       N/A        N/A (N/A)   15664176.0000
+                                                                          h
+Mult2                   1.318e-05       N/A        N/A (N/A)   9917935.0000
+                                                                          h
+Mult3                   2.201e-05       N/A        N/A (N/A)   15814483.0000
+                                                                          h
+Mult4                   6.895e-05       N/A        N/A (N/A)   14619347.0000
+                                                                          h
+Mult5                   1.432e-04       N/A        N/A (N/A)   10598882.0000
+                                                                          h
+Mult6                   3.935e-04       N/A        N/A (N/A)   14789382.0000
+                                                                          h
+Mult7                   7.111e-04       N/A        N/A (N/A)   14410650.0000
+                                                                          h
+Mult8                   2.072e-03       N/A        N/A (N/A)   10796598.0000
+                                                                          h
+Mult9                   5.485e-03       N/A        N/A (N/A)   15792171.0000
+                                                                          h
+Multiplexer             1.537e-06       N/A        N/A (N/A)   676184.6875
+                                                                          h
+cache                      0.4682       N/A        N/A (N/A)   2157886.7500
+                                                                          h
+filtermask                 0.5180       N/A        N/A (N/A)   1643177.3750
+                                                                          h
+fsm_input                  0.3961       N/A        N/A (N/A)   20528276.0000
+                                                                          h
+fsm_output                 0.4342       N/A        N/A (N/A)   31070584.0000
+                                                                          h
+regster                    0.0703       N/A        N/A (N/A)   219247.2812
+                                                                          h
+--------------------------------------------------------------------------------
+Totals (19 cells)          2.034mW     N/A         N/A (N/A)    197.585uW
+
+
+--------------------------------------------------------------------------------
+                                       Switch   Int      Leak     Total
+Hierarchy                              Power    Power    Power    Power    %
+--------------------------------------------------------------------------------
+Processor_3                               0.583    2.034 1.98e+08    2.815 100.0
+  regster (REG)                        1.40e-03 7.03e-02 2.19e+05 7.19e-02   2.6
+  Add_new_value (ADDER_2)              9.64e-02    0.138 4.11e+06    0.239   8.5
+    add_17/plus/plus (ADDER_2_DW01_add_1)
+                                       9.22e-02    0.124 3.98e+06    0.220   7.8
+  Multiplexer (MUX_4)                  1.92e-05 1.54e-06 6.76e+05 6.97e-04   0.0
+  Add3 (ADDER_3_0)                        0.000    0.000 5.22e+06 5.22e-03   0.2
+    add_1_root_add_0_root_add_17/plus/plus_1 (ADDER_3_0_DW01_add_2)
+                                          0.000    0.000 2.12e+06 2.12e-03   0.1
+    add_0_root_add_0_root_add_17/plus/plus_1 (ADDER_3_0_DW01_add_1)
+                                          0.000    0.000 2.85e+06 2.85e-03   0.1
+  Add2 (ADDER_3_1)                        0.000    0.000 4.78e+06 4.78e-03   0.2
+    add_0_root_add_0_root_add_17/plus/plus_1 (ADDER_3_1_DW01_add_2)
+                                          0.000    0.000 2.10e+06 2.10e-03   0.1
+    add_1_root_add_0_root_add_17/plus/plus_1 (ADDER_3_1_DW01_add_0)
+                                          0.000    0.000 2.49e+06 2.49e-03   0.1
+  Add1 (ADDER_3_2)                        0.000    0.000 4.78e+06 4.78e-03   0.2
+    add_0_root_add_0_root_add_17/plus/plus_1 (ADDER_3_2_DW01_add_2)
+                                          0.000    0.000 2.05e+06 2.05e-03   0.1
+    add_1_root_add_0_root_add_17/plus/plus_1 (ADDER_3_2_DW01_add_0)
+                                          0.000    0.000 2.57e+06 2.57e-03   0.1
+  Mult9 (multiplier_0)                 1.56e-02 5.48e-03 1.58e+07 3.68e-02   1.3
+    I_CRA (CRA_15_0)                      0.000    0.000 2.63e+06 2.63e-03   0.1
+    I_CSA6 (csa15bit_0)                   0.000    0.000 3.41e+06 3.41e-03   0.1
+    I_CSA5 (csa15bit_1)                   0.000    0.000 2.36e+06 2.36e-03   0.1
+    I_CSA4 (csa15bit_2)                   0.000    0.000 1.20e+06 1.20e-03   0.0
+    I_CSA3 (csa15bit_3)                   0.000    0.000 2.29e+06 2.29e-03   0.1
+    I_CSA2 (csa15bit_4)                   0.000    0.000 1.08e+06 1.08e-03   0.0
+    I_CSA1 (csa15bit_5)                   0.000    0.000 1.80e+06 1.80e-03   0.1
+    I_PAR (parcial_0)                  1.56e-02 5.48e-03 9.92e+05 2.20e-02   0.8
+  Mult8 (multiplier_1)                 5.16e-03 2.07e-03 1.08e+07 1.80e-02   0.6
+    I_CRA (CRA_15_1)                      0.000    0.000 1.76e+06 1.76e-03   0.1
+    I_CSA6 (csa15bit_6)                   0.000    0.000 3.00e+06 3.00e-03   0.1
+    I_CSA5 (csa15bit_7)                   0.000    0.000 1.82e+06 1.82e-03   0.1
+    I_CSA4 (csa15bit_8)                   0.000    0.000 5.62e+05 5.62e-04   0.0
+    I_CSA3 (csa15bit_9)                   0.000    0.000 9.79e+05 9.79e-04   0.0
+    I_CSA2 (csa15bit_10)                  0.000    0.000 9.11e+05 9.11e-04   0.0
+    I_CSA1 (csa15bit_11)                  0.000    0.000 1.28e+06 1.28e-03   0.0
+    I_PAR (parcial_1)                  5.16e-03 2.07e-03 4.85e+05 7.71e-03   0.3
+  Mult7 (multiplier_2)                 2.18e-03 7.11e-04 1.44e+07 1.73e-02   0.6
+    I_CRA (CRA_15_2)                      0.000    0.000 2.51e+06 2.51e-03   0.1
+    I_CSA6 (csa15bit_12)                  0.000    0.000 2.80e+06 2.80e-03   0.1
+    I_CSA5 (csa15bit_13)                  0.000    0.000 2.74e+06 2.74e-03   0.1
+    I_CSA4 (csa15bit_14)                  0.000    0.000 1.06e+06 1.06e-03   0.0
+    I_CSA3 (csa15bit_15)                  0.000    0.000 1.96e+06 1.96e-03   0.1
+    I_CSA2 (csa15bit_16)                  0.000    0.000 9.76e+05 9.76e-04   0.0
+    I_CSA1 (csa15bit_17)                  0.000    0.000 1.72e+06 1.72e-03   0.1
+    I_PAR (parcial_2)                  2.18e-03 7.11e-04 6.10e+05 3.50e-03   0.1
+  Mult6 (multiplier_3)                 1.16e-03 3.94e-04 1.48e+07 1.63e-02   0.6
+    I_CRA (CRA_15_3)                      0.000    0.000 2.36e+06 2.36e-03   0.1
+    I_CSA6 (csa15bit_18)                  0.000    0.000 3.17e+06 3.17e-03   0.1
+    I_CSA5 (csa15bit_19)                  0.000    0.000 2.48e+06 2.48e-03   0.1
+    I_CSA4 (csa15bit_20)                  0.000    0.000 1.01e+06 1.01e-03   0.0
+    I_CSA3 (csa15bit_21)                  0.000    0.000 2.15e+06 2.15e-03   0.1
+    I_CSA2 (csa15bit_22)                  0.000    0.000 1.32e+06 1.32e-03   0.0
+    I_CSA1 (csa15bit_23)                  0.000    0.000 1.42e+06 1.42e-03   0.1
+    I_PAR (parcial_3)                  1.16e-03 3.94e-04 8.93e+05 2.45e-03   0.1
+  Mult5 (multiplier_4)                 3.86e-04 1.43e-04 1.06e+07 1.11e-02   0.4
+    I_CRA (CRA_15_4)                      0.000    0.000 2.01e+06 2.01e-03   0.1
+    I_CSA6 (csa15bit_24)                  0.000    0.000 2.15e+06 2.15e-03   0.1
+    I_CSA5 (csa15bit_25)                  0.000    0.000 1.65e+06 1.65e-03   0.1
+    I_CSA4 (csa15bit_26)                  0.000    0.000 6.93e+05 6.93e-04   0.0
+    I_CSA3 (csa15bit_27)                  0.000    0.000 1.49e+06 1.49e-03   0.1
+    I_CSA2 (csa15bit_28)                  0.000    0.000 1.07e+06 1.07e-03   0.0
+    I_CSA1 (csa15bit_29)                  0.000    0.000 1.14e+06 1.14e-03   0.0
+    I_PAR (parcial_4)                  3.86e-04 1.43e-04 3.95e+05 9.24e-04   0.0
+  Mult4 (multiplier_5)                 1.92e-04 6.90e-05 1.46e+07 1.49e-02   0.5
+    I_CRA (CRA_15_5)                      0.000    0.000 2.34e+06 2.34e-03   0.1
+    I_CSA6 (csa15bit_30)                  0.000    0.000 3.07e+06 3.07e-03   0.1
+    I_CSA5 (csa15bit_31)                  0.000    0.000 2.48e+06 2.48e-03   0.1
+    I_CSA4 (csa15bit_32)                  0.000    0.000 1.27e+06 1.27e-03   0.0
+    I_CSA3 (csa15bit_33)                  0.000    0.000 1.74e+06 1.74e-03   0.1
+    I_CSA2 (csa15bit_34)                  0.000    0.000 1.16e+06 1.16e-03   0.0
+    I_CSA1 (csa15bit_35)                  0.000    0.000 1.86e+06 1.86e-03   0.1
+    I_PAR (parcial_5)                  1.92e-04 6.90e-05 6.51e+05 9.11e-04   0.0
+  Mult3 (multiplier_6)                 6.54e-05 2.20e-05 1.58e+07 1.59e-02   0.6
+    I_CRA (CRA_15_6)                      0.000    0.000 2.85e+06 2.85e-03   0.1
+    I_CSA6 (csa15bit_36)                  0.000    0.000 3.72e+06 3.72e-03   0.1
+    I_CSA5 (csa15bit_37)                  0.000    0.000 2.80e+06 2.80e-03   0.1
+    I_CSA4 (csa15bit_38)                  0.000    0.000 6.39e+05 6.39e-04   0.0
+    I_CSA3 (csa15bit_39)                  0.000    0.000 2.21e+06 2.21e-03   0.1
+    I_CSA2 (csa15bit_40)                  0.000    0.000 1.06e+06 1.06e-03   0.0
+    I_CSA1 (csa15bit_41)                  0.000    0.000 1.76e+06 1.76e-03   0.1
+    I_PAR (parcial_6)                  6.54e-05 2.20e-05 7.27e+05 8.15e-04   0.0
+  Mult2 (multiplier_7)                 3.61e-05 1.32e-05 9.92e+06 9.97e-03   0.4
+    I_CRA (CRA_15_7)                      0.000    0.000 1.63e+06 1.63e-03   0.1
+    I_CSA6 (csa15bit_42)                  0.000    0.000 2.14e+06 2.14e-03   0.1
+    I_CSA5 (csa15bit_43)                  0.000    0.000 1.67e+06 1.67e-03   0.1
+    I_CSA4 (csa15bit_44)                  0.000    0.000 4.41e+05 4.41e-04   0.0
+    I_CSA3 (csa15bit_45)                  0.000    0.000 1.44e+06 1.44e-03   0.1
+    I_CSA2 (csa15bit_46)                  0.000    0.000 6.34e+05 6.34e-04   0.0
+    I_CSA1 (csa15bit_47)                  0.000    0.000 1.44e+06 1.44e-03   0.1
+    I_PAR (parcial_7)                  3.61e-05 1.32e-05 5.21e+05 5.70e-04   0.0
+  Mult1 (multiplier_8)                 1.86e-05 7.43e-06 1.57e+07 1.57e-02   0.6
+    I_CRA (CRA_15_8)                      0.000    0.000 2.52e+06 2.52e-03   0.1
+    I_CSA6 (csa15bit_48)                  0.000    0.000 3.55e+06 3.55e-03   0.1
+    I_CSA5 (csa15bit_49)                  0.000    0.000 2.47e+06 2.47e-03   0.1
+    I_CSA4 (csa15bit_50)                  0.000    0.000 1.11e+06 1.11e-03   0.0
+    I_CSA3 (csa15bit_51)                  0.000    0.000 2.47e+06 2.47e-03   0.1
+    I_CSA2 (csa15bit_52)                  0.000    0.000 9.02e+05 9.02e-04   0.0
+    I_CSA1 (csa15bit_53)                  0.000    0.000 1.97e+06 1.97e-03   0.1
+    I_PAR (parcial_8)                  1.86e-05 7.43e-06 6.83e+05 7.09e-04   0.0
+  filtermask (SHIFTREG_0)              4.89e-02    0.518 1.64e+06    0.568  20.2
+  cache (SHIFTREG_1)                      0.000    0.468 2.16e+06    0.470  16.7
+  fsm_output (FSM_out_3)                  0.221    0.434 3.11e+07    0.686  24.4
+    r156 (FSM_out_3_DW01_inc_0)        5.39e-03 3.53e-02 3.80e+06 4.45e-02   1.6
+    r159 (FSM_out_3_DW01_inc_1)           0.000    0.000 3.80e+06 3.80e-03   0.1
+    r162 (FSM_out_3_DW01_inc_2)           0.000    0.000 3.82e+06 3.82e-03   0.1
+    r167 (FSM_out_3_DW01_inc_4)           0.000    0.000 3.78e+06 3.78e-03   0.1
+    sub_312 (FSM_out_3_DW01_sub_0)        0.000    0.000 4.46e+04 4.46e-05   0.0
+    add_287 (FSM_out_3_DW01_add_0)        0.000    0.000 4.76e+04 4.76e-05   0.0
+    add_109 (FSM_out_3_DW01_inc_5)     4.33e-03 3.74e-02 3.80e+06 4.55e-02   1.6
+  fsm_input (FSM_in_3)                    0.191    0.396 2.05e+07    0.607  21.6
+    r111 (FSM_in_3_DW01_inc_0)         6.53e-03 3.51e-02 3.80e+06 4.55e-02   1.6
+    add_192 (FSM_in_3_DW01_inc_2)         0.000    0.000 3.80e+06 3.80e-03   0.1
+    add_165 (FSM_in_3_DW01_add_1)         0.000    0.000 4.35e+04 4.35e-05   0.0
+    add_103 (FSM_in_3_DW01_inc_3)      7.08e-04 4.66e-03 3.79e+06 9.15e-03   0.3         0.000    0.000 1.44e+06 1.44e-03   0.1
+    I_CSA2 (csa15bit_46)                  0.000    0.000 6.34e+05 6.34e-04   0.0
+    I_CSA1 (csa15bit_47)                  0.000    0.000 1.44e+06 1.44e-03   0.1
+    I_PAR (parcial_7)                  3.61e-05 1.32e-05 5.21e+05 5.70e-04   0.0
+  Mult1 (multiplier_8)                 1.86e-05 7.43e-06 1.57e+07 1.57e-02   0.6
+    I_CRA (CRA_15_8)                      0.000    0.000 2.52e+06 2.52e-03   0.1
+    I_CSA6 (csa15bit_48)                  0.000    0.000 3.55e+06 3.55e-03   0.1
+    I_CSA5 (csa15bit_49)                  0.000    0.000 2.47e+06 2.47e-03   0.1
+    I_CSA4 (csa15bit_50)                  0.000    0.000 1.11e+06 1.11e-03   0.0
+    I_CSA3 (csa15bit_51)                  0.000    0.000 2.47e+06 2.47e-03   0.1
+    I_CSA2 (csa15bit_52)                  0.000    0.000 9.02e+05 9.02e-04   0.0
+    I_CSA1 (csa15bit_53)                  0.000    0.000 1.97e+06 1.97e-03   0.1
+    I_PAR (parcial_8)                  1.86e-05 7.43e-06 6.83e+05 7.09e-04   0.0
+  filtermask (SHIFTREG_0)              4.89e-02    0.518 1.64e+06    0.568  20.2
+  cache (SHIFTREG_1)                      0.000    0.468 2.16e+06    0.470  16.7
+  fsm_output (FSM_out_3)                  0.221    0.434 3.11e+07    0.686  24.4
+    r156 (FSM_out_3_DW01_inc_0)        5.39e-03 3.53e-02 3.80e+06 4.45e-02   1.6
+    r159 (FSM_out_3_DW01_inc_1)           0.000    0.000 3.80e+06 3.80e-03   0.1
+    r162 (FSM_out_3_DW01_inc_2)           0.000    0.000 3.82e+06 3.82e-03   0.1
+    r167 (FSM_out_3_DW01_inc_4)           0.000    0.000 3.78e+06 3.78e-03   0.1
+    sub_312 (FSM_out_3_DW01_sub_0)        0.000    0.000 4.46e+04 4.46e-05   0.0
+    add_287 (FSM_out_3_DW01_add_0)        0.000    0.000 4.76e+04 4.76e-05   0.0
+    add_109 (FSM_out_3_DW01_inc_5)     4.33e-03 3.74e-02 3.80e+06 4.55e-02   1.6
+  fsm_input (FSM_in_3)                    0.191    0.396 2.05e+07    0.607  21.6
+    r111 (FSM_in_3_DW01_inc_0)         6.53e-03 3.51e-02 3.80e+06 4.55e-02   1.6
+    add_192 (FSM_in_3_DW01_inc_2)         0.000    0.000 3.80e+06 3.80e-03   0.1
+    add_165 (FSM_in_3_DW01_add_1)         0.000    0.000 4.35e+04 4.35e-05   0.0
+    add_103 (FSM_in_3_DW01_inc_3)      7.08e-04 4.66e-03 3.79e+06 9.15e-03   0.3
