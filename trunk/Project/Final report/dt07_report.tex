@@ -79,13 +79,13 @@ The overall design of the filter unit can be seen in figure \ref{fig:proc}. More
 
 \begin{figure}[h]
 	\centering
-		\includegraphics[width=4in]{./hh.jpg}
+		\includegraphics[width=4in]{./images/processador.PNG}
 	\caption{Filter unit design}	\label{fig:proc}
 \end{figure}
 
 \begin{figure}[h]
 	\centering
-		\includegraphics[width=4in]{./insideproc.PNG}
+		\includegraphics[width=4in]{./images/insideproc.PNG}
 	\caption{Processor architecture}	\label{fig:procdetail}
 \end{figure}
 %here we should mention the details about the data path, bit widths etc. 
@@ -110,6 +110,14 @@ When the memory in and out are initialized, is time to the processor to make the
 
 \subsection{Memory Access Sequence}
 %mention the sequence of the memory access from the input fsm and the output fsm
+\begin{figure}[h]
+	\centering
+		\includegraphics[width=5in]{./images/memoryAccess.jpg}
+	\caption{Sequence of Memory Address Access}	
+	\label{fig:memaccess}
+\end{figure}
+
+
 For the memory sequence we use a particular way, we want to access to the memory the less time possible, so we have created one kind of memory cache inside the processor, the cache consist in one ShiftRegister for store 9 pixels, the number of pixels that we need to filter with our mask of 3x3, and on the beginning the final state machine take from the memory 9 values, for fill all the cache, but on the next clock cycle only take 3 values from the memory, the next column if we are on the horizontal pass (Figure 1(file horizontal pass)) or the next row if we are on the vertical pass (Figure 2(file vertical pass)) as we can see. But the sequence has a particular thing, when the values of the memory arrives to the end of the picture now doesn't work the shiftregister because we have to come back to the beginning and start again, so when the image values seized from the memory, last column on the horizontal pass and last row on the vertical pass, there are another time 9 lectures from the memory to fill up all the shift register and continue the same mechanism like l say before.
 \section{Finite State Machines}
 \subsection{Input Controller}
