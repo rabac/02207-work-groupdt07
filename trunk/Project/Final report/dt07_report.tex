@@ -102,6 +102,7 @@ In our case we have an image on format .hex, is the values of the image on hexad
 When the 65536 clock cycles are ended the memory in is with the values of the image and the memory out empty, all with values zeros.	
 
 \subsection{Memory Read and Write by Processor}
+\label{sec:memreadwrite}
 %Once the initialization is done, 
 % 1. the input fsm reads 3 pixels - and then waits for 9 clock cycles
 % 2. the output fsm starts when the input fsm becomes idle - and runs the sequence read-idle-write 3 times.
@@ -109,6 +110,7 @@ When the 65536 clock cycles are ended the memory in is with the values of the im
 When the memory in and out are initialized, is time to the processor to make the operations, but how do the processor access to the memory for read and write?, very easy, we start with the premise that the final state machine out needs to read the values of the memory out, add the new value calculated and store it on the memory, this operation costs 3 clock period, but we have 3 values each convolution so the final state machine out needs 9 clock cycles for finish all his work. Now we have to synchronize the output with the input, so the final state machine in that read 3 values on 3 clock cycles has to wait 9 clock cycles for the next read for memory, and this all the time because he may allow the output to make their own calculations. So the input data is red on periods of 3 clock cycles and wait 9 for allow the output to generate the new value and don't overwrite some value that can be modify the output.
 
 \subsection{Memory Access Sequence}
+\label{sec:memoryaccess}
 %mention the sequence of the memory access from the input fsm and the output fsm
 \begin{figure}[h]
 	\centering
@@ -119,6 +121,8 @@ When the memory in and out are initialized, is time to the processor to make the
 
 
 For the memory sequence we use a particular way, we want to access to the memory the less time possible, so we have created one kind of memory cache inside the processor, the cache consist in one ShiftRegister for store 9 pixels, the number of pixels that we need to filter with our mask of 3x3, and on the beginning the final state machine take from the memory 9 values, for fill all the cache, but on the next clock cycle only take 3 values from the memory, the next column if we are on the horizontal pass (Figure 1(file horizontal pass)) or the next row if we are on the vertical pass (Figure 2(file vertical pass)) as we can see. But the sequence has a particular thing, when the values of the memory arrives to the end of the picture now doesn't work the shiftregister because we have to come back to the beginning and start again, so when the image values seized from the memory, last column on the horizontal pass and last row on the vertical pass, there are another time 9 lectures from the memory to fill up all the shift register and continue the same mechanism like l say before.
+
+
 \section{Finite State Machines}
 \subsection{Input Controller}
 
@@ -152,14 +156,9 @@ We synthesized the design using four different clock periods, namely 7ns, 5ns, 3
 
 \FloatBarrier
 \section{Results}
+\label{sec:results}
+
 %put the convoluted and the original image here to show the results.
-
-\section{Discussion}
-%explain how would the design change if the filter size is changed. parameters that would change:
-%number of adders and multipliers.
-
-\section{Conclusion}
-%A conclusion describing the work performed and the results obtained.
 
 \begin{table}[h]
 	\caption{Summary}
@@ -175,5 +174,29 @@ We synthesized the design using four different clock periods, namely 7ns, 5ns, 3
 	\end{center}
 	\label{tab:conclusion}
 \end{table}
+
+
+\section{Limitations and Future Work}
+
+We have designed and implemented the architecture for an image filtering processor which uses a 3x3 filter to perform a convolution on the image of size 256x256. Though the results of the convoluted image look promising, as shown in section \ref{sec:results}, we are aware of some of the limitations of the work. Given more time, we would have liked to add the following missing aspects into the project.
+
+\begin{enumerate}
+\item We have just been able to implement the 3x3 filter for the convolution. Though, it was proposed that we would implement the higher dimension filters as well, including 5x5, 7x7 and 9x9, we were not able to do so, due to the initial problems we faced in the implementation of the 3x3 filter itself. We believe the results obtained in the section \ref{sec:results}, in the form of the convoluted image could be better if the dimension of the filter is higher. In those cases, the blur effect on the image would be clearly evident, as compared to the case of the 3x3 filter. We would like to briefly mention how the design of the processor would be modified if we wish to convolute the image using higher dimension filters. If we consider the dimension of the filter as nxn, then we have the following:
+	\begin{itemize}
+		\item Number of Adders = $n^2$
+		\item Number of Multipliers = $n$
+		\item Size of the Cache Shift Register = $n^2$
+		\item Multiplexer would have $n$ inputs and $1$ output.
+		\item Select signal from the Output Controller would be 3 bits for 5x5 and 7x7, and 4 bits for 9x9 filter.
+	\end{itemize}	
+	
+	In addition the synchronization of the Input and the Output Controllers would change due to the number of clock cycles required to get $n$ new pixels from the memory and compute the output for n pixels at a time. This means the cases described in section \ref{sec:memreadwrite} would now be the following:
+	
+	
+\item It is assumed that the filter is symmetric along the two dimensional x and y axes. We need this since the indices of the filter which need to be multiplied with the image pixels would change in horizontal and vertical movements. For simplicity therefore, we have made this assumption.
+The solution to this problem is quite simple though. We just need to have separate caches in the processor which hold the filter values in a different order. For horizontal movement we would use one cache, while the other one would be used for the vertical movement.
+
+\item The mechanism which we have designed for the accessing the memory is ofcourse not the best way. Since we began the implementation with the sequence explained in the section \ref{sec:memoryaccess}, we did not change it later. Though, we realized that this is not an efficient way, since it consumes a high number of clock cycles in order to run through the entire image of 256x256 pixels.
+\end{enumerate}	
 
 \end{document}
