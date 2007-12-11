@@ -91,19 +91,43 @@ The overall design of the filter unit can be seen in figure \ref{fig:proc}. More
 
 \begin{figure}[h]
 	\centering
-		\includegraphics[width=4in]{./images/processador.PNG}
+		\includegraphics[width=6in]{./images/processador.PNG}
 	\caption{Filter unit design}	\label{fig:proc}
 \end{figure}
 
 \begin{figure}[h]
 	\centering
-		\includegraphics[width=4in]{./images/insideproc.PNG}
+		\includegraphics[width=6in]{./images/insideproc.PNG}
 	\caption{Processor architecture}	\label{fig:procdetail}
 \end{figure}
 
 %here we should mention the details about the data path, bit widths etc. 
 %we should give a brief explanation of each of the components in the architecture - just a couple of lines explanation should be good enough. 
 %also we should explain the purpose of each of the input and output signals of the memory and the processor.
+Signals explained:
+\begin{itemize}
+	%\item \textbf{Processor:} \begin{itemize}
+		\item \textit{Data\_in\_1}, 8 bits, transfers pixels of the input image from the memory to the processor's cache
+		\item \textit{CLOCK}, 1 bit, the common clock signal
+		\item \textit{Reset}, 1 bit, the common active low reset signal
+		\item \textit{Filter}, 8 bits, ...
+		\item \textit{Disable\_filter}, 1 bit, ...
+		\item \textit{Data\_in\_2}, 8 bits, transfers pixels of the processed image from the memory to the processor - either zeroes to be added with horizontal pass results or horizontal pass results to be added with vertical pass results
+		\item \textit{Read\_In\_Mem}, 1 bit, tells the memory when to read pixels of the input image
+		\item \textit{Write\_In\_Mem}, 1 bit, tells the memory when to write pixels into the input image - this is used only when the inut image is initialized
+		\item \textit{Read\_Addr\_In\_Mem}, 16 bits, tells the memory the address from where the next pixel of the input image is supposed to be read
+		\item \textit{Data\_Out}, 8 bits, transfers processed pixels from the processor to the memory
+		\item \textit{Write\_Addr\_Out\_Mem}, 16 bits, tells the memory the address where the next pixel of the processed image is supposed to be written
+		\item \textit{Read\_Addr\_Out\_Mem}, 16 bits, tells the memory the address from where the next pixel of the processed image is supposed to be read
+		\item \textit{Write\_Out\_Mem}, 1 bit, tells the memory when to write pixels to processed image
+		\item \textit{Read\_Out\_Mem}, 1 bit, tells the memory when to read pixels of the processed image
+	%\end {itemize}
+	%\item \textbf{Memory In:} \begin{itemize}
+	%	\item \textit{}
+	%	\item \textit{}
+	%	\item \textit{}
+	%	\end{itemize}
+\end{itemize}
 
 \FloatBarrier
 \section{Sequencing of Operations}
@@ -277,10 +301,17 @@ We synthesized the design using four different clock periods, namely 7ns, 5ns, 3
 	\label{tab:synth}
 \end{table}
 
+The critical path of the design (see figure \ref{fig:procdetail}) is the same for all four clock periods and goes through the cache register, the convolution multipliers, the convolution adders, the multiplexer, the adder and the output register (added for the synthesizer's sake, to constrain the path - doesn't contribute to the delay in any of the timing reports). The path is illustrated in figure \ref{fig:critical} along with the delay information.
+
+\begin{figure}[h]
+	\centering
+		\includegraphics[width=6in]{./images/criticalpath.PNG}
+	\caption{Critical path of the design}	\label{fig:critical}
+\end{figure}
+
 \FloatBarrier
 \section{Results}
 \label{sec:results}
-
 %put the convoluted and the original image here to show the results.
 
 \begin{table}[h]
