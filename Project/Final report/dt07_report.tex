@@ -302,8 +302,8 @@ We synthesized the design using four different clock periods, namely 7ns, 5ns, 3
 \begin{table}
 	\caption{Power breakdown, total power in mW}
 	\begin{center}
-		\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|} \hline
-			\textbf{T}$_{C}$ & \textbf{FSM}$_{in}$ & \textbf{FSM}$_{out}$ & \textbf{REG}$_{filter}$ & \textbf{REG}$_{cache}$ & \textbf{MULT}$_{conv}$ & \textbf{ADD}$_{conv}$ & \textbf{MUX} & \textbf{Adder}$_{out}$ & \textbf{REG}$_{out}$ \\ \hline
+		\begin{tabular}{|p{0.4cm}|p{1.15cm}|p{1.25cm}|p{1.5cm}|p{1.55cm}|p{1.75cm}|p{1.45cm}|p{1cm}|p{1.3cm}|p{1.25cm}|} \hline
+			\textbf{T}$_{C}$ & \textbf{FSM}$_{in}$ & \textbf{FSM}$_{out}$ & \textbf{REG}$_{filter}$ & \textbf{REG}$_{cache}$ & \textbf{MULT}$_{conv}$ & \textbf{ADD}$_{conv}$ & \textbf{MUX} & \textbf{ADD}$_{out}$ & \textbf{REG}$_{out}$ \\ \hline
 			7 & 0.207 & 0.242 & 0.396 & 0.547 & 0.363 & 0.036 & 0.035 & 0.050 & 0.053 \\ \hline
 			5 & 0.256 & 0.300 & 0.396 & 0.549 & 0.365 & 0.036 & 0.036 & 0.056 & 0.052 \\ \hline 
 			3 & 0.370 & 0.436 & 0.401 & 0.548 & 0.224 & 0.110 & 0.040 & 0.126 & 0.052 \\ \hline
@@ -331,10 +331,10 @@ The critical path of the design (see figure \ref{fig:procdetail}) is the same fo
 	\begin{center}
 		\begin{tabular}{|p{1cm}|p{2cm}|p{2cm}|l|l|} \hline
 			\textbf{T}$_C$ [ns] & \textbf{Critical Path} [ns] & \textbf{N. cycles} (256 x 256) & \textbf{E}$_{pc}$ [mW/MHz] & \textbf{AREA} [$\mu$$m^2$] \\ \hline
-			7 & 4.7 & 3121152 & 0.01197 & 53079 \\ \hline
-			5 & 4.7 & 3121152 & 0.00910 & 53079 \\ \hline
-			3 & 2.9 & 3121152 & 0.00696 & 58611 \\ \hline
-			2 & 1.9 & 3121152 & 0.00560 & 67700 \\ \hline
+			7 & 4.7 & 3121152 & 0.01351 & 53079 \\ \hline
+			5 & 4.7 & 3121152 & 0.01020 & 53079 \\ \hline
+			3 & 2.9 & 3121152 & 0.00684 & 58611 \\ \hline
+			2 & 1.9 & 3121152 & 0.00556 & 67700 \\ \hline
 		
 		\end{tabular}
 	\end{center}
