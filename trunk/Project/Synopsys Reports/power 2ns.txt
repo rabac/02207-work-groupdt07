@@ -1,18 +1,17 @@
 ****************************************
 Report : power
-	-analysis_effort low
+        -analysis_effort low
 Design : Processor_3
 Version: X-2005.09-SP1
-Date   : Mon Dec 10 20:59:48 2007
+Date   : Wed Dec 12 12:54:27 2007
 ****************************************
-
-
+ 
+ 
 Library(s) Used:
-
-    CORE90GPSVT (File: /cell_libs/cmos090_50a/CORE90GPSVT_SNPS-AVT_2.1
-		  /SIGNOFF/bc_1.10V_m40C_wc_0.90V_105C/PT_LIB/CORE90GPSVT_NomLeak.db)
-
-
+    CORE90GPSVT (File: /cell_libs/cmos090_50a/CORE90GPSVT_SNPS-AVT_2.1/SIGNOFF/bc_1.10V_m40C_wc_0.90V_105C/PT_LIB/CORE90GPSVT_NomLeak.db)
+    CORE90GPHVT (File: /cell_libs/cmos090_50a/CORE90GPHVT_SNPS-AVT_2.1.a/SIGNOFF/bc_1.10V_m40C_wc_0.90V_105C/PT_LIB/CORE90GPHVT_NomLeak.db)
+ 
+ 
 Operating Conditions: NomLeak   Library: CORE90GPSVT
 Wire Load Model Mode: enclosed
 
@@ -43,7 +42,7 @@ csa15bit_50            area_0to1K        CORE90GPSVT
 csa15bit_49            area_0to1K        CORE90GPSVT
 csa15bit_48            area_0to1K        CORE90GPSVT
 CRA_15_8               area_0to1K        CORE90GPSVT
-multiplier_7           area_3Kto4K       CORE90GPSVT
+multiplier_7           area_4Kto5K       CORE90GPSVT
 parcial_7              area_0to1K        CORE90GPSVT
 csa15bit_47            area_0to1K        CORE90GPSVT
 csa15bit_46            area_0to1K        CORE90GPSVT
@@ -70,7 +69,7 @@ csa15bit_32            area_0to1K        CORE90GPSVT
 csa15bit_31            area_0to1K        CORE90GPSVT
 csa15bit_30            area_0to1K        CORE90GPSVT
 CRA_15_5               area_0to1K        CORE90GPSVT
-multiplier_4           area_3Kto4K       CORE90GPSVT
+multiplier_4           area_4Kto5K       CORE90GPSVT
 parcial_4              area_0to1K        CORE90GPSVT
 csa15bit_29            area_0to1K        CORE90GPSVT
 csa15bit_28            area_0to1K        CORE90GPSVT
@@ -97,7 +96,7 @@ csa15bit_14            area_0to1K        CORE90GPSVT
 csa15bit_13            area_0to1K        CORE90GPSVT
 csa15bit_12            area_0to1K        CORE90GPSVT
 CRA_15_2               area_0to1K        CORE90GPSVT
-multiplier_1           area_3Kto4K       CORE90GPSVT
+multiplier_1           area_4Kto5K       CORE90GPSVT
 parcial_1              area_0to1K        CORE90GPSVT
 csa15bit_11            area_0to1K        CORE90GPSVT
 csa15bit_10            area_0to1K        CORE90GPSVT
@@ -116,7 +115,7 @@ csa15bit_1             area_0to1K        CORE90GPSVT
 csa15bit_0             area_0to1K        CORE90GPSVT
 CRA_15_0               area_0to1K        CORE90GPSVT
 ADDER_3_2              area_1Kto2K       CORE90GPSVT
-ADDER_3_2_DW01_add_3   area_1Kto2K       CORE90GPSVT
+ADDER_3_2_DW01_add_1   area_0to1K        CORE90GPSVT
 ADDER_3_2_DW01_add_0   area_0to1K        CORE90GPSVT
 ADDER_3_1              area_1Kto2K       CORE90GPSVT
 ADDER_3_1_DW01_add_1   area_0to1K        CORE90GPSVT
@@ -125,11 +124,11 @@ ADDER_3_0              area_1Kto2K       CORE90GPSVT
 ADDER_3_0_DW01_add_1   area_0to1K        CORE90GPSVT
 ADDER_3_0_DW01_add_0   area_0to1K        CORE90GPSVT
 MUX_4                  area_0to1K        CORE90GPSVT
-ADDER_2                area_0to1K        CORE90GPSVT
-ADDER_2_DW01_add_2     area_0to1K        CORE90GPSVT
+ADDER_2                area_1Kto2K       CORE90GPSVT
+ADDER_2_DW01_add_0     area_0to1K        CORE90GPSVT
 REG                    area_0to1K        CORE90GPSVT
-
-
+ 
+ 
 Global Operating Voltage = 1    
 Power-specific unit information :
     Voltage Units = 1V
@@ -137,12 +136,14 @@ Power-specific unit information :
     Time Units = 1ns
     Dynamic Power Units = 1mW    (derived from V,C,T units)
     Leakage Power Units = 1pW
-
-
-  Cell Internal Power  =   1.8664 mW   (72%)
-  Net Switching Power  = 733.1396 uW   (28%)
+ 
+ 
+  Cell Internal Power  =   1.8695 mW   (72%)
+  Net Switching Power  = 728.5573 uW   (28%)
                          ---------
-Total Dynamic Power    =   2.5996 mW  (100%)
+Total Dynamic Power    =   2.5980 mW  (100%)
+ 
+Cell Leakage Power     = 185.3964 uW
+ 
 
-Cell Leakage Power     = 196.6834 uW
-
+***** End Of Report *****
