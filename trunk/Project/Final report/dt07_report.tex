@@ -77,9 +77,8 @@ Following is the work done by the authors.
 \begin{itemize}
 \item \textit{Rajesh Bachani} 
 \item \textit{Josep Renard} 
-\item \textit{Markku Eerola} 
+\item \textit{Markku Eerola} \\
 \end{itemize}
-\\
 
 The rest of the report is organized as follows. In section \ref{sec:design}, we explain the internal architecture of the processor. Then in section \ref{sec:sequencing}, we give the sequencing of the operations involved in the computation. This section explains the operations performed for memory initialization and the order in which the input memory is read and the output memory is read and written. Also, we here explain the order in which the memory is accessed, which are different for the horizontal and vertical movements of the filter mask. Section \ref{sec:controller} explains the design of the controllers at the input and the output. In section \ref{sec:synthesis}, we provide the results from the synthesis of the design in Design Vision. The section \ref{sec:results} contains the images obtained after convolution, and also a summary of the results from the synthesis. Finally, we end the report with section \ref{sec:limitations} with a short explanation on what we think are the limitations of the work done here, and how it could be extended.
 
@@ -87,7 +86,7 @@ The rest of the report is organized as follows. In section \ref{sec:design}, we 
 \label{sec:design}
 %give the block design here. we need the following figure:
 %a complete diagram of the processor - indicating the input and output signals, and also containing the internal blocks like the cache register,filter register, fsm_in, the multipliers, adders, mux, and fsm_out.
-The overall design of the filter unit can be seen in figure \ref{fig:proc}. More detailed architecture can be seen in figure \ref{fig:procdetail}.
+The overall design of the filter unit can be seen in figure \ref{fig:proc}. More detailed architecture can be seen in figure \ref{fig:procdetail}.\\
 
 \begin{figure}[h]
 	\centering
@@ -104,7 +103,7 @@ The overall design of the filter unit can be seen in figure \ref{fig:proc}. More
 %here we should mention the details about the data path, bit widths etc. 
 %we should give a brief explanation of each of the components in the architecture - just a couple of lines explanation should be good enough. 
 %also we should explain the purpose of each of the input and output signals of the memory and the processor.
-Signals explained:
+Signals in figure \ref{fig:procdetail} explained:
 \begin{itemize}
 	%\item \textbf{Processor:} \begin{itemize}
 		\item \textit{Data\_in\_1}, 8 bits, transfers pixels of the input image from the memory to the processor's cache
@@ -251,7 +250,7 @@ Important to note here, that the output memory is initialized by zeros, since th
 
 \item State \textit{h\_read\_write}. In this state, the Controller remains idle, so that data is recieved from the output memory in the next clock cycle. The next state is \textit{h\_write\_1}. 
 
-\item State \textit{h\_write\_1}. This state forces the adder to be selected, by changing the \txtit{sel} signal. The old pixel from the output memory and the new pixel from the adder are added. The signal \textit{can\_write} is set to \textit{1} and the \textit{write\_address} is set to the same value as the \textit{read\_address} in the previous state. If the end of the row or column is reached in the memory, the next state is \textit{h\_init\_1}. Else the next state is \textit{h\_wait\_1}. Also, if the end of the image is identified, then the vertical movement begins, and in that case the next state is set to \textit{v\_init\_1}
+\item State \textit{h\_write\_1}. This state forces the adder to be selected, by changing the \textit{sel} signal. The old pixel from the output memory and the new pixel from the adder are added. The signal \textit{can\_write} is set to \textit{1} and the \textit{write\_address} is set to the same value as the \textit{read\_address} in the previous state. If the end of the row or column is reached in the memory, the next state is \textit{h\_init\_1}. Else the next state is \textit{h\_wait\_1}. Also, if the end of the image is identified, then the vertical movement begins, and in that case the next state is set to \textit{v\_init\_1}
 
 \item State \textit{h\_wait\_1}. In this state, the Controller waits for the Input Controller to read 3 new pixels from the input memory. The next state is \textit{h\_wait\_2}.
 
@@ -290,11 +289,11 @@ We synthesized the design using four different clock periods, namely 7ns, 5ns, 3
 	\caption{Summary of Design Vision reports}
 	\begin{center}
 		\begin{tabular}{|l|l|l|l|l|l|l|} \hline
-			\textbf{T}_{C} [ns]	& \textbf{P}_{stat}	[mW] & \textbf{P}_{dyn} [mW]	& \textbf{P}_{tot} [mW] & \textbf{A}_{comb} [\mu m^2]& \textbf{A}_{tot} [\mu m^2] & \textbf{T}_{cp} [ns] \\ \hline
+			\textbf{T}$_{C}$ [ns]	& \textbf{P}$_{stat}$	[mW] & \textbf{P}$_{dyn}$ [mW]	& \textbf{P}$_{tot}$ [mW] & \textbf{A}$_{comb}$ [$\mu$$m^2$]& \textbf{A}$_{tot}$ [$\mu$$m^2$] & \textbf{T}$_{cp}$ [ns] \\ \hline
 			7 & 0.11 & 1.60 & 1.71 & 44067 & 53079 & 4.7 \\ \hline
 			5 & 0.11 & 1.71 & 1.82 & 44067 & 53079 & 4.7 \\ \hline
-			3 & 0.13 & 2.19 & 2.32 & 49595 & 58611 & 2.9 \\ \hline
-			2 & 0.20 & 2.60 & 2.80 & 58668 & 67700 & 1.9 \\ \hline
+			3 & 0.11 & 2.17 & 2.28 & 49595 & 58611 & 2.9 \\ \hline
+			2 & 0.19 & 2.59 & 2.78 & 58668 & 67700 & 1.9 \\ \hline
 			
 		\end{tabular}
 	\end{center}
@@ -318,7 +317,7 @@ The critical path of the design (see figure \ref{fig:procdetail}) is the same fo
 	\caption{Summary}
 	\begin{center}
 		\begin{tabular}{|p{1cm}|p{2cm}|p{2cm}|l|l|} \hline
-			\textbf{T}_C [ns] & \textbf{Critical Path} [ns] & \textbf{N. cycles} (256 x 256) & \textbf{E}_{pc} [mW/MHz] & \textbf{AREA} [\mu m^2] \\ \hline
+			\textbf{T}$_C$ [ns] & \textbf{Critical Path} [ns] & \textbf{N. cycles} (256 x 256) & \textbf{E}$_{pc}$ [mW/MHz] & \textbf{AREA} [$\mu$$m^2$] \\ \hline
 			7 & 4.7 & 3121152 & 0.01197 & 53079 \\ \hline
 			5 & 4.7 & 3121152 & 0.00910 & 53079 \\ \hline
 			3 & 2.9 & 3121152 & 0.00696 & 58611 \\ \hline
