@@ -84,48 +84,38 @@ The rest of the report is organized as follows. In section \ref{sec:design}, we 
 
 \section{Design Architecture}
 \label{sec:design}
-%give the block design here. we need the following figure:
-%a complete diagram of the processor - indicating the input and output signals, and also containing the internal blocks like the cache register,filter register, fsm_in, the multipliers, adders, mux, and fsm_out.
-The overall design of the filter unit can be seen in figure \ref{fig:proc}. More detailed architecture can be seen in figure \ref{fig:procdetail}.\\
+The overall design of the filter unit can be seen in figure \ref{fig:proc}. More detailed architecture can be seen in figure \ref{fig:procdetail}.
 
 \begin{figure}[h]
 	\centering
 		\includegraphics[width=6in]{./images/processador.PNG}
-	\caption{Filter unit design}	\label{fig:proc}
+	\caption{Filter Unit Design}	\label{fig:proc}
 \end{figure}
 
 \begin{figure}[h]
 	\centering
 		\includegraphics[width=6in]{./images/insideproc.PNG}
-	\caption{Processor architecture}	\label{fig:procdetail}
+	\caption{Processor Architecture}	\label{fig:procdetail}
 \end{figure}
 
-%here we should mention the details about the data path, bit widths etc. 
-%we should give a brief explanation of each of the components in the architecture - just a couple of lines explanation should be good enough. 
-%also we should explain the purpose of each of the input and output signals of the memory and the processor.
-Signals in figure \ref{fig:procdetail} explained:
+
+The input and the output signals of the processor are explained below, with their bit-width's.
+
 \begin{itemize}
-	%\item \textbf{Processor:} \begin{itemize}
-		\item \textit{Data\_in\_1}, 8 bits, transfers pixels of the input image from the memory to the processor's cache
-		\item \textit{CLOCK}, 1 bit, the common clock signal
+		\item \textit{Data\_in\_1}, 8 bits, transfers pixels of the image from the input memory to the processor's cache
+		\item \textit{Clock}, 1 bit, the common clock signal
 		\item \textit{Reset}, 1 bit, the common active low reset signal
-		\item \textit{Filter}, 8 bits, ...
-		\item \textit{Disable\_filter}, 1 bit, ...
-		\item \textit{Data\_in\_2}, 8 bits, transfers pixels of the processed image from the memory to the processor - either zeroes to be added with horizontal pass results or horizontal pass results to be added with vertical pass results
-		\item \textit{Read\_In\_Mem}, 1 bit, tells the memory when to read pixels of the input image
-		\item \textit{Write\_In\_Mem}, 1 bit, tells the memory when to write pixels into the input image - this is used only when the inut image is initialized
-		\item \textit{Read\_Addr\_In\_Mem}, 16 bits, tells the memory the address from where the next pixel of the input image is supposed to be read
-		\item \textit{Data\_Out}, 8 bits, transfers processed pixels from the processor to the memory
-		\item \textit{Write\_Addr\_Out\_Mem}, 16 bits, tells the memory the address where the next pixel of the processed image is supposed to be written
-		\item \textit{Read\_Addr\_Out\_Mem}, 16 bits, tells the memory the address from where the next pixel of the processed image is supposed to be read
-		\item \textit{Write\_Out\_Mem}, 1 bit, tells the memory when to write pixels to processed image
-		\item \textit{Read\_Out\_Mem}, 1 bit, tells the memory when to read pixels of the processed image
-	%\end {itemize}
-	%\item \textbf{Memory In:} \begin{itemize}
-	%	\item \textit{}
-	%	\item \textit{}
-	%	\item \textit{}
-	%	\end{itemize}
+		\item \textit{Filter}, 8 bits, used to get the $n$ pixels of the filter, 8 bits over $n$ clock cycles ($n$ = 3 here)
+		\item \textit{Disable\_filter}, 1 bit, used to disable the filter, so the filter register is not written
+		\item \textit{Data\_in\_2}, 8 bits, transfers pixels of the image from the output memory to the processor
+		\item \textit{Read\_In\_Mem}, 1 bit, indicates the memory when to read pixels of the input image
+		\item \textit{Write\_In\_Mem}, 1 bit, indicates the memory when to write pixels to the input image (this is used only when the input memory is initialized)
+		\item \textit{Read\_Addr\_In\_Mem}, 16 bits, indicates the address from where the next pixel should be read from the input memory
+		\item \textit{Data\_Out}, 8 bits, transfers processed pixels from the processor to the output memory
+		\item \textit{Write\_Addr\_Out\_Mem}, 16 bits, indicates the address to which the next pixel should be written in the output memory
+		\item \textit{Read\_Addr\_Out\_Mem}, 16 bits, indicates the address from where the next pixel must be read from the output memory
+		\item \textit{Write\_Out\_Mem}, 1 bit, indicates the output memory when to allow writing of data
+		\item \textit{Read\_Out\_Mem}, 1 bit, indicates the output memory when to allow reading of data
 \end{itemize}
 
 \FloatBarrier
@@ -135,27 +125,36 @@ Signals in figure \ref{fig:procdetail} explained:
 This section contains a description of the sequence in which the processor performs the operations needed for convolution of the image. 
 
 \subsection{Memory Initialization}
-%how the initialization is done - the input FSM keeps the write of the input memory till 65526 clock cycles - so all the pixels are read from the hex file.
-%in the meantime, the output FSM keeps the write signal of the output memory to 1 and it is initialized with 0.
 
-%In our case we have an image on format .hex, is the values of the image on hexadecimal, 2 values of 4 bits, 8 bits total, and we have to pass all the image to the memory so there are 65536 values on our image, so the processor are going to spend this amount on clock cycles, but we need too another memory to store the new values of the convolution for the next vertical filter pass. For this task we have a final state machine that is in charge to create an address and store the value on the memory with this address. So now we have to create two memories, the first one that we call memory in are going to be the values of the image to filter with their correspondent address, the final state machine generate the address and give to the memory the value of the image with their correspondent address, at the same time because are different state machine and memory, the space for the filtered image is created in a parallel way, but now the difference between the first one is that we want the memory empty, all with zeros, and we use the processor to make this operation, the final state machine for the output create the addresses and has the property to say the multiplexor of the final output which one wants, and one of the outputs is all zeros, so with that the processor knows that in this time period for initializing the memory out throws by Data\_out a value 0 all the time.
-%When the 65536 clock cycles are ended the memory in is with the values of the image and the memory out empty, all with values zeros.	
+Before the processor starts its operations, we have the memory initialization step, in which both the input and the output memory's are set to initial values. The input memory is initialized with the image pixels, which is done through the testbench. The output memory has to be initialized to zero.
 
 \subsection{Memory Read and Write by Processor}
 \label{sec:memreadwrite}
-%Once the initialization is done, 
-% 1. the input fsm reads 3 pixels - and then waits for 9 clock cycles
-% 2. the output fsm starts when the input fsm becomes idle - and runs the sequence read-idle-write 3 times.
-%give picture from modelsim here showing how the two fsms synchronize.
 
-There are two controllers as part of the processor, the Input Controller and the Output Controller (indicated by FSM\_In and FSM\_Out in figure \ref{fig:procdetail}). The Input Controller is responsible for reading pixels from the input memory, which holds the original image. On the other hand, the output controller is responsible for reading as well as writing the computed pixels from and to the output memory. The output memory holds the pixels of the convoluted image. 
+There are two controllers as part of the processor, the Input Controller and the Output Controller (indicated by FSM\_In and FSM\_Out in figure \ref{fig:procdetail}). The Input Controller is responsible for reading pixels from the input memory, which holds the original image. On the other hand, the output controller is responsible for reading as well as writing the computed pixels from and to the output memory. The output memory at the end of the computation, holds the pixels of the convoluted image. 
 
 It is very important that these two controllers be well synchronized with each other, so the operations are performed smoothly, and there is no data loss. In particular, when the Input Controller is active, the Output Controller should not perform any operation. This is because until the Input Controller has read the next 3 pixels (for the 3x3 filter; it would be $n$ for nxn filter) from the input memory, the convolution is not stable, and so the Output Controller cannot write anything to the output memory. The vice-versa case is also true. So, when the Output Controller is active, the Input Controller should be inactive. This is because while the output memory is being written by the Output Controller, if the Input Controller reads new pixels, then the already computed values would be overwritten, and the synchronization is disturbed completely.
 
-Hence we have chosen the approach in which at no point of time, would both the Controllers be active. This can be seen from the figure \ref{fig:controllerreadwrite.jpg}.
+\begin{figure}[h]
+	\centering
+		\includegraphics[width=6in]{./images/controllerreadwrite.PNG}
+	\caption{Read Write Synchronization between Input and Output Controllers(1)}	
+	\label{fig:controllerreadwrite}
+\end{figure}
+\FloatBarrier
+
+Hence we have chosen the approach in which at no point of time, would both the Controllers be active, as shown in figure \ref{fig:controllerreadwrite}. As we can see, the signal \textit{read\_in\_mem} is \textit{1} for three clock cycles. The signal \textit{disable\_to\_cache} becomes \textit{1} after one clock cycle delay as compared to \textit{read\_in\_mem}. Also, once the \textit{read\_in\_mem} becomes \textit{0}, the \textit{read\_out\_mem} becomes \textit{1}. Also at this time, the \textit{disable\_to\_cache} becomes \textit{0}. Then there is no activity for one clock cycle, during which the convolution is done, after which \textit{write\_out\_mem} becomes \textit{1} to write the convoluted pixel to the output memory. The \textit{read\_in\_mem} then becomes \textit{1} again after nine clock cycles, i.e. when the Output Controller has finished reading and writing three convoluted pixels to the output memory.
+
+During the horizontal movement, when the horizontal end of the image is reached, the Output Controller becomes idle for a longer duration. This is because the Input Controller now has to load nine fresh pixels from the input memory, which happens in 27 clock cycles. So, once the end of the image is reached (this holds even for vertical movements), the Output Controller becomes idle for 27 cycles, and then starts reading and writing as usual, which goes on uptil the end of the image is again reached (which is 256 rounds of read and write). Figure \ref{fig:controllerreadwrite2} depicts this situation in the simulation.
+ 
+\begin{figure}[h]
+	\centering
+		\includegraphics[width=6in]{./images/controllerreadwrite2.PNG}
+	\caption{Read Write Synchronization between Input and Output Controllers(2)}	
+	\label{fig:controllerreadwrite2}
+\end{figure}
 
 
-% AN image here. Name it controllerreadwrite.jpg
 
 \subsection{Memory Access Sequence}
 \label{sec:memoryaccess}
@@ -169,9 +168,9 @@ Hence we have chosen the approach in which at no point of time, would both the C
 
 \FloatBarrier
 
-The figure \ref{fig:memaccess} shows the sequence in which the input memory pixels are accessed by the Input Controller. During the horizontal movement, the 3 pixels are accessed in every column, with the direction of movement of the access being the same as the direction of movement of the filter, from left to right. Once a horizontal end of the image is reached, the access is done beginning from the next row, with again three pixels in every column and the direction of movement being horizontal. 
+The figure \ref{fig:memaccess} shows the sequence in which the input memory pixels are accessed by the Input Controller. During the horizontal movement, the 3 pixels are accessed in every column, with the direction of movement of the access being the same as the direction of movement of the filter, i.e. from left to right. Once a horizontal end of the image is reached, the access is started from the next row, with again three pixels in every column and the direction of movement being horizontal. 
 
-When the horizontal movement is completed, the vertical movement takes place. During this, 3 pixels are accessed in every row of the image, and the movement is vertical, from top to bottom. On reaching a vertical end of the image, the reading starts at the top of the next column, again with 3 pixels in each row and movement from top to bottom.
+When the horizontal movement is completed, the vertical movement takes place. During this, three pixels are accessed in every row of the image, and the movement is vertical, from top to bottom. On reaching a vertical end of the image, the reading starts at the top of the next column, again with 3 pixels in each row and movement from top to bottom.
 
 \begin{figure}[h]
 	\centering
