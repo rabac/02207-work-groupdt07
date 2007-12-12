@@ -3,7 +3,7 @@ Report : power
         -analysis_effort low
 Design : Processor_3
 Version: X-2005.09-SP1
-Date   : Wed Dec 12 12:39:47 2007
+Date   : Wed Dec 12 13:16:14 2007
 ****************************************
  
  
@@ -33,7 +33,7 @@ FSM_out_3_DW01_inc_1   area_0to1K        CORE90GPSVT
 FSM_out_3_DW01_inc_0   area_0to1K        CORE90GPSVT
 SHIFTREG_1             area_1Kto2K       CORE90GPSVT
 SHIFTREG_0             area_1Kto2K       CORE90GPSVT
-multiplier_8           area_3Kto4K       CORE90GPSVT
+multiplier_8           area_4Kto5K       CORE90GPSVT
 parcial_8              area_0to1K        CORE90GPSVT
 csa15bit_53            area_0to1K        CORE90GPSVT
 csa15bit_52            area_0to1K        CORE90GPSVT
@@ -42,7 +42,7 @@ csa15bit_50            area_0to1K        CORE90GPSVT
 csa15bit_49            area_0to1K        CORE90GPSVT
 csa15bit_48            area_0to1K        CORE90GPSVT
 CRA_15_8               area_0to1K        CORE90GPSVT
-multiplier_7           area_3Kto4K       CORE90GPSVT
+multiplier_7           area_4Kto5K       CORE90GPSVT
 parcial_7              area_0to1K        CORE90GPSVT
 csa15bit_47            area_0to1K        CORE90GPSVT
 csa15bit_46            area_0to1K        CORE90GPSVT
@@ -51,7 +51,7 @@ csa15bit_44            area_0to1K        CORE90GPSVT
 csa15bit_43            area_0to1K        CORE90GPSVT
 csa15bit_42            area_0to1K        CORE90GPSVT
 CRA_15_7               area_0to1K        CORE90GPSVT
-multiplier_6           area_3Kto4K       CORE90GPSVT
+multiplier_6           area_4Kto5K       CORE90GPSVT
 parcial_6              area_0to1K        CORE90GPSVT
 csa15bit_41            area_0to1K        CORE90GPSVT
 csa15bit_40            area_0to1K        CORE90GPSVT
@@ -60,7 +60,7 @@ csa15bit_38            area_0to1K        CORE90GPSVT
 csa15bit_37            area_0to1K        CORE90GPSVT
 csa15bit_36            area_0to1K        CORE90GPSVT
 CRA_15_6               area_0to1K        CORE90GPSVT
-multiplier_5           area_3Kto4K       CORE90GPSVT
+multiplier_5           area_4Kto5K       CORE90GPSVT
 parcial_5              area_0to1K        CORE90GPSVT
 csa15bit_35            area_0to1K        CORE90GPSVT
 csa15bit_34            area_0to1K        CORE90GPSVT
@@ -69,7 +69,7 @@ csa15bit_32            area_0to1K        CORE90GPSVT
 csa15bit_31            area_0to1K        CORE90GPSVT
 csa15bit_30            area_0to1K        CORE90GPSVT
 CRA_15_5               area_0to1K        CORE90GPSVT
-multiplier_4           area_3Kto4K       CORE90GPSVT
+multiplier_4           area_4Kto5K       CORE90GPSVT
 parcial_4              area_0to1K        CORE90GPSVT
 csa15bit_29            area_0to1K        CORE90GPSVT
 csa15bit_28            area_0to1K        CORE90GPSVT
@@ -78,7 +78,7 @@ csa15bit_26            area_0to1K        CORE90GPSVT
 csa15bit_25            area_0to1K        CORE90GPSVT
 csa15bit_24            area_0to1K        CORE90GPSVT
 CRA_15_4               area_0to1K        CORE90GPSVT
-multiplier_3           area_3Kto4K       CORE90GPSVT
+multiplier_3           area_4Kto5K       CORE90GPSVT
 parcial_3              area_0to1K        CORE90GPSVT
 csa15bit_23            area_0to1K        CORE90GPSVT
 csa15bit_22            area_0to1K        CORE90GPSVT
@@ -87,7 +87,7 @@ csa15bit_20            area_0to1K        CORE90GPSVT
 csa15bit_19            area_0to1K        CORE90GPSVT
 csa15bit_18            area_0to1K        CORE90GPSVT
 CRA_15_3               area_0to1K        CORE90GPSVT
-multiplier_2           area_3Kto4K       CORE90GPSVT
+multiplier_2           area_4Kto5K       CORE90GPSVT
 parcial_2              area_0to1K        CORE90GPSVT
 csa15bit_17            area_0to1K        CORE90GPSVT
 csa15bit_16            area_0to1K        CORE90GPSVT
@@ -96,7 +96,7 @@ csa15bit_14            area_0to1K        CORE90GPSVT
 csa15bit_13            area_0to1K        CORE90GPSVT
 csa15bit_12            area_0to1K        CORE90GPSVT
 CRA_15_2               area_0to1K        CORE90GPSVT
-multiplier_1           area_3Kto4K       CORE90GPSVT
+multiplier_1           area_4Kto5K       CORE90GPSVT
 parcial_1              area_0to1K        CORE90GPSVT
 csa15bit_11            area_0to1K        CORE90GPSVT
 csa15bit_10            area_0to1K        CORE90GPSVT
@@ -105,7 +105,7 @@ csa15bit_8             area_0to1K        CORE90GPSVT
 csa15bit_7             area_0to1K        CORE90GPSVT
 csa15bit_6             area_0to1K        CORE90GPSVT
 CRA_15_1               area_0to1K        CORE90GPSVT
-multiplier_0           area_3Kto4K       CORE90GPSVT
+multiplier_0           area_4Kto5K       CORE90GPSVT
 parcial_0              area_0to1K        CORE90GPSVT
 csa15bit_5             area_0to1K        CORE90GPSVT
 csa15bit_4             area_0to1K        CORE90GPSVT
@@ -115,17 +115,17 @@ csa15bit_1             area_0to1K        CORE90GPSVT
 csa15bit_0             area_0to1K        CORE90GPSVT
 CRA_15_0               area_0to1K        CORE90GPSVT
 ADDER_3_2              area_0to1K        CORE90GPSVT
-ADDER_3_2_DW01_add_1   area_0to1K        CORE90GPSVT
-ADDER_3_2_DW01_add_0   area_0to1K        CORE90GPSVT
+ADDER_3_2_DW01_add_3   area_0to1K        CORE90GPSVT
+ADDER_3_2_DW01_add_2   area_0to1K        CORE90GPSVT
 ADDER_3_1              area_0to1K        CORE90GPSVT
-ADDER_3_1_DW01_add_1   area_0to1K        CORE90GPSVT
-ADDER_3_1_DW01_add_0   area_0to1K        CORE90GPSVT
+ADDER_3_1_DW01_add_3   area_0to1K        CORE90GPSVT
+ADDER_3_1_DW01_add_2   area_0to1K        CORE90GPSVT
 ADDER_3_0              area_0to1K        CORE90GPSVT
-ADDER_3_0_DW01_add_1   area_0to1K        CORE90GPSVT
-ADDER_3_0_DW01_add_0   area_0to1K        CORE90GPSVT
+ADDER_3_0_DW01_add_3   area_0to1K        CORE90GPSVT
+ADDER_3_0_DW01_add_2   area_0to1K        CORE90GPSVT
 MUX_4                  area_0to1K        CORE90GPSVT
 ADDER_2                area_0to1K        CORE90GPSVT
-ADDER_2_DW01_add_0     area_0to1K        CORE90GPSVT
+ADDER_2_DW01_add_1     area_0to1K        CORE90GPSVT
 REG                    area_0to1K        CORE90GPSVT
  
  
@@ -138,12 +138,12 @@ Power-specific unit information :
     Leakage Power Units = 1pW
  
  
-  Cell Internal Power  =   1.4155 mW   (80%)
-  Net Switching Power  = 353.6662 uW   (20%)
+  Cell Internal Power  =   1.4971 mW   (80%)
+  Net Switching Power  = 382.1958 uW   (20%)
                          ---------
-Total Dynamic Power    =   1.7691 mW  (100%)
+Total Dynamic Power    =   1.8793 mW  (100%)
  
-Cell Leakage Power     =  83.6174 uW
+Cell Leakage Power     = 164.4224 uW
  
 
 ***** End Of Report *****
