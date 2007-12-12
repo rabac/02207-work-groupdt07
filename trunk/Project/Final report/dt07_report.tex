@@ -76,8 +76,21 @@ Following is the work done by the authors.
 \paragraph{Authors by Section}
 \begin{itemize}
 \item \textit{Rajesh Bachani} 
+	\begin{itemize}
+		\item VHDL: FSM\_In.vhd, FSM\_Out.vhd, Processor\_3.vhd, TB\_Filter.vhd
+		\item Report: Sections \ref{sec:sequencing} and \ref{sec:controller}
+	\end{itemize}
 \item \textit{Josep Renard} 
-\item \textit{Markku Eerola} \\
+	\begin{itemize}
+		\item VHDL: Multiplier.vhd, parcial.vhd, CRA\_15.vhd, CSA\_15bit.vhd
+		\item Report: Sections \ref{sec:results} and \ref{sec:limitations}
+	\end{itemize}
+\item \textit{Markku Eerola}
+	\begin{itemize}
+		\item VHDL: Adder\_2.vhd, Adder\_3.vhd, Mux\_4.vhd, SHIFTREG.vhd, Memory.vhd, REG.vhd
+		\item Report: Sections \ref{sec:design} and \ref{sec:synthesis}
+	\end{itemize}
+
 \end{itemize}
 
 The rest of the report is organized as follows. In section \ref{sec:design}, we explain the internal architecture of the processor. Then in section \ref{sec:sequencing}, we give the sequencing of the operations involved in the computation. This section explains the operations performed for memory initialization and the order in which the input memory is read and the output memory is read and written. Also, we here explain the order in which the memory is accessed, which are different for the horizontal and vertical movements of the filter mask. Section \ref{sec:controller} explains the design of the controllers at the input and the output. In section \ref{sec:synthesis}, we provide the results from the synthesis of the design in Design Vision. The section \ref{sec:results} contains the images obtained after convolution, and also a summary of the results from the synthesis. Finally, we end the report with section \ref{sec:limitations} with a short explanation on what we think are the limitations of the work done here, and how it could be extended.
@@ -98,6 +111,7 @@ The overall design of the filter unit can be seen in figure \ref{fig:proc}. More
 	\caption{Processor Architecture}	\label{fig:procdetail}
 \end{figure}
 
+\FloatBarrier
 
 The input and the output signals of the processor are explained below, with their bit-width's.
 
@@ -118,7 +132,7 @@ The input and the output signals of the processor are explained below, with thei
 		\item \textit{Read\_Out\_Mem}, 1 bit, indicates the output memory when to allow reading of data
 \end{itemize}
 
-\FloatBarrier
+
 \section{Sequencing of Operations}
 \label{sec:sequencing}
 
@@ -274,14 +288,8 @@ Again, we avoid giving explanation for the states during the vertical movement, 
 
 \end{enumerate}
 
-
-\FloatBarrier
 \section{Synthesis}
 \label{sec:synthesis}
-%present the results from the various reports here. 
-% the critical path
-% area 
-% power dissipation
 We synthesized the design using four different clock periods, namely 7ns, 5ns, 3ns and 2ns, and let Design Vision try to optimize the design for speed to get the fastest possible design. Turns out 2ns is the minimum clock period for our design, Design Vision was not able to synthesize a faster design even when we tried. To get meaningful power reports we simulated switching activity with the VSS Simulator and the activity was passed on to Design Vision. On top of power reports we also obtained area and timing reports from the design on all four clock periods. The actual reports can be seen in the appendix, but a summary of the results can be seen in table \ref{tab:synth}. The power breakdown for the designs on all four clock periods can be seen in table \ref{tab:broken}. In the breakdown \textit{MULT}$_{conv}$ and \textit{ADD}$_{conv}$ refer to the power dissipation in all multipliers and adders involved in the convolution combined. For more detailed breakdown please refer to the appendix.
 
 \begin{table}[h]
@@ -293,13 +301,12 @@ We synthesized the design using four different clock periods, namely 7ns, 5ns, 3
 			5 & 0.16 & 1.88 & 2.04 & 44067 & 53079 & 4.7 \\ \hline
 			3 & 0.11 & 2.17 & 2.28 & 49595 & 58611 & 2.9 \\ \hline
 			2 & 0.19 & 2.59 & 2.78 & 58668 & 67700 & 1.9 \\ \hline
-			
 		\end{tabular}
 	\end{center}
 	\label{tab:synth}
 \end{table}
 
-\begin{table}
+\begin{table}[h]
 	\caption{Power breakdown, total power in mW}
 	\begin{center}
 		\begin{tabular}{|p{0.4cm}|p{1.15cm}|p{1.25cm}|p{1.5cm}|p{1.55cm}|p{1.75cm}|p{1.45cm}|p{1cm}|p{1.3cm}|p{1.25cm}|} \hline
@@ -322,9 +329,42 @@ The critical path of the design (see figure \ref{fig:procdetail}) is the same fo
 \end{figure}
 
 \FloatBarrier
+
 \section{Results}
 \label{sec:results}
-%put the convoluted and the original image here to show the results.
+
+The original image which is convoluted in the simulation is shown in figure \ref{fig:lena}. The convolution of this image takes a total time of 3252224 ns, which is broken down as (with a clock cycle of 2 ns):
+
+\begin{enumerate}
+\item Memory Initialization: 131072 ns (256 * 256 * 2 ns).
+\item Horizontal Movement: 1560576 ns (256 * 254 * 12 * 2 ns), where 12 is the number of cycles taken for one horizontal movement of the filter.
+\item Vertical Movement: 1560576 ns (256 * 254 * 12 * 2 ns), where 12 is the number of cycles taken for one vertical movement of the filter.
+\end{enumerate}
+
+The left image in the figure \ref{fig:lenanew} is computed using the filter mask of `000010000' and the right image in figure \ref{fig:lenanew} is computed using the filter mask of `010101010'.
+
+\begin{figure}[h]
+	\centering
+		\includegraphics[width=2in]{./images/lena.PNG}
+	\caption{Original Image}	
+	\label{fig:lena}
+\end{figure}
+
+\FloatBarrier
+
+\begin{figure}[htp]
+  \begin{center}
+    \subfigure{\label{fig:lena1}\includegraphics[height=2in]{./images/lena1.PNG}}
+    \hspace{1in}
+    \subfigure{\label{fig:lena2}\includegraphics[height=2in]{./images/lena2.PNG}}
+  \end{center}
+  \caption{Convolution Results}
+  \label{fig:lenanew}
+\end{figure}
+
+\FloatBarrier
+
+Provided below is a summary of the results obtained from the Synthesis of the design.
 
 \begin{table}[h]
 	\caption{Summary}
@@ -341,6 +381,7 @@ The critical path of the design (see figure \ref{fig:procdetail}) is the same fo
 	\label{tab:conclusion}
 \end{table}
 
+\FloatBarrier
 
 \section{Limitations and Extensions}
 \label{sec:limitations}
