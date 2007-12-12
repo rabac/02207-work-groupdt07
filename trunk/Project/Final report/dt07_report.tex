@@ -282,21 +282,35 @@ Again, we avoid giving explanation for the states during the vertical movement, 
 % the critical path
 % area 
 % power dissipation
-We synthesized the design using four different clock periods, namely 7ns, 5ns, 3ns and 2ns, and let Design Vision try to optimize the design for speed to get the fastest possible design. Turns out 2ns is the minimum clock period for our design, Design Vision was not able to synthesize a faster design even when we tried. To get meaningful power reports we simulated switching activity with the VSS Simulator and the activity was passed on to Design Vision. On top of power reports we also obtained area and timing reports from the design on all four clock cycles. The actual reports can be seen in the appendix, but a summary of the results can be seen in table \ref{tab:synth}.
+We synthesized the design using four different clock periods, namely 7ns, 5ns, 3ns and 2ns, and let Design Vision try to optimize the design for speed to get the fastest possible design. Turns out 2ns is the minimum clock period for our design, Design Vision was not able to synthesize a faster design even when we tried. To get meaningful power reports we simulated switching activity with the VSS Simulator and the activity was passed on to Design Vision. On top of power reports we also obtained area and timing reports from the design on all four clock periods. The actual reports can be seen in the appendix, but a summary of the results can be seen in table \ref{tab:synth}. The power breakdown for the designs on all four clock periods can be seen in table \ref{tab:broken}. In the breakdown \textit{MULT}$_{conv}$ and \textit{ADD}$_{conv}$ refer to the power dissipation in all multipliers and adders involved in the convolution combined. For more detailed breakdown please refer to the appendix.
 
 \begin{table}[h]
 	\caption{Summary of Design Vision reports}
 	\begin{center}
 		\begin{tabular}{|l|l|l|l|l|l|l|} \hline
 			\textbf{T}$_{C}$ [ns]	& \textbf{P}$_{stat}$	[mW] & \textbf{P}$_{dyn}$ [mW]	& \textbf{P}$_{tot}$ [mW] & \textbf{A}$_{comb}$ [$\mu$$m^2$]& \textbf{A}$_{tot}$ [$\mu$$m^2$] & \textbf{T}$_{cp}$ [ns] \\ \hline
-			7 & 0.11 & 1.60 & 1.71 & 44067 & 53079 & 4.7 \\ \hline
-			5 & 0.11 & 1.71 & 1.82 & 44067 & 53079 & 4.7 \\ \hline
+			7 & 0.16 & 1.77 & 1.93 & 44067 & 53079 & 4.7 \\ \hline
+			5 & 0.16 & 1.88 & 2.04 & 44067 & 53079 & 4.7 \\ \hline
 			3 & 0.11 & 2.17 & 2.28 & 49595 & 58611 & 2.9 \\ \hline
 			2 & 0.19 & 2.59 & 2.78 & 58668 & 67700 & 1.9 \\ \hline
 			
 		\end{tabular}
 	\end{center}
 	\label{tab:synth}
+\end{table}
+
+\begin{table}
+	\caption{Power breakdown, total power in mW}
+	\begin{center}
+		\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|} \hline
+			\textbf{T}$_{C}$ & \textbf{FSM}$_{in}$ & \textbf{FSM}$_{out}$ & \textbf{REG}$_{filter}$ & \textbf{REG}$_{cache}$ & \textbf{MULT}$_{conv}$ & \textbf{ADD}$_{conv}$ & \textbf{MUX} & \textbf{Adder}$_{out}$ & \textbf{REG}$_{out}$ \\ \hline
+			7 & 0.207 & 0.242 & 0.396 & 0.547 & 0.363 & 0.036 & 0.035 & 0.050 & 0.053 \\ \hline
+			5 & 0.256 & 0.300 & 0.396 & 0.549 & 0.365 & 0.036 & 0.036 & 0.056 & 0.052 \\ \hline 
+			3 & 0.370 & 0.436 & 0.401 & 0.548 & 0.224 & 0.110 & 0.040 & 0.126 & 0.052 \\ \hline
+			2 & 0.512 & 0.606 & 0.395 & 0.557 & 0.371 & 0.103 & 0.044 & 0.143 & 0.052 \\ \hline
+		\end{tabular}
+	\end{center}
+	\label{tab:broken}
 \end{table}
 
 The critical path of the design (see figure \ref{fig:procdetail}) is the same for all four clock periods and goes through the cache register, the convolution multipliers, the convolution adders, the multiplexer, the adder and the output register (added for the synthesizer's sake, to constrain the path - doesn't contribute to the delay in any of the timing reports). The path is illustrated in figure \ref{fig:critical} along with the delay information.
