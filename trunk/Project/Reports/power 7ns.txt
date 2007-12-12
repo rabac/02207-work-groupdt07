@@ -3,13 +3,15 @@ Report : power
         -analysis_effort low
 Design : Processor_3
 Version: X-2005.09-SP1
-Date   : Wed Dec 12 12:54:27 2007
+Date   : Wed Dec 12 12:56:48 2007
 ****************************************
  
  
 Library(s) Used:
-    CORE90GPSVT (File: /cell_libs/cmos090_50a/CORE90GPSVT_SNPS-AVT_2.1/SIGNOFF/bc_1.10V_m40C_wc_0.90V_105C/PT_LIB/CORE90GPSVT_NomLeak.db)
-    CORE90GPHVT (File: /cell_libs/cmos090_50a/CORE90GPHVT_SNPS-AVT_2.1.a/SIGNOFF/bc_1.10V_m40C_wc_0.90V_105C/PT_LIB/CORE90GPHVT_NomLeak.db)
+    CORE90GPSVT (File: /cell_libs/cmos090_50a/CORE90GPSVT_SNPS-AVT_2.1
+/SIGNOFF/bc_1.10V_m40C_wc_0.90V_105C/PT_LIB/CORE90GPSVT_NomLeak.db)
+    CORE90GPHVT (File: /cell_libs/cmos090_50a/CORE90GPHVT_SNPS-AVT_2.1.a
+/SIGNOFF/bc_1.10V_m40C_wc_0.90V_105C/PT_LIB/CORE90GPHVT_NomLeak.db)
  
  
 Operating Conditions: NomLeak   Library: CORE90GPSVT
@@ -114,18 +116,18 @@ csa15bit_2             area_0to1K        CORE90GPSVT
 csa15bit_1             area_0to1K        CORE90GPSVT
 csa15bit_0             area_0to1K        CORE90GPSVT
 CRA_15_0               area_0to1K        CORE90GPSVT
-ADDER_3_2              area_1Kto2K       CORE90GPSVT
-ADDER_3_2_DW01_add_1   area_0to1K        CORE90GPSVT
-ADDER_3_2_DW01_add_0   area_0to1K        CORE90GPSVT
-ADDER_3_1              area_1Kto2K       CORE90GPSVT
-ADDER_3_1_DW01_add_1   area_0to1K        CORE90GPSVT
-ADDER_3_1_DW01_add_0   area_0to1K        CORE90GPSVT
-ADDER_3_0              area_1Kto2K       CORE90GPSVT
-ADDER_3_0_DW01_add_1   area_0to1K        CORE90GPSVT
-ADDER_3_0_DW01_add_0   area_0to1K        CORE90GPSVT
+ADDER_3_2              area_0to1K        CORE90GPSVT
+ADDER_3_2_DW01_add_3   area_0to1K        CORE90GPSVT
+ADDER_3_2_DW01_add_2   area_0to1K        CORE90GPSVT
+ADDER_3_1              area_0to1K        CORE90GPSVT
+ADDER_3_1_DW01_add_3   area_0to1K        CORE90GPSVT
+ADDER_3_1_DW01_add_2   area_0to1K        CORE90GPSVT
+ADDER_3_0              area_0to1K        CORE90GPSVT
+ADDER_3_0_DW01_add_3   area_0to1K        CORE90GPSVT
+ADDER_3_0_DW01_add_2   area_0to1K        CORE90GPSVT
 MUX_4                  area_0to1K        CORE90GPSVT
-ADDER_2                area_1Kto2K       CORE90GPSVT
-ADDER_2_DW01_add_0     area_0to1K        CORE90GPSVT
+ADDER_2                area_0to1K        CORE90GPSVT
+ADDER_2_DW01_add_1     area_0to1K        CORE90GPSVT
 REG                    area_0to1K        CORE90GPSVT
  
  
@@ -138,12 +140,12 @@ Power-specific unit information :
     Leakage Power Units = 1pW
  
  
-  Cell Internal Power  =   1.8695 mW   (72%)
-  Net Switching Power  = 728.5573 uW   (28%)
+  Cell Internal Power  =   1.4349 mW   (81%)
+  Net Switching Power  = 329.4072 uW   (19%)
                          ---------
-Total Dynamic Power    =   2.5980 mW  (100%)
+Total Dynamic Power    =   1.7643 mW  (100%)
  
-Cell Leakage Power     = 185.3964 uW
+Cell Leakage Power     = 164.4221 uW
  
 
 ***** End Of Report *****

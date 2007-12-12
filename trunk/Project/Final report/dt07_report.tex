@@ -398,7 +398,13 @@ We have designed and implemented the architecture for an image filtering process
 		\item Select signal from the Output Controller would be 3 bits for 5x5 and 7x7, and 4 bits for 9x9 filter.
 	\end{itemize}	
 	
-	In addition the synchronization of the Input and the Output Controllers would change due to the number of clock cycles required to get $n$ new pixels from the memory and compute the output for $n$ pixels at a time. This means the cases described in section \ref{sec:memreadwrite} would now be the following:
+	In addition the synchronization of the Input and the Output Controllers would change due to the number of clock cycles required to get $n$ new pixels from the memory and compute the output for $n$ pixels at a time. This means the cases described in section \ref{sec:memreadwrite} would now be the following for the $n*n$ filter:
+		\begin{itemize}
+		\item Number of cycles taken for the Input Controller to read pixels due to the filter movement (horizontal or vertical): $n$.
+		\item Number of cycles taken for the Output Controller to read and write $n$ new pixels to the output memory: $3*n$, since there are three states for every pixel, namely, read, idle and write.
+		\item Number of cycles for which the Output Controller waits in the case when the horizontal movement shifts to the next row or the vertical movement shifts to the next column: [($n$ + $3*n$) + ($n$ + $3*n$) + .. $(n-1) times$ .. + ($n$ + $3*n$)] + $n$, which is $4*n^2 - 3*n$.
+	\end{itemize}	
+
 	
 	
 \item It is assumed that the filter is symmetric along the two dimensional x and y axes. We need this since the indices of the filter which need to be multiplied with the image pixels would change in horizontal and vertical movements. For simplicity therefore, we have made this assumption.
@@ -407,4 +413,40 @@ The solution to this problem is quite simple though. We just need to have separa
 \item The mechanism which we have designed for the accessing the memory is ofcourse not the best way. Since we began the implementation with the sequence explained in the section \ref{sec:memoryaccess}, we did not change it later. Though, we realized that this is not an efficient way, since it consumes a high number of clock cycles in order to run through the entire image of 256x256 pixels.
 \end{enumerate}	
 
+\newpage
+\section{VHDL Implementation Files}
+\label{section:impl}
+Following are the VHDL files which are core to the project. In addition we have a lot of test benches, which we have created to test the individual components. These extra files (along with the core files) are provided in the ZIP archive. 
+
+\lstinputlisting[frame=trbl,caption={Memory.vhd}]{../code/Memory.vhd}
+\newpage
+\lstinputlisting[frame=trbl, caption={FSM\_in.vhd}]{../code/FSM_in.vhd}
+\newpage
+\lstinputlisting[frame=trbl, caption={FSM\_out.vhd}]{../code/FSM_out.vhd}
+
+\lstinputlisting[frame=trbl,caption={REG.vhd}]{../code/REG.vhd}
+\newpage
+\lstinputlisting[frame=trbl,caption={SHIFTREG.vhd}]{../code/SHIFTREG.vhd}
+\newpage
+\lstinputlisting[frame=trbl, caption={CRA\_15.vhd}]{../code/CRA_15.vhd}
+\newpage
+\lstinputlisting[frame=trbl, caption={CSA\_15bit.vhd}]{../code/CSA_15bit.vhd}
+\newpage
+\lstinputlisting[frame=trbl,caption={parcial.vhd}]{../code/parcial.vhd}
+\newpage
+\lstinputlisting[frame=trbl,caption={Multiplier.vhd}]{../code/Multiplier.vhd}
+\newpage
+\lstinputlisting[frame=trbl, caption={Adder\_2.vhd}]{../code/Adder_2.vhd}
+\newpage
+\lstinputlisting[frame=trbl, caption={Adder\_3.vhd}]{../code/Adder_3.vhd}
+\newpage
+\lstinputlisting[frame=trbl, caption={MUX\_4.vhd}]{../code/MUX_4.vhd}
+\newpage
+\lstinputlisting[frame=trbl,caption={Processor\_3.vhd}]{../code/Processor_3.vhd}
+\newpage
+\lstinputlisting[frame=trbl,caption={TB\_filter.vhd}]{../code/TB_filter.vhd}
+\newpage
+Following are the Reports from Synopsys.
+\newpage
+\lstinputlisting[frame=trbl, caption={Power Report Design A}]{../code/power_report1.txt}
 \end{document}
